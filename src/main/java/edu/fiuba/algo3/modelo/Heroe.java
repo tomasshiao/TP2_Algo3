@@ -9,5 +9,6 @@ public class Heroe {
 
     public void atacar(Enemigo enemigo) {
         salud -= enemigo.puntosDeDanio();
+        enemigo.matar();
     }
 }

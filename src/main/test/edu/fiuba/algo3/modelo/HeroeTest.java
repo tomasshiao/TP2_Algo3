@@ -13,7 +13,7 @@ public class HeroeTest {
     }
 
     @Test
-    public void alAtacarAUnEnemigoSinArmasPierdeSalud() {
+    public void alAtacarSinArmasPierdeSalud() {
         Heroe heroe = new Heroe();
         int puntosDeSaludIniciales = heroe.puntosDeSalud();
         int puntosDeSaludDelEnemigo = 3;
@@ -22,5 +22,15 @@ public class HeroeTest {
         heroe.atacar(enemigo);
 
         assertEquals(heroe.puntosDeSalud(), puntosDeSaludIniciales - puntosDeSaludDelEnemigo);
+    }
+
+    @Test
+    public void alAtacarSinArmasElEnemigoMuere() {
+        Heroe heroe = new Heroe();
+        Enemigo enemigo = new Enemigo(3);
+
+        heroe.atacar(enemigo);
+
+        assertEquals(enemigo.puntosDeSalud(), 0);
     }
 }
