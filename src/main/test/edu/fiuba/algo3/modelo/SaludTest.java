@@ -30,4 +30,13 @@ public class SaludTest {
         salud.disminuir(puntos);
         assertEquals(salud.puntos(), 0);
     }
+
+    @ParameterizedTest
+    @ValueSource(ints = {11, 13, Integer.MAX_VALUE})
+    public void siDisminuyeLuegoDeCeroPuntosNoDisminuyeLaSalud(int puntos) {
+        Salud salud = new Salud(10);
+        salud.disminuir(10);
+        salud.disminuir(puntos);
+        assertEquals(salud.puntos(), 0);
+    }
 }
