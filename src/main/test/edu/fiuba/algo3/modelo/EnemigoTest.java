@@ -15,15 +15,14 @@ public class EnemigoTest {
         assertEquals(enemigo.puntosDeDanio(), puntosDeDanio);
     }
 
-        @Test
-    public void alAtacarAUnEnemigoSinArmasPierdeSalud() {
-        Heroe heroe = new Heroe();
-        int puntosDeSaludIniciales = heroe.puntosDeSalud();
-        int puntosDeSaludDelEnemigo = 3;
-        Enemigo enemigo = new Enemigo(puntosDeSaludDelEnemigo);
+    @Test
+    public void pierdePuntosDeSaludCorrectamente() {
+        Enemigo enemigo = new Enemigo(10);
+        int puntosDeSaludIniciales = enemigo.puntosDeSalud();
+        int danio = 3;
 
-        heroe.atacar(enemigo);
+        enemigo.daniar(danio);
 
-        assertEquals(heroe.puntosDeSalud(), puntosDeSaludIniciales - puntosDeSaludDelEnemigo);
+        assertEquals(enemigo.puntosDeSalud(), puntosDeSaludIniciales - danio);
     }
 }
