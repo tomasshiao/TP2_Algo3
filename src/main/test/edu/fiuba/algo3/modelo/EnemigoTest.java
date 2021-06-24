@@ -12,21 +12,21 @@ public class EnemigoTest {
     public void losPuntosDeDanioSonIgualesALosDeSalud() {
         Enemigo enemigo = new Enemigo(10);
 
-        assertEquals(enemigo.puntosDeSalud(), enemigo.puntosDeDanio());
+        assertEquals(enemigo.puntosDeDanio(), enemigo.puntosDeSalud());
     }
 
     @ParameterizedTest
     @ValueSource(ints = {1, 3, 5, 15, Integer.MAX_VALUE})
     public void comienzaConTantosPuntosDeDanioComoSeIndique(int puntosDeDanio) {
         Enemigo enemigo = new Enemigo(puntosDeDanio);
-        assertEquals(enemigo.puntosDeDanio(), puntosDeDanio);
+        assertEquals(puntosDeDanio, enemigo.puntosDeDanio());
     }
 
     @ParameterizedTest
     @ValueSource(ints = {1, 3, 5, 15, Integer.MAX_VALUE})
     public void comienzaConTantosPuntosDeSaludComoSeIndique(int puntosDeSalud) {
         Enemigo enemigo = new Enemigo(puntosDeSalud);
-        assertEquals(enemigo.puntosDeSalud(), puntosDeSalud);
+        assertEquals(puntosDeSalud, enemigo.puntosDeSalud());
     }
 
     @ParameterizedTest
@@ -37,7 +37,7 @@ public class EnemigoTest {
 
         enemigo.daniar(danio);
 
-        assertEquals(enemigo.puntosDeSalud(), puntosDeSaludIniciales - danio);
+        assertEquals(puntosDeSaludIniciales - danio, enemigo.puntosDeSalud());
     }
 
     @ParameterizedTest
@@ -48,6 +48,6 @@ public class EnemigoTest {
 
         enemigo.daniar(danio);
 
-        assertEquals(enemigo.puntosDeDanio(), puntosDeDanioIniciales - danio);
+        assertEquals(puntosDeDanioIniciales - danio, enemigo.puntosDeDanio());
     }
 }
