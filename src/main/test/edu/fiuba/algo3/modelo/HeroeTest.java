@@ -1,6 +1,5 @@
 package edu.fiuba.algo3.modelo;
 
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -44,5 +43,15 @@ public class HeroeTest {
         heroe.atacar(enemigo);
 
         assertEquals(heroe.puntosDeSalud(), 0);
+    }
+
+    @Test
+    public void alAtacarSinArmasSiElEnemigoEsMuyFuerteElEnemigoNoMuere() {
+        Heroe heroe = new Heroe();
+        Enemigo enemigo = new Enemigo(11);
+
+        heroe.atacar(enemigo);
+
+        assertEquals(enemigo.puntosDeSalud(), 1);
     }
 }
