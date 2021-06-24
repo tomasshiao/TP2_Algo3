@@ -8,6 +8,13 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class EnemigoTest {
 
+    @Test
+    public void losPuntosDeDanioSonIgualesALosDeSalud() {
+        Enemigo enemigo = new Enemigo(10);
+
+        assertEquals(enemigo.puntosDeSalud(), enemigo.puntosDeDanio());
+    }
+
     @ParameterizedTest
     @ValueSource(ints = {1, 3, 5, 15, Integer.MAX_VALUE}) // six numbers
     public void comienzaConTantosPuntosDeDanioComoSeIndiquePorParametro(int puntosDeDanio) {
