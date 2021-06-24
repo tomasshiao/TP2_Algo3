@@ -12,9 +12,7 @@ public class Heroe {
     }
 
     public void atacar(Enemigo enemigo) {
-        int saludHeroe = this.salud.puntos();
-        int saludEnemigo = enemigo.puntosDeDanio();
-        int danio = Math.min(saludHeroe, saludEnemigo);
+        int danio = Math.min(this.salud.puntos(), enemigo.puntosDeDanio());
 
         this.salud.disminuir(danio);
         enemigo.daniar(danio);
