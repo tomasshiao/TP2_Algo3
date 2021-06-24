@@ -20,8 +20,4 @@ public class Enemigo {
     public void daniar(int danio) {
         salud -= danio;
     }
-
-    public void matar() {
-        salud = 0;
-    }
 }
