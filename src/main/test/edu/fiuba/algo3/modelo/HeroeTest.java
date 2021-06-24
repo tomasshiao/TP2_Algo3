@@ -36,7 +36,7 @@ public class HeroeTest {
     }
 
 
-    @Test @Disabled
+    @Test
     public void alAtacarSinArmasSiElEnemigoEsMuyFuerteElHeroeMuere() {
         Heroe heroe = new Heroe();
         Enemigo enemigo = new Enemigo(11);

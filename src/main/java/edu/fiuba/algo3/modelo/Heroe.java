@@ -1,14 +1,18 @@
 package edu.fiuba.algo3.modelo;
 
 public class Heroe {
-    private int salud = 10;
+    private final Salud salud;
+
+    public Heroe() {
+        this.salud = new Salud(10);
+    }
 
     public int puntosDeSalud() {
-        return salud;
+        return this.salud.puntos();
     }
 
     public void atacar(Enemigo enemigo) {
-        salud -= enemigo.puntosDeDanio();
+        this.salud.disminuir(enemigo.puntosDeDanio());
         enemigo.matar();
     }
 }
