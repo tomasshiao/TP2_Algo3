@@ -11,7 +11,7 @@ public class SaludTest {
     @ValueSource(ints = {1, 3, 5, 15, Integer.MAX_VALUE})
     public void comienzaConTantosPuntosDeSaludComoSeIndique(int puntos) {
         Salud salud = new Salud(puntos);
-        assertEquals(salud.puntos(), puntos);
+        assertEquals(puntos, salud.puntos());
     }
 
     @ParameterizedTest
@@ -20,7 +20,7 @@ public class SaludTest {
         int puntosIniciales = 10;
         Salud salud = new Salud(puntosIniciales);
         salud.disminuir(puntos);
-        assertEquals(salud.puntos(), puntosIniciales - puntos);
+        assertEquals(puntosIniciales - puntos, salud.puntos());
     }
 
     @ParameterizedTest
@@ -28,7 +28,7 @@ public class SaludTest {
     public void siDisminuyeMasDeLaSaludTotalLosPuntosSonCero(int puntos) {
         Salud salud = new Salud(10);
         salud.disminuir(puntos);
-        assertEquals(salud.puntos(), 0);
+        assertEquals(0, salud.puntos());
     }
 
     @ParameterizedTest
@@ -37,6 +37,6 @@ public class SaludTest {
         Salud salud = new Salud(10);
         salud.disminuir(10);
         salud.disminuir(puntos);
-        assertEquals(salud.puntos(), 0);
+        assertEquals(0, salud.puntos());
     }
 }
