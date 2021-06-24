@@ -1,7 +1,7 @@
 package edu.fiuba.algo3.modelo;
 
 public class Salud {
-    private final int puntos;
+    private int puntos;
 
     public Salud(int puntos) {
         this.puntos = puntos;
@@ -9,5 +9,9 @@ public class Salud {
 
     public int puntos() {
         return this.puntos;
+    }
+
+    public void disminuir(int puntos) {
+        this.puntos -= puntos;
     }
 }
