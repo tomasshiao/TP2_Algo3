@@ -50,4 +50,14 @@ public class EnemigoTest {
 
         assertEquals(puntosDeDanioIniciales - danio, enemigo.puntosDeDanio());
     }
+
+    @ParameterizedTest
+    @ValueSource(ints = {10, 13, Integer.MAX_VALUE})
+    public void siElAtaqueEsMuyAltoMuere(int danio) {
+        Enemigo enemigo = new Enemigo(10);
+
+        enemigo.daniar(danio);
+
+        assertEquals(0, enemigo.puntosDeDanio());
+    }
 }
