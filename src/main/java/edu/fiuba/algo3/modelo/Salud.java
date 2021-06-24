@@ -12,6 +12,6 @@ public class Salud {
     }
 
     public void disminuir(int puntos) {
-        this.puntos -= puntos;
+        this.puntos -= Math.min(this.puntos, puntos);
     }
 }
