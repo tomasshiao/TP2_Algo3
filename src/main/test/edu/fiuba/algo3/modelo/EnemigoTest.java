@@ -16,10 +16,17 @@ public class EnemigoTest {
     }
 
     @ParameterizedTest
-    @ValueSource(ints = {1, 3, 5, 15, Integer.MAX_VALUE}) // six numbers
-    public void comienzaConTantosPuntosDeDanioComoSeIndiquePorParametro(int puntosDeDanio) {
+    @ValueSource(ints = {1, 3, 5, 15, Integer.MAX_VALUE})
+    public void comienzaConTantosPuntosDeDanioComoSeIndique(int puntosDeDanio) {
         Enemigo enemigo = new Enemigo(puntosDeDanio);
         assertEquals(enemigo.puntosDeDanio(), puntosDeDanio);
+    }
+
+    @ParameterizedTest
+    @ValueSource(ints = {1, 3, 5, 15, Integer.MAX_VALUE})
+    public void comienzaConTantosPuntosDeSaludComoSeIndique(int puntosDeSalud) {
+        Enemigo enemigo = new Enemigo(puntosDeSalud);
+        assertEquals(enemigo.puntosDeSalud(), puntosDeSalud);
     }
 
     @Test
