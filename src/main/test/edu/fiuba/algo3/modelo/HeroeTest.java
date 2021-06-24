@@ -9,7 +9,7 @@ public class HeroeTest {
     @Test
     public void comienzaCon10PuntosDeSalud() {
         Heroe heroe = new Heroe();
-        assertEquals(heroe.puntosDeSalud(), 10);
+        assertEquals(10, heroe.puntosDeSalud());
     }
 
     @Test
@@ -21,7 +21,7 @@ public class HeroeTest {
 
         heroe.atacar(enemigo);
 
-        assertEquals(heroe.puntosDeSalud(), puntosDeSaludIniciales - puntosDeSaludDelEnemigo);
+        assertEquals(puntosDeSaludIniciales - puntosDeSaludDelEnemigo, heroe.puntosDeSalud());
     }
 
     @Test
@@ -31,7 +31,7 @@ public class HeroeTest {
 
         heroe.atacar(enemigo);
 
-        assertEquals(enemigo.puntosDeSalud(), 0);
+        assertEquals(0, enemigo.puntosDeSalud());
     }
 
 
@@ -42,7 +42,7 @@ public class HeroeTest {
 
         heroe.atacar(enemigo);
 
-        assertEquals(heroe.puntosDeSalud(), 0);
+        assertEquals(0, heroe.puntosDeSalud());
     }
 
     @Test
@@ -52,6 +52,6 @@ public class HeroeTest {
 
         heroe.atacar(enemigo);
 
-        assertEquals(enemigo.puntosDeSalud(), 1);
+        assertEquals(1, enemigo.puntosDeSalud());
     }
 }
