@@ -1,6 +1,8 @@
 package edu.fiuba.algo3.modelo;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -12,11 +14,11 @@ public class HeroeTest {
         assertEquals(10, heroe.puntosDeSalud());
     }
 
-    @Test
-    public void alAtacarSinArmasPierdeSalud() {
+    @ParameterizedTest
+    @ValueSource(ints = {1, 3, 5})
+    public void alAtacarSinArmasPierdeSalud(int puntosDeSaludDelEnemigo) {
         Heroe heroe = new Heroe();
         int puntosDeSaludIniciales = heroe.puntosDeSalud();
-        int puntosDeSaludDelEnemigo = 3;
         Enemigo enemigo = new Enemigo(puntosDeSaludDelEnemigo);
 
         heroe.atacar(enemigo);
@@ -24,10 +26,11 @@ public class HeroeTest {
         assertEquals(puntosDeSaludIniciales - puntosDeSaludDelEnemigo, heroe.puntosDeSalud());
     }
 
-    @Test
-    public void alAtacarSinArmasElEnemigoMuere() {
+    @ParameterizedTest
+    @ValueSource(ints = {1, 3, 5})
+    public void alAtacarSinArmasElEnemigoMuere(int puntosEnemigo) {
         Heroe heroe = new Heroe();
-        Enemigo enemigo = new Enemigo(3);
+        Enemigo enemigo = new Enemigo(puntosEnemigo);
 
         heroe.atacar(enemigo);
 
@@ -35,23 +38,25 @@ public class HeroeTest {
     }
 
 
-    @Test
-    public void alAtacarSinArmasSiElEnemigoEsMuyFuerteElHeroeMuere() {
+    @ParameterizedTest
+    @ValueSource(ints = {10, 13, 15, Integer.MAX_VALUE})
+    public void alAtacarSinArmasSiElEnemigoEsMuyFuerteElHeroeMuere(int puntosEnemigo) {
         Heroe heroe = new Heroe();
-        Enemigo enemigo = new Enemigo(11);
+        Enemigo enemigo = new Enemigo(puntosEnemigo);
 
         heroe.atacar(enemigo);
 
         assertEquals(0, heroe.puntosDeSalud());
     }
 
-    @Test
-    public void alAtacarSinArmasSiElEnemigoEsMuyFuerteElEnemigoNoMuere() {
+    @ParameterizedTest
+    @ValueSource(ints = {11, 13, 15, Integer.MAX_VALUE})
+    public void alAtacarSinArmasSiElEnemigoEsMuyFuerteElEnemigoNoMuere(int puntosEnemigo) {
         Heroe heroe = new Heroe();
-        Enemigo enemigo = new Enemigo(11);
+        Enemigo enemigo = new Enemigo(puntosEnemigo);
 
         heroe.atacar(enemigo);
 
-        assertEquals(1, enemigo.puntosDeSalud());
+        assertEquals(puntosEnemigo - 10, enemigo.puntosDeSalud());
     }
 }
