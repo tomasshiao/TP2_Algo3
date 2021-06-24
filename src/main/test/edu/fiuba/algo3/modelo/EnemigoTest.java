@@ -39,4 +39,15 @@ public class EnemigoTest {
 
         assertEquals(enemigo.puntosDeSalud(), puntosDeSaludIniciales - danio);
     }
+
+    @ParameterizedTest
+    @ValueSource(ints = {1, 3, 5})
+    public void luegoDeUnAtaquePierdePuntosDeDanio(int danio) {
+        Enemigo enemigo = new Enemigo(10);
+        int puntosDeDanioIniciales = enemigo.puntosDeDanio();
+
+        enemigo.daniar(danio);
+
+        assertEquals(enemigo.puntosDeDanio(), puntosDeDanioIniciales - danio);
+    }
 }

@@ -1,23 +1,21 @@
 package edu.fiuba.algo3.modelo;
 
 public class Enemigo {
-    private int salud;
-    private int danio;
+    private int puntosDeDanioYSalud;
 
     public Enemigo(int puntosDeDanioYSalud) {
-        danio = puntosDeDanioYSalud;
-        salud = puntosDeDanioYSalud;
+        this.puntosDeDanioYSalud = puntosDeDanioYSalud;
     }
 
     public int puntosDeDanio() {
-        return danio;
+        return this.puntosDeDanioYSalud;
     }
 
     public int puntosDeSalud() {
-        return salud;
+        return this.puntosDeDanioYSalud;
     }
 
     public void daniar(int danio) {
-        salud -= danio;
+        this.puntosDeDanioYSalud -= danio;
     }
 }
