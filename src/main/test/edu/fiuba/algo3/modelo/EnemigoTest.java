@@ -1,14 +1,16 @@
 package edu.fiuba.algo3.modelo;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class EnemigoTest {
 
-    @Test
-    public void ElEnemigoComienzaConTantosPuntosDeDanioComoSeIndiquePorParametro() {
-        int puntosDeDanio = 3;
+    @ParameterizedTest
+    @ValueSource(ints = {1, 3, 5, 15, Integer.MAX_VALUE}) // six numbers
+    public void ElEnemigoComienzaConTantosPuntosDeDanioComoSeIndiquePorParametro(int puntosDeDanio) {
         Enemigo enemigo = new Enemigo(puntosDeDanio);
         assertEquals(enemigo.puntosDeDanio(), puntosDeDanio);
     }

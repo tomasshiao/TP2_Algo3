@@ -7,12 +7,12 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class HeroeTest {
 
     @Test
-    public void ElHeroeComienzaCon10PuntosDeSalud() {
+    public void comienzaCon10PuntosDeSalud() {
         Heroe heroe = new Heroe();
         assertEquals(heroe.puntosDeSalud(), 10);
     }
 
-        @Test
+    @Test
     public void alAtacarAUnEnemigoSinArmasPierdeSalud() {
         Heroe heroe = new Heroe();
         int puntosDeSaludIniciales = heroe.puntosDeSalud();

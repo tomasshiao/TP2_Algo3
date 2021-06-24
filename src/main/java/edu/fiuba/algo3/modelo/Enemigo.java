@@ -1,11 +1,13 @@
 package edu.fiuba.algo3.modelo;
 
 public class Enemigo {
-    public Enemigo(int puntosDeSaludDelEnemigo) {
+    private int danio;
 
+    public Enemigo(int puntosDeDanio) {
+        danio = puntosDeDanio;
     }
 
     public int puntosDeDanio() {
-        return 3;
+        return danio;
     }
 }
