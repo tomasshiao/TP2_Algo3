@@ -35,7 +35,7 @@ public class EnemigoTest {
         Enemigo enemigo = new Enemigo(10);
         int puntosDeSaludIniciales = enemigo.puntosDeSalud();
 
-        enemigo.daniar(danio);
+        enemigo.recibirDanio(danio);
 
         assertEquals(puntosDeSaludIniciales - danio, enemigo.puntosDeSalud());
     }
@@ -46,7 +46,7 @@ public class EnemigoTest {
         Enemigo enemigo = new Enemigo(10);
         int puntosDeDanioIniciales = enemigo.puntosDeDanio();
 
-        enemigo.daniar(danio);
+        enemigo.recibirDanio(danio);
 
         assertEquals(puntosDeDanioIniciales - danio, enemigo.puntosDeDanio());
     }
@@ -56,7 +56,7 @@ public class EnemigoTest {
     public void siElAtaqueEsMuyAltoMuere(int danio) {
         Enemigo enemigo = new Enemigo(10);
 
-        enemigo.daniar(danio);
+        enemigo.recibirDanio(danio);
 
         assertEquals(0, enemigo.puntosDeDanio());
     }
