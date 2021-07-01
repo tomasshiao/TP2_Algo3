@@ -1,6 +1,6 @@
 ![tp2](https://github.com/seblaz/algo3_tp2/actions/workflows/build.yml/badge.svg) [![codecov](https://codecov.io/gh/seblaz/algo3_tp2/branch/master/graph/badge.svg)](https://codecov.io/gh/seblaz/algo3_tp2)
 
-# TP2 Algoritmos 3: {nombre} 
+# TP2 Algoritmos 3: TEG
 
 Trabajo Práctico número 2 de la materia Algoritmos y Programación III de FIUBA
 
@@ -10,6 +10,7 @@ Trabajo Práctico número 2 de la materia Algoritmos y Programación III de FIUB
 * **Integrante 2** - [Güttlein Gareis, Alexis Daniel](https://github.com/alexguttlein)
 * **Integrante 3** - [integrante3](https://github.com/integrante3)
 * **Integrante 4** - [integrante4](https://github.com/integrante4)
+* **Integrante 5** - [Shiao, Tomás Jorge](https://github.com/tomasshiao)
 
 Corrector: **{Corrector}**
 
