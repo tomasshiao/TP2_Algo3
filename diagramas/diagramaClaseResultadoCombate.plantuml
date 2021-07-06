@@ -1,10 +1,15 @@
 @startuml
 skinparam classAttributeIconSize 0
 
-interface ResultadoCombate{}
+interface ResultadoCombate{
+    + realizarAtaque(paisSalida, paisAAtacar, numeroDeTropas) : void
+}
 
-class Victoria{}
+class Victoria{
+    +realizarAtaque(paisSalida, paisAAtacar, numeroDeTropas) : void
+}
 class Derrota{
+    +realizarAtaque(paisSalida, paisAAtacar, numeroDeTropas) : void
 }
 
 ResultadoCombate <|--Victoria

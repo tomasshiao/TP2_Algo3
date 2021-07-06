@@ -11,7 +11,13 @@ class Jugador{
 class Pais{
     +pieza: Pieza
     +dibujo: Dibujo
+
+    
+    + validarAtaque(paisSalida, paisAAtacar, numeroDeTropas) : bool
+    + atacar(paisSalida, paisAAtacar, numeroDeTropas) : void
+    + reducirTropas(numeroDeTropas) : void
 }
+
 class ValidarObjetivo{}
 
 

@@ -7,7 +7,7 @@ class Tablero{
 }
 
 class ValidarVictoria{
-
+    + validarAtaque(list, otraList): ResultadoCombate
 }
 
 class Continente{
@@ -15,9 +15,13 @@ class Continente{
 }
 
 class Camino{}
-class Dado{}
+class Dado{
+    +obtenerNumeros(numeroDeTropas): list
+}
 
-class ResultadoCombate{}
+class ResultadoCombate{
+    +realizarAtaque(paisSalida, paisAAtacar, numeroDeTropas) : void
+}
 
 Tablero ---> "..*"Camino
 Tablero *---> "5" Continente

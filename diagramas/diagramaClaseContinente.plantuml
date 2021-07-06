@@ -9,6 +9,10 @@ class Continente{
 
 class Pais{
     +jugador: Jugador
+    
+    + validarAtaque(paisSalida, paisAAtacar, numeroDeTropas) : bool
+    + atacar(paisSalida, paisAAtacar, numeroDeTropas) : void
+    + reducirTropas(numeroDeTropas) : void
 }
 
 class Pieza{}
@@ -16,8 +20,9 @@ class Pieza{}
 interface Dibujo{}
 
 
+
 Continente *---> "1..*"Pais
 Pais -->Pieza
 Pais -->Dibujo
-
+Pais --> Tablero
 @enduml
