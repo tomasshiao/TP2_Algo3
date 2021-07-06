@@ -1,0 +1,23 @@
+@startuml
+skinparam classAttributeIconSize 0
+
+class Continente{
+
+
+
+}
+
+class Pais{
+    +jugador: Jugador
+}
+
+class Pieza{}
+
+interface Dibujo{}
+
+
+Continente *---> "1..*"Pais
+Pais -->Pieza
+Pais -->Dibujo
+
+@enduml

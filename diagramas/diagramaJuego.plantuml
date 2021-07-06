@@ -17,6 +17,7 @@ class Jugador{
         +identfiicador: int 
         + color: str
         +objetivo: Objetivo 
+        +pais: Pais
 }
 
 class ValidarAtaque{}
@@ -27,7 +28,7 @@ class Tablero{
 
 
 Juego ---> Partida
-Partida ---> Jugador
+Partida --->"2..*" Jugador
 Partida ---> ValidarAtaque
 Partida ---> Tablero
 

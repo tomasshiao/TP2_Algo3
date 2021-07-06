@@ -1,0 +1,28 @@
+@startuml
+skinparam classAttributeIconSize 0
+
+
+class Tablero{
+
+}
+
+class ValidarVictoria{
+
+}
+
+class Continente{
+    +paises: Pais
+}
+
+class Camino{}
+class Dado{}
+
+class ResultadoCombate{}
+
+Tablero ---> "..*"Camino
+Tablero *---> "5" Continente
+Tablero ---> ValidarVictoria
+Tablero <--> "1" Dado
+ValidarVictoria <--->ResultadoCombate
+
+@enduml

@@ -1,0 +1,21 @@
+@startuml
+skinparam classAttributeIconSize 0
+
+class Jugador{
+    +identificador: int 
+    +color: str 
+    +objetivo: Objetivo 
+
+}
+
+class Pais{
+    +pieza: Pieza
+    +dibujo: Dibujo
+}
+class ValidarObjetivo{}
+
+
+Jugador <--> Pais
+Jugador--->ValidarObjetivo
+
+@enduml

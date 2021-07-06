@@ -1,0 +1,12 @@
+@startuml
+skinparam classAttributeIconSize 0
+
+interface ResultadoCombate{}
+
+class Victoria{}
+class Derrota{
+}
+
+ResultadoCombate <|--Victoria
+ResultadoCombate <|-- Derrota
+@enduml
