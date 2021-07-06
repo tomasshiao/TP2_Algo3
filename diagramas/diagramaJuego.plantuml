@@ -1,0 +1,34 @@
+@startuml
+skinparam classAttributeIconSize 0
+
+class Juego {
+       
+}
+
+class Partida{
+        + cantidadJugadores: int
+        +jugadoresMuertos: stack 
+        +jugadoresVivos:list 
+        +identificador:str 
+        +objetivos: Objetivo
+}
+
+class Jugador{
+        +identfiicador: int 
+        + color: str
+        +objetivo: Objetivo 
+}
+
+class ValidarAtaque{}
+
+class Tablero{
+        +continentes: Continente
+} 
+
+
+Juego ---> Partida
+Partida ---> Jugador
+Partida ---> ValidarAtaque
+Partida ---> Tablero
+
+@enduml
