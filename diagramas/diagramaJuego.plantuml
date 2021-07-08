@@ -11,6 +11,8 @@ class Partida{
         +jugadoresVivos:list 
         +identificador:str 
         +objetivos: Objetivo
+
+        +atacar(paisSalida, paisAAtacar, numeroDeTropas): void
 }
 
 class Jugador{
@@ -18,6 +20,9 @@ class Jugador{
         + color: str
         +objetivo: Objetivo 
         +pais: Pais
+        
+        +atacar(partida, paisSalida, paisAAtacar, numeroDeTropas): void
+
 }
 
 class ValidarAtaque{}
