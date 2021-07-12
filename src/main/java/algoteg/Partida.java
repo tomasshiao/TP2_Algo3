@@ -1,4 +1,4 @@
-package juego;
+package algoteg;
 public class Partida {
 
     private int cantidadJugadores;

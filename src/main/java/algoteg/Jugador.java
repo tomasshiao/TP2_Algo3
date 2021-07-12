@@ -1,4 +1,4 @@
-package juego;
+package algoteg;
 
 public class Jugador {
     private String color;

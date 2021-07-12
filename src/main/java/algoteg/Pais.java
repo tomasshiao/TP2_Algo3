@@ -1,4 +1,4 @@
-package juego;
+package algoteg;
 
 public class Pais {
 
@@ -21,4 +21,6 @@ public class Pais {
     public int getEjercitoActual(){
         return this.cantidadEjercito;
     }
+
+    public String getNombre(){ return this.nombre;}
 }

@@ -1,4 +1,4 @@
-package juego;
+package algoteg;
 
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -17,4 +17,10 @@ public class PartidaTest {
         unPais.reducirEjercito(1);
         assertEquals(1, unPais.getEjercitoActual());
     }
+
+
+
+
+
+
 }
