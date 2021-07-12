@@ -39,7 +39,6 @@ public class PaisTest {
         dadosDefensor.add(2);
         dadosDefensor.add(1);
         Pais victorioso = batalla.obtenerVictoriosoDeGuerra(dadosAtacante,dadosDefensor,paisAtacante, paisDefensor);
-
         assertEquals("Argentina", victorioso.getNombre());
         assertEquals(1,paisDefensor.getEjercitoActual());
 
