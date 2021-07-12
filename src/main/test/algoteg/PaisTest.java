@@ -14,18 +14,35 @@ public class PaisTest {
 
 
     @Test
-    public void Pais(){
+    public void ganaDefensor(){
         paisAtacante.agregarEjercito(1);
         paisDefensor.agregarEjercito(1);
 
-        List<Integer> dadosAtacante = new ArrayList<Integer>();
+        List<Integer> dadosAtacante = new ArrayList<>();
         dadosAtacante.add(1);
-        List<Integer> dadosDefensor = new ArrayList<Integer>();
+        List<Integer> dadosDefensor = new ArrayList<>();
         dadosDefensor.add(6);
         dadosDefensor.add(6);
         Pais victorioso = batalla.obtenerVictoriosoDeGuerra(dadosAtacante,dadosDefensor,paisAtacante, paisDefensor);
 
         assertEquals("Uruguay", victorioso.getNombre());
+    }
+    @Test
+    public void ganaAtacanteYLoOcupa(){
+
+        paisAtacante.agregarEjercito(1);
+        paisDefensor.agregarEjercito(1);
+
+        List<Integer> dadosAtacante = new ArrayList<>();
+        dadosAtacante.add(6);
+        List<Integer> dadosDefensor = new ArrayList<>();
+        dadosDefensor.add(2);
+        dadosDefensor.add(1);
+        Pais victorioso = batalla.obtenerVictoriosoDeGuerra(dadosAtacante,dadosDefensor,paisAtacante, paisDefensor);
+
+        assertEquals("Argentina", victorioso.getNombre());
+        assertEquals(1,paisDefensor.getEjercitoActual());
+
     }
 
 

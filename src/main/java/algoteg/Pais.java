@@ -23,4 +23,17 @@ public class Pais {
     }
 
     public String getNombre(){ return this.nombre;}
+
+    public boolean noTengoTropas(){
+        return (this.cantidadEjercito == 0);
+    }
+    public void conquistar(){
+        if(this.noTengoTropas()){
+            this.agregarEjercito(1);
+        }
+    }
+
+    public void ocupar(Pais paisDefensor){
+        paisDefensor.conquistar();
+    }
 }

@@ -34,6 +34,7 @@ public class Batalla {
         Pais victoriosoDeGuerra = paisDefensor;
         if(this.victoriasAtacante>this.victoriasDefensor) {
             victoriosoDeGuerra = paisAtacante;
+            paisAtacante.ocupar(paisDefensor);
         }
         return(victoriosoDeGuerra);
     }
