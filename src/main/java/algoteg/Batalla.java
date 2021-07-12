@@ -12,22 +12,22 @@ public class Batalla {
 
     }
     private void agregarVictoriaDefensor(){
-        this.victoriasAtacante++;
-    }
-    private void agregarVictoriaAtacante(){
         this.victoriasDefensor++;
     }
+    private void agregarVictoriaAtacante(){
+        this.victoriasAtacante++;
+    }
 
-    public Pais obtenerVictoriosoDeBatalla(int dadoAtacante, int dadoDefensor, Pais paisAtacante, Pais paisDefensor){
-        Pais victoriosoBatalla = paisDefensor;
+    public Pais obtenerPerdedorDeBatalla(int dadoAtacante, int dadoDefensor, Pais paisAtacante, Pais paisDefensor){
+        Pais perdedorDeBatalla = paisAtacante;
         if(dadoAtacante > dadoDefensor){
-            victoriosoBatalla = paisAtacante;
+            perdedorDeBatalla = paisDefensor;
             this.agregarVictoriaAtacante();
         }
         else {
             this.agregarVictoriaDefensor();
         }
-        return(victoriosoBatalla);
+        return(perdedorDeBatalla);
     }
 
     private Pais determinarVictoriosoDeGuerra(Pais paisAtacante, Pais paisDefensor) {
@@ -39,8 +39,8 @@ public class Batalla {
     }
     public Pais obtenerVictoriosoDeGuerra(List<Integer> dadosAtacante, List<Integer> dadosDefensor, Pais paisAtacante, Pais paisDefensor){
         while (!dadosAtacante.isEmpty() && !dadosDefensor.isEmpty()){
-            Pais victoriosoBatalla = this.obtenerVictoriosoDeBatalla( dadosAtacante.remove(0), dadosDefensor.remove(0), paisAtacante, paisDefensor);
-            victoriosoBatalla.reducirEjercito(1);
+            Pais perdedorDeBatalla = this.obtenerPerdedorDeBatalla( dadosAtacante.remove(0), dadosDefensor.remove(0), paisAtacante, paisDefensor);
+            perdedorDeBatalla.reducirEjercito(1);
 
         }
         return(this.determinarVictoriosoDeGuerra(paisAtacante, paisDefensor));
