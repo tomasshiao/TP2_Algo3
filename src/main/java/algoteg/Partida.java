@@ -1,21 +1,28 @@
 package algoteg;
+
 public class Partida {
 
-    private int cantidadJugadores;
+    private int cantidadTotalJugadores;
+    private int cantidadJugadoresActuales;
     private Jugador[] jugadores;
 
-    public Partida(int cantidadJugadores) {
-        this.cantidadJugadores = cantidadJugadores;
-        jugadores = new Jugador[cantidadJugadores];
+    public Partida(int cantidadTotalJugadores) {
+        cantidadJugadoresActuales = 0;
+        if(cantidadTotalJugadores <= 6)
+            this.cantidadTotalJugadores = cantidadTotalJugadores;
+        else this.cantidadTotalJugadores = 6;
+        jugadores = new Jugador[cantidadTotalJugadores];
     }
 
     public void agregarJugador (Jugador unJugador) {
         int idJugador = unJugador.getId();
-        jugadores[idJugador-1] = unJugador;
+        if(this.cantidadJugadoresActuales<6){
+            jugadores[idJugador-1] = unJugador;
+            this.cantidadJugadoresActuales++;
+        }
+
     }
 
-    public int getCantidadJugadores(){
-        return cantidadJugadores;
-    }
+    public int getCantidadJugadoresActuales(){return cantidadJugadoresActuales;}
 
 }
