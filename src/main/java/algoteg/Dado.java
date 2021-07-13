@@ -20,7 +20,8 @@ public class Dado {
         for(int i = 0; i<(dadosPorTropa); i++){
             dados.add( this.random());
         }
-        return dados;
+        Collections.sort(dados);
+        return (dados);
     }
 
     public List<Integer> obtenerDadosDefensor(int cantidadTropas){
@@ -30,7 +31,8 @@ public class Dado {
         for(int i = 0; i<=(dadosPorTropa+dadoExtra); i++){
             dados.add( this.random());
         }
-        return dados;
+        Collections.sort(dados);
+        return (dados);
 
     }
 
