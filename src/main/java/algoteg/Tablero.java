@@ -9,7 +9,7 @@ public class Tablero {
     private Dado dado;
 
     public Tablero(){
-        this.continentes = List.of("Asia","Oceania","America","Europa","Africa");
+        this.continente = List.of("Asia","Oceania","America","Europa","Africa");
     }
 
     public void atacar(Pais paisAtacante, Pais paisDefensor, int numeroTropas){

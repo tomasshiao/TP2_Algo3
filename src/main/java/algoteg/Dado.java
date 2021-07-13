@@ -11,8 +11,13 @@ public class Dado {
     public List<Integer> obtenerDadosAtacante(int cantidadTropas){
         List<Integer> dados = new ArrayList();
 
-        int dadosPorTropa = cantidadTropas/2;
-        for(int i = 0; i<=(dadosPorTropa); i++){
+        int dadosPorTropa = 0;
+
+        if(cantidadTropas >= 4)
+            dadosPorTropa = 3;
+        else dadosPorTropa = (cantidadTropas-1);
+        //i < (cantidadTropas -1) || i < 3
+        for(int i = 0; i<(dadosPorTropa); i++){
             dados.add( this.random());
         }
         return dados;
