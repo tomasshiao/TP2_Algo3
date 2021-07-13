@@ -1,0 +1,87 @@
+\documentclass[titlepage,a4paper]{article}
+
+\usepackage{a4wide}
+\usepackage[colorlinks=true,linkcolor=black,urlcolor=blue,bookmarksopen=true]{hyperref}
+\usepackage{bookmark}
+\usepackage{fancyhdr}
+\usepackage[spanish]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{float}
+
+\pagestyle{fancy} % Encabezado y pie de página
+\fancyhf{}
+\fancyhead[L]{TP2 - Grupo18}
+\fancyhead[R]{Algoritmos y Programación III - FIUBA}
+\renewcommand{\headrulewidth}{0.4pt}
+\fancyfoot[C]{\thepage}
+\renewcommand{\footrulewidth}{0.4pt}
+
+\begin{document}
+\begin{titlepage} % Carátula
+	\hfill\includegraphics[width=6cm]{logofiuba.jpg}
+    \centering
+    \vfill
+    \Huge \textbf{Trabajo Práctico 2 — Java}
+    \vskip2cm
+    \Large [7507/9502] Algoritmos y Programación III\\
+    Curso 1 \\ % Curso 1 para el de la tarde y 2 para el de la noche
+    Primer cuatrimestre de 2021 
+    \vfill
+    \begin{tabular}{ | l | l |    } % Datos del alumno
+      \hline
+      Apellido y nombre & Padron  \\ \hline
+        Martinez, Selene & 100439 \\ \hline
+        Güttlein, Alexis & 104431 \\ \hline
+        Shiao, Tomás Jorge & 106099 \\ \hline
+        Rubanich, Federico Nicolás &  96068 \\ \hline
+        Couttulenc, Marcos Ricardo & 106381\\ \hline
+
+  	\end{tabular}
+    \vfill
+    \vfill
+\end{titlepage}
+
+\tableofcontents % Índice general
+\newpage
+
+\section{Introducción}\label{sec:intro}
+El presente informe reune la documentación de la solución del segundo trabajo práctico de la materia Algoritmos y Programación III que consiste en desarrollar una aplicación tal que sea una versión del juego T.E.G. el cual plantea un conflicto bélico que ocurre sobre un planisferio dividido en 50 países.
+ La aplicación se desarrolla utilizando todos los conceptos vistos en el curso e incluye una interfaz gráfica
+
+\section{Entrega 0}\label{sec:Entrega 0}
+En esta entrega se presentan los diagramas de clase pensados para la aplicación y un diagrama de secuencia para mostrar temporalmente cómo se relacionan las clases entre sí.
+\subsection{Diagramas de clase}\label{sec:Diagrama de clase}
+ \begin{figure}[H]
+\centering
+\includegraphics[width=0.8\textwidth]{diagramaJuego.png}
+\caption{\label{fig:class01}{}Diagrama de la clase juego}
+\end{figure} 
+ \begin{figure}[H]
+\centering
+\includegraphics[width=0.8\textwidth]{diagramaClaseTablero.png}
+\caption{\label{fig:class02}{}Diagrama de la clase tablero}
+\end{figure} 
+ \begin{figure}[H]
+\centering
+\includegraphics[width=0.8\textwidth]{diagramaClaseContinente.png}
+\caption{\label{fig:class03}{}Diagrama de la clase continente}
+\end{figure} 
+ \begin{figure}[H]
+\centering
+\includegraphics[width=0.8\textwidth]{diagramaClaseResultadoCombate.png}
+\caption{\label{fig:class04}{}Diagrama de la clase ResultadoCombate}
+\end{figure} 
+ \begin{figure}[H]
+\centering
+\includegraphics[width=0.8\textwidth]{diagramaCalseJugador.png}
+\caption{\label{fig:class05}{}Diagrama de la clase jugador}
+\end{figure} 
+ \subsection{Diagramas de secuencia}\label{sec: Diagrama de secuencia}
+ \begin{figure}[H]
+\centering
+\includegraphics[width=0.8\textwidth]{Ataque valido entre paises..jpg}
+\caption{\label{fig:class01}{}Diagrama de secuencia de ataque entre paises}
+\end{figure} 
+\end{document}
