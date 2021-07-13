@@ -6,27 +6,32 @@ class Tablero{
 
 }
 
-class ValidarVictoria{
-    + validarAtaque(list, otraList): ResultadoCombate
+class Batalla{
+    - int victoriaDefensor;
+    - int victoriaAtacante;
+    + obtenerPerdedorDeBatalla() : Pais;
+    - determinarVictoriosoDeGuerra() : Pais;
+    + obtenerVictorioso() : Pais;
 }
 
 class Continente{
     +paises: Pais
 }
 
-class Camino{}
+class Pais{
+    +jugador: Jugador
+}
+
 class Dado{
     +obtenerNumeros(numeroDeTropas): list
 }
 
-class ResultadoCombate{
-    +realizarAtaque(paisSalida, paisAAtacar, numeroDeTropas) : void
-}
 
-Tablero ---> "..*"Camino
 Tablero *---> "5" Continente
-Tablero ---> ValidarVictoria
+Tablero ---> Batalla
 Tablero <--> "1" Dado
-ValidarVictoria <--->ResultadoCombate
+Tablero ---> "--*" Pais
+
+
 
 @enduml

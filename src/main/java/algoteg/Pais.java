@@ -27,7 +27,7 @@ public class Pais {
     public boolean noTengoTropas(){
         return (this.cantidadEjercito == 0);
     }
-    public void conquistar(){
+    private void conquistar(){
         if(this.noTengoTropas()){
             this.agregarEjercito(1);
         }

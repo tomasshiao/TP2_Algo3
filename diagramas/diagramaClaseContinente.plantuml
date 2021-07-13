@@ -10,7 +10,8 @@ class Continente{
 class Pais{
     +jugador: Jugador
     
-    + validarAtaque(paisSalida, paisAAtacar, numeroDeTropas) : bool
+    + noTengoTropas() : boolean;
+    - conquistar() : void;
     + atacar(paisSalida, paisAAtacar, numeroDeTropas) : void
     + reducirTropas(numeroDeTropas) : void
 }
