@@ -47,7 +47,7 @@
 \newpage
 
 \section{Introducción}\label{sec:intro}
-El presente informe reune la documentación de la solución del segundo trabajo práctico de la materia Algoritmos y Programación III que consiste en desarrollar una aplicación tal que sea una versión del juego T.E.G. el cual plantea un conflicto bélico que ocurre sobre un planisferio dividido en 50 países.
+El presente informe resume la documentación de la solución del segundo trabajo práctico de la materia Algoritmos y Programación III que consiste en desarrollar una aplicación tal que sea una versión del juego T.E.G. el cual plantea un conflicto bélico que ocurre sobre un planisferio dividido en 50 países.
  La aplicación se desarrolla utilizando todos los conceptos vistos en el curso e incluye una interfaz gráfica
 
 \section{Entrega 0}\label{sec:Entrega 0}
@@ -82,6 +82,44 @@ En esta entrega se presentan los diagramas de clase pensados para la aplicación
  \begin{figure}[H]
 \centering
 \includegraphics[width=0.8\textwidth]{Ataque valido entre paises..jpg}
-\caption{\label{fig:class01}{}Diagrama de secuencia de ataque entre paises}
+\caption{\label{fig:class06}{}Diagrama de secuencia de ataque entre paises}
 \end{figure} 
+\section{Entrega 1}\label{sec: Entrega 1}
+En la presente entrega se desarrolla la resolución de los siguientes:
+\begin{itemize}
+    \item Colocación de ejércitos en los países.
+    \item Ataque entre países con el país defensor como ganador.
+    \item Ataque entre países con el país atacante como ganador y ocupación de este.
+\end{itemize}
+
+Dichas secuencias pueden verse en los tests respectivos:
+\begin{itemize}
+    \item colcoaUnEejercitoEnPais y quedanDosEjercitosAlColocaTresEjercitosyQuitarUno
+    
+    \item ganaDefensor
+    \item ganaAtacanteYLoOcupa
+\end{itemize}
+
+\subsection{Supuestos}
+    Tuvimos en cuenta para esta entrega es que al atacar un país solo puede jugarse como máximo con la cantidad de dados que posea el defensor.
+
+\subsection{Diagramas}
+Nos vimos en la necesidad de actualizar los siguientes diagramas:
+ \begin{figure}[H]
+\centering
+\includegraphics[width=0.8\textwidth]{diagramaClaseTablero_v2.png}
+\caption{\label{fig:class07}{}Actualización del diagrama de la clase Tablero}
+\end{figure} 
+ \begin{figure}[H]
+\centering
+\includegraphics[width=0.8\textwidth]{diagramaCalseJugador_v2.png}
+\caption{\label{fig:class08}{}Actualización del diagrama de la clase Jugador}
+\end{figure} 
+ \begin{figure}[H]
+\centering
+\includegraphics[width=0.8\textwidth]{diagramaClaseContinente_v2.png}
+\caption{\label{fig:class09}{}Actualización del diagrama de la clase Continente}
+\end{figure}
+
+En la clase tablero se cambió la clase Resultado Combate por Batalla por lo que le diagrama de Resultado Combate queda eliminado y se agregaron los métodos necesarios de la clase País en los diagramas de Jugador y Continente.
 \end{document}
