@@ -8,13 +8,33 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class PaisTest {
+    Jugador unJugador = new Jugador(1, "azul");
+    Jugador otroJugador = new Jugador(2, "rojo");
     Pais paisAtacante = new Pais("Argentina");
     Pais paisDefensor = new Pais("Uruguay");
+    Pais unPais = new Pais("Brasil");
     Batalla batalla = new Batalla();
+
+    @Test
+    public void colocaUnEjercitoEnPais(){
+        unPais.agregarEjercito(1);
+
+        assertEquals(1, unPais.getEjercitoActual());
+    }
+
+    @Test
+    public void quedanDosEjercitosAlColocaTresEjercitosyQuitarUno(){
+        unPais.agregarEjercito(3);
+        unPais.reducirEjercito(1);
+
+        assertEquals(2, unPais.getEjercitoActual());
+    }
 
 
     @Test
     public void ganaDefensor(){
+        paisDefensor.setJugador(unJugador);
+        paisAtacante.setJugador(otroJugador);
         paisAtacante.agregarEjercito(1);
         paisDefensor.agregarEjercito(1);
 
@@ -29,6 +49,8 @@ public class PaisTest {
     }
     @Test
     public void ganaAtacanteYLoOcupa(){
+        paisDefensor.setJugador(unJugador);
+        paisAtacante.setJugador(otroJugador);
 
         paisAtacante.agregarEjercito(1);
         paisDefensor.agregarEjercito(1);
@@ -39,6 +61,7 @@ public class PaisTest {
         dadosDefensor.add(2);
         dadosDefensor.add(1);
         Pais victorioso = batalla.obtenerVictoriosoDeGuerra(dadosAtacante,dadosDefensor,paisAtacante, paisDefensor);
+
         assertEquals("Argentina", victorioso.getNombre());
         assertEquals(1,paisDefensor.getEjercitoActual());
 
