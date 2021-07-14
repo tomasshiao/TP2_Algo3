@@ -31,11 +31,6 @@ public class Jugador {
             System.out.println(a.getNombrePais() + ": " + a.getDibujo());
     }
 
-    public void canjearTarjetas(Tarjeta tarjeta1, Tarjeta tarjeta2, Tarjeta tarjeta3){
-        if (tarjeta1.compararTarjetas(tarjeta2, tarjeta3))
-            this.addEjercito(4);
-    }
-
     public void addEjercito(int ejercitoParaIncorporar){
         this.ejercitoParaIncorporar += ejercitoParaIncorporar;
     }
@@ -43,4 +38,21 @@ public class Jugador {
     public int getEjercitoParaIncorporar(){
         return ejercitoParaIncorporar;
     }
+
+    public void canjearTarjetas(Tarjeta tarjeta1, Tarjeta tarjeta2, Tarjeta tarjeta3){
+        if (tarjeta1.compararTarjetas(tarjeta2, tarjeta3))
+            this.addEjercito(4);
+    }
+
+    public void activarTarjeta(Tarjeta tarjeta){
+        String paisDeTarjeta = tarjeta.getNombrePais();
+        int ejercitoAIncorporar = 0;
+
+        //FALTA: si el color de ese pais es igual al color del jugador:
+            ejercitoAIncorporar = tarjeta.activarTarjeta();
+
+            addEjercito(ejercitoAIncorporar);
+    }
+
+
 }
