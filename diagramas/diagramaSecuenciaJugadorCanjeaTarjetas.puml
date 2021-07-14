@@ -1,0 +1,15 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+participant "Jugador" as Jugador
+participant "Tarjeta" as Tarjeta1
+participant "Tarjeta" as Tarjeta2
+
+Jugador-->Tarjeta1: canjearTarjetas(Tarjeta:t1, Tarjeta:t2, Tarjeta:t3)
+Tarjeta1-->Tarjeta2: compararTarjetas(Tarjeta:t1, Tarjeta:t2)
+Tarjeta2-->Tarjeta1: true
+Tarjeta1-->Jugador: true
+Jugador<-Jugador: addEjercito(int: incorporar)
+
+@enduml

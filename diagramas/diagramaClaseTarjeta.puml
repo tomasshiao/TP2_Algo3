@@ -1,0 +1,41 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+class Tarjeta{
+    -nombrePais: String
+    -dibujo: String
+    -activada: boolean
+
+    +compararTarjetas(Tarjeta:t1, Tarjeta:t2): boolean
+    +activarTarjeta(): int
+    -desactivarTarjeta(): void
+}
+
+
+class Jugador{
+    -color: String
+    -tarjetas: ArrayList
+    -ejercitoParaIncorporar: int
+
+    + addTarjeta(Tarjeta:tarjeta): void
+    + addEjercito(int:ejercitoParaIncorporar): void
+    + canjearTarjetas(Tarjeta:t1, Tarjeta:t2, Tarjeta:t3): void
+    + activarTarjeta(Tarjeta:tarjeta): void
+}
+
+
+class Pais{
+    -ejercito: Ejercito
+}
+class Ejercito{
+    -color: String
+
+    +getColor(): String
+}
+
+Jugador-->Tarjeta
+Jugador--->Pais
+Jugador--->Ejercito
+Pais->Ejercito
+
+@enduml

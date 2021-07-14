@@ -1,10 +1,13 @@
 package algoteg;
 
 import org.junit.jupiter.api.Test;
+
+import java.util.ArrayList;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+
 public class TarjetaTest {
-    Partida unaPartida = new Partida(2);
     Jugador jugador1 = new Jugador(1, "azul");
     Tarjeta tarjetaArg = new Tarjeta("Argentina", "Barco");
     Tarjeta tarjetaAle = new Tarjeta("Alemania", "Barco");
@@ -41,4 +44,5 @@ public class TarjetaTest {
         jugador1.canjearTarjetas(tarjetaArg, tarjetaAle, tarjetaUru);
         assertEquals(0, jugador1.getEjercitoParaIncorporar());
     }
+
 }
