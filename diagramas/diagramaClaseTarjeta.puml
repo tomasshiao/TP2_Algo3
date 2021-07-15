@@ -35,7 +35,6 @@ class Ejercito{
 
 Jugador-->Tarjeta
 Jugador--->Pais
-Jugador--->Ejercito
 Pais->Ejercito
 
 @enduml
