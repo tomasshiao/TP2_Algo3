@@ -26,24 +26,48 @@ public class Jugador {
         tarjetas.add(tarjeta);
     }
 
-    public void showTarjetas(){
-        for(Tarjeta a: tarjetas)
-            System.out.println(a.getNombrePais() + ": " + a.getDibujo());
+    private void removeTarjeta(Tarjeta tarjeta){
+        int index = 0;
+        int i = 0;
+        for(Tarjeta a: tarjetas) {
+            if (a == tarjeta)
+                index = i;
+            i++;
+        }
+        tarjetas.remove(index);
+    }
+
+    public int getTarjetasEnSuPoder(){
+        return tarjetas.size();
     }
 
     public void addEjercito(int ejercitoParaIncorporar){
         this.ejercitoParaIncorporar += ejercitoParaIncorporar;
     }
 
+    /*
+    public void addEjercitoEnPais(Pais pais, int ejercito){
+        //Falta verificar si ese pais pertenece al jugador
+        //y si le pertenece, se le pide al pais que lo incorpore
+        ejercitoParaIncorporar -= ejercito;
+    }
+    */
+
     public int getEjercitoParaIncorporar(){
         return ejercitoParaIncorporar;
     }
 
-    public void canjearTarjetas(Tarjeta tarjeta1, Tarjeta tarjeta2, Tarjeta tarjeta3){
-        if (tarjeta1.compararTarjetas(tarjeta2, tarjeta3))
+    public boolean canjearTarjetas(Tarjeta tarjeta1, Tarjeta tarjeta2, Tarjeta tarjeta3){
+        if (tarjeta1.compararTarjetas(tarjeta2, tarjeta3)) {
             this.addEjercito(4);
+            this.removeTarjeta(tarjeta1);
+            this.removeTarjeta(tarjeta2);
+            this.removeTarjeta(tarjeta3);
+            return true;
+        }
+        return false;
     }
-
+/*
     public void activarTarjeta(Tarjeta tarjeta){
         String paisDeTarjeta = tarjeta.getNombrePais();
         int ejercitoAIncorporar = 0;
@@ -53,6 +77,6 @@ public class Jugador {
 
             addEjercito(ejercitoAIncorporar);
     }
-
+*/
 
 }

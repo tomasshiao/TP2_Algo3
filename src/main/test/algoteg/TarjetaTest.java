@@ -2,13 +2,9 @@ package algoteg;
 
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
+import static org.junit.jupiter.api.Assertions.*;
 
 public class TarjetaTest {
-    Jugador jugador1 = new Jugador(1, "azul");
     Tarjeta tarjetaArg = new Tarjeta("Argentina", "Barco");
     Tarjeta tarjetaAle = new Tarjeta("Alemania", "Barco");
     Tarjeta tarjetaJap = new Tarjeta("Japon", "Barco");
@@ -16,33 +12,40 @@ public class TarjetaTest {
     Tarjeta tarjetaUru = new Tarjeta("Uruguay", "Globo");
 
     @Test
-    public void unJugadorTieneTresTarjetasConMismoDibujoLasCanjeaYObtieneCuatroTropasACambio(){
-        jugador1.addTarjeta(tarjetaAle);
-        jugador1.addTarjeta(tarjetaArg);
-        jugador1.addTarjeta(tarjetaJap);
+    public void seComparanTresTarjetasDeIgualDibujo(){
+        boolean comparar = tarjetaArg.compararTarjetas(tarjetaAle, tarjetaJap);
 
-        jugador1.canjearTarjetas(tarjetaArg, tarjetaJap, tarjetaAle);
-        assertEquals(4, jugador1.getEjercitoParaIncorporar());
+        assertTrue(comparar);
     }
 
     @Test
-    public void unJugadorTieneTresTarjetasConDiferenteDibujoLasCanjeaYObtieneCuatroTropasACambio(){
-        jugador1.addTarjeta(tarjetaArg);
-        jugador1.addTarjeta(tarjetaEsp);
-        jugador1.addTarjeta(tarjetaUru);
+    public void seComparanTresTarjetasDeDiferenteDibujo(){
+        boolean comparar = tarjetaArg.compararTarjetas(tarjetaEsp, tarjetaUru);
 
-        jugador1.canjearTarjetas(tarjetaArg, tarjetaEsp, tarjetaUru);
-        assertEquals(4, jugador1.getEjercitoParaIncorporar());
+        assertTrue(comparar);
     }
 
     @Test
-    public void unJugadorTieneDosTarjetasConIgualDibujoYUnaConDiferenteLasCanjeaYNoObtieneTropas(){
-        jugador1.addTarjeta(tarjetaArg);
-        jugador1.addTarjeta(tarjetaAle);
-        jugador1.addTarjeta(tarjetaUru);
+    public void seComparanDosTarjetasIgualesYUnaDistinta(){
+        boolean comparar = tarjetaArg.compararTarjetas(tarjetaAle, tarjetaEsp);
 
-        jugador1.canjearTarjetas(tarjetaArg, tarjetaAle, tarjetaUru);
-        assertEquals(0, jugador1.getEjercitoParaIncorporar());
+        assertFalse(comparar);
     }
 
+    @Test
+    public void seActivaUnaTarjetaYSuEstadoPasaAActivada(){
+        tarjetaArg.activarTarjeta();
+        boolean estado = tarjetaArg.getActivada();
+
+        assertTrue(estado);
+    }
+
+    @Test
+    public void seActivaTarjetaYAlCompararseConOtrasIgualesSuEstadoPasaASerDesactivada(){
+        tarjetaArg.activarTarjeta();
+        tarjetaArg.compararTarjetas(tarjetaEsp, tarjetaUru);
+        boolean estado = tarjetaArg.getActivada();
+
+        assertFalse(estado);
+    }
 }
