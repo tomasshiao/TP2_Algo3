@@ -12,7 +12,7 @@ public class PaisTest {
     Jugador otroJugador = new Jugador(2, "rojo");
     Pais paisAtacante = new Pais("Argentina", unJugador);
     Pais paisDefensor = new Pais("Uruguay", otroJugador);
-    Pais unPais = new Pais("Brasil",unJugador);
+    Pais unPais = new Pais("Brasil", unJugador);
     Batalla batalla = new Batalla();
 
     @Test

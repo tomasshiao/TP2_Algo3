@@ -7,7 +7,6 @@ public class Jugador {
     private String color;
     private int id;
     private ArrayList<Tarjeta> tarjetas = new ArrayList<>();
-    private ArrayList<Pais> paisesConquistados = new ArrayList<>();
     private int ejercitoParaIncorporar;
 
     public Jugador(int id, String color) {
@@ -43,16 +42,17 @@ public class Jugador {
         return tarjetas.size();
     }
 
-    private void addEjercito(int ejercitoParaIncorporar){
+    public void addEjercito(int ejercitoParaIncorporar){
         this.ejercitoParaIncorporar += ejercitoParaIncorporar;
     }
 
+    /*
     public void addEjercitoEnPais(Pais pais, int ejercito){
-        if(paisesConquistados.contains(pais) && this.ejercitoParaIncorporar >= ejercito){
-            pais.agregarEjercito(ejercito);
-            this.ejercitoParaIncorporar -= ejercito;
-        }
+        //Falta verificar si ese pais pertenece al jugador
+        //y si le pertenece, se le pide al pais que lo incorpore
+        ejercitoParaIncorporar -= ejercito;
     }
+    */
 
     public int getEjercitoParaIncorporar(){
         return ejercitoParaIncorporar;
@@ -68,20 +68,23 @@ public class Jugador {
         }
         return false;
     }
-
+  
     public boolean compararJugadores(Jugador jugador2) { return (this.getColor().equals(jugador2.getColor())); }
 
-    public void activarTarjeta (Tarjeta tarjeta){
-        Pais paisDeTarjeta = tarjeta.getPaisDeTarjeta();
-        int ejercitoAIncorporar = 0;
+    /* public void activarTarjeta(Tarjeta tarjeta) throws PaisNoLePerteneceAlJugador {
+        try{
+            Jugador jugadorPais = (tarjeta.getPais()).getJugador();
 
-        if(this.paisesConquistados.contains(paisDeTarjeta) && this.tarjetas.contains(tarjeta))
+
+            String paisDeTarjeta = tarjeta.getPais().getNombre();
+            int ejercitoAIncorporar = 0;
+            //FALTA: si el color de ese pais es igual al color del jugador:
             ejercitoAIncorporar = tarjeta.activarTarjeta();
-            addEjercito(ejercitoAIncorporar);
+            this.addEjercito(ejercitoAIncorporar);
+        } catch (Exception e){
+            throw new PaisNoLePerteneceAlJugador();
+        }
     }
-
-    public void addPaisConquistado(Pais pais){
-        paisesConquistados.add(pais);
-    }
+*/
 
 }
