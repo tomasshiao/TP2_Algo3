@@ -8,6 +8,7 @@ public class Pais {
 
     public Pais(String nombre, Jugador ocupante){
         this.nombre = nombre;
+        this.jugador = ocupante;
         cantidadEjercito = 0;
     }
 
