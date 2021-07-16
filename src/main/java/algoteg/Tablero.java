@@ -4,11 +4,15 @@ import java.util.List;
 
 public class Tablero {
 
-    private List<String> continente;
+    private List<Continente> continentes;
+    private List<Pais> paises;
     private Dado dado;
 
     public Tablero(){
-        this.continente = List.of("Asia","Oceania","America","Europa","Africa");
+        Initialise init = new Initialise();
+        this.continentes = (List<Continente>) init.toDTO().get("Continentes");
+        this.paises = (List<Pais>) init.toDTO().get("Paises");
+
     }
 
     public void atacar(Pais paisAtacante, Pais paisDefensor, int numeroTropas){

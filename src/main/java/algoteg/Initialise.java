@@ -7,6 +7,7 @@ public class Initialise {
     public Map<String, Object> paisesLimitrofes;
     public Jugador jugadorInvalido = new Jugador(-1, "INVALID");
     public List<Pais> todosLosPaises = new ArrayList<>();
+    public List<Continente> todosLosContinentes = new ArrayList<>();
     private final List<String> paisesDeAfrica = new ArrayList<>(Arrays.asList("Egipto", "Etiopia", "Madagascar", "Sahara", "Sudafrica", "Zaire"));
     private final List<String> paisesDeAmericaDelSur = new ArrayList<>(Arrays.asList("Argentina", "Brasil", "Chile", "Colombia", "Peru", "Uruguay"));
     private final List<String> paisesDeAmericaDelNorte = new ArrayList<>(Arrays.asList("Alaska", "California", "Canada", "Groenlandia", "Labrador", "Nueva York", "Mexico", "Oregon", "Terranova", "Yukon"));
@@ -16,11 +17,8 @@ public class Initialise {
 
     private List<Pais> setPaisesAfrica(List<String> paisesDeAfrica, Jugador ocupante){
         List<Pais> paisesAfrica = new ArrayList<>();
-        for(String s : paisesDeAfrica){
-            Pais p = new Pais(s, ocupante);
-            paisesAfrica.add(p);
-            this.todosLosPaises.add(p);
-        }
+        this.inicializarPaises(paisesDeAfrica, ocupante, paisesAfrica);
+
         return paisesAfrica;
     }
 
@@ -36,41 +34,25 @@ public class Initialise {
 
     private List<Pais> setPaisesAmericaDelNorte(List<String> paisesDeAmericaDelNorte, Jugador ocupante){
         List<Pais> paisesAmericaDelNorte = new ArrayList<>();
-        for(String s : paisesDeAmericaDelNorte){
-            Pais p = new Pais(s, ocupante);
-            paisesAmericaDelNorte.add(p);
-            this.todosLosPaises.add(p);
-        }
+        this.inicializarPaises(paisesDeAmericaDelNorte, ocupante, paisesAmericaDelNorte);
         return paisesAmericaDelNorte;
     }
 
     private List<Pais> setPaisesAsia(List<String> paisesDeAsia, Jugador ocupante){
         List<Pais> paisesAsia = new ArrayList<>();
-        for(String s : paisesDeAsia){
-            Pais p = new Pais(s, ocupante);
-            paisesAsia.add(p);
-            this.todosLosPaises.add(p);
-        }
+        this.inicializarPaises(paisesDeAsia, ocupante, paisesAsia);
         return paisesAsia;
     }
 
     private List<Pais> setPaisesEuropa(List<String> paisesDeEuropa, Jugador ocupante){
         List<Pais> paisesEuropa = new ArrayList<>();
-        for(String s : paisesDeEuropa){
-            Pais p = new Pais(s, ocupante);
-            paisesEuropa.add(p);
-            this.todosLosPaises.add(p);
-        }
+        this.inicializarPaises(paisesDeEuropa, ocupante, paisesEuropa);
         return paisesEuropa;
     }
 
     private List<Pais> setPaisesOceania(List<String> paisesDeOceania, Jugador ocupante){
         List<Pais> paisesOceania = new ArrayList<>();
-        for(String s : paisesDeOceania){
-            Pais p = new Pais(s, ocupante);
-            paisesOceania.add(p);
-            this.todosLosPaises.add(p);
-        }
+        this.inicializarPaises(paisesDeOceania, ocupante, paisesOceania);
         return paisesOceania;
     }
 
@@ -83,6 +65,21 @@ public class Initialise {
         paises.put("Europa", this.setPaisesEuropa(paisesDeEuropa, this.jugadorInvalido));
         paises.put("Oceania", this.setPaisesOceania(paisesDeOceania, this.jugadorInvalido));
         return paises;
+    }
+
+    public Continente setContinente(Map<String, List<Pais>> mapaContinentes, String nombreContinente) {
+        Continente continente = new Continente(nombreContinente);
+        continente.setPaises(mapaContinentes.get(nombreContinente));
+        return continente;
+    }
+
+    public void setTodosLosContinentes(Map<String, List<Pais>> mapaContinentes){
+        this.todosLosContinentes.add(this.setContinente(mapaContinentes, "Africa"));
+        this.todosLosContinentes.add(this.setContinente(mapaContinentes, "AmericaDelSur"));
+        this.todosLosContinentes.add(this.setContinente(mapaContinentes, "AmericaDelNorte"));
+        this.todosLosContinentes.add(this.setContinente(mapaContinentes, "Asia"));
+        this.todosLosContinentes.add(this.setContinente(mapaContinentes, "Europa"));
+        this.todosLosContinentes.add(this.setContinente(mapaContinentes, "Oceania"));
     }
 
     private Map<String, Object> setPaisesLimitrofes(){
@@ -145,16 +142,34 @@ public class Initialise {
         return paisesLimitrofes;
     }
 
+    public void setLimitrofes(List<Pais> todosLosPaises, Map<String, List<String>> mapaLimitrofes, Map<String, Pais> mapPaises){
+        
+        for(Pais p: todosLosPaises) {
+            List<Pais> paisesLimitrofes = new ArrayList<Pais>();
+            String nombrePais = p.getNombre();
+            List<String> nombrePaisesLimitrofes = mapaLimitrofes.get(nombrePais);
+            for (String nombrePaisLimitrofe: nombrePaisesLimitrofes) {
+                Pais paisLimitrofe = mapPaises.get(nombrePaisLimitrofe);
+                paisesLimitrofes.add(paisLimitrofe);
+            }
+            p.setPaisesLimitrofes(paisesLimitrofes);
+
+        }
+        
+    }
+
     public Initialise(){
         this.paises = this.setPaises();
         this.paisesLimitrofes = this.setPaisesLimitrofes();
+        this.setTodosLosContinentes(paisesPorContinentes);
     }
 
     public Map<String, Object> toDTO(){
         Map<String, Object> dto = new HashMap<>();
-        dto.put("PaisesPorContinente", this.paises);
-        dto.put("PaisesLimitrofes", this.paisesLimitrofes);
-        dto.put("TodosLosPaises", this.todosLosPaises);
+        dto.put("Paises", this.todosLosPaises);
+        dto.put("Continentes", this.todosLosContinentes);
+
+
         return dto;
     }
 
