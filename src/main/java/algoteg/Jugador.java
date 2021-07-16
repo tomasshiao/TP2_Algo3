@@ -1,6 +1,7 @@
 package algoteg;
 
 import java.util.ArrayList;
+import algoteg.Exceptions.PaisNoLePerteneceAlJugador;
 
 public class Jugador {
     private String color;
@@ -67,15 +68,22 @@ public class Jugador {
         }
         return false;
     }
-/*
-    public void activarTarjeta(Tarjeta tarjeta){
-        String paisDeTarjeta = tarjeta.getNombrePais();
-        int ejercitoAIncorporar = 0;
+  
+    public boolean compararJugadores(Jugador jugador2) { return (this.getColor().equals(jugador2.getColor())); }
 
-        //FALTA: si el color de ese pais es igual al color del jugador:
+    /* public void activarTarjeta(Tarjeta tarjeta) throws PaisNoLePerteneceAlJugador {
+        try{
+            Jugador jugadorPais = (tarjeta.getPais()).getJugador();
+
+
+            String paisDeTarjeta = tarjeta.getPais().getNombre();
+            int ejercitoAIncorporar = 0;
+            //FALTA: si el color de ese pais es igual al color del jugador:
             ejercitoAIncorporar = tarjeta.activarTarjeta();
-
-            addEjercito(ejercitoAIncorporar);
+            this.addEjercito(ejercitoAIncorporar);
+        } catch (Exception e){
+            throw new PaisNoLePerteneceAlJugador();
+        }
     }
 */
 

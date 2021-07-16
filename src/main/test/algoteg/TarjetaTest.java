@@ -2,14 +2,30 @@ package algoteg;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 public class TarjetaTest {
-    Tarjeta tarjetaArg = new Tarjeta("Argentina", "Barco");
-    Tarjeta tarjetaAle = new Tarjeta("Alemania", "Barco");
-    Tarjeta tarjetaJap = new Tarjeta("Japon", "Barco");
-    Tarjeta tarjetaEsp = new Tarjeta("Espania", "Canion");
-    Tarjeta tarjetaUru = new Tarjeta("Uruguay", "Globo");
+    public List<Pais> getSetUpData(){
+        Jugador jugador = new Jugador(0, "color");
+        List<String> paisesString = new ArrayList<>(Arrays.asList("Argentina", "Alemania", "Japon", "Espania","Uruguay"));
+        List<Pais> paises = new ArrayList<>();
+        for (String s : paisesString) {
+            Pais p = new Pais(s, jugador);
+            paises.add(p);
+        }
+        return paises;
+    }
+    List<Pais> paises = this.getSetUpData();
+    Tarjeta tarjetaArg = new Tarjeta(paises.get(0), "Barco");
+    Tarjeta tarjetaAle = new Tarjeta(paises.get(1), "Barco");
+    Tarjeta tarjetaJap = new Tarjeta(paises.get(2), "Barco");
+    Tarjeta tarjetaEsp = new Tarjeta(paises.get(3), "Canion");
+    Tarjeta tarjetaUru = new Tarjeta(paises.get(4), "Globo");
+
 
     @Test
     public void seComparanTresTarjetasDeIgualDibujo(){

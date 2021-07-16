@@ -5,6 +5,8 @@ import java.util.*;
 public class Initialise {
     public Map<String, Object> paises;
     public Map<String, Object> paisesLimitrofes;
+    public Jugador jugadorInvalido = new Jugador(-1, "INVALID");
+    public List<Pais> todosLosPaises = new ArrayList<>();
     private final List<String> paisesDeAfrica = new ArrayList<>(Arrays.asList("Egipto", "Etiopia", "Madagascar", "Sahara", "Sudafrica", "Zaire"));
     private final List<String> paisesDeAmericaDelSur = new ArrayList<>(Arrays.asList("Argentina", "Brasil", "Chile", "Colombia", "Peru", "Uruguay"));
     private final List<String> paisesDeAmericaDelNorte = new ArrayList<>(Arrays.asList("Alaska", "California", "Canada", "Groenlandia", "Labrador", "Nueva York", "Mexico", "Oregon", "Terranova", "Yukon"));
@@ -12,77 +14,88 @@ public class Initialise {
     private final List<String> paisesDeEuropa = new ArrayList<>(Arrays.asList("Alemania", "Espana", "Francia", "Gran Bretana", "Islandia", "Italia", "Polonia", "Rusia", "Suecia"));
     private final List<String> paisesDeOceania = new ArrayList<>(Arrays.asList("Australia", "Borneo", "Java", "Sumatra"));
 
-    private List<Pais> setPaisesAfrica(List<String> paisesDeAfrica){
+    private List<Pais> setPaisesAfrica(List<String> paisesDeAfrica, Jugador ocupante){
         List<Pais> paisesAfrica = new ArrayList<>();
         for(String s : paisesDeAfrica){
-            Pais p = new Pais(s);
+            Pais p = new Pais(s, ocupante);
             paisesAfrica.add(p);
+            this.todosLosPaises.add(p);
         }
         return paisesAfrica;
     }
 
-    private List<Pais> setPaisesAmericaDelSur(List<String> paisesDeAmericaDelSur){
+    private List<Pais> setPaisesAmericaDelSur(List<String> paisesDeAmericaDelSur, Jugador ocupante){
         List<Pais> paisesAmericaDelSur = new ArrayList<>();
         for(String s : paisesDeAmericaDelSur){
-            Pais p = new Pais(s);
+            Pais p = new Pais(s, ocupante);
             paisesAmericaDelSur.add(p);
+            this.todosLosPaises.add(p);
         }
         return paisesAmericaDelSur;
     }
 
-    private List<Pais> setPaisesAmericaDelNorte(List<String> paisesDeAmericaDelNorte){
+    private List<Pais> setPaisesAmericaDelNorte(List<String> paisesDeAmericaDelNorte, Jugador ocupante){
         List<Pais> paisesAmericaDelNorte = new ArrayList<>();
         for(String s : paisesDeAmericaDelNorte){
-            Pais p = new Pais(s);
+            Pais p = new Pais(s, ocupante);
             paisesAmericaDelNorte.add(p);
+            this.todosLosPaises.add(p);
         }
         return paisesAmericaDelNorte;
     }
 
-    private List<Pais> setPaisesAsia(List<String> paisesDeAsia){
+    private List<Pais> setPaisesAsia(List<String> paisesDeAsia, Jugador ocupante){
         List<Pais> paisesAsia = new ArrayList<>();
         for(String s : paisesDeAsia){
-            Pais p = new Pais(s);
+            Pais p = new Pais(s, ocupante);
             paisesAsia.add(p);
+            this.todosLosPaises.add(p);
         }
         return paisesAsia;
     }
 
-    private List<Pais> setPaisesEuropa(List<String> paisesDeEuropa){
+    private List<Pais> setPaisesEuropa(List<String> paisesDeEuropa, Jugador ocupante){
         List<Pais> paisesEuropa = new ArrayList<>();
         for(String s : paisesDeEuropa){
-            Pais p = new Pais(s);
+            Pais p = new Pais(s, ocupante);
             paisesEuropa.add(p);
+            this.todosLosPaises.add(p);
         }
         return paisesEuropa;
     }
 
-    private List<Pais> setPaisesOceania(List<String> paisesDeOceania){
+    private List<Pais> setPaisesOceania(List<String> paisesDeOceania, Jugador ocupante){
         List<Pais> paisesOceania = new ArrayList<>();
         for(String s : paisesDeOceania){
-            Pais p = new Pais(s);
+            Pais p = new Pais(s, ocupante);
             paisesOceania.add(p);
+            this.todosLosPaises.add(p);
         }
         return paisesOceania;
     }
 
     private Map<String, Object> setPaises(){
         Map<String, Object> paises = new HashMap<>();
-        paises.put("Africa", this.setPaisesAfrica(paisesDeAfrica));
-        paises.put("AmericaDelSur", this.setPaisesAmericaDelSur(paisesDeAmericaDelSur));
-        paises.put("AmericaDelNorte", this.setPaisesAmericaDelNorte(paisesDeAmericaDelNorte));
-        paises.put("Asia", this.setPaisesAsia(paisesDeAsia));
-        paises.put("Europa", this.setPaisesEuropa(paisesDeEuropa));
-        paises.put("Oceania", this.setPaisesOceania(paisesDeOceania));
+        paises.put("Africa", this.setPaisesAfrica(paisesDeAfrica, this.jugadorInvalido));
+        paises.put("AmericaDelSur", this.setPaisesAmericaDelSur(paisesDeAmericaDelSur, this.jugadorInvalido));
+        paises.put("AmericaDelNorte", this.setPaisesAmericaDelNorte(paisesDeAmericaDelNorte, this.jugadorInvalido));
+        paises.put("Asia", this.setPaisesAsia(paisesDeAsia, this.jugadorInvalido));
+        paises.put("Europa", this.setPaisesEuropa(paisesDeEuropa, this.jugadorInvalido));
+        paises.put("Oceania", this.setPaisesOceania(paisesDeOceania, this.jugadorInvalido));
         return paises;
     }
 
     private Map<String, Object> setPaisesLimitrofes(){
         Map<String, Object> paisesLimitrofes = new HashMap<>();
-        paisesLimitrofes.put("Alaska", new ArrayList<>(Arrays.asList("Brasil", "Chile", "Peru", "Uruguay")));
-        paisesLimitrofes.put("Alemania", new ArrayList<>(Arrays.asList("Brasil", "Chile", "Peru", "Uruguay")));
-        paisesLimitrofes.put("Arabia", new ArrayList<>(Arrays.asList("Brasil", "Chile", "Peru", "Uruguay")));
-        paisesLimitrofes.put("Aral", new ArrayList<>(Arrays.asList("Brasil", "Chile", "Peru", "Uruguay")));
+        List<Pais> paisesLimitrofesDePais = new ArrayList<>();
+        for (Pais p : this.todosLosPaises){
+            String nombrePais = p.getNombre();
+
+        }
+        paisesLimitrofes.put("Alaska", new ArrayList<>(Arrays.asList("Kamchatka", "Oregon", "Yukon")));
+        paisesLimitrofes.put("Alemania", new ArrayList<>(Arrays.asList("Francia", "Gran Bretana", "Italia", "Polonia")));
+        paisesLimitrofes.put("Arabia", new ArrayList<>(Arrays.asList("Israel", "Turquia")));
+        paisesLimitrofes.put("Aral", new ArrayList<>(Arrays.asList("Iran", "Mongolia", "Rusia", "Siberia", "Tartaria")));
         paisesLimitrofes.put("Argentina", new ArrayList<>(Arrays.asList("Brasil", "Chile", "Peru", "Uruguay")));
         paisesLimitrofes.put("Australia", new ArrayList<>(Arrays.asList("Borneo", "Chile", "Java", "Sumatra")));
         paisesLimitrofes.put("Borneo", new ArrayList<>(Arrays.asList("Australia", "Malasia")));
@@ -139,8 +152,9 @@ public class Initialise {
 
     public Map<String, Object> toDTO(){
         Map<String, Object> dto = new HashMap<>();
-        dto.put("Paises", this.paises);
+        dto.put("PaisesPorContinente", this.paises);
         dto.put("PaisesLimitrofes", this.paisesLimitrofes);
+        dto.put("TodosLosPaises", this.todosLosPaises);
         return dto;
     }
 
