@@ -10,13 +10,15 @@ import static org.mockito.Mockito.when;
 
 public class JugadorTest {
     Jugador jugador1 = new Jugador(1, "azul");
-    Tarjeta tarjetaArg = new Tarjeta("Argentina", "Barco");
-    Tarjeta tarjetaAle = new Tarjeta("Alemania", "Barco");
-    Tarjeta tarjetaJap = new Tarjeta("Japon", "Barco");
-    Tarjeta tarjetaEsp = new Tarjeta("Espania", "Canion");
-    Tarjeta tarjetaUru = new Tarjeta("Uruguay", "Globo");
-
+    Pais paisMock = mock(Pais.class);
     Tarjeta tarjetaMock = mock(Tarjeta.class);
+
+    Tarjeta tarjetaArg = new Tarjeta(paisMock, "Barco");
+    Tarjeta tarjetaAle = new Tarjeta(paisMock, "Barco");
+    Tarjeta tarjetaJap = new Tarjeta(paisMock, "Barco");
+    Tarjeta tarjetaEsp = new Tarjeta(paisMock, "Canion");
+    Tarjeta tarjetaUru = new Tarjeta(paisMock, "Globo");
+
 
     @Test
     public void unJugadorTieneTresTarjetasConMismoDibujoLasCanjeaYObtieneCuatroTropasACambio(){
@@ -70,5 +72,94 @@ public class JugadorTest {
         assertEquals(3, jugador1.getTarjetasEnSuPoder());
     }
 
+    @Test
+    public void unJugadorActivaUnaTarjetaDeUnPaisQueConquistoYRecibeDosTropas(){
 
+        when(paisMock.getNombre()).thenReturn("Argentina");
+        jugador1.addTarjeta(tarjetaArg);
+        jugador1.addPaisConquistado(paisMock);
+        jugador1.activarTarjeta(tarjetaArg);
+
+        assertEquals(2, jugador1.getEjercitoParaIncorporar());
+    }
+
+    @Test
+    public void unJugadorIntentaActivarUnaTarjetaDeUnPaisQueNoConquistoYNoRecibeTropas(){
+
+        when(paisMock.getNombre()).thenReturn("Argentina");
+        jugador1.activarTarjeta(tarjetaArg);
+
+        assertEquals(0, jugador1.getEjercitoParaIncorporar());
+    }
+
+    @Test
+    public void unJugadorActivaUnaTarjetaDePaisConquistadoYCanjeaTresTarjetasIgualesRecibeSeisTropas(){
+        jugador1.addTarjeta(tarjetaMock);
+        jugador1.addTarjeta(tarjetaMock);
+        jugador1.addTarjeta(tarjetaArg);
+
+        when(paisMock.getNombre()).thenReturn("Argentina");
+        when(tarjetaMock.getDibujo()).thenReturn("Barco");
+
+        jugador1.addPaisConquistado(paisMock);
+        jugador1.activarTarjeta(tarjetaArg);
+
+        jugador1.canjearTarjetas(tarjetaArg, tarjetaMock, tarjetaMock);
+
+        assertEquals(6, jugador1.getEjercitoParaIncorporar());
+    }
+
+    @Test
+    public void unJugadorCanjeaTresTarjetasIgualesYLuegoIntentaActivarUnaTarjetaDePaisConquistadoQueYaNoPosee(){
+        when(paisMock.getNombre()).thenReturn("Argentina");
+        when(tarjetaMock.getDibujo()).thenReturn("Barco");
+
+        jugador1.addTarjeta(tarjetaMock);
+        jugador1.addTarjeta(tarjetaMock);
+        jugador1.addTarjeta(tarjetaArg);
+
+        jugador1.addPaisConquistado(paisMock);
+        jugador1.canjearTarjetas(tarjetaArg, tarjetaMock, tarjetaMock);
+        jugador1.activarTarjeta(tarjetaArg);
+
+        assertEquals(4, jugador1.getEjercitoParaIncorporar());
+    }
+
+    @Test
+    public void unJugadorTieneDosTropasParaIncorporarLasAgregaAUnPaisQueConquistoYSeQuedaConCero(){
+        when(paisMock.getNombre()).thenReturn("Argentina");
+        jugador1.addPaisConquistado(paisMock);
+        jugador1.addTarjeta(tarjetaArg);
+        jugador1.activarTarjeta(tarjetaArg);
+
+        jugador1.addEjercitoEnPais(paisMock, 2);
+
+        assertEquals(0, jugador1.getEjercitoParaIncorporar());
+    }
+
+    @Test
+    public void unJugadorTieneDosTropasParaIncorporarEIntentaAgregalasAUnPaisQueNoConquisto(){
+        Pais otroPaisMock = mock(Pais.class);
+
+        when(paisMock.getNombre()).thenReturn("Argentina");
+        jugador1.addPaisConquistado(paisMock);
+        jugador1.addTarjeta(tarjetaArg);
+        jugador1.activarTarjeta(tarjetaArg);
+
+        jugador1.addEjercitoEnPais(otroPaisMock, 2);
+
+        assertEquals(2, jugador1.getEjercitoParaIncorporar());
+    }
+
+    @Test
+    public void unJugadorTieneDosTropasParaIncorporarEIntentaAgregarTresAUnPaisQueConquistoYSeInvalidaLaAccion(){
+        when(paisMock.getNombre()).thenReturn("Argentina");
+        jugador1.addPaisConquistado(paisMock);
+        jugador1.addTarjeta(tarjetaArg);
+        jugador1.activarTarjeta(tarjetaArg);
+
+        jugador1.addEjercitoEnPais(paisMock, 3);
+
+        assertEquals(2, jugador1.getEjercitoParaIncorporar());
+    }
 }

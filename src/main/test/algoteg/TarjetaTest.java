@@ -4,15 +4,24 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
+
 public class TarjetaTest {
-    Tarjeta tarjetaArg = new Tarjeta("Argentina", "Barco");
-    Tarjeta tarjetaAle = new Tarjeta("Alemania", "Barco");
-    Tarjeta tarjetaJap = new Tarjeta("Japon", "Barco");
-    Tarjeta tarjetaEsp = new Tarjeta("Espania", "Canion");
-    Tarjeta tarjetaUru = new Tarjeta("Uruguay", "Globo");
+
+    Pais paisMock = mock(Pais.class);
+
+    Tarjeta tarjetaArg = new Tarjeta(paisMock, "Barco");
+    Tarjeta tarjetaAle = new Tarjeta(paisMock, "Barco");
+    Tarjeta tarjetaJap = new Tarjeta(paisMock, "Barco");
+    Tarjeta tarjetaEsp = new Tarjeta(paisMock, "Canion");
+    Tarjeta tarjetaUru = new Tarjeta(paisMock, "Globo");
+
 
     @Test
     public void seComparanTresTarjetasDeIgualDibujo(){
+
         boolean comparar = tarjetaArg.compararTarjetas(tarjetaAle, tarjetaJap);
 
         assertTrue(comparar);

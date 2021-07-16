@@ -1,18 +1,24 @@
 package algoteg;
 
 public class Tarjeta {
-    private String nombrePais;
+    //private String nombrePais;
     private String dibujo;
     private boolean activada;
+    private Pais pais;
 
-    public Tarjeta(String nombrePais, String dibujo){
-        this.nombrePais = nombrePais;
+    public Tarjeta(Pais pais, String dibujo){
+        //this.nombrePais = nombrePais;
         this.dibujo = dibujo;
         this.activada = false;
+        this.pais = pais;
     }
 
-    public String getNombrePais(){
-        return nombrePais;
+/*    public String getNombrePais(){
+        return pais.getNombre();
+    }*/
+
+    public Pais getPaisDeTarjeta(){
+        return this.pais;
     }
 
     public String getDibujo(){
@@ -56,4 +62,5 @@ public class Tarjeta {
     public boolean getActivada(){
         return activada;
     }
+
 }

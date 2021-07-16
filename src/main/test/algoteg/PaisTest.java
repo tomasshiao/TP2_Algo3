@@ -10,9 +10,9 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class PaisTest {
     Jugador unJugador = new Jugador(1, "azul");
     Jugador otroJugador = new Jugador(2, "rojo");
-    Pais paisAtacante = new Pais("Argentina");
-    Pais paisDefensor = new Pais("Uruguay");
-    Pais unPais = new Pais("Brasil");
+    Pais paisAtacante = new Pais("Argentina", unJugador);
+    Pais paisDefensor = new Pais("Uruguay", otroJugador);
+    Pais unPais = new Pais("Brasil",unJugador);
     Batalla batalla = new Batalla();
 
     @Test
