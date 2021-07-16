@@ -8,7 +8,6 @@ public class Pais {
 
     public Pais(String nombre, Jugador ocupante){
         this.nombre = nombre;
-        this.jugador = ocupante;
         cantidadEjercito = 0;
     }
 
@@ -33,7 +32,6 @@ public class Pais {
     public boolean noTengoTropas(){
         return (this.cantidadEjercito == 0);
     }
-
     private void conquistar(Jugador jugador){
         if(this.noTengoTropas()){
             this.agregarEjercito(1);
