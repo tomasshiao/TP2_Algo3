@@ -13,9 +13,13 @@ public class Tarjeta {
         this.pais = pais;
     }
 
-    /*public String getNombrePais(){
-        return nombrePais;
+/*    public String getNombrePais(){
+        return pais.getNombre();
     }*/
+
+    public Pais getPaisDeTarjeta(){
+        return this.pais;
+    }
 
     public String getDibujo(){
         return dibujo;
@@ -58,4 +62,5 @@ public class Tarjeta {
     public boolean getActivada(){
         return activada;
     }
+
 }
