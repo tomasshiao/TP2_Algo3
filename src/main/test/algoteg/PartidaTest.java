@@ -33,5 +33,4 @@ public class PartidaTest {
         assertEquals(6,unaPartida.getCantidadJugadoresActuales());
     }
 
-
 }
