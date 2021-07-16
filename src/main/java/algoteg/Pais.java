@@ -6,8 +6,9 @@ public class Pais {
     int cantidadEjercito;
     Jugador jugador;
 
-    public Pais(String nombre){
+    public Pais(String nombre, Jugador ocupante){
         this.nombre = nombre;
+        this.jugador = ocupante;
         cantidadEjercito = 0;
     }
 
