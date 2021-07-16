@@ -84,4 +84,9 @@ public class Jugador {
         paisesConquistados.add(pais);
     }
 
+    public boolean obtenerSiGano(){
+        //deberia devolver si cumplio algun objetivo
+        return(false);
+    }
+
 }
