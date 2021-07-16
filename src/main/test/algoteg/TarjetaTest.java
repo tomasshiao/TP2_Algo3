@@ -26,6 +26,7 @@ public class TarjetaTest {
     Tarjeta tarjetaEsp = new Tarjeta(paises.get(3), "Canion");
     Tarjeta tarjetaUru = new Tarjeta(paises.get(4), "Globo");
 
+
     @Test
     public void seComparanTresTarjetasDeIgualDibujo(){
         boolean comparar = tarjetaArg.compararTarjetas(tarjetaAle, tarjetaJap);

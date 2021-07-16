@@ -54,4 +54,8 @@ public class Tarjeta {
     private void desactivarTarjeta(){
         this.activada = false;
     }
+
+    public boolean getActivada(){
+        return activada;
+    }
 }

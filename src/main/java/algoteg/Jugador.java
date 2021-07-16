@@ -68,12 +68,12 @@ public class Jugador {
         }
         return false;
     }
-
+  
     public boolean compararJugadores(Jugador jugador2) { return (this.getColor().equals(jugador2.getColor())); }
 
-    public void activarTarjeta(Tarjeta tarjeta) throws PaisNoLePerteneceAlJugador {
+    /* public void activarTarjeta(Tarjeta tarjeta) throws PaisNoLePerteneceAlJugador {
         try{
-            Jugador jugadorPais = (tarjeta.getPais()).getJugador();;
+            Jugador jugadorPais = (tarjeta.getPais()).getJugador();
 
 
             String paisDeTarjeta = tarjeta.getPais().getNombre();
@@ -85,6 +85,6 @@ public class Jugador {
             throw new PaisNoLePerteneceAlJugador();
         }
     }
-
+*/
 
 }
