@@ -114,4 +114,8 @@ public class Jugador {
         }
         return ejercitoAIncorporar;
     }
+
+    public int getCantidadPaisesConquistados() {
+        return (paisesConquistados.size());
+    }
 }

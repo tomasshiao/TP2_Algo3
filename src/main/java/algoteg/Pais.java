@@ -50,4 +50,8 @@ public class Pais {
     public void ocupar(Pais paisDefensor){
         paisDefensor.conquistar(this.jugador);
     }
+
+    public boolean esGobernante(String color){
+        return (color.equals( jugador.getColor()));
+    }
 }
