@@ -54,24 +54,6 @@ public class PaisTest {
 
         assertEquals("Uruguay", victorioso.getNombre());
     }
-    @Test
-    public void ganaAtacanteYLoOcupa(){
-        paisDefensor.setJugador(unJugador);
-        paisAtacante.setJugador(otroJugador);
 
-        paisAtacante.agregarEjercito(2);
-        paisDefensor.agregarEjercito(1);
-        Batalla batallaMock = mock(Batalla.class);
-        Dado dadomock = mock(Dado.class);
-        when(dadomock.getValor()).thenReturn(0);
-        List<Dado> dados = new ArrayList<>();
-        dados.add(dadomock);
-        when(batallaMock.obtenerDadosDefensor(paisDefensor)).thenReturn(dados);
-
-        Pais victorioso = batallaMock.obtenerVictoriosoDeGuerra(paisAtacante, paisDefensor);
-
-        assertEquals("Argentina", victorioso.getNombre());
-
-    }
 
 }
