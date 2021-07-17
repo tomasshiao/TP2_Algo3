@@ -17,7 +17,9 @@ public class Partida {
 
     private int cantidadTotalJugadores;
     private int cantidadJugadoresActuales;
+    private final int cantidadMaximaDeJugadoresPermitidos = 6;
     private ArrayList<Jugador> jugadores = new ArrayList<>();
+
     private List<Tarjeta> tarjetas;
     private int ronda;
 

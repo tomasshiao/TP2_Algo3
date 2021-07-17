@@ -1,14 +1,18 @@
 package algoteg;
 
-import java.util.List;
+import java.util.*;
 
 public class Tablero {
 
-    private List<String> continente;
+    private List<Continente> continentes;
+    private List<Pais> paises;
     private Dado dado;
 
     public Tablero(){
-        this.continente = List.of("Asia","Oceania","America","Europa","Africa");
+        Initialise init = new Initialise();
+        this.continentes = init.getTodosLosContinentes();
+        this.paises = init.getTodosLosPaises();
+
     }
 
     public void atacar(Pais paisAtacante, Pais paisDefensor, int numeroTropas){

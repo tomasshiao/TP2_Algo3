@@ -1,10 +1,13 @@
 package algoteg;
 
+import java.util.*;
+
 public class Pais {
 
     String nombre;
     int cantidadEjercito;
     Jugador jugador;
+    List<Pais> paisesLimitrofes;
 
     public Pais(String nombre, Jugador ocupante){
         this.nombre = nombre;
@@ -14,6 +17,10 @@ public class Pais {
 
     public void setJugador(Jugador jugador){
         this.jugador = jugador;
+    }
+
+    public void setPaisesLimitrofes(List<Pais> listaPaises) {
+        this.paisesLimitrofes = listaPaises;
     }
 
     public void agregarEjercito(int cantidad){
