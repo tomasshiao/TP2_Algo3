@@ -1,13 +1,23 @@
 package algoteg;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
+
+
 
 public class Continente {
 
-    List<Pais> paises = new ArrayList();
+    List<Pais> paises;
+    String nombre;
 
-    public Continente(){
-
+    public Continente(String nombreContinente){
+        this.nombre = nombreContinente;
     }
+
+
+    public void setPaises(List<Pais> listaPaises) {
+        this.paises = listaPaises;
+    }
+
+
+
 }

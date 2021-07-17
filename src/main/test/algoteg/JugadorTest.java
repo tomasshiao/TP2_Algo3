@@ -162,4 +162,70 @@ public class JugadorTest {
 
         assertEquals(2, jugador1.getEjercitoParaIncorporar());
     }
+
+    @Test
+    public void unJugadorRealizaDosCanjesDeTarjetaYRecibe4Y7Tropas(){
+        when(tarjetaMock.getDibujo()).thenReturn("Barco");
+        when(tarjetaMock.compararTarjetas(tarjetaMock,tarjetaMock)).thenReturn(true);
+        jugador1.addTarjeta(tarjetaMock);
+        jugador1.addTarjeta(tarjetaMock);
+        jugador1.addTarjeta(tarjetaMock);
+        jugador1.canjearTarjetas(tarjetaMock, tarjetaMock, tarjetaMock);
+
+        jugador1.addTarjeta(tarjetaMock);
+        jugador1.addTarjeta(tarjetaMock);
+        jugador1.addTarjeta(tarjetaMock);
+        jugador1.canjearTarjetas(tarjetaMock, tarjetaMock, tarjetaMock);
+
+        assertEquals(11, jugador1.getEjercitoParaIncorporar());
+    }
+
+    @Test
+    public void unJugadorRealizaTresCanjesDeTarjetaYRecibe4Y7Y10Tropas(){
+        when(tarjetaMock.getDibujo()).thenReturn("Barco");
+        when(tarjetaMock.compararTarjetas(tarjetaMock,tarjetaMock)).thenReturn(true);
+        jugador1.addTarjeta(tarjetaMock);
+        jugador1.addTarjeta(tarjetaMock);
+        jugador1.addTarjeta(tarjetaMock);
+        jugador1.canjearTarjetas(tarjetaMock, tarjetaMock, tarjetaMock);
+
+        jugador1.addTarjeta(tarjetaMock);
+        jugador1.addTarjeta(tarjetaMock);
+        jugador1.addTarjeta(tarjetaMock);
+        jugador1.canjearTarjetas(tarjetaMock, tarjetaMock, tarjetaMock);
+
+        jugador1.addTarjeta(tarjetaMock);
+        jugador1.addTarjeta(tarjetaMock);
+        jugador1.addTarjeta(tarjetaMock);
+        jugador1.canjearTarjetas(tarjetaMock, tarjetaMock, tarjetaMock);
+
+        assertEquals(21, jugador1.getEjercitoParaIncorporar());
+    }
+
+    @Test
+    public void unJugadorRealizaCuatroCanjesDeTarjetaYRecibe4Y7Y10Y15Tropas(){
+        when(tarjetaMock.getDibujo()).thenReturn("Barco");
+        when(tarjetaMock.compararTarjetas(tarjetaMock,tarjetaMock)).thenReturn(true);
+        jugador1.addTarjeta(tarjetaMock);
+        jugador1.addTarjeta(tarjetaMock);
+        jugador1.addTarjeta(tarjetaMock);
+        jugador1.canjearTarjetas(tarjetaMock, tarjetaMock, tarjetaMock);
+
+        jugador1.addTarjeta(tarjetaMock);
+        jugador1.addTarjeta(tarjetaMock);
+        jugador1.addTarjeta(tarjetaMock);
+        jugador1.canjearTarjetas(tarjetaMock, tarjetaMock, tarjetaMock);
+
+        jugador1.addTarjeta(tarjetaMock);
+        jugador1.addTarjeta(tarjetaMock);
+        jugador1.addTarjeta(tarjetaMock);
+        jugador1.canjearTarjetas(tarjetaMock, tarjetaMock, tarjetaMock);
+
+        jugador1.addTarjeta(tarjetaMock);
+        jugador1.addTarjeta(tarjetaMock);
+        jugador1.addTarjeta(tarjetaMock);
+        jugador1.canjearTarjetas(tarjetaMock, tarjetaMock, tarjetaMock);
+
+        assertEquals(36, jugador1.getEjercitoParaIncorporar());
+    }
 }

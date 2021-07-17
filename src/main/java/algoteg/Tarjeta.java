@@ -17,10 +17,6 @@ public class Tarjeta {
         this.dibujo = dibujo;
     }
 
-/*    public String getNombrePais(){
-        return pais.getNombre();
-    }*/
-
     public Pais getPaisDeTarjeta(){
         return this.pais;
     }
