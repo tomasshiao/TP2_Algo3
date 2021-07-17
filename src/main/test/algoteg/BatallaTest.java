@@ -21,7 +21,7 @@ public class BatallaTest {
         Pais paisAtacanteMock = mock(Pais.class);
         when(paisAtacanteMock.getEjercitoActual()).thenReturn(4);
 
-        List<Dado> dados = batalla.obtenerDadosAtacante(paisAtacanteMock);
+        List<Dado> dados = batalla.obtenerDadosAtacante(paisAtacanteMock, 4);
 
         assertTrue(dados.get(0).getValor() >= (dados.get(1).getValor()));
         assertTrue(dados.get(1).getValor() >= dados.get(2).getValor());
@@ -72,7 +72,7 @@ public class BatallaTest {
         when(paisDefensorMock.getEjercitoActual()).thenReturn(1);
 
 
-        Pais ganador = batalla.obtenerVictoriosoDeGuerra(paisAtacanteMock,paisDefensorMock);
+        Pais ganador = batalla.obtenerVictoriosoDeGuerra(paisAtacanteMock,paisDefensorMock, 1);
 
         assertEquals("Uruguay", ganador.getNombre());
     }

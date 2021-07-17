@@ -36,7 +36,7 @@ public class PaisTest {
     public void ganaDefensor(){
         paisDefensor.setJugador(unJugador);
         paisAtacante.setJugador(otroJugador);
-        paisAtacante.agregarEjercito(1);
+        paisAtacante.agregarEjercito(2);
         paisDefensor.agregarEjercito(1);
 
         Dado dadoAtacantemock = mock(Dado.class);
@@ -50,7 +50,7 @@ public class PaisTest {
         List<Dado> dadosDefensor = new ArrayList<>();
         dadosDefensor.add(dadoDefensormock);
         dadosDefensor.add(dadoDefensormock);
-        Pais victorioso = batalla.obtenerVictoriosoDeGuerra(paisAtacante, paisDefensor);
+        Pais victorioso = batalla.obtenerVictoriosoDeGuerra(paisAtacante, paisDefensor, 1);
 
         assertEquals("Uruguay", victorioso.getNombre());
     }
