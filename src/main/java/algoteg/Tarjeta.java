@@ -62,5 +62,6 @@ public class Tarjeta {
     public boolean getActivada(){
         return activada;
     }
+    public void metodoPrueba(){}
 
 }
