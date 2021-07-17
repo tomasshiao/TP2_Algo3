@@ -2,6 +2,7 @@ package algoteg;
 
 import org.junit.jupiter.api.Test;
 
+import static org.mockito.Mockito.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -38,33 +39,21 @@ public class PaisTest {
         paisAtacante.agregarEjercito(1);
         paisDefensor.agregarEjercito(1);
 
-        List<Integer> dadosAtacante = new ArrayList<>();
-        dadosAtacante.add(1);
-        List<Integer> dadosDefensor = new ArrayList<>();
-        dadosDefensor.add(6);
-        dadosDefensor.add(6);
-        Pais victorioso = batalla.obtenerVictoriosoDeGuerra(dadosAtacante,dadosDefensor,paisAtacante, paisDefensor);
+        Dado dadoAtacantemock = mock(Dado.class);
+        when(dadoAtacantemock.getValor()).thenReturn(1);
+
+        Dado dadoDefensormock = mock(Dado.class);
+        when(dadoDefensormock.getValor()).thenReturn(6);
+
+        List<Dado> dadosAtacante = new ArrayList<>();
+        dadosAtacante.add(dadoAtacantemock);
+        List<Dado> dadosDefensor = new ArrayList<>();
+        dadosDefensor.add(dadoDefensormock);
+        dadosDefensor.add(dadoDefensormock);
+        Pais victorioso = batalla.obtenerVictoriosoDeGuerra(paisAtacante, paisDefensor);
 
         assertEquals("Uruguay", victorioso.getNombre());
     }
-    @Test
-    public void ganaAtacanteYLoOcupa(){
-        paisDefensor.setJugador(unJugador);
-        paisAtacante.setJugador(otroJugador);
 
-        paisAtacante.agregarEjercito(1);
-        paisDefensor.agregarEjercito(1);
 
-        List<Integer> dadosAtacante = new ArrayList<>();
-        dadosAtacante.add(6);
-        List<Integer> dadosDefensor = new ArrayList<>();
-        dadosDefensor.add(2);
-        dadosDefensor.add(1);
-        Pais victorioso = batalla.obtenerVictoriosoDeGuerra(dadosAtacante,dadosDefensor,paisAtacante, paisDefensor);
-
-        assertEquals("Argentina", victorioso.getNombre());
-        assertEquals(1,paisDefensor.getEjercitoActual());
-
-    }
-    
 }

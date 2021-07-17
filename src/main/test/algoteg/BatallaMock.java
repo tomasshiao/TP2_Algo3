@@ -5,11 +5,14 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
-public class Batalla {
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
+
+public class BatallaMock {
     private int victoriasAtacante;
     private int victoriasDefensor;
 
-    public Batalla(){
+    public BatallaMock(){
         this.victoriasAtacante = 0;
         this.victoriasDefensor =0;
 
@@ -74,7 +77,9 @@ public class Batalla {
         int dadoExtra = 1;
         int dadosPorTropa = cantidadTropas/2;
         for(int i = 0; i<=(dadosPorTropa+dadoExtra); i++){
-            dados.add( new Dado());
+            Dado dadomock = mock(Dado.class);
+            when(dadomock.getValor()).thenReturn(0);
+            dados.add(dadomock);
         }
         dados.sort(Comparator.comparing(Dado::getValor).reversed());
         return (dados);

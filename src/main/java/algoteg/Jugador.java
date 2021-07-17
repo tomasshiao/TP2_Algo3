@@ -28,6 +28,8 @@ public class Jugador {
         tarjetas.add(tarjeta);
     }
 
+    public boolean esGanador(){return false;} // se fija si cumple objetivos
+
     private void removeTarjeta(Tarjeta tarjeta){
         int index = 0;
         int i = 0;
