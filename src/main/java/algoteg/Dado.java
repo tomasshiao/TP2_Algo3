@@ -1,45 +1,20 @@
 package algoteg;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
 import java.util.Random;
 
-public class Dado {
-
-
-    public List<Integer> obtenerDadosAtacante(int cantidadTropas){
-        List<Integer> dados = new ArrayList();
-
-        int dadosPorTropa = 0;
-
-        if(cantidadTropas >= 4)
-            dadosPorTropa = 3;
-        else dadosPorTropa = (cantidadTropas-1);
-        //i < (cantidadTropas -1) || i < 3
-        for(int i = 0; i<(dadosPorTropa); i++){
-            dados.add( this.random());
-        }
-        Collections.sort(dados);
-        return (dados);
+public class Dado{
+    int valor;
+    public Dado(){
+        valor = this.obtenerDado();
     }
-
-    public List<Integer> obtenerDadosDefensor(int cantidadTropas){
-        List<Integer> dados = new ArrayList<Integer>();
-        int dadoExtra = 1;
-        int dadosPorTropa = cantidadTropas/2;
-        for(int i = 0; i<=(dadosPorTropa+dadoExtra); i++){
-            dados.add( this.random());
-        }
-        Collections.sort(dados);
-        return (dados);
-
-    }
-
-    public int random(){
-
+    private int obtenerDado(){
         Random random = new Random();
         return random.nextInt(7 - 1) + 1;
+    }
 
+    public int getValor(){ return this.valor;}
+
+    public boolean esMayorQue(Dado dadoAComparar){
+        return (this.valor >dadoAComparar.getValor());
     }
 }

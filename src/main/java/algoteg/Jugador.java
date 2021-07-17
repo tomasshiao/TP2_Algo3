@@ -9,11 +9,13 @@ public class Jugador {
     private ArrayList<Tarjeta> tarjetas = new ArrayList<>();
     private ArrayList<Pais> paisesConquistados = new ArrayList<>();
     private int ejercitoParaIncorporar;
+    private int canjesRealizados;
 
     public Jugador(int id, String color) {
         this.id = id;
         this.color = color;
         this.ejercitoParaIncorporar = 0;
+        this.canjesRealizados = 0;
     }
 
     public String getColor(){
@@ -27,6 +29,8 @@ public class Jugador {
     public void addTarjeta(Tarjeta tarjeta){
         tarjetas.add(tarjeta);
     }
+
+    public boolean esGanador(){return false;} // se fija si cumple objetivos
 
     private void removeTarjeta(Tarjeta tarjeta){
         int index = 0;
@@ -60,7 +64,9 @@ public class Jugador {
 
     public boolean canjearTarjetas(Tarjeta tarjeta1, Tarjeta tarjeta2, Tarjeta tarjeta3){
         if (tarjeta1.compararTarjetas(tarjeta2, tarjeta3)) {
-            this.addEjercito(4);
+            this.canjesRealizados++;
+            int ejercitoAIncorporar = this.calcluarEjercitoSegunCanjes();
+            this.addEjercito(ejercitoAIncorporar);
             this.removeTarjeta(tarjeta1);
             this.removeTarjeta(tarjeta2);
             this.removeTarjeta(tarjeta3);
@@ -84,9 +90,28 @@ public class Jugador {
         paisesConquistados.add(pais);
     }
 
-    public boolean obtenerSiGano(){
-        //deberia devolver si cumplio algun objetivo
-        return(false);
-    }
 
+    private int calcluarEjercitoSegunCanjes(){
+        int ejercitoAIncorporar;
+
+        if(this.canjesRealizados == 0) return 0;
+
+        switch(this.canjesRealizados){
+            case 1: {
+                ejercitoAIncorporar = 4;
+                break;
+            }
+            case 2: {
+                ejercitoAIncorporar = 7;
+                break;
+            }
+            case 3: {
+                ejercitoAIncorporar = 10;
+                break;
+            }
+            default:
+                ejercitoAIncorporar = (this.canjesRealizados-1)*5;
+        }
+        return ejercitoAIncorporar;
+    }
 }

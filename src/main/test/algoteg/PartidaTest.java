@@ -1,6 +1,9 @@
 package algoteg;
 
 import org.junit.jupiter.api.Test;
+
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import static org.mockito.Mockito.mock;
@@ -10,8 +13,6 @@ import static org.mockito.Mockito.when;
 public class PartidaTest {
     Partida unaPartida = new Partida(6);
     Jugador jugadorMock = mock(Jugador.class);
-    Jugador jugador1 = new Jugador(1, "azul");
-    Jugador jugador2 = new Jugador(2, "rojo");
 
     @Test
     public void seAgreganJugadoresALaPartida(){
