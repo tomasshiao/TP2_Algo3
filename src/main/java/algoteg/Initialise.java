@@ -146,7 +146,7 @@ public class Initialise {
     public void setLimitrofes(List<Pais> todosLosPaises, Map<String, List<String>> mapaLimitrofes, Map<String, Pais> mapPaises){
         
         for(Pais p: todosLosPaises) {
-            List<Pais> paisesLimitrofes = new ArrayList<Pais>();
+            List<Pais> paisesLimitrofes = new ArrayList<>();
             String nombrePais = p.getNombre();
             List<String> nombrePaisesLimitrofes = mapaLimitrofes.get(nombrePais);
             for (String nombrePaisLimitrofe: nombrePaisesLimitrofes) {
