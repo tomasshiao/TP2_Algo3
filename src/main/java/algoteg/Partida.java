@@ -2,16 +2,12 @@ package algoteg;
 
 import java.io.BufferedReader;
 import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.List;
 
-import javafx.scene.control.TextArea;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -23,9 +19,11 @@ public class Partida {
     private int cantidadJugadoresActuales;
     private ArrayList<Jugador> jugadores = new ArrayList<>();
     private List<Tarjeta> tarjetas;
+    private int ronda;
 
     public Partida(int cantidadTotalJugadores) {
         cantidadJugadoresActuales = 0;
+        ronda = 0;
         if (cantidadTotalJugadores <= 6)
             this.cantidadTotalJugadores = cantidadTotalJugadores;
         else this.cantidadTotalJugadores = 6;
@@ -42,6 +40,28 @@ public class Partida {
 
     public int getCantidadJugadoresActuales() {
         return cantidadJugadoresActuales;
+    }
+
+    private void pasarRonda(){ this.ronda++;}
+
+    private Jugador iniciarRonda(){
+        int i = 0;
+        int posicionGanador = i-1;
+        boolean hayGanador = false;
+        while(!hayGanador & i < cantidadTotalJugadores){
+            //acciones jugador
+            hayGanador = jugadores.get(i).esGanador();
+            i++;
+        }
+
+        return jugadores.get(posicionGanador);
+    }
+
+    public void iniciarPartida(){
+        boolean hayGanador = false;
+        while(!hayGanador){
+            hayGanador = iniciarRonda().esGanador();
+        }
     }
 
     //Crea las tarjetas y las pone en una lista
