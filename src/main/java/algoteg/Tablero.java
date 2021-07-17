@@ -14,7 +14,7 @@ public class Tablero {
     public void atacar(Pais paisAtacante, Pais paisDefensor, int numeroTropas){
 
         Batalla batalla = new Batalla();
-        batalla.obtenerVictoriosoDeGuerra(paisAtacante, paisDefensor);
+        batalla.obtenerVictoriosoDeGuerra(paisAtacante, paisDefensor, numeroTropas);
     }
 
 }

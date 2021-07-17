@@ -8,12 +8,16 @@ import java.util.List;
 public class Batalla {
     private int victoriasAtacante;
     private int victoriasDefensor;
+    private int dadosParaTirarAtacante;
+    private int dadosParaTirarDefensor;
 
     public Batalla(){
         this.victoriasAtacante = 0;
         this.victoriasDefensor =0;
-
+        this.dadosParaTirarAtacante = 0;
+        this.dadosParaTirarDefensor = 0;
     }
+
     private void agregarVictoriaDefensor(){
         this.victoriasDefensor++;
     }
@@ -41,8 +45,8 @@ public class Batalla {
         }
         return(victoriosoDeGuerra);
     }
-    public Pais obtenerVictoriosoDeGuerra(Pais paisAtacante, Pais paisDefensor){
-        List<Dado> dadosAtacante = obtenerDadosAtacante(paisAtacante);
+    public Pais obtenerVictoriosoDeGuerra(Pais paisAtacante, Pais paisDefensor, int tropasParaAtacar){
+        List<Dado> dadosAtacante = obtenerDadosAtacante(paisAtacante, tropasParaAtacar);
         List<Dado> dadosDefensor = obtenerDadosDefensor(paisDefensor);
 
         while (!dadosAtacante.isEmpty() && !dadosDefensor.isEmpty()){
@@ -53,33 +57,43 @@ public class Batalla {
         return(this.determinarVictoriosoDeGuerra(paisAtacante, paisDefensor));
     }
 
-    public List<Dado> obtenerDadosAtacante(Pais paisAtacante){
+    public List<Dado> obtenerDadosAtacante(Pais pais, int tropasParaAtacar){
         List<Dado> dados = new ArrayList<>();
-        int cantidadTropas = paisAtacante.getEjercitoActual();
-        int dadosPorTropa;
+        int tropasEnPais = pais.getEjercitoActual();
 
-        if(cantidadTropas >= 4)
-            dadosPorTropa = 3;
-        else dadosPorTropa = (cantidadTropas-1);
-        //i < (cantidadTropas -1) || i < 3
-        for(int i = 0; i<(dadosPorTropa); i++){
-            dados.add( new Dado());
+        if(tropasParaAtacar > tropasEnPais-1)   //si quiero atacar con mas tropas de las que tengo en el pais,
+            tropasParaAtacar = tropasEnPais-1;  //solo me va a dejar atacar con el maximo que pueda ese pais
+
+        if(tropasParaAtacar >= 4)    //si se quiere atacar con muchas tropas, solo se puede tirar hasta 3 dados
+            this.dadosParaTirarAtacante = 3;
+        else this.dadosParaTirarAtacante = tropasParaAtacar;
+
+        for(int i = 0; i<this.dadosParaTirarAtacante; i++){
+            dados.add (new Dado());
         }
         dados.sort(Comparator.comparing(Dado::getValor).reversed());
         return (dados);
     }
-    public List<Dado> obtenerDadosDefensor(Pais paisDefensor){
-        int cantidadTropas = paisDefensor.getEjercitoActual();
+
+    public List<Dado> obtenerDadosDefensor(Pais pais){
         List<Dado> dados = new ArrayList<>();
-        int dadoExtra = 1;
-        int dadosPorTropa = cantidadTropas/2;
-        for(int i = 0; i<=(dadosPorTropa+dadoExtra); i++){
-            dados.add( new Dado());
+        int tropasEnPais = pais.getEjercitoActual();
+
+        if(tropasEnPais >= 3)   //se defiende con un maximo de 3 dados
+            this.dadosParaTirarDefensor = 3;
+        else this.dadosParaTirarDefensor = tropasEnPais;
+
+        for(int i = 0; i< this.dadosParaTirarDefensor; i++){
+            dados.add (new Dado());
         }
         dados.sort(Comparator.comparing(Dado::getValor).reversed());
         return (dados);
-
-
     }
 
+    public int getDadosParaTirarAtacante() {
+        return dadosParaTirarAtacante;
+    }
+    public int getDadosParaTirarDefensor(){
+        return dadosParaTirarDefensor;
+    }
 }
