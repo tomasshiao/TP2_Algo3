@@ -165,13 +165,14 @@ public class Initialise {
         this.setTodosLosContinentes(paisesPorContinentes);
     }
 
-    public Map<String, Object> toDTO(){
-        Map<String, Object> dto = new HashMap<>();
-        dto.put("Paises", this.todosLosPaises);
-        dto.put("Continentes", this.todosLosContinentes);
-
-
-        return dto;
+    public List<Continente> getTodosLosContinentes(){
+        return this.todosLosContinentes;
     }
+
+    public List<Pais> getTodosLosPaises(){
+        return this.todosLosPaises;
+    }
+
+
 
 }

@@ -1,6 +1,6 @@
 package algoteg;
 
-import java.util.List;
+import java.util.*;
 
 public class Tablero {
 
@@ -10,8 +10,8 @@ public class Tablero {
 
     public Tablero(){
         Initialise init = new Initialise();
-        this.continentes = (List<Continente>) init.toDTO().get("Continentes");
-        this.paises = (List<Pais>) init.toDTO().get("Paises");
+        this.continentes = init.getTodosLosContinentes();
+        this.paises = init.getTodosLosPaises();
 
     }
 
