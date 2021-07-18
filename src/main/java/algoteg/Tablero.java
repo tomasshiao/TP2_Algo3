@@ -17,9 +17,11 @@ public class Tablero {
     }
 
     public void atacar(Pais paisAtacante, Pais paisDefensor, int numeroTropas){
-
+        LanzadorDados lanzadorDados = new LanzadorDados();
+        List<GeneradorRandom> dadosAtacante = lanzadorDados.obtenerDadosAtacante(paisAtacante, numeroTropas);
+        List<GeneradorRandom> dadosDefensor = lanzadorDados.obtenerDadosDefensor(paisDefensor);
         Batalla batalla = new Batalla();
-        batalla.obtenerVictoriosoDeGuerra(paisAtacante, paisDefensor, numeroTropas);
+        batalla.obtenerVictoriosoDeGuerra(dadosAtacante, dadosDefensor, paisAtacante, paisDefensor, numeroTropas);
     }
 
 }
