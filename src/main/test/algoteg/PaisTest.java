@@ -32,6 +32,7 @@ public class PaisTest {
     }
 
     //Consultar por mock
+    /*
     @Test
     public void ganaDefensor(){
         paisDefensor.setJugador(unJugador);
@@ -59,7 +60,7 @@ public class PaisTest {
 
         assertEquals("Uruguay", victorioso.getNombre());
     }
-
+    */
 
 
 
