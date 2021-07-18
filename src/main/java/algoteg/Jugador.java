@@ -1,14 +1,16 @@
 package algoteg;
 
 import java.util.ArrayList;
+import java.util.List;
+
 import algoteg.Exceptions.PaisNoLePerteneceAlJugador;
 
 public class Jugador {
     private String color;
     private int id;
-    private ArrayList<Tarjeta> tarjetas = new ArrayList<>();
-    private ArrayList<Pais> paisesConquistados = new ArrayList<>();
-    private ArrayList<Objetivo> objetivos = new ArrayList<>();
+    private List<Tarjeta> tarjetas = new ArrayList<>();
+    private List<Pais> paisesConquistados = new ArrayList<>();
+    private List<Objetivo> objetivos = new ArrayList<>();
     private int ejercitoParaIncorporar;
     private int canjesRealizados;
 
@@ -118,5 +120,16 @@ public class Jugador {
 
     public int getCantidadPaisesConquistados() {
         return (paisesConquistados.size());
+    }
+
+    public void setPaises(List<Pais> listaPaises) {
+        this.paisesConquistados = listaPaises;
+    }
+    public void agregarPaisInicial(Pais pais){
+        this.paisesConquistados.add(pais);
+    }
+
+    public void setTarjetas(List<Tarjeta> tarjetas) {
+        this.tarjetas = tarjetas;
     }
 }

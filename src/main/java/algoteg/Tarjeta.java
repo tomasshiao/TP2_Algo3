@@ -7,15 +7,12 @@ public class Tarjeta {
     private Pais pais;
 
     public Tarjeta(Pais pais, String dibujo){
-        //this.nombrePais = nombrePais;
+
         this.dibujo = dibujo;
         this.activada = false;
         this.pais = pais;
     }
-    public Tarjeta(String nombrePais, String dibujo){
-        this.nombrePais = nombrePais;
-        this.dibujo = dibujo;
-    }
+
 
     public Pais getPaisDeTarjeta(){
         return this.pais;

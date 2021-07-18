@@ -76,7 +76,7 @@ public class BatallaTest {
 
         assertEquals("Uruguay", ganador.getNombre());
     }
-
+    /*
     @Test
     public void ganaDefensor(){
 
@@ -107,7 +107,7 @@ public class BatallaTest {
         Pais victorioso = batallaMock.obtenerVictoriosoDeGuerra(paisAtacante, paisDefensor, 1);
 
         assertEquals("Uruguay", victorioso.getNombre());
-    }
+    }*/
 
 
 }
