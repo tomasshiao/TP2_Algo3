@@ -32,7 +32,8 @@ public class PaisTest {
     }
 
     //Consultar por mock
-    /*@Test
+    /*
+    @Test
     public void ganaDefensor(){
         paisDefensor.setJugador(unJugador);
         paisAtacante.setJugador(otroJugador);
@@ -44,6 +45,16 @@ public class PaisTest {
 
         Dado dadoDefensormock = mock(Dado.class);
         when(dadoDefensormock.getValor()).thenReturn(6);
+
+        List<Dado> dadosAtacante = new ArrayList<>();
+        dadosAtacante.add(dadoAtacantemock);
+        List<Dado> dadosDefensor = new ArrayList<>();
+        dadosDefensor.add(dadoDefensormock);
+        dadosDefensor.add(dadoDefensormock);
+
+        Batalla batalla = mock(Batalla.class);
+        when(batalla.obtenerDadosDefensor(paisDefensor)).thenReturn(dadosDefensor);
+        when(batalla.obtenerDadosAtacante(paisAtacante, 1)).thenReturn(dadosAtacante);
 
         Pais victorioso = batalla.obtenerVictoriosoDeGuerra(paisAtacante, paisDefensor, 1);
 

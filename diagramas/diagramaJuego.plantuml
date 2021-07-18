@@ -2,30 +2,34 @@
 skinparam classAttributeIconSize 0
 
 class Juego {
-       
+
 }
 
 class Partida{
-        + cantidadJugadores: int
-        +jugadoresMuertos: stack 
-        +jugadoresVivos:list 
-        +identificador:str 
-        +objetivos: Objetivo
+        - cantidadTotalJugadores: int
+        - cantidadJugadoresActivos: int
+        - cantidadMaximaJugadoresPermitidos: int
+        - juagres: Jugadores
+        - objetivos: Objetivo
+        - tarjetas: Tarjeta
+        - ronda: int
 
         +atacar(paisSalida, paisAAtacar, numeroDeTropas): void
+        +iniciarPartida():void
+        -iniciarRonda():Jugador
 }
 
 class Jugador{
         +identfiicador: int 
         + color: str
-        +objetivo: Objetivo 
+        +objetivos: Objetivo
         +pais: Pais
         
         +atacar(partida, paisSalida, paisAAtacar, numeroDeTropas): void
 
 }
 
-class ValidarAtaque{}
+class ValidadorAtaque{}
 
 class Tablero{
         +continentes: Continente
@@ -34,7 +38,7 @@ class Tablero{
 
 Juego ---> Partida
 Partida --->"2..*" Jugador
-Partida ---> ValidarAtaque
+Tablero ---> ValidadorAtaque
 Partida ---> Tablero
 
 @enduml

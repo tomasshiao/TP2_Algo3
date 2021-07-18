@@ -1,0 +1,24 @@
+@startuml
+class Batalla{
+    -victoriasAtacante: int
+    -victoriasDefensor: int
+    -dadosParaTirarAtacante: int
+    -dadosParaTirarDefensor: int
+
+    +obtenerDadoDefensor(Pais pais): Dados
+    +obtenerDadosAtacante(Pais pais, int tropasParaAtacar): Dados
+    +obtenerVictoriosoDeGuerra(Pais atacante, Pais defensor, int tropasAtacantes)
+    -determinarVictoriosoDeGuerra(Pais paisAtacante, paisDefensor): Pais
+    +obtenerPerdedorDeBatalla(Dado dadoAtacante, Dado dadoDefensor): Pais
+}
+
+class Dado{
+    +valor: int
+    -obtenerDado():int
+    +getValor():int
+    +esMayorQue(Dado dado): boolean
+}
+
+Batalla---->Dado
+
+@enduml

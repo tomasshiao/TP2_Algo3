@@ -1,7 +1,10 @@
 @startuml
-skinparam classAttributeIconSize 0
 
 class Continente{
+    +nombre: String
+    +gobernanteContinente: Jugador;
+
+    + esGobernante(String colorGobernante): boolean
 
 
 
@@ -9,21 +12,19 @@ class Continente{
 
 class Pais{
     +jugador: Jugador
-    
+    +nombre: String
+    +int cantidadEjercito;
+    +paisesLimitrofes: Paises
+
     + noTengoTropas() : boolean;
     - conquistar() : void;
     + atacar(paisSalida, paisAAtacar, numeroDeTropas) : void
     + reducirTropas(numeroDeTropas) : void
+   + esGobernante(String colorGobernante): boolean:
+
+
 }
 
-class Pieza{}
-
-interface Dibujo{}
-
-
-
 Continente *---> "1..*"Pais
-Pais -->Pieza
-Pais -->Dibujo
-Pais --> Tablero
+
 @enduml

@@ -8,6 +8,7 @@ public class Jugador {
     private int id;
     private ArrayList<Tarjeta> tarjetas = new ArrayList<>();
     private ArrayList<Pais> paisesConquistados = new ArrayList<>();
+    private ArrayList<Objetivo> objetivos = new ArrayList<>();
     private int ejercitoParaIncorporar;
     private int canjesRealizados;
 
