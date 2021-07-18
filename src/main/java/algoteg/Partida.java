@@ -23,7 +23,7 @@ public class Partida {
     private int cantidadJugadoresActuales;
     private final int cantidadMaximaDeJugadoresPermitidos = 6;
     private ArrayList<Jugador> jugadores = new ArrayList<>();
-    private Tablero tablero;
+    private Tablero tablero = new Tablero();
     private List<Objetivo> objetivos;
     private int ronda;
 
@@ -34,7 +34,6 @@ public class Partida {
             this.cantidadTotalJugadores = cantidadTotalJugadores;
         else this.cantidadTotalJugadores = 6;
 
-        Tablero tablero = new Tablero();
 
     }
 
@@ -68,7 +67,7 @@ public class Partida {
     public void iniciarPartida(){
         List<Pais> paises = this.iniciarPaisesYContinentes();
         this.iniciarTarjetas(paises);
-        boolean hayGanador = false;
+        boolean hayGanador = true;
         while(!hayGanador){
             hayGanador = iniciarRonda().esGanador();
         }
@@ -108,7 +107,8 @@ public class Partida {
         for(Jugador jugador: this.jugadores){
             List<Pais> paisesDeJugador = paises.subList(i,i+cantidadCartas);
             i+=cantidadCartas;
-            paisesDeJugador.forEach(pais -> pais.setJugador(jugador));
+            paisesDeJugador.forEach(pais -> pais.setJugador(jugador)); //agrego jugador como gobernante del pais
+            jugador.setPaises(paisesDeJugador);
         }
 
         if(cantidadPaises%cantidadTotalJugadores !=0){

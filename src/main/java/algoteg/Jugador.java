@@ -1,6 +1,7 @@
 package algoteg;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import algoteg.Exceptions.PaisNoLePerteneceAlJugador;
@@ -123,7 +124,7 @@ public class Jugador {
     }
 
     public void setPaises(List<Pais> listaPaises) {
-        this.paisesConquistados = listaPaises;
+        this.paisesConquistados.addAll(listaPaises);
     }
     public void agregarPaisInicial(Pais pais){
         this.paisesConquistados.add(pais);
