@@ -16,16 +16,7 @@ public class BatallaTest {
 
 
 
-    @Test
-    public void dadosAtacantesOrdenadosDescendiente(){
-        Pais paisAtacanteMock = mock(Pais.class);
-        when(paisAtacanteMock.getEjercitoActual()).thenReturn(4);
 
-        List<Dado> dados = batalla.obtenerDadosAtacante(paisAtacanteMock, 4);
-
-        assertTrue(dados.get(0).getValor() >= (dados.get(1).getValor()));
-        assertTrue(dados.get(1).getValor() >= dados.get(2).getValor());
-    }
 
     @Test
     public void pierdeAtacante(){
@@ -70,11 +61,152 @@ public class BatallaTest {
         Pais paisDefensorMock = mock(Pais.class);
         when(paisDefensorMock.getNombre()).thenReturn("Uruguay");
         when(paisDefensorMock.getEjercitoActual()).thenReturn(1);
+        LanzadorDados lanzadorDados = new LanzadorDados();
+        List<GeneradorRandom> dadosAtacante = lanzadorDados.obtenerDadosAtacante(paisAtacanteMock, 1);
+        List<GeneradorRandom> dadosDefensor = lanzadorDados.obtenerDadosDefensor(paisDefensorMock);
 
-
-        Pais ganador = batalla.obtenerVictoriosoDeGuerra(paisAtacanteMock,paisDefensorMock, 1);
+        Pais ganador = batalla.obtenerVictoriosoDeGuerra(dadosAtacante, dadosDefensor, paisAtacanteMock,paisDefensorMock, 1);
 
         assertEquals("Uruguay", ganador.getNombre());
     }
+
+    @Test
+    public void defensorGanaGuerraDeUnDado(){
+        Pais paisAtacanteMock = mock(Pais.class);
+        when(paisAtacanteMock.getNombre()).thenReturn("Argentina");
+        when(paisAtacanteMock.getEjercitoActual()).thenReturn(2);
+        Pais paisDefensorMock = mock(Pais.class);
+        when(paisDefensorMock.getNombre()).thenReturn("Uruguay");
+        when(paisDefensorMock.getEjercitoActual()).thenReturn(1);
+
+        List<GeneradorRandom> dadosAtacante = new ArrayList<>();
+        dadosAtacante.add(new DadoCero());
+        List<GeneradorRandom> dadosDefensor = new ArrayList<>();
+        dadosDefensor.add(new DadoSeis());
+        dadosDefensor.add(new DadoSeis());
+
+        Pais ganador = batalla.obtenerVictoriosoDeGuerra(dadosAtacante,dadosDefensor,paisAtacanteMock,paisDefensorMock, 1);
+
+        assertEquals("Uruguay", ganador.getNombre());
+
+    }
+
+    @Test
+    public void defensorGanaDosBatallasDeTresYGanaGuerra() {
+        Pais paisAtacanteMock = mock(Pais.class);
+        when(paisAtacanteMock.getNombre()).thenReturn("Argentina");
+        when(paisAtacanteMock.getEjercitoActual()).thenReturn(4);
+        Pais paisDefensorMock = mock(Pais.class);
+        when(paisDefensorMock.getNombre()).thenReturn("Uruguay");
+        when(paisDefensorMock.getEjercitoActual()).thenReturn(2);
+
+        List<GeneradorRandom> dadosAtacante = new ArrayList<>();
+        dadosAtacante.add(new DadoCero());
+        dadosAtacante.add(new DadoSeis());
+        dadosAtacante.add(new DadoCero());
+        List<GeneradorRandom> dadosDefensor = new ArrayList<>();
+        dadosDefensor.add(new DadoSeis());
+        dadosDefensor.add(new DadoCero());
+        dadosDefensor.add(new DadoSeis());
+
+        Pais ganador = batalla.obtenerVictoriosoDeGuerra(dadosAtacante, dadosDefensor, paisAtacanteMock, paisDefensorMock, 1);
+
+        assertEquals("Uruguay", ganador.getNombre());
+    }
+
+    @Test
+    public void defensorGanaGuerraConUnEmpateYDosVictorias(){
+        Pais paisAtacanteMock = mock(Pais.class);
+        when(paisAtacanteMock.getNombre()).thenReturn("Argentina");
+        when(paisAtacanteMock.getEjercitoActual()).thenReturn(4);
+        Pais paisDefensorMock = mock(Pais.class);
+        when(paisDefensorMock.getNombre()).thenReturn("Uruguay");
+        when(paisDefensorMock.getEjercitoActual()).thenReturn(2);
+
+        List<GeneradorRandom> dadosAtacante = new ArrayList<>();
+        dadosAtacante.add(new DadoCero());
+        dadosAtacante.add(new DadoSeis());
+        dadosAtacante.add(new DadoCero());
+        List<GeneradorRandom> dadosDefensor = new ArrayList<>();
+        dadosDefensor.add(new DadoSeis());
+        dadosDefensor.add(new DadoSeis());
+        dadosDefensor.add(new DadoSeis());
+
+        Pais ganador = batalla.obtenerVictoriosoDeGuerra(dadosAtacante, dadosDefensor, paisAtacanteMock, paisDefensorMock, 1);
+
+        assertEquals("Uruguay", ganador.getNombre());
+
+    }
+
+    @Test
+    public void atacanteGanaGuerraConUnDado(){
+        Pais paisAtacanteMock = mock(Pais.class);
+        when(paisAtacanteMock.getNombre()).thenReturn("Argentina");
+        when(paisAtacanteMock.getEjercitoActual()).thenReturn(2);
+        Pais paisDefensorMock = mock(Pais.class);
+        when(paisDefensorMock.getNombre()).thenReturn("Uruguay");
+        when(paisDefensorMock.getEjercitoActual()).thenReturn(1);
+
+        List<GeneradorRandom> dadosAtacante = new ArrayList<>();
+        dadosAtacante.add(new DadoSeis());
+        List<GeneradorRandom> dadosDefensor = new ArrayList<>();
+        dadosDefensor.add(new DadoCero());
+        dadosDefensor.add(new DadoCero());
+
+        Pais ganador = batalla.obtenerVictoriosoDeGuerra(dadosAtacante,dadosDefensor,paisAtacanteMock,paisDefensorMock, 1);
+
+        assertEquals("Argentina", ganador.getNombre());
+
+    }
+
+    @Test
+    public void atacanteGanaGuerraConDosVictoriasYUnaDerrota(){
+        Pais paisAtacanteMock = mock(Pais.class);
+        when(paisAtacanteMock.getNombre()).thenReturn("Argentina");
+        when(paisAtacanteMock.getEjercitoActual()).thenReturn(4);
+        Pais paisDefensorMock = mock(Pais.class);
+        when(paisDefensorMock.getNombre()).thenReturn("Uruguay");
+        when(paisDefensorMock.getEjercitoActual()).thenReturn(2);
+
+        List<GeneradorRandom> dadosAtacante = new ArrayList<>();
+        dadosAtacante.add(new DadoCero());
+        dadosAtacante.add(new DadoSeis());
+        dadosAtacante.add(new DadoSeis());
+        List<GeneradorRandom> dadosDefensor = new ArrayList<>();
+        dadosDefensor.add(new DadoSeis());
+        dadosDefensor.add(new DadoCero());
+        dadosDefensor.add(new DadoCero());
+
+        Pais ganador = batalla.obtenerVictoriosoDeGuerra(dadosAtacante, dadosDefensor, paisAtacanteMock, paisDefensorMock, 1);
+
+        assertEquals("Argentina", ganador.getNombre());
+    }
+    @Test
+    public void atacanteGanaGuerraConDosVictoriasYUnEmpate(){
+        Pais paisAtacanteMock = mock(Pais.class);
+        when(paisAtacanteMock.getNombre()).thenReturn("Argentina");
+        when(paisAtacanteMock.getEjercitoActual()).thenReturn(4);
+        Pais paisDefensorMock = mock(Pais.class);
+        when(paisDefensorMock.getNombre()).thenReturn("Uruguay");
+        when(paisDefensorMock.getEjercitoActual()).thenReturn(2);
+
+        List<GeneradorRandom> dadosAtacante = new ArrayList<>();
+        dadosAtacante.add(new DadoSeis());
+        dadosAtacante.add(new DadoSeis());
+        dadosAtacante.add(new DadoSeis());
+        List<GeneradorRandom> dadosDefensor = new ArrayList<>();
+        dadosDefensor.add(new DadoCero());
+        dadosDefensor.add(new DadoSeis());
+        dadosDefensor.add(new DadoCero());
+
+        Pais ganador = batalla.obtenerVictoriosoDeGuerra(dadosAtacante, dadosDefensor, paisAtacanteMock, paisDefensorMock, 1);
+
+        assertEquals("Argentina", ganador.getNombre());
+    }
+
+
+
+
+
 
 }

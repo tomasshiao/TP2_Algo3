@@ -25,7 +25,7 @@ public class Batalla {
         this.victoriasAtacante++;
     }
 
-    public Pais obtenerPerdedorDeBatalla(Dado dadoAtacante, Dado dadoDefensor, Pais paisAtacante, Pais paisDefensor){
+    public Pais obtenerPerdedorDeBatalla(GeneradorRandom dadoAtacante, GeneradorRandom dadoDefensor, Pais paisAtacante, Pais paisDefensor){
         Pais perdedorDeBatalla = paisAtacante;
         if(dadoAtacante.getValor() > dadoDefensor.getValor()){
             perdedorDeBatalla = paisDefensor;
@@ -45,9 +45,7 @@ public class Batalla {
         }
         return(victoriosoDeGuerra);
     }
-    public Pais obtenerVictoriosoDeGuerra(Pais paisAtacante, Pais paisDefensor, int tropasParaAtacar){
-        List<Dado> dadosAtacante = obtenerDadosAtacante(paisAtacante, tropasParaAtacar);
-        List<Dado> dadosDefensor = obtenerDadosDefensor(paisDefensor);
+    public Pais obtenerVictoriosoDeGuerra(List<GeneradorRandom> dadosAtacante, List<GeneradorRandom> dadosDefensor, Pais paisAtacante, Pais paisDefensor, int tropasParaAtacar){
 
         while (!dadosAtacante.isEmpty() && !dadosDefensor.isEmpty()){
             Pais perdedorDeBatalla = this.obtenerPerdedorDeBatalla( dadosAtacante.remove(0), dadosDefensor.remove(0), paisAtacante, paisDefensor);
@@ -56,7 +54,7 @@ public class Batalla {
         }
         return(this.determinarVictoriosoDeGuerra(paisAtacante, paisDefensor));
     }
-
+/*
     public List<Dado> obtenerDadosAtacante(Pais pais, int tropasParaAtacar){
         List<Dado> dados = new ArrayList<>();
         int tropasEnPais = pais.getEjercitoActual();
@@ -95,5 +93,5 @@ public class Batalla {
     }
     public int getDadosParaTirarDefensor(){
         return dadosParaTirarDefensor;
-    }
+    }*/
 }
