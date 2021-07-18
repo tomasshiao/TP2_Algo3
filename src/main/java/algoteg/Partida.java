@@ -112,10 +112,10 @@ public class Partida {
         }
 
         if(cantidadPaises%cantidadTotalJugadores !=0){
-            Pais ultimoPais = paises.get(-1);
-            Pais anteultimoPais = paises.get(-2);
-            Jugador ultimoJugador = jugadores.get(-1);
-            Jugador anteultimoJugador = jugadores.get(-2);
+            Pais ultimoPais = paises.get(cantidadPaises-1);
+            Pais anteultimoPais = paises.get(cantidadPaises-2);
+            Jugador ultimoJugador = jugadores.get(cantidadTotalJugadores-1);
+            Jugador anteultimoJugador = jugadores.get(cantidadTotalJugadores-2);
             ultimoPais.setJugador(ultimoJugador);
             anteultimoPais.setJugador(anteultimoJugador);
             ultimoJugador.agregarPaisInicial(ultimoPais);
