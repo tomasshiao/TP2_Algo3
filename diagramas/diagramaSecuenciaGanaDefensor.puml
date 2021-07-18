@@ -1,0 +1,26 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+
+Partida -> Tablero: atacar(paisAtacante, paisDefensor, int tropasAtacantes)
+Tablero -> Batalla:  new
+
+Tablero -> Batalla: obtenerVictoriosoDeGuerra(Pais atacante, \n Pais defensor, int tropasAtacantes)
+activate Batalla
+Batalla --> Batalla: obtenerDadosAtacante(Pais atacante, int tropasAtacantes): List<Dado>
+
+Batalla --> Batalla: obtenerDadosDefensor(Pais defensor): List<Dado>
+loop  haya dados atacante y jugador
+
+    Batalla --> Batalla: obtenerPerdedorBatalla()
+    activate Batalla
+    Batalla --> Batalla: agregarVictoriaDefensor()
+end
+deactivate Batalla
+Batalla-->Batalla: determinarVictoriosoGuerra(Pais atacante, Pais defensor) : defensor
+Batalla--> Tablero: paisDenfesor
+deactivate Batalla
+Tablero -->Partida: paisDefensor
+
+@enduml

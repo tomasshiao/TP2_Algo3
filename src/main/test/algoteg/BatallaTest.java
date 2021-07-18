@@ -62,7 +62,7 @@ public class BatallaTest {
 
     }
     @Test
-    public void ganaDefensor(){
+    public void ganaDefensorPorqueAtacanteNoTieneTropasParaAtacar(){
 
         Pais paisAtacanteMock = mock(Pais.class);
         when(paisAtacanteMock.getNombre()).thenReturn("Argentina");
@@ -75,6 +75,38 @@ public class BatallaTest {
         Pais ganador = batalla.obtenerVictoriosoDeGuerra(paisAtacanteMock,paisDefensorMock, 1);
 
         assertEquals("Uruguay", ganador.getNombre());
+    }
+
+    @Test
+    public void ganaDefensor(){
+
+        Dado dadoAtacantemock = mock(Dado.class);
+        when(dadoAtacantemock.getValor()).thenReturn(1);
+
+        Dado dadoDefensormock = mock(Dado.class);
+        when(dadoDefensormock.getValor()).thenReturn(6);
+
+        List<Dado> dadosAtacante = new ArrayList<>();
+        dadosAtacante.add(dadoAtacantemock);
+        List<Dado> dadosDefensor = new ArrayList<>();
+        dadosDefensor.add(dadoDefensormock);
+        dadosDefensor.add(dadoDefensormock);
+
+        Pais paisDefensor = mock(Pais.class);
+        when(paisDefensor.getNombre()).thenReturn("Uruguay");
+        when(paisDefensor.getEjercitoActual()).thenReturn(1);
+
+        Pais paisAtacante = mock((Pais.class));
+        when(paisAtacante.getNombre()).thenReturn("Argentina");
+        when(paisAtacante.getEjercitoActual()).thenReturn(2);
+
+        Batalla batallaMock = mock(Batalla.class);
+        when(batallaMock.obtenerDadosDefensor(paisDefensor)).thenReturn(dadosDefensor);
+        when(batallaMock.obtenerDadosAtacante(paisAtacante, 1)).thenReturn(dadosAtacante);
+
+        Pais victorioso = batallaMock.obtenerVictoriosoDeGuerra(paisAtacante, paisDefensor, 1);
+
+        assertEquals("Uruguay", victorioso.getNombre());
     }
 
 

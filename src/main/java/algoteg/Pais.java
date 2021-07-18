@@ -54,4 +54,5 @@ public class Pais {
     public boolean esGobernante(String color){
         return (color.equals( jugador.getColor()));
     }
+
 }

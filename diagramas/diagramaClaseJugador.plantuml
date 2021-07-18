@@ -1,0 +1,31 @@
+@startuml
+skinparam classAttributeIconSize 0
+
+class Jugador{
+    +identificador: int 
+    +color: str 
+    +objetivos: Objetivo
+    +tarjetas: Tarjeta
+
+}
+
+class Pais{
+    +nombre: String
+    +cantidadEjercito: int
+    +paisesLimitrofes: Paises
+
+    
+
+    + ocupar(paisAAtacar) : void
+    + reducirTropas(numeroDeTropas) : void
+    + noTengoTropas() : boolean
+
+}
+
+
+
+
+Jugador -- Pais
+
+
+@enduml

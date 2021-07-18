@@ -1,5 +1,4 @@
 @startuml
-skinparam classAttributeIconSize 0
 
 
 class Tablero{
@@ -16,6 +15,7 @@ class Batalla{
 
 class Continente{
     +paises: Pais
+    +juagdor: Jugador
 }
 
 class Pais{
@@ -29,8 +29,9 @@ class Dado{
 
 Tablero *---> "5" Continente
 Tablero ---> Batalla
-Tablero <--> "1" Dado
-Tablero ---> "--*" Pais
+Batalla-->Dado
+Tablero ---> "..*" Pais
+
 
 
 

@@ -6,7 +6,6 @@ public class Tablero {
 
     private List<Continente> continentes;
     private List<Pais> paises;
-    private Dado dado;
 
     public Tablero(){
         Initialise init = new Initialise();
