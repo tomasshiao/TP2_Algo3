@@ -7,12 +7,15 @@ import algoteg.Pais;
 import java.util.*;
 
 public class InitializePaisesYContinentes {
-    public Map<String, Pais> mapaPaises = new HashMap<>();
-    public Map<String, List<Pais>> paisesPorContinentes;
-    public Map<String, List<String>> paisesLimitrofes;
-    public Jugador jugadorInvalido = new Jugador(-1, "INVALID");
-    public List<Pais> todosLosPaises = new ArrayList<>();
-    public List<Continente> todosLosContinentes = new ArrayList<>();
+    private Map<String, Pais> mapaPaises = new HashMap<>();
+    private Map<String, List<Pais>> paisesPorContinentes;
+    private Map<String, List<String>> paisesLimitrofes;
+
+    private Jugador jugadorInvalido = new Jugador(-1, "INVALID");
+
+    private List<Pais> todosLosPaises = new ArrayList<>();
+    private List<Continente> todosLosContinentes = new ArrayList<>();
+
     private final List<String> paisesDeAfrica = new ArrayList<>(Arrays.asList("Egipto", "Etiopia", "Madagascar", "Sahara", "Sudafrica", "Zaire"));
     private final List<String> paisesDeAmericaDelSur = new ArrayList<>(Arrays.asList("Argentina", "Brasil", "Chile", "Colombia", "Peru", "Uruguay"));
     private final List<String> paisesDeAmericaDelNorte = new ArrayList<>(Arrays.asList("Alaska", "California", "Canada", "Groenlandia", "Labrador", "Nueva York", "Mexico", "Oregon", "Terranova", "Yukon"));
@@ -77,13 +80,13 @@ public class InitializePaisesYContinentes {
         return paises;
     }
 
-    public Continente setContinente(Map<String, List<Pais>> mapaContinentes, String nombreContinente) {
+    private Continente setContinente(Map<String, List<Pais>> mapaContinentes, String nombreContinente) {
         Continente continente = new Continente(nombreContinente);
         continente.setPaises(mapaContinentes.get(nombreContinente));
         return continente;
     }
 
-    public void setTodosLosContinentes(Map<String, List<Pais>> mapaContinentes){
+    private void setTodosLosContinentes(Map<String, List<Pais>> mapaContinentes){
         this.todosLosContinentes.add(this.setContinente(mapaContinentes, "Africa"));
         this.todosLosContinentes.add(this.setContinente(mapaContinentes, "AmericaDelSur"));
         this.todosLosContinentes.add(this.setContinente(mapaContinentes, "AmericaDelNorte"));
@@ -147,7 +150,7 @@ public class InitializePaisesYContinentes {
         return paisesLimitrofes;
     }
 
-    public void setLimitrofes(List<Pais> todosLosPaises, Map<String, List<String>> mapaLimitrofes, Map<String, Pais> mapPaises){
+    private void setLimitrofes(List<Pais> todosLosPaises, Map<String, List<String>> mapaLimitrofes, Map<String, Pais> mapPaises){
         
         for(Pais p: todosLosPaises) {
             List<Pais> paisesLimitrofes = new ArrayList<>();

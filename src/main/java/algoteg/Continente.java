@@ -14,7 +14,6 @@ public class Continente {
         this.nombre = nombreContinente;
     }
 
-
     public void setPaises(List<Pais> listaPaises) {
         this.paises = listaPaises;
     }
@@ -27,7 +26,6 @@ public class Continente {
         return (jugador.getColor().equals(colorGobernante));
     }
 
-
     public List<Pais> getConquistadosPor(String colorGobernante) {
         List<Pais> paisesGobernados = new ArrayList<>();
         for (Pais pais : paises) {
@@ -36,5 +34,21 @@ public class Continente {
             }
         }
         return paisesGobernados;
+    }
+
+    public String getNombre(){
+        return this.nombre;
+    }
+
+    public List<Pais> getPaises(){
+        return this.paises;
+    }
+
+    public Pais getPais(String nombrePais){
+        for(Pais p: this.getPaises())
+            if(p.getNombre().equals(nombrePais))
+                return p;
+        return null;
+        //implementar "paisNoEncontradoError"
     }
 }

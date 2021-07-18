@@ -30,8 +30,6 @@ public class Partida {
         if (cantidadTotalJugadores <= 6)
             this.cantidadTotalJugadores = cantidadTotalJugadores;
         else this.cantidadTotalJugadores = 6;
-
-
     }
 
     public void agregarJugador(Jugador unJugador) {
