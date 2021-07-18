@@ -12,10 +12,7 @@ import java.util.Collections;
 import java.util.List;
 
 import javafx.print.Collation;
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
-import org.json.simple.parser.ParseException;
+
 
 public class Partida {
 
@@ -67,6 +64,7 @@ public class Partida {
     public void iniciarPartida(){
         List<Pais> paises = this.iniciarPaisesYContinentes();
         this.iniciarTarjetas(paises);
+        this.iniciarObjetivos(paises);
         boolean hayGanador = true;
         while(!hayGanador){
             hayGanador = iniciarRonda().esGanador();
@@ -121,6 +119,8 @@ public class Partida {
             ultimoJugador.agregarPaisInicial(ultimoPais);
             anteultimoJugador.agregarPaisInicial(anteultimoPais);
         }
+
     }
+    public void iniciarObjetivos(List<Pais> paises){}
 
 }
