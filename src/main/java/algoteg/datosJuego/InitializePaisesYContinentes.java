@@ -1,8 +1,12 @@
-package algoteg;
+package algoteg.datosJuego;
+
+import algoteg.Continente;
+import algoteg.Jugador;
+import algoteg.Pais;
 
 import java.util.*;
 
-public class Initialise {
+public class InitializePaisesYContinentes {
     public Map<String, Pais> mapaPaises = new HashMap<>();
     public Map<String, List<Pais>> paisesPorContinentes;
     public Map<String, List<String>> paisesLimitrofes;
@@ -159,7 +163,7 @@ public class Initialise {
         
     }
 
-    public Initialise(){
+    public InitializePaisesYContinentes(){
         this.paisesPorContinentes = this.setPaises();
         this.paisesLimitrofes = this.setPaisesLimitrofes();
         this.setTodosLosContinentes(paisesPorContinentes);

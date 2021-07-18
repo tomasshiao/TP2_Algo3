@@ -76,4 +76,5 @@ public class BatallaTest {
 
         assertEquals("Uruguay", ganador.getNombre());
     }
+
 }

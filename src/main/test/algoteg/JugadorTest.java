@@ -2,6 +2,9 @@ package algoteg;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import static org.mockito.Mockito.mock;
@@ -227,5 +230,39 @@ public class JugadorTest {
         jugador1.canjearTarjetas(tarjetaMock, tarjetaMock, tarjetaMock);
 
         assertEquals(36, jugador1.getEjercitoParaIncorporar());
+    }
+
+    @Test
+    public void partidaLeAsignaNueveCartasAlSextoJugador(){
+        List<String> colores = List.of("azul", "rojo", "rosa", "naranja","verde","negro");
+        int cantidadTotalDeJugadores =6;
+        Partida partida = new Partida(cantidadTotalDeJugadores);
+        List<Jugador> jugadores = new ArrayList<>();
+        for(int i = 0; i<cantidadTotalDeJugadores; i++){
+            jugadores.add(new Jugador(i, colores.get(i)));
+        }
+        jugadores.forEach(jugador -> partida.agregarJugador(jugador));
+
+        partida.iniciarPartida();
+        int paisesConquistados = jugadores.get(5).getCantidadPaisesConquistados();
+
+        assertEquals(9, paisesConquistados);
+    }
+
+    @Test
+    public void partidaLeAsignaOchoCartasAlPrimerJugador(){
+        List<String> colores = List.of("azul", "rojo", "rosa", "naranja","verde","negro");
+        int cantidadTotalDeJugadores =6;
+        Partida partida = new Partida(cantidadTotalDeJugadores);
+        List<Jugador> jugadores = new ArrayList<>();
+        for(int i = 0; i<cantidadTotalDeJugadores; i++){
+            jugadores.add(new Jugador(i, colores.get(i)));
+        }
+        jugadores.forEach(jugador -> partida.agregarJugador(jugador));
+
+        partida.iniciarPartida();
+        int paisesConquistados = jugadores.get(0).getCantidadPaisesConquistados();
+
+        assertEquals(8, paisesConquistados);
     }
 }

@@ -1,4 +1,6 @@
 package algoteg;
+import algoteg.datosJuego.InitializePaisesYContinentes;
+import algoteg.datosJuego.InitializeTarjetas;
 
 import java.io.BufferedReader;
 import java.nio.charset.StandardCharsets;
@@ -6,8 +8,10 @@ import java.util.ArrayList;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.Collections;
 import java.util.List;
 
+import javafx.print.Collation;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -19,7 +23,7 @@ public class Partida {
     private int cantidadJugadoresActuales;
     private final int cantidadMaximaDeJugadoresPermitidos = 6;
     private ArrayList<Jugador> jugadores = new ArrayList<>();
-    private List<Tarjeta> tarjetas;
+    private Tablero tablero = new Tablero();
     private List<Objetivo> objetivos;
     private int ronda;
 
@@ -29,7 +33,8 @@ public class Partida {
         if (cantidadTotalJugadores <= 6)
             this.cantidadTotalJugadores = cantidadTotalJugadores;
         else this.cantidadTotalJugadores = 6;
-        this.tarjetas = this.iniciarTarjetas();
+
+
     }
 
     public void agregarJugador(Jugador unJugador) {
@@ -60,55 +65,62 @@ public class Partida {
     }
 
     public void iniciarPartida(){
-        boolean hayGanador = false;
+        List<Pais> paises = this.iniciarPaisesYContinentes();
+        this.iniciarTarjetas(paises);
+        boolean hayGanador = true;
         while(!hayGanador){
             hayGanador = iniciarRonda().esGanador();
         }
     }
 
-    //Crea las tarjetas y las pone en una lista
-    private List<Tarjeta> iniciarTarjetas(){
-        JSONParser jsonParser = new JSONParser();
-        List<Tarjeta> tarjetas = new ArrayList<>();
 
+    private List<Pais> iniciarPaisesYContinentes(){
+        InitializePaisesYContinentes init = new InitializePaisesYContinentes();
+        this.tablero.setContinentes(init.getTodosLosContinentes());
+        this.tablero.setPaises(init.getTodosLosPaises());
+        repartirPaises(init.getTodosLosPaises());
+        return init.getTodosLosPaises();
+    }
 
+    private void iniciarTarjetas(List<Pais> paises) {
+        InitializeTarjetas init = new InitializeTarjetas(paises);
+        List<Tarjeta> tarjetas  = init.getTodasLasTarjetas();
+        Collections.shuffle(tarjetas);
+        this.repartirTarjetas(tarjetas);
+    }
 
-        try (FileReader fr = new FileReader("D:\\DOCUMENTOS\\FACULTAD\\ALGO3\\TP2\\TP2_Algo3_TEG\\src\\main\\java\\algoteg\\datosJuego\\Teg - Cartas.json", StandardCharsets.UTF_8);
-             BufferedReader reader = new BufferedReader(fr))         {
-            Object obj = jsonParser.parse(reader);
+    private void repartirTarjetas(List<Tarjeta> tarjetas){
+        int i = 0;
+        for( Jugador jugador: jugadores){
 
-            JSONArray listaTarjetas = (JSONArray) obj;
+            jugador.setTarjetas(tarjetas.subList(i, i+3));
+            i++;
 
+        }
+    }
 
-
-            listaTarjetas.forEach( tarjeta -> tarjetas.add(parseListaTarjetas( (JSONObject) tarjeta )) );
-
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }catch (ParseException e) {
-            e.printStackTrace();
+    private void repartirPaises(List<Pais> paises){
+        Collections.shuffle(paises);  //mezcla paises
+        int cantidadPaises = 50;
+        int cantidadCartas = cantidadPaises/cantidadTotalJugadores;
+        int i = 0;
+        for(Jugador jugador: this.jugadores){
+            List<Pais> paisesDeJugador = paises.subList(i,i+cantidadCartas);
+            i+=cantidadCartas;
+            paisesDeJugador.forEach(pais -> pais.setJugador(jugador)); //agrego jugador como gobernante del pais
+            jugador.setPaises(paisesDeJugador);
         }
 
-
-
-        return(tarjetas);
-
+        if(cantidadPaises%cantidadTotalJugadores !=0){
+            Pais ultimoPais = paises.get(cantidadPaises-1);
+            Pais anteultimoPais = paises.get(cantidadPaises-2);
+            Jugador ultimoJugador = jugadores.get(cantidadTotalJugadores-1);
+            Jugador anteultimoJugador = jugadores.get(cantidadTotalJugadores-2);
+            ultimoPais.setJugador(ultimoJugador);
+            anteultimoPais.setJugador(anteultimoJugador);
+            ultimoJugador.agregarPaisInicial(ultimoPais);
+            anteultimoJugador.agregarPaisInicial(anteultimoPais);
+        }
     }
 
-
-    private static Tarjeta parseListaTarjetas(JSONObject tarjeta)
-    {
-
-        //Get employee first name
-        String pais = (String) tarjeta.get("Pais");
-
-
-        //Get employee last name
-        String simbolo = (String) tarjeta.get("Simbolo");
-
-
-        return(new Tarjeta(pais,simbolo));
-    }
 }
