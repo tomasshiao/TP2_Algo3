@@ -28,5 +28,13 @@ public class Continente {
     }
 
 
-
+    public List<Pais> getConquistadosPor(String colorGobernante) {
+        List<Pais> paisesGobernados = new ArrayList<>();
+        for (Pais pais : paises) {
+            if(pais.esGobernadoPor(colorGobernante)) {
+                paisesGobernados.add(pais);
+            }
+        }
+        return paisesGobernados;
+    }
 }

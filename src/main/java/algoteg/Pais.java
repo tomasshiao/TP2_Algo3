@@ -51,8 +51,9 @@ public class Pais {
         paisDefensor.conquistar(this.jugador);
     }
 
-    public boolean esGobernante(String color){
-        return (color.equals( jugador.getColor()));
-    }
 
+
+    public boolean esGobernadoPor(String colorGobernante) {
+        return (jugador.getColor().equals(colorGobernante));
+    }
 }
