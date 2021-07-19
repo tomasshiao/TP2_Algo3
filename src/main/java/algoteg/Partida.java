@@ -20,6 +20,7 @@ public class Partida {
     private int cantidadJugadoresActuales;
     private final int cantidadMaximaDeJugadoresPermitidos = 6;
     private ArrayList<Jugador> jugadores = new ArrayList<>();
+    private List<Tarjeta> tarjetas = new ArrayList<>();
     private Tablero tablero = new Tablero();
     private List<Objetivo> objetivos;
     private int ronda;
@@ -82,7 +83,7 @@ public class Partida {
         InitializeTarjetas init = new InitializeTarjetas(paises);
         List<Tarjeta> tarjetas  = init.getTodasLasTarjetas();
         Collections.shuffle(tarjetas);
-        this.repartirTarjetas(tarjetas);
+        this.tarjetas = tarjetas;
     }
 
     private void repartirTarjetas(List<Tarjeta> tarjetas){

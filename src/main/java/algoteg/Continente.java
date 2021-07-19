@@ -8,7 +8,7 @@ public class Continente {
 
     List<Pais> paises;
     String nombre;
-    Jugador jugador;
+    Jugador gobernante;
 
     public Continente(String nombreContinente){
         this.nombre = nombreContinente;
@@ -18,18 +18,18 @@ public class Continente {
         this.paises = listaPaises;
     }
 
-    public void setJugador(Jugador jugador){
-        this.jugador = jugador;
+    public void setGobernante(Jugador jugador){
+        this.gobernante = jugador;
     }
 
-    public boolean esGobernante(String colorGobernante){
-        return (jugador.getColor().equals(colorGobernante));
+    public boolean esGobernante(Jugador jugador){
+        return (gobernante.equals(jugador));
     }
 
-    public List<Pais> getConquistadosPor(String colorGobernante) {
+    public List<Pais> getConquistadosPor(Jugador jugador) {
         List<Pais> paisesGobernados = new ArrayList<>();
         for (Pais pais : paises) {
-            if(pais.esGobernadoPor(colorGobernante)) {
+            if(pais.esGobernadoPor(jugador)) {
                 paisesGobernados.add(pais);
             }
         }

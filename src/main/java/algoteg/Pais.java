@@ -6,17 +6,17 @@ public class Pais {
 
     String nombre;
     int cantidadEjercito;
-    Jugador jugador;
+    Jugador gobernante;
     List<Pais> paisesLimitrofes;
 
-    public Pais(String nombre, Jugador ocupante){
+    public Pais(String nombre, Jugador jugador){
         this.nombre = nombre;
-        this.jugador = ocupante;
+        this.gobernante = jugador;
         cantidadEjercito = 0;
     }
 
     public void setJugador(Jugador jugador){
-        this.jugador = jugador;
+        this.gobernante = jugador;
     }
 
     public void setPaisesLimitrofes(List<Pais> listaPaises) {
@@ -48,12 +48,12 @@ public class Pais {
     }
 
     public void ocupar(Pais paisDefensor){
-        paisDefensor.conquistar(this.jugador);
+        paisDefensor.conquistar(this.gobernante);
     }
 
 
 
-    public boolean esGobernadoPor(String colorGobernante) {
-        return (jugador.getColor().equals(colorGobernante));
+    public boolean esGobernadoPor(Jugador jugador) {
+        return (gobernante.equals(jugador));
     }
 }
