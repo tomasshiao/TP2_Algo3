@@ -86,16 +86,6 @@ public class Partida {
         this.tarjetas = tarjetas;
     }
 
-    private void repartirTarjetas(List<Tarjeta> tarjetas){
-        int i = 0;
-        for( Jugador jugador: jugadores){
-
-            jugador.setTarjetas(tarjetas.subList(i, i+3));
-            i++;
-
-        }
-    }
-
     private void repartirPaises(List<Pais> paises){
         Collections.shuffle(paises);  //mezcla paises
         int cantidadPaises = 50;
