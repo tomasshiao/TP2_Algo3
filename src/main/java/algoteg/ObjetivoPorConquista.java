@@ -3,9 +3,11 @@ package algoteg;
 import java.util.*;
 
 public class ObjetivoPorConquista implements Objetivo {
-    Map<Continente,Integer> mapaContinenteYCantidadPaises = new HashMap<>();
-    Jugador jugador;
-    String colorGobernante;
+    private Map<Continente,Integer> mapaContinenteYCantidadPaises = new HashMap<>();
+    private Jugador jugador;
+    private String colorGobernante;
+    private String mensajeObjetivo;
+
     public  ObjetivoPorConquista(List<Continente> continentes, List<Integer> paisesConquistados){
 
         for(int i = 0; i< continentes.size(); i++){
@@ -34,6 +36,14 @@ public class ObjetivoPorConquista implements Objetivo {
         return cumplido;
     }
 
+    public void setMensajeObjetivo(String mensaje){
+        this.mensajeObjetivo = mensaje;
+    }
+
+    @Override
+    public String verObjetivo() {
+        return this.mensajeObjetivo;
+    }
 
     private Integer obtenerCantidadPaisesConquistadosDelContinente(Continente continente) {
         List<Pais> paisesConquistadosDelContinente = continente.getConquistadosPor( colorGobernante);

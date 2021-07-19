@@ -13,6 +13,7 @@ public class ObjetivoPorDestruccionTest {
     Jugador jugador3 = new Jugador(3, "rojo");
     ArrayList<Jugador> listaJugadores = new ArrayList<>();
     Pais paisMock = mock(Pais.class);
+    Partida partida = new Partida(3);
 
     @Test
     public void jugadorAzulTieneQueDestruirARojoYCumpleSuObjetivo(){
@@ -60,4 +61,5 @@ public class ObjetivoPorDestruccionTest {
 
         assertEquals("azul", objetivo.getColorADestruir());
     }
+
 }

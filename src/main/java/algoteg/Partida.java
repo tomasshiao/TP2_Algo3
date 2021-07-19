@@ -3,16 +3,12 @@ import algoteg.datosJuego.InitializePaisesYContinentes;
 import algoteg.datosJuego.InitializeTarjetas;
 
 import java.io.BufferedReader;
-import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
-
-import javafx.print.Collation;
-
 
 public class Partida {
 
@@ -21,8 +17,9 @@ public class Partida {
     private final int cantidadMaximaDeJugadoresPermitidos = 6;
     private ArrayList<Jugador> jugadores = new ArrayList<>();
     private Tablero tablero = new Tablero();
-    private List<Objetivo> objetivos;
+    private List<Objetivo> objetivos = new ArrayList<>();
     private int ronda;
+    public static final String SEPARADOR = ",";
 
     public Partida(int cantidadTotalJugadores) {
         cantidadJugadoresActuales = 0;
@@ -30,6 +27,7 @@ public class Partida {
         if (cantidadTotalJugadores <= 6)
             this.cantidadTotalJugadores = cantidadTotalJugadores;
         else this.cantidadTotalJugadores = 6;
+        inicializarObjetivos();
     }
 
     public void agregarJugador(Jugador unJugador) {
@@ -44,13 +42,15 @@ public class Partida {
         return cantidadJugadoresActuales;
     }
 
-    private void pasarRonda(){ this.ronda++;}
+    private void pasarRonda() {
+        this.ronda++;
+    }
 
-    private Jugador iniciarRonda(){
+    private Jugador iniciarRonda() {
         int i = 0;
-        int posicionGanador = i-1;
+        int posicionGanador = i - 1;
         boolean hayGanador = false;
-        while(!hayGanador & i < cantidadTotalJugadores){
+        while (!hayGanador & i < cantidadTotalJugadores) {
             //acciones jugador
             hayGanador = jugadores.get(i).esGanador();
             i++;
@@ -59,18 +59,18 @@ public class Partida {
         return jugadores.get(posicionGanador);
     }
 
-    public void iniciarPartida(){
+    public void iniciarPartida() {
         List<Pais> paises = this.iniciarPaisesYContinentes();
         this.iniciarTarjetas(paises);
-        this.iniciarObjetivos(paises);
+//        this.iniciarObjetivos(paises);
         boolean hayGanador = true;
-        while(!hayGanador){
+        while (!hayGanador) {
             hayGanador = iniciarRonda().esGanador();
         }
     }
 
 
-    private List<Pais> iniciarPaisesYContinentes(){
+    private List<Pais> iniciarPaisesYContinentes() {
         InitializePaisesYContinentes init = new InitializePaisesYContinentes();
         this.tablero.setContinentes(init.getTodosLosContinentes());
         this.tablero.setPaises(init.getTodosLosPaises());
@@ -80,38 +80,38 @@ public class Partida {
 
     private void iniciarTarjetas(List<Pais> paises) {
         InitializeTarjetas init = new InitializeTarjetas(paises);
-        List<Tarjeta> tarjetas  = init.getTodasLasTarjetas();
+        List<Tarjeta> tarjetas = init.getTodasLasTarjetas();
         Collections.shuffle(tarjetas);
         this.repartirTarjetas(tarjetas);
     }
 
-    private void repartirTarjetas(List<Tarjeta> tarjetas){
+    private void repartirTarjetas(List<Tarjeta> tarjetas) {
         int i = 0;
-        for( Jugador jugador: jugadores){
+        for (Jugador jugador : jugadores) {
 
-            jugador.setTarjetas(tarjetas.subList(i, i+3));
+            jugador.setTarjetas(tarjetas.subList(i, i + 3));
             i++;
 
         }
     }
 
-    private void repartirPaises(List<Pais> paises){
+    private void repartirPaises(List<Pais> paises) {
         Collections.shuffle(paises);  //mezcla paises
         int cantidadPaises = 50;
-        int cantidadCartas = cantidadPaises/cantidadTotalJugadores;
+        int cantidadCartas = cantidadPaises / cantidadTotalJugadores;
         int i = 0;
-        for(Jugador jugador: this.jugadores){
-            List<Pais> paisesDeJugador = paises.subList(i,i+cantidadCartas);
-            i+=cantidadCartas;
+        for (Jugador jugador : this.jugadores) {
+            List<Pais> paisesDeJugador = paises.subList(i, i + cantidadCartas);
+            i += cantidadCartas;
             paisesDeJugador.forEach(pais -> pais.setJugador(jugador)); //agrego jugador como gobernante del pais
             jugador.setPaises(paisesDeJugador);
         }
 
-        if(cantidadPaises%cantidadTotalJugadores !=0){
-            Pais ultimoPais = paises.get(cantidadPaises-1);
-            Pais anteultimoPais = paises.get(cantidadPaises-2);
-            Jugador ultimoJugador = jugadores.get(cantidadTotalJugadores-1);
-            Jugador anteultimoJugador = jugadores.get(cantidadTotalJugadores-2);
+        if (cantidadPaises % cantidadTotalJugadores != 0) {
+            Pais ultimoPais = paises.get(cantidadPaises - 1);
+            Pais anteultimoPais = paises.get(cantidadPaises - 2);
+            Jugador ultimoJugador = jugadores.get(cantidadTotalJugadores - 1);
+            Jugador anteultimoJugador = jugadores.get(cantidadTotalJugadores - 2);
             ultimoPais.setJugador(ultimoJugador);
             anteultimoPais.setJugador(anteultimoJugador);
             ultimoJugador.agregarPaisInicial(ultimoPais);
@@ -119,6 +119,50 @@ public class Partida {
         }
 
     }
-    public void iniciarObjetivos(List<Pais> paises){}
+
+//    public void iniciarObjetivos(List<Pais> paises) {
+//    }
+
+    private void inicializarObjetivos(){
+        ArrayList<String[]> lineaObjetivo;
+        lineaObjetivo = readCsvArchive();
+        for(String[] obj: lineaObjetivo)
+            if(obj[0].equals("Destruccion"))
+                agregarObjetivoDeDestruccion(obj);
+    }
+
+    private void agregarObjetivoDeDestruccion(String[] obj) {
+        String colorADestruir = obj[1];
+        Objetivo objetivo = new ObjetivoPorDestruccion(colorADestruir, this.jugadores);
+        objetivo.setMensajeObjetivo(obj[2]);
+        this.objetivos.add(objetivo);
+    }
+
+    private ArrayList<String[]> readCsvArchive() {
+        ArrayList<String[]> listaObjetivos = new ArrayList<>();
+        BufferedReader bufferLectura = null;
+        try {
+            bufferLectura = new BufferedReader(new FileReader("src/main/java/algoteg/datosJuego/listaObjetivos.csv"));
+
+            String linea = bufferLectura.readLine();
+
+            while (linea != null) {
+                String[] campos = linea.split(SEPARADOR);
+                listaObjetivos.add(campos);
+                linea = bufferLectura.readLine();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            if (bufferLectura != null) {
+                try {
+                    bufferLectura.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+        return listaObjetivos;
+    }
 
 }

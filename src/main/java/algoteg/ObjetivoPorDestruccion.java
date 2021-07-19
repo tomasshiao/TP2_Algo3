@@ -8,6 +8,7 @@ public class ObjetivoPorDestruccion implements Objetivo {
     private ArrayList<Jugador> listaJugadores;
     private String colorADestruir;
     private Jugador jugador;
+    private String mensajeObjetivo;
     
     public ObjetivoPorDestruccion(String color, ArrayList<Jugador> listaJugadores){
         this.colorADestruir = color;
@@ -19,6 +20,17 @@ public class ObjetivoPorDestruccion implements Objetivo {
         this.jugador = jugador;
     }
 
+    //Mensaje que se muestra al jugador para que conozca su objetivo
+    @Override
+    public void setMensajeObjetivo(String mensaje){
+        this.mensajeObjetivo = mensaje;
+    }
+
+    @Override
+    public String verObjetivo() {
+        return this.mensajeObjetivo;
+    }
+
     public Jugador getJugador(){
         return this.jugador;
     }
@@ -27,6 +39,7 @@ public class ObjetivoPorDestruccion implements Objetivo {
         return this.colorADestruir;
     }
 
+    //Segun el objetivo y la cantidad de jugadores, se verifica cual es el ejercito que se debe deestruir
     private String determinarColorADestruir(){
         for(Jugador jugador: listaJugadores)
             if(!jugador.getColor().contains(this.colorADestruir)){
@@ -37,6 +50,7 @@ public class ObjetivoPorDestruccion implements Objetivo {
         return this.colorADestruir;
     }
 
+    //Devuelve el jugador que tiene un turno siguiente al actual
     private int nextId(int id){
         int cantidadJugadores = listaJugadores.size();
         int idADestruir = id+1;
@@ -47,6 +61,7 @@ public class ObjetivoPorDestruccion implements Objetivo {
         return idADestruir;
     }
 
+    //Por medio de el id del jugador, determina cual es el color que corresponde al mismo
     private String buscarColorPorId(int idADestruir){
         String colorADestruir = "";
         for(Jugador jugador: listaJugadores)
