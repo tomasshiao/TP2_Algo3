@@ -2,6 +2,8 @@ package algoteg;
 
 public interface Objetivo {
 
-    public boolean cumplido();
-    public void setJugador(Jugador jugador);
+    boolean cumplido();
+    void setJugador(Jugador jugador);
+    String verObjetivo();
+    void setMensajeObjetivo(String mensajeObjetivo);
 }
