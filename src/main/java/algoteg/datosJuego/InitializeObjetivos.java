@@ -29,12 +29,34 @@ public class InitializeObjetivos {
         for(String[] obj: lineaObjetivo)
             if(obj[0].equals("Destruccion"))
                 agregarObjetivoDeDestruccion(obj);
+            else if(obj[0].equals("Conquista"))
+                agregarObjetivoDeConquista(obj);
+            //implementar error objetivo no valido
+    }
+
+    private void agregarObjetivoDeConquista(String[] obj){
+        Map<Continente, Integer> paisesAConquistar = new HashMap<>();
+        for(int i=1; i<(obj.length-2);i+=2){
+            if(!obj[i].equals("limitrofes")) {
+                Continente continente = tablero.getContinente(obj[i]);
+                int cantidadAConquistar = Integer.parseInt(String.valueOf(obj[i + 1]));
+                paisesAConquistar.put(continente,cantidadAConquistar);
+            }
+            //accion requerida para agregar objetivo de limitrofes
+        }
+
+        Objetivo objetivo = new ObjetivoDeConquista(paisesAConquistar);
+        int finalArray = obj.length-1;    //accede a la ultima posicion del array
+        objetivo.setMensajeObjetivo(obj[finalArray]);
+        this.objetivos.add(objetivo);
+
     }
 
     private void agregarObjetivoDeDestruccion(String[] obj) {
         String colorADestruir = obj[1];
-        Objetivo objetivo = new ObjetivoPorDestruccion(colorADestruir, this.jugadores);
-        objetivo.setMensajeObjetivo(obj[2]);
+        Objetivo objetivo = new ObjetivoDeDestruccion(colorADestruir, this.jugadores);
+        int finalArray = obj.length-1;    //accede a la ultima posicion del array
+        objetivo.setMensajeObjetivo(obj[finalArray]);
         this.objetivos.add(objetivo);
     }
 

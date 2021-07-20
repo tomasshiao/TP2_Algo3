@@ -3,14 +3,14 @@ package algoteg;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ObjetivoPorDestruccion implements Objetivo {
+public class ObjetivoDeDestruccion implements Objetivo {
     private List<Pais> paisesConquistados;
     private ArrayList<Jugador> listaJugadores;
     private String colorADestruir;
     private Jugador jugador;
     private String mensajeObjetivo;
     
-    public ObjetivoPorDestruccion(String color, ArrayList<Jugador> listaJugadores){
+    public ObjetivoDeDestruccion(String color, ArrayList<Jugador> listaJugadores){
         this.colorADestruir = color;
         this.listaJugadores = listaJugadores;
     }
