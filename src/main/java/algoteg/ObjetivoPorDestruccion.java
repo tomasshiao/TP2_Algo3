@@ -26,17 +26,16 @@ public class ObjetivoPorDestruccion implements Objetivo {
         this.mensajeObjetivo = mensaje;
     }
 
-    @Override
-    public String verObjetivo() {
-        return this.mensajeObjetivo;
-    }
-
     public Jugador getJugador(){
         return this.jugador;
     }
 
     public String getColorADestruir(){
         return this.colorADestruir;
+    }
+
+    public String getMensajeObjetivo(){
+        return this.mensajeObjetivo;
     }
 
     //Segun el objetivo y la cantidad de jugadores, se verifica cual es el ejercito que se debe deestruir

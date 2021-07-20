@@ -31,17 +31,16 @@ public class ObjetivoPorConquista implements Objetivo {
             int paisesConquistadosDelContinente  = this.obtenerCantidadPaisesConquistadosDelContinente(continente);
             cumplido = paisesConquistadosDelContinente == cantPaisesNecesarios;
         }
-
-
         return cumplido;
     }
 
+    @Override
     public void setMensajeObjetivo(String mensaje){
         this.mensajeObjetivo = mensaje;
     }
 
     @Override
-    public String verObjetivo() {
+    public String getMensajeObjetivo(){
         return this.mensajeObjetivo;
     }
 
