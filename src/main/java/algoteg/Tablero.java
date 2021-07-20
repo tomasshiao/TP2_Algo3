@@ -24,4 +24,12 @@ public class Tablero {
         batalla.obtenerVictoriosoDeGuerra(dadosAtacante, dadosDefensor, paisAtacante, paisDefensor, numeroTropas);
     }
 
+    public Continente getContinente(String nombreContinente) {
+        for(Continente c: this.continentes){
+            String nombre = c.getNombre().toLowerCase();
+            if(nombre.equals(nombreContinente))
+                return c;
+        }
+        return null;//implementar continente no encontrado error
+    }
 }

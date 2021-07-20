@@ -94,6 +94,10 @@ public class Jugador {
         paisesConquistados.add(pais);
     }
 
+    public List<Pais> getPaisesConquistados(){
+        return this.paisesConquistados;
+    }
+
 
     private int calcluarEjercitoSegunCanjes(){
         int ejercitoAIncorporar;

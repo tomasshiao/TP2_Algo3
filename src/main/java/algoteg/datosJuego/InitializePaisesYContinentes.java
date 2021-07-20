@@ -72,8 +72,8 @@ public class InitializePaisesYContinentes {
     private Map<String, List<Pais>> setPaises(){
         Map<String, List<Pais>> paises = new HashMap<>();
         paises.put("Africa", this.setPaisesAfrica(paisesDeAfrica, this.jugadorInvalido));
-        paises.put("AmericaDelSur", this.setPaisesAmericaDelSur(paisesDeAmericaDelSur, this.jugadorInvalido));
-        paises.put("AmericaDelNorte", this.setPaisesAmericaDelNorte(paisesDeAmericaDelNorte, this.jugadorInvalido));
+        paises.put("America Del Sur", this.setPaisesAmericaDelSur(paisesDeAmericaDelSur, this.jugadorInvalido));
+        paises.put("America Del Norte", this.setPaisesAmericaDelNorte(paisesDeAmericaDelNorte, this.jugadorInvalido));
         paises.put("Asia", this.setPaisesAsia(paisesDeAsia, this.jugadorInvalido));
         paises.put("Europa", this.setPaisesEuropa(paisesDeEuropa, this.jugadorInvalido));
         paises.put("Oceania", this.setPaisesOceania(paisesDeOceania, this.jugadorInvalido));
@@ -88,8 +88,8 @@ public class InitializePaisesYContinentes {
 
     private void setTodosLosContinentes(Map<String, List<Pais>> mapaContinentes){
         this.todosLosContinentes.add(this.setContinente(mapaContinentes, "Africa"));
-        this.todosLosContinentes.add(this.setContinente(mapaContinentes, "AmericaDelSur"));
-        this.todosLosContinentes.add(this.setContinente(mapaContinentes, "AmericaDelNorte"));
+        this.todosLosContinentes.add(this.setContinente(mapaContinentes, "America Del Sur"));
+        this.todosLosContinentes.add(this.setContinente(mapaContinentes, "America Del Norte"));
         this.todosLosContinentes.add(this.setContinente(mapaContinentes, "Asia"));
         this.todosLosContinentes.add(this.setContinente(mapaContinentes, "Europa"));
         this.todosLosContinentes.add(this.setContinente(mapaContinentes, "Oceania"));
@@ -179,7 +179,5 @@ public class InitializePaisesYContinentes {
     public List<Pais> getTodosLosPaises(){
         return this.todosLosPaises;
     }
-
-
 
 }

@@ -25,7 +25,6 @@ public class Partida {
         cantidadJugadoresActuales = 0;
         ronda = 0;
         this.cantidadTotalJugadores = Math.min(cantidadTotalJugadores, 6);
-        inicializarObjetivos();
     }
 
     public void agregarJugador(Jugador unJugador) {
@@ -60,7 +59,7 @@ public class Partida {
     public void iniciarPartida() {
         List<Pais> paises = this.iniciarPaisesYContinentes();
         this.iniciarTarjetas(paises);
-//        this.iniciarObjetivos(paises);
+        inicializarObjetivos();
         boolean hayGanador = true;
         while (!hayGanador) {
             hayGanador = iniciarRonda().esGanador();
