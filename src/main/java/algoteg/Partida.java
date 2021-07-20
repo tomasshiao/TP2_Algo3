@@ -1,4 +1,5 @@
 package algoteg;
+import algoteg.datosJuego.InitializeObjetivos;
 import algoteg.datosJuego.InitializePaisesYContinentes;
 import algoteg.datosJuego.InitializeTarjetas;
 
@@ -19,14 +20,11 @@ public class Partida {
     private Tablero tablero = new Tablero();
     private List<Objetivo> objetivos = new ArrayList<>();
     private int ronda;
-    public static final String SEPARADOR = ",";
 
     public Partida(int cantidadTotalJugadores) {
         cantidadJugadoresActuales = 0;
         ronda = 0;
-        if (cantidadTotalJugadores <= 6)
-            this.cantidadTotalJugadores = cantidadTotalJugadores;
-        else this.cantidadTotalJugadores = 6;
+        this.cantidadTotalJugadores = Math.min(cantidadTotalJugadores, 6);
         inicializarObjetivos();
     }
 
@@ -120,49 +118,12 @@ public class Partida {
 
     }
 
-//    public void iniciarObjetivos(List<Pais> paises) {
-//    }
-
     private void inicializarObjetivos(){
-        ArrayList<String[]> lineaObjetivo;
-        lineaObjetivo = readCsvArchive();
-        for(String[] obj: lineaObjetivo)
-            if(obj[0].equals("Destruccion"))
-                agregarObjetivoDeDestruccion(obj);
+        InitializeObjetivos initObjetivos = new InitializeObjetivos(this.jugadores, this.tablero);
+        this.objetivos = initObjetivos.getObjetivos();
     }
 
-    private void agregarObjetivoDeDestruccion(String[] obj) {
-        String colorADestruir = obj[1];
-        Objetivo objetivo = new ObjetivoPorDestruccion(colorADestruir, this.jugadores);
-        objetivo.setMensajeObjetivo(obj[2]);
-        this.objetivos.add(objetivo);
+    public List<Objetivo> getObjetivos(){
+        return this.objetivos;
     }
-
-    private ArrayList<String[]> readCsvArchive() {
-        ArrayList<String[]> listaObjetivos = new ArrayList<>();
-        BufferedReader bufferLectura = null;
-        try {
-            bufferLectura = new BufferedReader(new FileReader("src/main/java/algoteg/datosJuego/listaObjetivos.csv"));
-
-            String linea = bufferLectura.readLine();
-
-            while (linea != null) {
-                String[] campos = linea.split(SEPARADOR);
-                listaObjetivos.add(campos);
-                linea = bufferLectura.readLine();
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        } finally {
-            if (bufferLectura != null) {
-                try {
-                    bufferLectura.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-        }
-        return listaObjetivos;
-    }
-
 }
