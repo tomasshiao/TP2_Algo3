@@ -24,6 +24,10 @@ public class Tablero {
         batalla.obtenerVictoriosoDeGuerra(dadosAtacante, dadosDefensor, paisAtacante, paisDefensor, numeroTropas);
     }
 
+    public List<Pais> getPaises(){
+        return paises;
+    }
+
     public Continente getContinente(String nombreContinente) {
         for(Continente c: this.continentes){
             String nombre = c.getNombre().toLowerCase();

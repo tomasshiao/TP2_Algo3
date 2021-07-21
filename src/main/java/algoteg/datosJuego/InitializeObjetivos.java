@@ -35,18 +35,28 @@ public class InitializeObjetivos {
     }
 
     private void agregarObjetivoDeConquista(String[] obj){
+        boolean objetivoConLimitrofes = false;
+        int cantidadLimitrofesAConquistar = 0;
         Map<Continente, Integer> paisesAConquistar = new HashMap<>();
+
         for(int i=1; i<(obj.length-2);i+=2){
             if(!obj[i].equals("limitrofes")) {
                 Continente continente = tablero.getContinente(obj[i]);
                 int cantidadAConquistar = Integer.parseInt(String.valueOf(obj[i + 1]));
                 paisesAConquistar.put(continente,cantidadAConquistar);
             }
-            //accion requerida para agregar objetivo de limitrofes
-        }
+            else {
+                //listaTodosLosPaises = tablero.getPaises();
+                cantidadLimitrofesAConquistar = Integer.parseInt(String.valueOf(obj[i + 1]));
+                objetivoConLimitrofes = true;
+            }
 
-        Objetivo objetivo = new ObjetivoDeConquista(paisesAConquistar);
-        int finalArray = obj.length-1;    //accede a la ultima posicion del array
+        }
+        Objetivo objetivo;
+        if(objetivoConLimitrofes)
+            objetivo = new ObjetivoDeConquista(paisesAConquistar, cantidadLimitrofesAConquistar);
+        else objetivo = new ObjetivoDeConquista(paisesAConquistar);
+        int finalArray = obj.length-1;    //accede a la ultima posicion del array donde esta la descripcion
         objetivo.setMensajeObjetivo(obj[finalArray]);
         this.objetivos.add(objetivo);
 
@@ -55,7 +65,7 @@ public class InitializeObjetivos {
     private void agregarObjetivoDeDestruccion(String[] obj) {
         String colorADestruir = obj[1];
         Objetivo objetivo = new ObjetivoDeDestruccion(colorADestruir, this.jugadores);
-        int finalArray = obj.length-1;    //accede a la ultima posicion del array
+        int finalArray = obj.length-1;
         objetivo.setMensajeObjetivo(obj[finalArray]);
         this.objetivos.add(objetivo);
     }
