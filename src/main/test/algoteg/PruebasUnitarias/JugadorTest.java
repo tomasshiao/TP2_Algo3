@@ -1,5 +1,9 @@
-package algoteg;
+package algoteg.PruebasUnitarias;
 
+import algoteg.Jugador;
+import algoteg.Pais;
+import algoteg.Partida;
+import algoteg.Tarjeta;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;

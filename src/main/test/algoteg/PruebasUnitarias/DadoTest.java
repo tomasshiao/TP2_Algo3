@@ -1,4 +1,5 @@
-package algoteg;
+package algoteg.PruebasUnitarias;
+import algoteg.Dado;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.mockito.Mockito;

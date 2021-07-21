@@ -59,7 +59,9 @@ public class Partida {
         inicializarObjetivos();
         boolean hayGanador = true;
         while (!hayGanador) {
-            hayGanador = iniciarRonda().esGanador();
+            Ronda rondaActual = new Ronda(tablero, jugadores);
+            hayGanador = rondaActual.iniciarRonda();
+            //hayGanador = iniciarRonda().esGanador();
         }
     }
 

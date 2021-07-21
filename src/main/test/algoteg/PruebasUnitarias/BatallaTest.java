@@ -1,8 +1,6 @@
-package algoteg;
+package algoteg.PruebasUnitarias;
+import algoteg.*;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mock;
-import org.mockito.Mockito;
-import org.mockito.junit.MockitoJUnit;
 
 import java.util.ArrayList;
 import java.util.List;

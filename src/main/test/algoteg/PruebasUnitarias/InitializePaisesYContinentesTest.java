@@ -1,5 +1,7 @@
-package algoteg;
+package algoteg.PruebasUnitarias;
 
+import algoteg.Continente;
+import algoteg.Pais;
 import algoteg.datosJuego.InitializePaisesYContinentes;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
