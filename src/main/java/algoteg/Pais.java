@@ -23,6 +23,10 @@ public class Pais {
         this.paisesLimitrofes = listaPaises;
     }
 
+    public List<Pais> getPaisesLimitrofes(){
+        return this.paisesLimitrofes;
+    }
+
     public void agregarEjercito(int cantidad){
         cantidadEjercito += cantidad;
     }
