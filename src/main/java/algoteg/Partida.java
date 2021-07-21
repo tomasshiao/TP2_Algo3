@@ -3,9 +3,7 @@ import algoteg.datosJuego.InitializeObjetivos;
 import algoteg.datosJuego.InitializePaisesYContinentes;
 import algoteg.datosJuego.InitializeTarjetas;
 
-import java.io.BufferedReader;
 import java.util.ArrayList;
-import java.io.FileReader;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.Collections;
@@ -15,7 +13,6 @@ public class Partida {
 
     private int cantidadTotalJugadores;
     private int cantidadJugadoresActuales;
-    private final int cantidadMaximaDeJugadoresPermitidos = 6;
     private ArrayList<Jugador> jugadores = new ArrayList<>();
     private Tablero tablero = new Tablero();
     private List<Objetivo> objetivos = new ArrayList<>();
