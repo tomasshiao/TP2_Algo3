@@ -15,13 +15,6 @@ public class ObjetivoDeDestruccionTest {
     Jugador jugador3 = new Jugador(3, "rojo");
     ArrayList<Jugador> listaJugadores = new ArrayList<>();
     Pais paisMock = mock(Pais.class);
-    Pais paisMock2 = mock(Pais.class);
-    Partida partida = new Partida(3);
-    Continente continenteMock = mock(Continente.class);
-    Continente continenteMock2 = mock(Continente.class);
-    List<Pais> paises = new ArrayList<>();
-
-
 
     @Test
     public void jugadorAzulTieneQueDestruirARojoYCumpleSuObjetivo(){
@@ -69,12 +62,5 @@ public class ObjetivoDeDestruccionTest {
 
         assertEquals("azul", objetivo.getColorADestruir());
     }
-/*
-    @Test
-    public void verObjetivos(){
-        for(Objetivo o: partida.getObjetivos())
-            System.out.println(o.getMensajeObjetivo());
-    }
-*/
 
 }
