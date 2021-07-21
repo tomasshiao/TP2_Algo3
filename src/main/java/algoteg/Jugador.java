@@ -130,6 +130,7 @@ public class Jugador {
     public void setPaises(List<Pais> listaPaises) {
         this.paisesConquistados.addAll(listaPaises);
     }
+
     public void agregarPaisInicial(Pais pais){
         this.paisesConquistados.add(pais);
     }

@@ -245,7 +245,7 @@ public class JugadorTest {
         for(int i = 0; i<cantidadTotalDeJugadores; i++){
             jugadores.add(new Jugador(i, colores.get(i)));
         }
-        jugadores.forEach(jugador -> partida.agregarJugador(jugador));
+        jugadores.forEach(partida::agregarJugador);
 
         partida.iniciarPartida();
         int paisesConquistados = jugadores.get(5).getCantidadPaisesConquistados();
@@ -262,7 +262,7 @@ public class JugadorTest {
         for(int i = 0; i<cantidadTotalDeJugadores; i++){
             jugadores.add(new Jugador(i, colores.get(i)));
         }
-        jugadores.forEach(jugador -> partida.agregarJugador(jugador));
+        jugadores.forEach(partida::agregarJugador);
 
         partida.iniciarPartida();
         int paisesConquistados = jugadores.get(0).getCantidadPaisesConquistados();

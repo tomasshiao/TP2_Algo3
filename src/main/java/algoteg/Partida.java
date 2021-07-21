@@ -17,6 +17,7 @@ public class Partida {
     private Tablero tablero = new Tablero();
     private List<Objetivo> objetivos = new ArrayList<>();
     private int ronda;
+    private List<Ronda> rondas = new ArrayList<>();
 
     public Partida(int cantidadTotalJugadores) {
         cantidadJugadoresActuales = 0;
@@ -103,7 +104,7 @@ public class Partida {
             jugador.setPaises(paisesDeJugador);
         }
 
-        if (cantidadPaises % cantidadTotalJugadores != 0) {
+        if (cantidadPaises % cantidadTotalJugadores != 0) { // Siempre da resto 0 o 2 independientemente de la cantidad de jugadores
             Pais ultimoPais = paises.get(cantidadPaises - 1);
             Pais anteultimoPais = paises.get(cantidadPaises - 2);
             Jugador ultimoJugador = jugadores.get(cantidadTotalJugadores - 1);
