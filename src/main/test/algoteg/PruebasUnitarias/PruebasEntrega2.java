@@ -18,6 +18,7 @@ public class PruebasEntrega2 {
 
     @Test
     public void test01RondaDeDosJugadoresQueColocanEjercitos() {
+
         Jugador j1 = new Jugador(1, "rojo");
         j1.setEjercitoParaIncorporar(10);
 
@@ -41,9 +42,6 @@ public class PruebasEntrega2 {
 
         assertEquals(j1.getEjercitoParaIncorporar(), 4);
         assertEquals(j2.getEjercitoParaIncorporar(), 2);
-
-
-
 
     }
 

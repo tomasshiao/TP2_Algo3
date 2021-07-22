@@ -9,6 +9,7 @@ public class Continente {
     List<Pais> paises;
     String nombre;
     Jugador gobernante;
+    int bonusTropas;
 
     public Continente(String nombreContinente){
         this.nombre = nombreContinente;
@@ -23,7 +24,13 @@ public class Continente {
     }
 
     public boolean esGobernante(Jugador jugador){
-        return (gobernante.equals(jugador));
+        boolean esGobernante = true;
+        for (Pais pais : paises) {
+            if(!pais.esGobernadoPor(jugador)) {
+                esGobernante = false;
+            }
+        }
+        return esGobernante;
     }
 
     public List<Pais> getConquistadosPor(Jugador jugador) {

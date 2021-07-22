@@ -1,0 +1,13 @@
+@startuml
+
+TestCase-> RondaColocacion: inicarRonda()
+
+loop porCadaJugador
+    RondaColocacion->RondaColocacion: obtenerJugadorActual()
+    loop hastaQueNoAgregueMas
+        RondaColocacion ->jugador: addEjercito( Pais p, int cantTropas)
+        jugador -> Pais: agregarEjercito(int cantidadTropas)
+    end
+end
+
+@enduml
