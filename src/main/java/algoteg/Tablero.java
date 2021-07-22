@@ -1,6 +1,6 @@
 package algoteg;
 
-import algoteg.datosJuego.InitializePaisesYContinentes;
+import algoteg.Exceptions.*;
 
 import java.util.*;
 
@@ -9,6 +9,10 @@ public class Tablero {
     private List<Continente> continentes;
     private List<Pais> paises;
 
+    public Tablero(List<Continente> continentes, List<Pais>paises){
+        this.continentes = continentes;
+        this.paises = paises;
+    }
     public void setContinentes(List<Continente> continentes){
         this.continentes = continentes;
     }
@@ -16,12 +20,36 @@ public class Tablero {
         this.paises = paises;
     }
 
-    public void atacar(Pais paisAtacante, Pais paisDefensor, int numeroTropas){
+    /*******
+     * Realiza un ataque
+     * @param jugadorAtacante Jugador Jugador atacante.
+     * @param paisAtacante Pais país atacante.
+     * @param paisDefensor Pais país defensor.
+     * @param numeroTropas int número de tropas con la que se ataca.
+     * @return Pais país ganador.
+     * *********/
+    public Pais atacar(Jugador jugadorAtacante, Pais paisAtacante, Pais paisDefensor, int numeroTropas) throws AtaqueInvalidoException {
+        if(!paisAtacante.getPaisesLimitrofes().contains(paisDefensor)) {
+            String exceptionType = "NoLimitrofe";
+           throw new AtaqueInvalidoException(exceptionType);
+        }
+        if(paisAtacante.getEjercitoActual() < numeroTropas){
+            String exceptionType = "TropasInsuficientes";
+            throw new AtaqueInvalidoException(exceptionType);
+        }
+        if(!jugadorAtacante.getPaisesConquistados().contains(paisAtacante)){
+            String exceptionType = "PaisNoMePertenece";
+            throw new AtaqueInvalidoException(exceptionType);
+        }
+        if(jugadorAtacante.getPaisesConquistados().contains(paisDefensor)){
+            String exceptionType = "ConquistarPaisPropio";
+            throw new AtaqueInvalidoException(exceptionType);
+        }
         LanzadorDados lanzadorDados = new LanzadorDados();
         List<GeneradorRandom> dadosAtacante = lanzadorDados.obtenerDadosAtacante(paisAtacante, numeroTropas);
         List<GeneradorRandom> dadosDefensor = lanzadorDados.obtenerDadosDefensor(paisDefensor);
         Batalla batalla = new Batalla();
-        batalla.obtenerVictoriosoDeGuerra(dadosAtacante, dadosDefensor, paisAtacante, paisDefensor, numeroTropas);
+        return batalla.obtenerVictoriosoDeGuerra(dadosAtacante, dadosDefensor, paisAtacante, paisDefensor, numeroTropas);
     }
 
     public List<Pais> getPaises(){
@@ -36,4 +64,14 @@ public class Tablero {
         }
         return null;//implementar continente no encontrado error
     }
+    public List<Continente> getContinentesGobernadosPor(Jugador jugador){
+        List<Continente> continentesGobernados = new ArrayList<>();
+            continentes.forEach(continente -> {
+                if (continente.esGobernante(jugador)) {
+                    continentesGobernados.add(continente);
+                }
+            });
+        return continentesGobernados;
+    }
+
 }

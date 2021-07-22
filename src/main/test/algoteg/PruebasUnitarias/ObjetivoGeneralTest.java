@@ -1,5 +1,9 @@
-package algoteg;
+package algoteg.PruebasUnitarias;
 
+import algoteg.Jugador;
+import algoteg.Objetivo;
+import algoteg.ObjetivoGeneral;
+import algoteg.Pais;
 import org.junit.jupiter.api.Test;
 
 

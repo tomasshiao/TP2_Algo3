@@ -1,4 +1,5 @@
-package algoteg;
+package algoteg.PruebasUnitarias;
+import algoteg.Dado;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.mockito.Mockito;
@@ -14,7 +15,7 @@ import static org.mockito.Mockito.*;
 public class DadoTest {
 
     @Test
-    public void dadoSeisEsMayorQue5(){
+    public void unDadoEsMayorQueDadoCero(){
         Dado dado0 = mock(Dado.class);
         when(dado0.getValor()).thenReturn(0);
         Dado dado = new Dado();

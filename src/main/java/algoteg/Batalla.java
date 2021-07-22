@@ -1,9 +1,6 @@
 package algoteg;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
+import java.util.*;
 
 public class Batalla {
     private int victoriasAtacante;
@@ -39,9 +36,11 @@ public class Batalla {
 
     private Pais determinarVictoriosoDeGuerra(Pais paisAtacante, Pais paisDefensor) {
         Pais victoriosoDeGuerra = paisDefensor;
-        if(this.victoriasAtacante>this.victoriasDefensor) {
+        if(this.victoriasAtacante>this.victoriasDefensor ) {
             victoriosoDeGuerra = paisAtacante;
-            paisAtacante.ocupar(paisDefensor);
+            if (paisDefensor.noTengoTropas()){
+                paisAtacante.ocupar(paisDefensor);
+            }
         }
         return(victoriosoDeGuerra);
     }
@@ -52,7 +51,7 @@ public class Batalla {
             perdedorDeBatalla.reducirEjercito(1);
 
         }
-        return(this.determinarVictoriosoDeGuerra(paisAtacante, paisDefensor));
+        return this.determinarVictoriosoDeGuerra(paisAtacante, paisDefensor);
     }
 /*
     public List<Dado> obtenerDadosAtacante(Pais pais, int tropasParaAtacar){

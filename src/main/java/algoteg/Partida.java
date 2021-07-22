@@ -1,31 +1,24 @@
 package algoteg;
-import algoteg.datosJuego.InitializeObjetivos;
-import algoteg.datosJuego.InitializePaisesYContinentes;
-import algoteg.datosJuego.InitializeTarjetas;
 
-import java.util.ArrayList;
-import java.io.IOException;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
+import algoteg.datosJuego.*;
+import java.util.*;
 
 public class Partida {
 
     private int cantidadTotalJugadores;
     private int cantidadJugadoresActuales;
     private ArrayList<Jugador> jugadores = new ArrayList<>();
-    private Tablero tablero = new Tablero();
+    private Tablero tablero;
     private List<Objetivo> objetivos = new ArrayList<>();
-    private int ronda;
+    //private int ronda;
+    private List<Ronda> rondas = new ArrayList<>();
 
     public Partida(int cantidadTotalJugadores) {
         cantidadJugadoresActuales = 0;
-        ronda = 0;
         this.cantidadTotalJugadores = Math.min(cantidadTotalJugadores, 6);
     }
 
     public void agregarJugador(Jugador unJugador) {
-        int idJugador = unJugador.getId();
         if (jugadores.size() < this.cantidadTotalJugadores) {
             jugadores.add(unJugador);
             this.cantidadJugadoresActuales++;
@@ -36,7 +29,11 @@ public class Partida {
         return cantidadJugadoresActuales;
     }
 
-    private void pasarRonda() {
+    public int getCantidadDeRondasJugadas(){
+        return this.rondas.size();
+    }
+
+    /*private void pasarRonda() {
         this.ronda++;
     }
 
@@ -52,22 +49,18 @@ public class Partida {
 
         return jugadores.get(posicionGanador);
     }
-
+*/
     public void iniciarPartida() {
         List<Pais> paises = this.iniciarPaisesYContinentes();
         this.iniciarTarjetas(paises);
         inicializarObjetivos();
-        boolean hayGanador = true;
-        while (!hayGanador) {
-            hayGanador = iniciarRonda().esGanador();
-        }
+
     }
 
 
     private List<Pais> iniciarPaisesYContinentes() {
         InitializePaisesYContinentes init = new InitializePaisesYContinentes();
-        this.tablero.setContinentes(init.getTodosLosContinentes());
-        this.tablero.setPaises(init.getTodosLosPaises());
+        this.tablero = new Tablero(init.getTodosLosContinentes(), init.getTodosLosPaises()); //inicializa tablero
         repartirPaises(init.getTodosLosPaises());
         return init.getTodosLosPaises();
     }
@@ -97,11 +90,14 @@ public class Partida {
         for (Jugador jugador : this.jugadores) {
             List<Pais> paisesDeJugador = paises.subList(i, i + cantidadCartas);
             i += cantidadCartas;
-            paisesDeJugador.forEach(pais -> pais.setJugador(jugador)); //agrego jugador como gobernante del pais
+            paisesDeJugador.forEach(pais -> {
+                pais.setJugador(jugador); //agrego jugador como gobernante del pais
+                pais.agregarEjercito(1); //agrega 1 tropa al pais
+            });
             jugador.setPaises(paisesDeJugador);
         }
 
-        if (cantidadPaises % cantidadTotalJugadores != 0) {
+        if (cantidadPaises % cantidadTotalJugadores != 0) { // Siempre da resto 0 o 2 independientemente de la cantidad de jugadores
             Pais ultimoPais = paises.get(cantidadPaises - 1);
             Pais anteultimoPais = paises.get(cantidadPaises - 2);
             Jugador ultimoJugador = jugadores.get(cantidadTotalJugadores - 1);
@@ -121,5 +117,12 @@ public class Partida {
 
     public List<Objetivo> getObjetivos(){
         return this.objetivos;
+    }
+
+    public Map<String, Object> toDTO(){
+        Map<String, Object> dto = new HashMap<>();
+        dto.put("Jugadores", this.jugadores);
+        dto.put("Tablero", this.tablero);
+        return dto;
     }
 }

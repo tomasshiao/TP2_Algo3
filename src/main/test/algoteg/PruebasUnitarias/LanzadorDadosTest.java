@@ -1,5 +1,8 @@
-package algoteg;
+package algoteg.PruebasUnitarias;
 
+import algoteg.GeneradorRandom;
+import algoteg.LanzadorDados;
+import algoteg.Pais;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;

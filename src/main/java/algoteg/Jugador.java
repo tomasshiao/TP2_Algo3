@@ -1,10 +1,8 @@
 package algoteg;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
-import algoteg.Exceptions.PaisNoLePerteneceAlJugador;
+import algoteg.Exceptions.*;
 
 public class Jugador {
     private String color;
@@ -14,12 +12,14 @@ public class Jugador {
     private List<Objetivo> objetivos = new ArrayList<>();
     private int ejercitoParaIncorporar;
     private int canjesRealizados;
+    private boolean vivo;
 
     public Jugador(int id, String color) {
         this.id = id;
         this.color = color;
         this.ejercitoParaIncorporar = 0;
         this.canjesRealizados = 0;
+        this.vivo = true;
     }
 
     public String getColor(){
@@ -123,6 +123,19 @@ public class Jugador {
         return ejercitoAIncorporar;
     }
 
+
+    public void realizarAtaques(){
+        if(vivo) {
+            //acciones
+        }
+    }
+
+    public void realizarColocacionDeEjercitos() {
+        if(vivo) {
+            //acciones
+        }
+    }
+
     public int getCantidadPaisesConquistados() {
         return (paisesConquistados.size());
     }
@@ -130,11 +143,16 @@ public class Jugador {
     public void setPaises(List<Pais> listaPaises) {
         this.paisesConquistados.addAll(listaPaises);
     }
+
     public void agregarPaisInicial(Pais pais){
         this.paisesConquistados.add(pais);
     }
 
     public void setTarjetas(List<Tarjeta> tarjetas) {
         this.tarjetas = tarjetas;
+    }
+
+    public void setEjercitoParaIncorporar(int ejercitoParaIncorporar) {
+        this.ejercitoParaIncorporar += ejercitoParaIncorporar;
     }
 }
