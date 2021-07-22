@@ -1,0 +1,8 @@
+@startuml
+TestCase->Batalla: obtenerVictoriosoDeguerra(Pais atacante, Pais defensor, int cant tropas)
+Batalla -> LanzadorDados: obtenerDadosAtacante(Pais atacante, int cant Tropas)
+Batalla -> LanzadorDados: obtenerDadosDefensor(Pais defensor)
+Batalla -> Batalla: obtenerPerdedorDeBatalla(GeneradorRandom dadosAtacante, GeneradorRandom dadosDefensor, Pais atacante, Pais defensor)
+Batalla ->
+
+@enduml

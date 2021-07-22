@@ -8,20 +8,17 @@ public class Continente {
 
     List<Pais> paises;
     String nombre;
-    Jugador gobernante;
     int bonusTropas;
 
-    public Continente(String nombreContinente){
+    public Continente(String nombreContinente, int bonusTropas){
         this.nombre = nombreContinente;
+        this.bonusTropas = bonusTropas;
     }
 
     public void setPaises(List<Pais> listaPaises) {
         this.paises = listaPaises;
     }
 
-    public void setGobernante(Jugador jugador){
-        this.gobernante = jugador;
-    }
 
     public boolean esGobernante(Jugador jugador){
         boolean esGobernante = true;
@@ -62,5 +59,7 @@ public class Continente {
     public int getCantidadDePaises(){
         return paises.size();
     }
+
+    public int getBonusTropas(){return bonusTropas;}
 
 }

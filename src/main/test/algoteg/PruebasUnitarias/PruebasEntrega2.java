@@ -171,4 +171,9 @@ public class PruebasEntrega2 {
 
     }
 
+    @Test
+    public void test012JugadoresSeColocanNuevosEjercitos(){
+        Jugador jugador1 = new Jugad
+    }
+
 }

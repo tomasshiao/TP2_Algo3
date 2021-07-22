@@ -24,10 +24,11 @@ public class Tablero {
      * @param numeroTropas int número de tropas con la que se ataca.
      * @return Pais país ganador.
      * *********/
+
     public Pais atacar(Jugador jugadorAtacante, Pais paisAtacante, Pais paisDefensor, int numeroTropas) throws AtaqueInvalidoException {
         if(!paisAtacante.getPaisesLimitrofes().contains(paisDefensor)) {
             String exceptionType = "NoLimitrofe";
-           throw new AtaqueInvalidoException(exceptionType);
+            throw new AtaqueInvalidoException(exceptionType);
         }
         if(paisAtacante.getEjercitoActual() < numeroTropas){
             String exceptionType = "TropasInsuficientes";
@@ -60,4 +61,14 @@ public class Tablero {
         }
         return null;//implementar continente no encontrado error
     }
+    public List<Continente> getContinentesGobernadosPor(Jugador jugador){
+        List<Continente> continentesGobernados = new ArrayList<>();
+        continentes.forEach(continente -> {
+            if (continente.esGobernante(jugador)) {
+                continentesGobernados.add(continente);
+            }
+        });
+        return continentesGobernados;
+    }
+
 }

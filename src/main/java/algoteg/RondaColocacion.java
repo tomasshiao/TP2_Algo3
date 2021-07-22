@@ -1,30 +1,18 @@
 package algoteg;
 
-package algoteg;
-
 import java.util.*;
 
 public class RondaColocacion {
     private final Tablero tablero;
-    private final List<Jugador> jugadores;
-    private final int cantidadJugadores;
+    private List<Jugador> jugadores;
+    private int cantidadJugadores;
 
     /****************
      * Inicializa una ronda.
-     * @param dtoPartida Map<String, Object>
+     * @param tablero Tablero
      * ***************/
-    public Ronda(Map<String, Object> dtoPartida) {
-        this.tablero = (Tablero) dtoPartida.get("Tablero");
-        this.jugadores = new ArrayList<>();
-        if(dtoPartida.get("Jugadores") instanceof ArrayList<?>){
-            ArrayList<?> arrayJugadores = ((ArrayList<?>) dtoPartida.get("Jugadores"));
-            for(int i = 0; i < arrayJugadores.size(); i++){
-                if(arrayJugadores.get(i) instanceof Jugador){
-                    this.jugadores.add((Jugador) arrayJugadores.get(i));
-                }
-            }
-        }
-        this.cantidadJugadores = this.jugadores.size();
+    public RondaColocacion(Tablero tablero) {
+        this.tablero = tablero;
     }
 
     public Tablero getTablero() {
@@ -39,12 +27,21 @@ public class RondaColocacion {
         return this.cantidadJugadores;
     }
 
-    public void colocarEjercito(){
-
+    public void colocarEjercitos(int cantidadTropas, Pais pais, Jugador jugador){
+        jugador.addEjercitoEnPais(pais, cantidadTropas);
     }
-    private int obtenerEjercitosDisponibles(Jugador jugador){
-        jugador.getCantidadPaisesConquistados();
-        List<Continente> continentes = tablero.obtenerContinentesGobernadoPor(jugador);
+
+    public void setEjercitosDisponiblesParaColocar(Jugador jugador){
+        int ejercitosDisponibles = jugador.getCantidadPaisesConquistados()/2;
+        List<Continente> continentes = tablero.getContinentesGobernadosPor(jugador);
+
+        for(Continente continente : continentes){
+            ejercitosDisponibles += continente.getBonusTropas();
+        }
+        jugador.setEjercitoParaIncorporar(ejercitosDisponibles);
+    }
+
+    private void activarTarjeta(Tarjeta tarjeta, Jugador jugador) {
+        jugador.addTarjeta(tarjeta);
     }
 }
-

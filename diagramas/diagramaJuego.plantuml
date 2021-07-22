@@ -29,8 +29,15 @@ class Jugador{
 
 }
 
-class ValidadorAtaque{}
+class RondaColocacion{
+    +colocarEjercitos(int cantidadTropas, Pais pais, Jugador jugador): void
+    +setEjercitosDisponiblesParaColocar(Jugador jugador): void
+    +activarTarjeta(Tarjeta tarjeta): void
 
+}
+class RondaAtaque{
+    + atacar(Jugador atacante, Pais paisAtacante, Pais paisDefensor, int cantidadTropas)
+}
 class Tablero{
         +continentes: Continente
 } 
@@ -38,7 +45,10 @@ class Tablero{
 
 Juego ---> Partida
 Partida --->"2..*" Jugador
-Tablero ---> ValidadorAtaque
+Partida ---> RondaColocacion
+Partida ---> RondaAtaque
+RondaColocacion ..>Tablero
+RondaAtaque ..>Tablero
 Partida ---> Tablero
 
 @enduml
