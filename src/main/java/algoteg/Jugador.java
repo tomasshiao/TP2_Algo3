@@ -1,10 +1,8 @@
 package algoteg;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
-import algoteg.Exceptions.PaisNoLePerteneceAlJugador;
+import algoteg.Exceptions.*;
 
 public class Jugador {
     private String color;
