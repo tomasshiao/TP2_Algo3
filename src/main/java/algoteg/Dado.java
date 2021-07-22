@@ -20,4 +20,6 @@ public class Dado implements GeneradorRandom{
     public boolean esMayorQue(Dado dadoAComparar){
         return (this.valor >dadoAComparar.getValor());
     }
+
+
 }

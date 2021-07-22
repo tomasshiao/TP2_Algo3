@@ -153,6 +153,6 @@ public class Jugador {
     }
 
     public void setEjercitoParaIncorporar(int ejercitoParaIncorporar) {
-        this.ejercitoParaIncorporar = ejercitoParaIncorporar;
+        this.ejercitoParaIncorporar += ejercitoParaIncorporar;
     }
 }

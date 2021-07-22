@@ -8,28 +8,32 @@ public class Continente {
 
     List<Pais> paises;
     String nombre;
-    Jugador jugador;
+    int bonusTropas;
 
     public Continente(String nombreContinente, int bonusTropas){
         this.nombre = nombreContinente;
+        this.bonusTropas = bonusTropas;
     }
 
     public void setPaises(List<Pais> listaPaises) {
         this.paises = listaPaises;
     }
 
-    public void setJugador(Jugador jugador){
-        this.jugador = jugador;
+
+    public boolean esGobernante(Jugador jugador){
+        boolean esGobernante = true;
+        for (Pais pais : paises) {
+            if(!pais.esGobernadoPor(jugador)) {
+                esGobernante = false;
+            }
+        }
+        return esGobernante;
     }
 
-    public boolean esGobernante(String colorGobernante){
-        return (jugador.getColor().equals(colorGobernante));
-    }
-
-    public List<Pais> getConquistadosPor(String colorGobernante) {
+    public List<Pais> getConquistadosPor(Jugador jugador) {
         List<Pais> paisesGobernados = new ArrayList<>();
         for (Pais pais : paises) {
-            if(pais.esGobernadoPor(colorGobernante)) {
+            if(pais.esGobernadoPor(jugador)) {
                 paisesGobernados.add(pais);
             }
         }
@@ -55,5 +59,7 @@ public class Continente {
     public int getCantidadDePaises(){
         return paises.size();
     }
+
+    public int getBonusTropas(){return bonusTropas;}
 
 }

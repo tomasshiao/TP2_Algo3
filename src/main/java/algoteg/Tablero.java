@@ -64,4 +64,14 @@ public class Tablero {
         }
         return null;//implementar continente no encontrado error
     }
+    public List<Continente> getContinentesGobernadosPor(Jugador jugador){
+        List<Continente> continentesGobernados = new ArrayList<>();
+            continentes.forEach(continente -> {
+                if (continente.esGobernante(jugador)) {
+                    continentesGobernados.add(continente);
+                }
+            });
+        return continentesGobernados;
+    }
+
 }

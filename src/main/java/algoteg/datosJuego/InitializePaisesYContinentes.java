@@ -6,6 +6,8 @@ import algoteg.Pais;
 
 import java.util.*;
 
+
+
 public class InitializePaisesYContinentes {
     private Map<String, Pais> mapaPaises = new HashMap<>();
     private Map<String, List<Pais>> paisesPorContinentes;
@@ -80,19 +82,19 @@ public class InitializePaisesYContinentes {
         return paises;
     }
 
-    private Continente setContinente(Map<String, List<Pais>> mapaContinentes, String nombreContinente) {
-        Continente continente = new Continente(nombreContinente);
+    private Continente setContinente(Map<String, List<Pais>> mapaContinentes, String nombreContinente, int bonusTropas) {
+        Continente continente = new Continente(nombreContinente, bonusTropas);
         continente.setPaises(mapaContinentes.get(nombreContinente));
         return continente;
     }
 
     private void setTodosLosContinentes(Map<String, List<Pais>> mapaContinentes){
-        this.todosLosContinentes.add(this.setContinente(mapaContinentes, "Africa"));
-        this.todosLosContinentes.add(this.setContinente(mapaContinentes, "America Del Sur"));
-        this.todosLosContinentes.add(this.setContinente(mapaContinentes, "America Del Norte"));
-        this.todosLosContinentes.add(this.setContinente(mapaContinentes, "Asia"));
-        this.todosLosContinentes.add(this.setContinente(mapaContinentes, "Europa"));
-        this.todosLosContinentes.add(this.setContinente(mapaContinentes, "Oceania"));
+        this.todosLosContinentes.add(this.setContinente(mapaContinentes, "Africa", 3));
+        this.todosLosContinentes.add(this.setContinente(mapaContinentes, "America Del Sur", 3));
+        this.todosLosContinentes.add(this.setContinente(mapaContinentes, "America Del Norte", 5));
+        this.todosLosContinentes.add(this.setContinente(mapaContinentes, "Asia", 7));
+        this.todosLosContinentes.add(this.setContinente(mapaContinentes, "Europa", 5));
+        this.todosLosContinentes.add(this.setContinente(mapaContinentes, "Oceania", 2));
     }
 
     private Map<String, List<String>> setPaisesLimitrofes(){
