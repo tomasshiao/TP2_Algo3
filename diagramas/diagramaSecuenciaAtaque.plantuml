@@ -1,0 +1,20 @@
+@startuml
+TestCase->RondaAtaque: atacar(Pais paisAtacante, Pais paisDefensor, int cantidadTropas)
+activate RondaAtaque
+RondaAtaque->RondaAtaque: obtenerJugadorActual(): juagdor
+RondaAtaque -> Tablero: atacar(jugador, paisAtacante, paisDefensor,int cantidadTropas)
+activate Tablero
+Tablero -> LanzarDados: obtenerDadosAtacante(paisAtacante, cantidadTropas)
+LanzarDados->Tablero: List(Dados)
+Tablero -> LanzarDados: obtenerDadosDefensor(paisDefensor)
+LanzarDados->Tablero: List(Dados)
+Tablero->Batalla: obtenerVictoriosoDeguerra(dadosAtacante, dadosDefensor, paisAtacante, paisDefensor, cantTropas)
+Batalla->Tablero: Pais victorioso
+Tablero->RondaAtaque: Pais victorioso
+deactivate Tablero
+RondaAtaque->jugadorActual: esGanador()
+jugadorActual -> RondaAtaque: false
+RondaAtaque->TestCase: false
+
+
+@enduml

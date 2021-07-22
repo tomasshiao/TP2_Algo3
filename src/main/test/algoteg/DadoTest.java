@@ -14,7 +14,7 @@ import static org.mockito.Mockito.*;
 public class DadoTest {
 
     @Test
-    public void dadoSeisEsMayorQue5(){
+    public void dadoSeisEsMayorQueCero(){
         Dado dado0 = mock(Dado.class);
         when(dado0.getValor()).thenReturn(0);
         Dado dado = new Dado();
