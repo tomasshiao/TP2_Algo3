@@ -237,7 +237,7 @@ public class JugadorTest {
     }
 
     @Test
-    public void partidaLeAsignaNueveCartasAlSextoJugador(){
+    public void partidaLeAsignaNuevePaisesAlSextoJugador(){
         List<String> colores = List.of("azul", "rojo", "rosa", "naranja","verde","negro");
         int cantidadTotalDeJugadores =6;
         Partida partida = new Partida(cantidadTotalDeJugadores);
@@ -254,7 +254,7 @@ public class JugadorTest {
     }
 
     @Test
-    public void partidaLeAsignaOchoCartasAlPrimerJugador(){
+    public void partidaLeAsignaOchoPaisesAlPrimerJugador(){
         List<String> colores = List.of("azul", "rojo", "rosa", "naranja","verde","negro");
         int cantidadTotalDeJugadores =6;
         Partida partida = new Partida(cantidadTotalDeJugadores);
