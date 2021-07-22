@@ -2,9 +2,9 @@
 
 class Continente{
     +nombre: String
-    +gobernanteContinente: Jugador;
 
-    + esGobernante(String colorGobernante): boolean
+    + esGobernante(Jugador jugador): boolean
+    +getBonusTropas() : int
 
 
 

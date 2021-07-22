@@ -26,6 +26,7 @@ class Dado{
     +esMayorQue(Dado dado): boolean
 }
 
-Batalla---->Dado
+Batalla-->LanzadorDado
+LanzadorDado--->Dado
 
 @enduml
