@@ -126,7 +126,13 @@ public class Jugador {
     }
 
 
-    public void realizarTurno() {
+    public void realizarAtaques(){
+        if(vivo) {
+            //acciones
+        }
+    }
+
+    public void realizarColocacionDeEjercitos() {
         if(vivo) {
             //acciones
         }

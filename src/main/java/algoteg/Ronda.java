@@ -13,7 +13,7 @@ public class Ronda {
      * ***************/
     public Ronda(Map<String, Object> dtoPartida) {
         this.tablero = (Tablero) dtoPartida.get("Tablero");
-        this.jugadores = new ArrayList<Jugador>();
+        this.jugadores = new ArrayList<>();
         if(dtoPartida.get("Jugadores") instanceof ArrayList<?>){
             ArrayList<?> arrayJugadores = ((ArrayList<?>) dtoPartida.get("Jugadores"));
             for(int i = 0; i < arrayJugadores.size(); i++){
@@ -42,14 +42,18 @@ public class Ronda {
         //int posicionGanador = i - 1;
         boolean hayGanador = false;
         while (!hayGanador & i < this.getCantidadJugadores()) {
-            //acciones jugador
             Jugador jugadorActual = this.getJugadores().get(i);
-            jugadorActual.realizarTurno();
+            jugadorActual.realizarAtaques();
             hayGanador = jugadorActual.esGanador();
             i++;
         }
 
-        //return jugadores.get(posicionGanador);
+        while (!hayGanador & i < this.getCantidadJugadores()) {
+            //acciones jugador
+            Jugador jugadorActual = this.getJugadores().get(i);
+            jugadorActual.realizarColocacionDeEjercitos();
+            i++;
+        }
         return hayGanador;
     }
 }
