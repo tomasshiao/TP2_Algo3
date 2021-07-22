@@ -10,7 +10,7 @@ public class Continente {
     String nombre;
     Jugador jugador;
 
-    public Continente(String nombreContinente){
+    public Continente(String nombreContinente, int bonusTropas){
         this.nombre = nombreContinente;
     }
 

@@ -51,7 +51,7 @@ public class Batalla {
             perdedorDeBatalla.reducirEjercito(1);
 
         }
-        return(this.determinarVictoriosoDeGuerra(paisAtacante, paisDefensor));
+        return this.determinarVictoriosoDeGuerra(paisAtacante, paisDefensor);
     }
 /*
     public List<Dado> obtenerDadosAtacante(Pais pais, int tropasParaAtacar){

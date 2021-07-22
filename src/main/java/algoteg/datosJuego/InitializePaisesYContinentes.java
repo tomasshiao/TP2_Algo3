@@ -180,4 +180,7 @@ public class InitializePaisesYContinentes {
         return this.todosLosPaises;
     }
 
+    public Map<String, List<Pais>> getPaisesPorContinentes() {
+        return paisesPorContinentes;
+    }
 }

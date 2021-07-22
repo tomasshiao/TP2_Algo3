@@ -9,6 +9,10 @@ public class Tablero {
     private List<Continente> continentes;
     private List<Pais> paises;
 
+    public Tablero(List<Continente> continentes, List<Pais>paises){
+        this.continentes = continentes;
+        this.paises = paises;
+    }
     public void setContinentes(List<Continente> continentes){
         this.continentes = continentes;
     }

@@ -139,12 +139,15 @@ public class PruebasEntrega2 {
         Jugador defensor = new Jugador(2, "Naranja");
         Pais paisAtacante = new Pais("PaisAtacante", atacante);
         paisAtacante.agregarEjercito(50);
+
         atacante.addPaisConquistado(paisAtacante);
 
         Pais paisASerConquistadoPrimero = new Pais("MeConquistanPrimero", defensor);
         paisASerConquistadoPrimero.agregarEjercito(1);
+
         Pais paisASerConquistadoDespues = new Pais("MeConquistanDespues", defensor);
         paisASerConquistadoDespues.agregarEjercito(1);
+
         defensor.addPaisConquistado(paisASerConquistadoPrimero);
         defensor.addPaisConquistado(paisASerConquistadoDespues);
 
