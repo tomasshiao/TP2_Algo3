@@ -8,7 +8,7 @@ public class Partida {
     private int cantidadTotalJugadores;
     private int cantidadJugadoresActuales;
     private ArrayList<Jugador> jugadores = new ArrayList<>();
-    private Tablero tablero = new Tablero();
+    private Tablero tablero;
     private List<Objetivo> objetivos = new ArrayList<>();
     //private int ronda;
     private List<Ronda> rondas = new ArrayList<>();
@@ -54,19 +54,13 @@ public class Partida {
         List<Pais> paises = this.iniciarPaisesYContinentes();
         this.iniciarTarjetas(paises);
         inicializarObjetivos();
-        boolean hayGanador = true;
-        while (!hayGanador) {
-            Ronda rondaActual = new Ronda(this.toDTO());
-            hayGanador = rondaActual.iniciarRonda();
-            //hayGanador = iniciarRonda().esGanador();
-        }
+
     }
 
 
     private List<Pais> iniciarPaisesYContinentes() {
         InitializePaisesYContinentes init = new InitializePaisesYContinentes();
-        this.tablero.setContinentes(init.getTodosLosContinentes());
-        this.tablero.setPaises(init.getTodosLosPaises());
+        this.tablero = new Tablero(init.getTodosLosContinentes(), init.getTodosLosPaises()); //inicializa tablero
         repartirPaises(init.getTodosLosPaises());
         return init.getTodosLosPaises();
     }
@@ -96,7 +90,10 @@ public class Partida {
         for (Jugador jugador : this.jugadores) {
             List<Pais> paisesDeJugador = paises.subList(i, i + cantidadCartas);
             i += cantidadCartas;
-            paisesDeJugador.forEach(pais -> pais.setJugador(jugador)); //agrego jugador como gobernante del pais
+            paisesDeJugador.forEach(pais -> {
+                pais.setJugador(jugador); //agrego jugador como gobernante del pais
+                pais.agregarEjercito(1); //agrega 1 tropa al pais
+            });
             jugador.setPaises(paisesDeJugador);
         }
 
