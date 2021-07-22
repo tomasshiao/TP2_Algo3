@@ -1,8 +1,14 @@
 @startuml
 TestCase->Batalla: obtenerVictoriosoDeguerra(Pais atacante, Pais defensor, int cant tropas)
+activate Batalla
 Batalla -> LanzadorDados: obtenerDadosAtacante(Pais atacante, int cant Tropas)
 Batalla -> LanzadorDados: obtenerDadosDefensor(Pais defensor)
-Batalla -> Batalla: obtenerPerdedorDeBatalla(GeneradorRandom dadosAtacante, GeneradorRandom dadosDefensor, Pais atacante, Pais defensor)
-Batalla ->
 
+Batalla -> Batalla: obtenerPerdedorDeBatalla(GeneradorRandom dadosAtacante, GeneradorRandom dadosDefensor, Pais atacante, Pais defensor)
+activate Batalla
+Batalla -> Batalla: agregarVictoriaAtacante()
+Batalla-> paisPerdedor: reducirEjercito()
+deactivate Batalla
+Batalla->Batalla: determinarVictoriosoDeGuerra(paisAtacante,(Pais defensor)
+Batalla->TestCase: pais victorioso
 @enduml
