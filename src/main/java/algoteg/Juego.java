@@ -2,6 +2,7 @@ package algoteg;
 
 import java.util.ArrayList;
 import java.util.List;
+import algoteg.Exceptions.*;
 
 public class Juego {
     Partida partida;

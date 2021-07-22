@@ -1,6 +1,6 @@
 package algoteg;
 
-import algoteg.datosJuego.InitializePaisesYContinentes;
+import algoteg.Exceptions.*;
 
 import java.util.*;
 

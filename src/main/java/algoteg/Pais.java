@@ -44,6 +44,7 @@ public class Pais {
     public boolean noTengoTropas(){
         return (this.cantidadEjercito == 0);
     }
+
     private void conquistar(Jugador jugador){
         if(this.noTengoTropas()){
             this.agregarEjercito(1);
@@ -55,8 +56,6 @@ public class Pais {
     public void ocupar(Pais paisDefensor){
         paisDefensor.conquistar(this.jugador);
     }
-
-
 
     public boolean esGobernadoPor(String colorGobernante) {
         return (jugador.getColor().equals(colorGobernante));

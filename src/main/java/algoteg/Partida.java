@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+import java.util.*;
 
 public class Partida {
 
@@ -124,5 +125,13 @@ public class Partida {
 
     public List<Objetivo> getObjetivos(){
         return this.objetivos;
+    }
+
+    public Map<String, Object> toDTO(){
+        Map<String, Object> dto = new HashMap<>();
+        dto.put("Jugadores", this.jugadores);
+        dto.put("Tablero", this.tablero);
+        dto.put("CantJugadores", this.cantidadJugadoresActuales);
+        return dto;
     }
 }
