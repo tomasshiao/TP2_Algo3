@@ -1,8 +1,6 @@
 package algoteg;
 
-import java.util.ArrayList;
-import java.util.List;
-import algoteg.Exceptions.*;
+import java.util.*;
 
 public class Juego {
     Partida partida;
@@ -19,7 +17,7 @@ public class Juego {
             partida.agregarJugador(new Jugador(i, colores.get(i)));
         }
 
-
+        partida.iniciarPartida();
     }
 
 

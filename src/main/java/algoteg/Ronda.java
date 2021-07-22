@@ -39,8 +39,8 @@ public class Ronda {
 
     public boolean iniciarRonda() {
         int i = 0;
-        //int posicionGanador = i - 1;
         boolean hayGanador = false;
+        // Ronda de ataque
         while (!hayGanador & i < this.getCantidadJugadores()) {
             Jugador jugadorActual = this.getJugadores().get(i);
             jugadorActual.realizarAtaques();
@@ -48,8 +48,8 @@ public class Ronda {
             i++;
         }
 
+        // Colocación de ejércitos
         while (!hayGanador & i < this.getCantidadJugadores()) {
-            //acciones jugador
             Jugador jugadorActual = this.getJugadores().get(i);
             jugadorActual.realizarColocacionDeEjercitos();
             i++;
