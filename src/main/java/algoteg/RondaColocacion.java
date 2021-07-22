@@ -42,6 +42,6 @@ public class RondaColocacion {
     }
 
     private void activarTarjeta(Tarjeta tarjeta, Jugador jugador) {
-        jugador.addTarjeta(tarjeta);
+        jugador.activarTarjeta(tarjeta);
     }
 }
