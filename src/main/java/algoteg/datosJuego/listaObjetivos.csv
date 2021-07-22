@@ -1,0 +1,14 @@
+Destruccion;azul;Destruir al ejercito AZUL o en caso de no ser posible al jugador siguiente a tu turno.
+Destruccion;rojo;Destruir al ejercito ROJO o en caso de no ser posible al jugador siguiente a tu turno.
+Destruccion;negro;Destruir al ejercito NEGRO o en caso de no ser posible al jugador siguiente a tu turno.
+Destruccion;amarillo;Destruir al ejercito AMARILLO o en caso de no ser posible al jugador siguiente a tu turno.
+Destruccion;verde;Destruir al ejercito VERDE o en caso de no ser posible al jugador siguiente a tu turno.
+Destruccion;magenta;Destruir al ejercito MAGENTA o en caso de no ser posible al jugador siguiente a tu turno.
+Conquista;africa;6;america del norte;5;europa;4;Conquistar Africa, 5 paises de America del Norte y 4 paises de Europa.
+Conquista;america del sur;6;europa;7;limitrofes;3;Conquistar America del Sur, 7 paises de Europa y 3 paises limitrofes en cualquier parte del mapa.
+Conquista;asia;15;america del sur;2;Conquistar Asia y 2 paises de America del Sur.
+Conquista;europa;9;asia;4;america del sur;2;Conquistar Europa, 4 paises de Asia y 2 paises de America del Sur.
+Conquista;america del norte;10;oceania;2;asia;4;Conquistar America del Norte, 2 paises de Oceania y 4 paises de Asia.
+Conquista;oceania;2;africa;2;america del sur;2;europa;3;america del norte;4;asia;3;Conquistar 2 paises de Oceania, 2 paises de Africa, 2 paises de America del Sur, 3 paises de Europa, 4 paises de America del Norte y 3 paises de Asia.
+Conquista;oceania;4;america del norte;10;europa;2;Conquistar Oceania, America del Norte y 2 paises de Europa.
+Conquista;america del sur;6;africa;6;america del norte;5;Conquistar America del Sur, Africa y 5 paises de America del Norte.

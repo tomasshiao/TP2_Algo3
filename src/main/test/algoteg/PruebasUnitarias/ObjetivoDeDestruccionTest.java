@@ -1,13 +1,19 @@
-package algoteg;
+package algoteg.PruebasUnitarias;
 
+import algoteg.Jugador;
+import algoteg.Objetivo;
+import algoteg.ObjetivoDeDestruccion;
+import algoteg.Pais;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
-public class ObjetivoPorDestruccionTest {
+public class ObjetivoDeDestruccionTest {
     Jugador jugador1 = new Jugador(1, "azul");
     Jugador jugador2 = new Jugador(2, "verde");
     Jugador jugador3 = new Jugador(3, "rojo");
@@ -19,7 +25,7 @@ public class ObjetivoPorDestruccionTest {
         listaJugadores.add(jugador1);
         listaJugadores.add(jugador2);
         listaJugadores.add(jugador3);
-        Objetivo objetivo = new ObjetivoPorDestruccion("rojo" ,listaJugadores);
+        Objetivo objetivo = new ObjetivoDeDestruccion("rojo" ,listaJugadores);
         objetivo.setJugador(jugador1);
 
         assertTrue(objetivo.cumplido());
@@ -30,7 +36,7 @@ public class ObjetivoPorDestruccionTest {
         listaJugadores.add(jugador1);
         listaJugadores.add(jugador2);
         listaJugadores.add(jugador3);
-        ObjetivoPorDestruccion objetivo = new ObjetivoPorDestruccion("negro" ,listaJugadores);
+        ObjetivoDeDestruccion objetivo = new ObjetivoDeDestruccion("negro" ,listaJugadores);
         objetivo.setJugador(jugador1);
         objetivo.cumplido();
 
@@ -42,7 +48,7 @@ public class ObjetivoPorDestruccionTest {
         listaJugadores.add(jugador1);
         listaJugadores.add(jugador2);
         listaJugadores.add(jugador3);
-        Objetivo objetivo = new ObjetivoPorDestruccion("verde" ,listaJugadores);
+        Objetivo objetivo = new ObjetivoDeDestruccion("verde" ,listaJugadores);
         objetivo.setJugador(jugador1);
         jugador2.addPaisConquistado(paisMock);
 
@@ -54,10 +60,11 @@ public class ObjetivoPorDestruccionTest {
         listaJugadores.add(jugador1);
         listaJugadores.add(jugador2);
         listaJugadores.add(jugador3);
-        ObjetivoPorDestruccion objetivo = new ObjetivoPorDestruccion("negro" ,listaJugadores);
+        ObjetivoDeDestruccion objetivo = new ObjetivoDeDestruccion("negro" ,listaJugadores);
         objetivo.setJugador(jugador3);
         objetivo.cumplido();
 
         assertEquals("azul", objetivo.getColorADestruir());
     }
+
 }

@@ -1,5 +1,7 @@
-package algoteg;
+package algoteg.PruebasUnitarias;
 
+import algoteg.Pais;
+import algoteg.Tarjeta;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;

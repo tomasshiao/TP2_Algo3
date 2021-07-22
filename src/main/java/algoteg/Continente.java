@@ -51,4 +51,9 @@ public class Continente {
         return null;
         //implementar "paisNoEncontradoError"
     }
+
+    public int getCantidadDePaises(){
+        return paises.size();
+    }
+
 }

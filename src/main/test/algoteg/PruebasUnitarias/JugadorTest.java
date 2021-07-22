@@ -1,5 +1,9 @@
-package algoteg;
+package algoteg.PruebasUnitarias;
 
+import algoteg.Jugador;
+import algoteg.Pais;
+import algoteg.Partida;
+import algoteg.Tarjeta;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -233,7 +237,7 @@ public class JugadorTest {
     }
 
     @Test
-    public void partidaLeAsignaNueveCartasAlSextoJugador(){
+    public void partidaLeAsignaNuevePaisesAlSextoJugador(){
         List<String> colores = List.of("azul", "rojo", "rosa", "naranja","verde","negro");
         int cantidadTotalDeJugadores =6;
         Partida partida = new Partida(cantidadTotalDeJugadores);
@@ -241,7 +245,7 @@ public class JugadorTest {
         for(int i = 0; i<cantidadTotalDeJugadores; i++){
             jugadores.add(new Jugador(i, colores.get(i)));
         }
-        jugadores.forEach(jugador -> partida.agregarJugador(jugador));
+        jugadores.forEach(partida::agregarJugador);
 
         partida.iniciarPartida();
         int paisesConquistados = jugadores.get(5).getCantidadPaisesConquistados();
@@ -250,7 +254,7 @@ public class JugadorTest {
     }
 
     @Test
-    public void partidaLeAsignaOchoCartasAlPrimerJugador(){
+    public void partidaLeAsignaOchoPaisesAlPrimerJugador(){
         List<String> colores = List.of("azul", "rojo", "rosa", "naranja","verde","negro");
         int cantidadTotalDeJugadores =6;
         Partida partida = new Partida(cantidadTotalDeJugadores);
@@ -258,7 +262,7 @@ public class JugadorTest {
         for(int i = 0; i<cantidadTotalDeJugadores; i++){
             jugadores.add(new Jugador(i, colores.get(i)));
         }
-        jugadores.forEach(jugador -> partida.agregarJugador(jugador));
+        jugadores.forEach(partida::agregarJugador);
 
         partida.iniciarPartida();
         int paisesConquistados = jugadores.get(0).getCantidadPaisesConquistados();

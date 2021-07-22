@@ -1,5 +1,8 @@
-package algoteg;
+package algoteg.PruebasUnitarias;
 
+import algoteg.Batalla;
+import algoteg.Jugador;
+import algoteg.Pais;
 import org.junit.jupiter.api.Test;
 
 import static org.mockito.Mockito.*;

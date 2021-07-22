@@ -3,13 +3,14 @@ package algoteg;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ObjetivoPorDestruccion implements Objetivo {
+public class ObjetivoDeDestruccion implements Objetivo {
     private List<Pais> paisesConquistados;
     private ArrayList<Jugador> listaJugadores;
     private String colorADestruir;
     private Jugador jugador;
+    private String mensajeObjetivo;
     
-    public ObjetivoPorDestruccion(String color, ArrayList<Jugador> listaJugadores){
+    public ObjetivoDeDestruccion(String color, ArrayList<Jugador> listaJugadores){
         this.colorADestruir = color;
         this.listaJugadores = listaJugadores;
     }
@@ -17,6 +18,12 @@ public class ObjetivoPorDestruccion implements Objetivo {
     @Override
     public void setJugador(Jugador jugador){
         this.jugador = jugador;
+    }
+
+    //Mensaje que se muestra al jugador para que conozca su objetivo
+    @Override
+    public void setMensajeObjetivo(String mensaje){
+        this.mensajeObjetivo = mensaje;
     }
 
     public Jugador getJugador(){
@@ -27,6 +34,11 @@ public class ObjetivoPorDestruccion implements Objetivo {
         return this.colorADestruir;
     }
 
+    public String getMensajeObjetivo(){
+        return this.mensajeObjetivo;
+    }
+
+    //Segun el objetivo y la cantidad de jugadores, se verifica cual es el ejercito que se debe deestruir
     private String determinarColorADestruir(){
         for(Jugador jugador: listaJugadores)
             if(!jugador.getColor().contains(this.colorADestruir)){
@@ -37,6 +49,7 @@ public class ObjetivoPorDestruccion implements Objetivo {
         return this.colorADestruir;
     }
 
+    //Devuelve el jugador que tiene un turno siguiente al actual
     private int nextId(int id){
         int cantidadJugadores = listaJugadores.size();
         int idADestruir = id+1;
@@ -47,6 +60,7 @@ public class ObjetivoPorDestruccion implements Objetivo {
         return idADestruir;
     }
 
+    //Por medio de el id del jugador, determina cual es el color que corresponde al mismo
     private String buscarColorPorId(int idADestruir){
         String colorADestruir = "";
         for(Jugador jugador: listaJugadores)
