@@ -31,14 +31,6 @@ public class PruebasEntrega2 {
         Pais p2 = new Pais("Chile", j2);
         j2.addPaisConquistado(p2);
 
-        List<Pais> listaPaises = new ArrayList<>();
-        listaPaises.add(p1);
-        listaPaises.add(p2);
-
-        Tablero tablero = new Tablero();
-        tablero.setPaises(listaPaises);
-
-
         Ronda rondaMock = mock(Ronda.class);
         when(rondaMock.iniciarRonda()).thenReturn(this.iniciarRondaMockTest01(j1, j2, p1, p2));
         rondaMock.iniciarRonda();
@@ -80,17 +72,12 @@ public class PruebasEntrega2 {
         Pais p2 = new Pais("Chile", j2);
         j2.addPaisConquistado(p2);
 
-        List<Pais> listaPaises = new ArrayList<>();
-        listaPaises.add(p1);
-        listaPaises.add(p2);
-
         Pais p3 = null;
 
         List<String> paisesDeAsia = new ArrayList<>(Arrays.asList("Arabia", "Aral", "China", "Gobi", "India", "Iran", "Israel", "Japon", "Kamchatka", "Malasia", "Mongolia", "Siberia", "Taimir", "Tartaria", "Turquia"));
         for(String nombrePais: paisesDeAsia) {
             Pais pais = new Pais(nombrePais, j3);
             j3.addPaisConquistado(pais);
-            listaPaises.add(pais);
             p3 = pais;
         }
 
