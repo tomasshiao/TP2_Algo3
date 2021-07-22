@@ -14,12 +14,14 @@ public class Jugador {
     private List<Objetivo> objetivos = new ArrayList<>();
     private int ejercitoParaIncorporar;
     private int canjesRealizados;
+    private boolean vivo;
 
     public Jugador(int id, String color) {
         this.id = id;
         this.color = color;
         this.ejercitoParaIncorporar = 0;
         this.canjesRealizados = 0;
+        this.vivo = true;
     }
 
     public String getColor(){
@@ -123,6 +125,13 @@ public class Jugador {
         return ejercitoAIncorporar;
     }
 
+
+    public void realizarTurno() {
+        if(vivo) {
+            //acciones
+        }
+    }
+
     public int getCantidadPaisesConquistados() {
         return (paisesConquistados.size());
     }
@@ -137,5 +146,9 @@ public class Jugador {
 
     public void setTarjetas(List<Tarjeta> tarjetas) {
         this.tarjetas = tarjetas;
+    }
+
+    public void setEjercitoParaIncorporar(int ejercitoParaIncorporar) {
+        this.ejercitoParaIncorporar = ejercitoParaIncorporar;
     }
 }

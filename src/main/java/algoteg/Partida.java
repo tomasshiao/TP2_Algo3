@@ -41,7 +41,7 @@ public class Partida {
         this.ronda++;
     }
 
-    private Jugador iniciarRonda() {
+    /*private Jugador iniciarRonda() {
         int i = 0;
         int posicionGanador = i - 1;
         boolean hayGanador = false;
@@ -53,14 +53,14 @@ public class Partida {
 
         return jugadores.get(posicionGanador);
     }
-
+*/
     public void iniciarPartida() {
         List<Pais> paises = this.iniciarPaisesYContinentes();
         this.iniciarTarjetas(paises);
         inicializarObjetivos();
         boolean hayGanador = true;
         while (!hayGanador) {
-            Ronda rondaActual = new Ronda(tablero, jugadores);
+            Ronda rondaActual = new Ronda(this.toDTO());
             hayGanador = rondaActual.iniciarRonda();
             //hayGanador = iniciarRonda().esGanador();
         }

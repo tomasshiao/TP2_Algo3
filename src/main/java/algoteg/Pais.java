@@ -48,6 +48,7 @@ public class Pais {
         if(this.noTengoTropas()){
             this.agregarEjercito(1);
             this.setJugador(jugador);
+            jugador.addPaisConquistado(this);
         }
     }
 
@@ -60,4 +61,6 @@ public class Pais {
     public boolean esGobernadoPor(String colorGobernante) {
         return (jugador.getColor().equals(colorGobernante));
     }
+
+
 }
