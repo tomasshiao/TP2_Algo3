@@ -78,7 +78,7 @@ public class Partida {
         this.repartirTarjetas(tarjetas);
     }
 
-    private void repartirTarjetas(List<Tarjeta> tarjetas) {
+    private void repartirTarjetas(List<Tarjeta> tarjetas) { //no se usa
         int i = 0;
         for (Jugador jugador : jugadores) {
 
