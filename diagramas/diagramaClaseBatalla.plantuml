@@ -12,6 +12,13 @@ class Batalla{
     +obtenerPerdedorDeBatalla(Dado dadoAtacante, Dado dadoDefensor): Pais
 }
 
+class LanzadorDado{
+ int dadosParaTirarAtacante;
+ int dadosParaTirarDefensor;
+     +obtenerDadoDefensor(Pais pais): Dados
+     +obtenerDadosAtacante(Pais pais, int tropasParaAtacar): Dados
+}
+
 class Dado{
     +valor: int
     -obtenerDado():int

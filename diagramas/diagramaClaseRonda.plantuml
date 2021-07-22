@@ -1,30 +1,17 @@
 @startuml
 
-abstract class Ronda{
-
-    +iniciarRonda()
-    +hayGanador()
-}
 
 class RondaAtaque{
 
-    +iniciarRonda()
-    +hayGanador()
     +jugadorAtaca(Jugador jugadorAtacante, Pais atacante, Pais defensor, int cantidadTropas)
 }
 
 class RondaReagrupacion{
-    +iniciarRonda()
-    +hayGanador()
     +jugadorReagrupaTropas(Jugador jugadorActual, Pais salida, Pais llegada, int canidadTropas)
 }
 class RondaColocacion{
-    +iniciarRonda()
-    +hayGanador()
     +jugadorColoca(Pais unPais, int canidadTropas)
-    +canjearTarjeta(Jugador jugadorActual)
+    +activarTarjeta(Tarjeta tarjeta,Jugador jugadorActual)
 }
-Ronda<|-- RondaAtaque
-Ronda <|-- RondaReagrupacion
-Ronda <|-- RondaColocacion
+
 @enduml

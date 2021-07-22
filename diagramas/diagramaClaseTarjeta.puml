@@ -25,16 +25,13 @@ class Jugador{
 
 
 class Pais{
-    -ejercito: Ejercito
+    -ejercito: int
 }
-class Ejercito{
-    -color: String
 
-    +getColor(): String
-}
 
 Jugador-->Tarjeta
 Jugador--->Pais
-Pais->Ejercito
+Tarjeta --> Pais
+
 
 @enduml
