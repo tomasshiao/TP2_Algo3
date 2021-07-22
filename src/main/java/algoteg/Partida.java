@@ -1,13 +1,6 @@
 package algoteg;
-import algoteg.datosJuego.InitializeObjetivos;
-import algoteg.datosJuego.InitializePaisesYContinentes;
-import algoteg.datosJuego.InitializeTarjetas;
 
-import java.util.ArrayList;
-import java.io.IOException;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
+import algoteg.datosJuego.*;
 import java.util.*;
 
 public class Partida {
@@ -17,17 +10,15 @@ public class Partida {
     private ArrayList<Jugador> jugadores = new ArrayList<>();
     private Tablero tablero = new Tablero();
     private List<Objetivo> objetivos = new ArrayList<>();
-    private int ronda;
+    //private int ronda;
     private List<Ronda> rondas = new ArrayList<>();
 
     public Partida(int cantidadTotalJugadores) {
         cantidadJugadoresActuales = 0;
-        ronda = 0;
         this.cantidadTotalJugadores = Math.min(cantidadTotalJugadores, 6);
     }
 
     public void agregarJugador(Jugador unJugador) {
-        int idJugador = unJugador.getId();
         if (jugadores.size() < this.cantidadTotalJugadores) {
             jugadores.add(unJugador);
             this.cantidadJugadoresActuales++;
@@ -38,11 +29,15 @@ public class Partida {
         return cantidadJugadoresActuales;
     }
 
-    private void pasarRonda() {
+    public int getCantidadDeRondasJugadas(){
+        return this.rondas.size();
+    }
+
+    /*private void pasarRonda() {
         this.ronda++;
     }
 
-    /*private Jugador iniciarRonda() {
+    private Jugador iniciarRonda() {
         int i = 0;
         int posicionGanador = i - 1;
         boolean hayGanador = false;
@@ -131,7 +126,6 @@ public class Partida {
         Map<String, Object> dto = new HashMap<>();
         dto.put("Jugadores", this.jugadores);
         dto.put("Tablero", this.tablero);
-        dto.put("CantJugadores", this.cantidadJugadoresActuales);
         return dto;
     }
 }

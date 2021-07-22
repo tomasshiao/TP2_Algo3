@@ -4,7 +4,7 @@ import java.util.*;
 
 public class Ronda {
     private final Tablero tablero;
-    private final ArrayList<Jugador> jugadores;
+    private final List<Jugador> jugadores;
     private final int cantidadJugadores;
 
     /****************
@@ -13,7 +13,15 @@ public class Ronda {
      * ***************/
     public Ronda(Map<String, Object> dtoPartida) {
         this.tablero = (Tablero) dtoPartida.get("Tablero");
-        this.jugadores = (ArrayList<Jugador>) dtoPartida.get("Jugadores");
+        this.jugadores = new ArrayList<Jugador>();
+        if(dtoPartida.get("Jugadores") instanceof ArrayList<?>){
+            ArrayList<?> arrayJugadores = ((ArrayList<?>) dtoPartida.get("Jugadores"));
+            for(int i = 0; i < arrayJugadores.size(); i++){
+                if(arrayJugadores.get(i) instanceof Jugador){
+                    this.jugadores.add((Jugador) arrayJugadores.get(i));
+                }
+            }
+        }
         this.cantidadJugadores = this.jugadores.size();
     }
 
@@ -31,7 +39,7 @@ public class Ronda {
 
     public boolean iniciarRonda() {
         int i = 0;
-        int posicionGanador = i - 1;
+        //int posicionGanador = i - 1;
         boolean hayGanador = false;
         while (!hayGanador & i < this.getCantidadJugadores()) {
             //acciones jugador
