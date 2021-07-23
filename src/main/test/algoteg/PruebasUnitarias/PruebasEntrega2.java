@@ -182,15 +182,15 @@ public class PruebasEntrega2 {
             return;
         }
 
-        //RondaAtaque rondaAtaque = new RondaAtaque(tableroMock);
+        RondaAtaque rondaAtaque = new RondaAtaque(tableroMock, null);
 
         //Map<String, String> outMap = new HashMap<>();
-/*
+
         rondaAtaque.atacar(atacante,paisAtacante,paisASerConquistadoPrimero,1);
         rondaAtaque.atacar(atacante,paisAtacante,paisASerConquistadoDespues,1);
         assertTrue(atacante.getPaisesConquistados().contains(paisASerConquistadoPrimero));
         assertTrue(atacante.getPaisesConquistados().contains(paisASerConquistadoDespues));
-*/
+
 
     }
 
