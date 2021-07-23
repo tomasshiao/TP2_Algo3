@@ -1,15 +1,13 @@
 package algoteg.PruebasUnitarias;
 
-import algoteg.Jugador;
-import algoteg.Pais;
-import algoteg.Partida;
-import algoteg.Tarjeta;
+import algoteg.*;
+import algoteg.Exceptions.MoverEjercitoException;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
@@ -18,6 +16,7 @@ import static org.mockito.Mockito.when;
 public class JugadorTest {
     Jugador jugador1 = new Jugador(1, "azul");
     Pais paisMock = mock(Pais.class);
+    Pais paisMock2 = mock(Pais.class);
     Tarjeta tarjetaMock = mock(Tarjeta.class);
 
     Tarjeta tarjetaArg = new Tarjeta(paisMock, "Barco");
@@ -269,4 +268,33 @@ public class JugadorTest {
 
         assertEquals(8, paisesConquistados);
     }
+
+    @Test
+    public void cuandoUnJugadorTieneAlgunPaisConquistadoEstaVivo(){
+        jugador1.addPaisConquistado(paisMock);
+        assertTrue(jugador1.estaVivo());
+    }
+
+    @Test
+    public void cuandoUnJugadorNoTienePaisesConquistadosYaNoEstaVivo(){
+        assertFalse(jugador1.estaVivo());
+    }
+
+    @Test
+    public void unJugadorMueve2TropasEntrePaisesLimitrofes() throws MoverEjercitoException {
+        Pais pais = new Pais("Argentina", null);
+        List<Pais> limitrofes = new ArrayList<>();
+        when(paisMock.getPaisesLimitrofes()).thenReturn(limitrofes);
+        when(paisMock.getEjercitoActual()).thenReturn(5);
+
+        jugador1.addPaisConquistado(paisMock);
+        jugador1.addPaisConquistado(pais);
+
+        limitrofes.add(pais);
+
+        jugador1.moverEjercito(paisMock, pais, 2);
+
+        assertEquals(2, pais.getEjercitoActual());
+    }
+
 }

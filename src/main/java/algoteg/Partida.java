@@ -50,13 +50,13 @@ public class Partida {
         return jugadores.get(posicionGanador);
     }
 */
+
+
     public void iniciarPartida() {
         List<Pais> paises = this.iniciarPaisesYContinentes();
         this.iniciarTarjetas(paises);
         inicializarObjetivos();
-
     }
-
 
     private List<Pais> iniciarPaisesYContinentes() {
         InitializePaisesYContinentes init = new InitializePaisesYContinentes();
@@ -69,7 +69,7 @@ public class Partida {
         InitializeTarjetas init = new InitializeTarjetas(paises);
         List<Tarjeta> tarjetas = init.getTodasLasTarjetas();
         Collections.shuffle(tarjetas);
-        this.repartirTarjetas(tarjetas);
+//        this.repartirTarjetas(tarjetas);
     }
 
     private void repartirTarjetas(List<Tarjeta> tarjetas) { //no se usa
@@ -113,6 +113,16 @@ public class Partida {
     private void inicializarObjetivos(){
         InitializeObjetivos initObjetivos = new InitializeObjetivos(this.jugadores, this.tablero);
         this.objetivos = initObjetivos.getObjetivos();
+        repartirObjetivos();
+    }
+
+    private void repartirObjetivos(){
+        Collections.shuffle(this.objetivos);
+        int i = 0;
+        for(Jugador jugador: jugadores){
+            jugador.setObjetivo(this.objetivos.get(i));
+            i++;
+        }
     }
 
     public List<Objetivo> getObjetivos(){
