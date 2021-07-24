@@ -153,7 +153,7 @@ public class InitializePaisesYContinentes {
     }
 
     private void setLimitrofes(List<Pais> todosLosPaises, Map<String, List<String>> mapaLimitrofes, Map<String, Pais> mapPaises){
-        
+
         for(Pais p: todosLosPaises) {
             List<Pais> paisesLimitrofes = new ArrayList<>();
             String nombrePais = p.getNombre();
@@ -164,7 +164,7 @@ public class InitializePaisesYContinentes {
             }
             p.setPaisesLimitrofes(paisesLimitrofes);
         }
-        
+
     }
 
     public InitializePaisesYContinentes(){
