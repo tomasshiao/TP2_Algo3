@@ -8,6 +8,10 @@ public class Dado implements GeneradorRandom{
         valor = this.obtenerDado();
     }
 
+    public Dado(int num){
+        valor=this.obtenerDado();
+    }
+
 
     private int obtenerDado(){
         Random random = new Random();

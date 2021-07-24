@@ -29,21 +29,20 @@ public class RondaColocacion {
         return this.cantidadJugadores;
     }
 
-    public void colocarEjercitos(int cantidadTropas, Pais pais, Jugador jugador){
-        jugador.addEjercitoEnPais(pais, cantidadTropas);
+    public void colocarEjercitos(int cantidadTropas, Pais pais){
+
+        this.jugadorActual.addEjercitoEnPais(pais, cantidadTropas);
     }
 
-    public void setEjercitosDisponiblesParaColocar(Jugador jugador){
-        int ejercitosDisponibles = jugador.getCantidadPaisesConquistados()/2;
-        List<Continente> continentes = tablero.getContinentesGobernadosPor(jugador);
+    public void setEjercitosDisponiblesParaColocar(){
+        int ejercitosDisponibles = this.jugadorActual.getCantidadPaisesConquistados()/2;
+        List<Continente> continentes = tablero.getContinentesGobernadosPor(this.jugadorActual);
 
-        for(Continente continente : continentes){
-            ejercitosDisponibles += continente.getBonusTropas();
-        }
-        jugador.addEjercito(ejercitosDisponibles);
+        this.jugadorActual.setEjercitoDisponibles(continentes);
+
     }
 
-    private void activarTarjeta(Tarjeta tarjeta) {
+    public void activarTarjeta(Tarjeta tarjeta) {
         this.jugadorActual.activarTarjeta(tarjeta);
     }
 }

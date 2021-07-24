@@ -24,10 +24,10 @@ public class RondaInicial {
     }
 
     public void colocarEjercito(Pais pais, int cantTropas) {
-        if (cantTropas < tropasDisponiblesPrimeraColocacion) {
+        if (cantTropas <= tropasDisponiblesPrimeraColocacion) {
             this.tropasDisponiblesPrimeraColocacion -= cantTropas;
             pais.agregarEjercito(cantTropas);
-        } else if (cantTropas < tropasDisponiblesSegundaColocacion) {
+        } else if (cantTropas <= tropasDisponiblesSegundaColocacion) {
             this.tropasDisponiblesSegundaColocacion -= cantTropas;
             pais.agregarEjercito(cantTropas);
         }

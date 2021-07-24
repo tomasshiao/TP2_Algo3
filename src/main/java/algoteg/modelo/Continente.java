@@ -19,6 +19,9 @@ public class Continente {
         this.paises = listaPaises;
     }
 
+    public boolean tienePais(Pais pais){
+        return this.paises.contains(pais);
+    }
 
     public boolean esGobernante(Jugador jugador){
         boolean esGobernante = true;

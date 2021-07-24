@@ -86,5 +86,28 @@ public class Tablero {
             });
         return continentesGobernados;
     }
+    public void moverEjercito(Pais paisOrigen, Pais paisDestino, int cantidadTropas, Jugador jugador) throws MoverEjercitoException {
+        if(!paisOrigen.getPaisesLimitrofes().contains(paisDestino)) {
+            String exceptionType = "NoLimitrofe";
+            throw new MoverEjercitoException(exceptionType);
+        }
+        if(paisOrigen.getEjercitoActual() < cantidadTropas){
+            String exceptionType = "TropasInsuficientes";
+            throw new MoverEjercitoException(exceptionType);
+        }
+        if(!jugador.tienePais(paisOrigen) || !jugador.tienePais(paisDestino)) {
+            String exceptionType = "PaisNoMePertenece";
+            throw new MoverEjercitoException(exceptionType);
+        }
+        if(paisOrigen.getEjercitoActual() <= cantidadTropas){
+            String exceptionType = "TropasInsuficientes";
+            throw new MoverEjercitoException(exceptionType);
+        }
+
+        if(paisOrigen.getEjercitoActual() > cantidadTropas) {
+            paisOrigen.reducirEjercito(cantidadTropas);
+            paisDestino.agregarEjercito(cantidadTropas);
+        }
+    }
 
 }

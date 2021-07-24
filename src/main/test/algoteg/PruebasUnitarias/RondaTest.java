@@ -1,8 +1,6 @@
 package algoteg.PruebasUnitarias;
 
-import algoteg.modelo.Jugador;
-import algoteg.modelo.Ronda;
-import algoteg.modelo.Tablero;
+import algoteg.modelo.*;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -70,5 +68,86 @@ public class RondaTest {
         Ronda ronda = new Ronda(dtoPartida);
         when(j1Mock.esGanador()).thenReturn(true);
         assertTrue(ronda.iniciarRonda());
+    }
+
+    @Test
+    public void jugadorTiene3PaisesConSusTarjetasYLosActivaEnLaRondaDeColocacionRecibiendo6Tropas(){
+        Jugador jugador1 = new Jugador(1, "azul");
+
+        Pais pais1 = mock(Pais.class);
+        Pais pais2 = mock(Pais.class);
+        Pais pais3 = mock(Pais.class);
+
+        Tarjeta tarjeta1 = new Tarjeta(pais1, "globo");
+        Tarjeta tarjeta2 = new Tarjeta(pais2, "globo");
+        Tarjeta tarjeta3 = new Tarjeta(pais3, "globo");
+
+        jugador1.addPaisConquistado(pais1);
+        jugador1.addPaisConquistado(pais2);
+        jugador1.addPaisConquistado(pais3);
+        jugador1.addTarjeta(tarjeta1);
+        jugador1.addTarjeta(tarjeta2);
+        jugador1.addTarjeta(tarjeta3);
+
+        RondaColocacion rondaColocacion = new RondaColocacion(tableroMock, jugador1);
+        rondaColocacion.activarTarjeta(tarjeta1);
+        rondaColocacion.activarTarjeta(tarjeta2);
+        rondaColocacion.activarTarjeta(tarjeta3);
+
+        assertEquals(6,jugador1.getEjercitoParaIncorporar());
+    }
+
+    @Test
+    public void jugadorTiene2PaisesDeSus3TarjetasYLosActivaEnLaRondaDeColocacionRecibiendo4Tropas(){
+        Jugador jugador1 = new Jugador(1, "azul");
+
+        Pais pais1 = mock(Pais.class);
+        Pais pais2 = mock(Pais.class);
+        Pais pais3 = mock(Pais.class);
+
+        Tarjeta tarjeta1 = new Tarjeta(pais1, "globo");
+        Tarjeta tarjeta2 = new Tarjeta(pais2, "globo");
+        Tarjeta tarjeta3 = new Tarjeta(pais3, "globo");
+
+        jugador1.addPaisConquistado(pais1);
+        jugador1.addPaisConquistado(pais2);
+        jugador1.addTarjeta(tarjeta1);
+        jugador1.addTarjeta(tarjeta2);
+        jugador1.addTarjeta(tarjeta3);
+
+        RondaColocacion rondaColocacion = new RondaColocacion(tableroMock, jugador1);
+        rondaColocacion.activarTarjeta(tarjeta1);
+        rondaColocacion.activarTarjeta(tarjeta2);
+        rondaColocacion.activarTarjeta(tarjeta3);
+
+        assertEquals(4,jugador1.getEjercitoParaIncorporar());
+    }
+
+    @Test
+    public void jugadorTiene3PaisesPeroSolo1TarjetaDeEstosYLaActivaEnLaRondaDeColocacionRecibiendo2Tropas(){
+        Jugador jugador1 = new Jugador(1, "azul");
+        Tarjeta tarjetaMock = mock(Tarjeta.class);
+
+        Pais pais1 = mock(Pais.class);
+        Pais pais2 = mock(Pais.class);
+        Pais pais3 = mock(Pais.class);
+
+        Tarjeta tarjeta1 = new Tarjeta(pais1, "globo");
+        Tarjeta tarjeta2 = new Tarjeta(pais2, "globo");
+        Tarjeta tarjeta3 = new Tarjeta(pais3, "globo");
+
+        jugador1.addPaisConquistado(pais1);
+        jugador1.addPaisConquistado(pais2);
+        jugador1.addPaisConquistado(pais3);
+        jugador1.addTarjeta(tarjeta1);
+        jugador1.addTarjeta(tarjetaMock);
+        jugador1.addTarjeta(tarjetaMock);
+
+        RondaColocacion rondaColocacion = new RondaColocacion(tableroMock, jugador1);
+        rondaColocacion.activarTarjeta(tarjeta1);
+        rondaColocacion.activarTarjeta(tarjeta2);
+        rondaColocacion.activarTarjeta(tarjeta3);
+
+        assertEquals(2,jugador1.getEjercitoParaIncorporar());
     }
 }

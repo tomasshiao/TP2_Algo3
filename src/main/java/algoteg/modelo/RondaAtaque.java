@@ -29,9 +29,9 @@ public class RondaAtaque {
         return this.cantidadJugadores;
     }
 
-    public String atacar(Jugador atacante, Pais paisAtacante, Pais paisDefensor, int cantidadTropas) {
+    public String atacar(Pais paisAtacante, Pais paisDefensor, int cantidadTropas) {
         try {
-            tablero.atacar(atacante, paisAtacante, paisDefensor, cantidadTropas);
+            tablero.atacar(jugadorActual, paisAtacante, paisDefensor, cantidadTropas);
         } catch (Exception e) {
             System.out.println(e.getMessage());
             return e.getMessage();
@@ -41,7 +41,7 @@ public class RondaAtaque {
 
     public String moverEjercito(Pais paisOrigen, Pais paisDestino, int cantidadTropas){
         try {
-            jugadorActual.moverEjercito(paisOrigen, paisDestino, cantidadTropas);
+            tablero.moverEjercito(paisOrigen, paisDestino, cantidadTropas, this.jugadorActual);
         } catch (Exception e){
             System.out.println(e.getMessage());
             return e.getMessage();

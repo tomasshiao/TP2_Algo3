@@ -5,21 +5,28 @@ import algoteg.Exceptions.MoverEjercitoException;
 import java.util.*;
 
 public class Jugador {
-    private String color;
-    private int id;
+    private final String color;
+    private final int id;
     private List<Tarjeta> tarjetas = new ArrayList<>();
     private List<Pais> paisesConquistados = new ArrayList<>();
     private Objetivo objetivo;
-    private int ejercitoParaIncorporar;
+    private Map<Continente, Integer> ejercitoDisponiblePorContinente = new HashMap<>();
+    int ejercitoDisponibleGlobal;
     private int canjesRealizados;
     private boolean estaVivo;
 
     public Jugador(int id, String color) {
         this.id = id;
         this.color = color;
-        this.ejercitoParaIncorporar = 0;
         this.canjesRealizados = 0;
+        this.ejercitoDisponibleGlobal = 0;
         this.estaVivo = true;
+    }
+
+    public void setEjercitoDisponibles(List<Continente> continentes){
+        for(Continente continente: continentes) {
+            ejercitoDisponiblePorContinente.put(continente, continente.getBonusTropas());
+        }
     }
 
     public String getColor(){
@@ -50,18 +57,46 @@ public class Jugador {
     }
 
     public void addEjercito(int ejercitoParaIncorporar){
-        this.ejercitoParaIncorporar += ejercitoParaIncorporar;
+        this.ejercitoDisponibleGlobal += ejercitoParaIncorporar;
     }
 
-    public void addEjercitoEnPais(Pais pais, int ejercito){
-        if(paisesConquistados.contains(pais) && this.ejercitoParaIncorporar >= ejercito){
-            pais.agregarEjercito(ejercito);
-            this.ejercitoParaIncorporar -= ejercito;
+    public void addEjercitoEnPais(Pais pais, int ejercito) {
+        if(!this.tienePais(pais)) {return;}
+        int ejercitoPorColocar = ejercito;
+        for (Map.Entry<Continente, Integer> entry : ejercitoDisponiblePorContinente.entrySet()) {
+            Continente continente = entry.getKey();
+            Integer ejercitoDisponible = entry.getValue();
+            if (continente.tienePais(pais)) {
+                if (ejercitoDisponible <= ejercitoPorColocar) {
+                    pais.agregarEjercito(ejercitoDisponible);
+                    ejercitoPorColocar -= ejercitoDisponible;
+                    ejercitoDisponiblePorContinente.put(continente, 0);
+                } else {
+                    pais.agregarEjercito(ejercitoPorColocar);
+                    ejercitoDisponiblePorContinente.put(continente, ejercitoDisponible - ejercitoPorColocar);
+                    ejercitoPorColocar = 0;
+                }
+            }
         }
+        if(ejercitoDisponibleGlobal <= ejercitoPorColocar) {
+            pais.agregarEjercito(ejercitoDisponibleGlobal);
+            ejercitoDisponibleGlobal = 0;
+        }
+        else {
+            pais.agregarEjercito(ejercitoPorColocar);
+            ejercitoDisponibleGlobal -= ejercitoPorColocar;
+        }
+
+
     }
+
+
+
+
+
 
     public int getEjercitoParaIncorporar(){
-        return ejercitoParaIncorporar;
+        return ejercitoDisponibleGlobal;
     }
 
     public boolean canjearTarjetas(Tarjeta tarjeta1, Tarjeta tarjeta2, Tarjeta tarjeta3){
@@ -79,13 +114,13 @@ public class Jugador {
 
     public boolean compararJugadores(Jugador jugador2) { return (this.getColor().equals(jugador2.getColor())); }
 
-    public void activarTarjeta (Tarjeta tarjeta){
+    public void activarTarjeta(Tarjeta tarjeta){
         Pais paisDeTarjeta = tarjeta.getPaisDeTarjeta();
         int ejercitoAIncorporar = 0;
 
         if(this.paisesConquistados.contains(paisDeTarjeta) && this.tarjetas.contains(tarjeta))
             ejercitoAIncorporar = tarjeta.activarTarjeta();
-        addEjercito(ejercitoAIncorporar);
+        this.addEjercito(ejercitoAIncorporar);
     }
 
     public void addPaisConquistado(Pais pais){
@@ -145,41 +180,7 @@ public class Jugador {
         return this.estaVivo = this.getCantidadPaisesConquistados() > 0;
     }
 
-    public void moverEjercito(Pais paisOrigen, Pais paisDestino, int cantidadTropas) throws MoverEjercitoException {
-        if(!paisOrigen.getPaisesLimitrofes().contains(paisDestino)) {
-            String exceptionType = "NoLimitrofe";
-            throw new MoverEjercitoException(exceptionType);
-        }
-        if(paisOrigen.getEjercitoActual() < cantidadTropas){
-            String exceptionType = "TropasInsuficientes";
-            throw new MoverEjercitoException(exceptionType);
-        }
-        if(!this.getPaisesConquistados().contains(paisOrigen) || !this.getPaisesConquistados().contains(paisDestino)) {
-            String exceptionType = "PaisNoMePertenece";
-            throw new MoverEjercitoException(exceptionType);
-        }
-        if(paisOrigen.getEjercitoActual() <= cantidadTropas){
-            String exceptionType = "TropasInsuficientes";
-            throw new MoverEjercitoException(exceptionType);
-        }
 
-        if(paisOrigen.getEjercitoActual() > cantidadTropas) {
-            paisOrigen.reducirEjercito(cantidadTropas);
-            paisDestino.agregarEjercito(cantidadTropas);
-        }
-    }
-
-    public void realizarAtaques(){
-        if(this.estaVivo()) {
-            //acciones
-        }
-    }
-
-    public void realizarColocacionDeEjercitos() {
-        if(this.estaVivo()) {
-            //acciones
-        }
-    }
 
     public void setObjetivo(Objetivo objetivo) {
         this.objetivo = objetivo;
@@ -190,5 +191,11 @@ public class Jugador {
     }
 
     public boolean esGanador(){return this.objetivo.cumplido();} // se fija si cumple objetivos
+
+    public boolean tienePais(Pais pais){
+        return (paisesConquistados.contains(pais));
+
+
+    }
 
 }

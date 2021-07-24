@@ -1,5 +1,6 @@
 package algoteg.modelo;
 
+import algoteg.Exceptions.AtaqueInvalidoException;
 import algoteg.datosJuego.*;
 import java.util.*;
 
@@ -12,12 +13,25 @@ public class Partida {
     private List<Objetivo> objetivos = new ArrayList<>();
     private LanzadorDados lanzadorDados = new LanzadorDados();
     private List<Ronda> rondas = new ArrayList<>();
+    private Integer indiceJugadorActual;
 
     public Partida(int cantidadTotalJugadores) {
         cantidadJugadoresActuales = 0;
         this.cantidadTotalJugadores = Math.min(cantidadTotalJugadores, 6);
+        this.indiceJugadorActual = 0;
     }
 
+    public void pasarAJugadorSiguiente(){
+        if(this.indiceJugadorActual == (cantidadJugadoresActuales-1)){
+            this.indiceJugadorActual = 0;
+        }
+        else {
+            this.indiceJugadorActual++;
+        }
+    }
+    public Jugador getJugadorActual(){
+        return jugadores.get(this.indiceJugadorActual);
+    }
     public void agregarJugador(Jugador unJugador) {
         if (jugadores.size() < this.cantidadTotalJugadores) {
             jugadores.add(unJugador);
@@ -119,5 +133,16 @@ public class Partida {
         dto.put("Jugadores", this.jugadores);
         dto.put("Tablero", this.tablero);
         return dto;
+    }
+
+    public void atacar(Pais paisAtacante, Pais paisDefensor, int numeroTropas) throws AtaqueInvalidoException {
+        RondaAtaque ronda = new RondaAtaque(tablero, this.getJugadorActual());
+        ronda.atacar(paisAtacante,paisDefensor,numeroTropas);
+
+    }
+
+    public void mover(Pais paisOrigen, Pais paisDestino, int numeroTropas) {
+        RondaAtaque ronda = new RondaAtaque(tablero, this.getJugadorActual());
+        ronda.moverEjercito(paisOrigen,paisDestino,numeroTropas);
     }
 }
