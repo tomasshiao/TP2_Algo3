@@ -1,4 +1,4 @@
-package algoteg;
+package algoteg.modelo;
 
 import java.util.List;
 

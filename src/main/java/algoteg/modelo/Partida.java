@@ -1,4 +1,4 @@
-package algoteg;
+package algoteg.modelo;
 
 import algoteg.datosJuego.*;
 import java.util.*;
@@ -33,24 +33,9 @@ public class Partida {
         return this.rondas.size();
     }
 
-    /*private void pasarRonda() {
-        this.ronda++;
+    public void inicializarJugadores(Integer cantdiadJugadores){
+        
     }
-
-    private Jugador iniciarRonda() {
-        int i = 0;
-        int posicionGanador = i - 1;
-        boolean hayGanador = false;
-        while (!hayGanador & i < cantidadTotalJugadores) {
-            //acciones jugador
-            hayGanador = jugadores.get(i).esGanador();
-            i++;
-        }
-
-        return jugadores.get(posicionGanador);
-    }
-*/
-
 
     public void iniciarPartida() {
         List<Pais> paises = this.iniciarPaisesYContinentes();

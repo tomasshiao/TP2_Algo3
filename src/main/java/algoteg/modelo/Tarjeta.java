@@ -1,4 +1,4 @@
-package algoteg;
+package algoteg.modelo;
 
 public class Tarjeta {
     private String nombrePais;

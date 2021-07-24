@@ -1,5 +1,5 @@
 package algoteg.PruebasUnitarias;
-import algoteg.*;
+import algoteg.modelo.*;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -34,18 +34,16 @@ public class BatallaTest {
 
     @Test
     public void pierdeDefensor(){
-        Dado dadoAtacantemock = mock(Dado.class);
-        when(dadoAtacantemock.getValor()).thenReturn(8);
+        GeneradorRandom dadoAtacante = new DadoStub(6);
+        GeneradorRandom dadoDefensor = new DadoStub(0);
 
-        Dado dadoDefensormock = mock(Dado.class);
-        when(dadoDefensormock.getValor()).thenReturn(0);
 
         Pais paisAtacantemock = mock(Pais.class);
         when(paisAtacantemock.getNombre()).thenReturn("Argentina");
         Pais paisDenfesormock = mock(Pais.class);
         when(paisDenfesormock.getNombre()).thenReturn("Uruguay");
 
-        Pais perdedor = batalla.obtenerPerdedorDeBatalla(dadoAtacantemock,dadoDefensormock, paisAtacantemock,paisDenfesormock);
+        Pais perdedor = batalla.obtenerPerdedorDeBatalla(dadoAtacante,dadoDefensor, paisAtacantemock,paisDenfesormock);
         assertEquals("Uruguay", perdedor.getNombre());
 
     }
@@ -77,10 +75,10 @@ public class BatallaTest {
         when(paisDefensorMock.getEjercitoActual()).thenReturn(1);
 
         List<GeneradorRandom> dadosAtacante = new ArrayList<>();
-        dadosAtacante.add(new DadoCero());
+        dadosAtacante.add(new DadoStub(0));
         List<GeneradorRandom> dadosDefensor = new ArrayList<>();
-        dadosDefensor.add(new DadoSeis());
-        dadosDefensor.add(new DadoSeis());
+        dadosDefensor.add(new DadoStub(6));
+        dadosDefensor.add(new DadoStub(6));
 
         Pais ganador = batalla.obtenerVictoriosoDeGuerra(dadosAtacante,dadosDefensor,paisAtacanteMock,paisDefensorMock, 1);
 
@@ -98,13 +96,13 @@ public class BatallaTest {
         when(paisDefensorMock.getEjercitoActual()).thenReturn(2);
 
         List<GeneradorRandom> dadosAtacante = new ArrayList<>();
-        dadosAtacante.add(new DadoCero());
-        dadosAtacante.add(new DadoSeis());
-        dadosAtacante.add(new DadoCero());
+        dadosAtacante.add(new DadoStub(0));
+        dadosAtacante.add(new DadoStub(6));
+        dadosAtacante.add(new DadoStub(0));
         List<GeneradorRandom> dadosDefensor = new ArrayList<>();
-        dadosDefensor.add(new DadoSeis());
-        dadosDefensor.add(new DadoCero());
-        dadosDefensor.add(new DadoSeis());
+        dadosDefensor.add(new DadoStub(6));
+        dadosDefensor.add(new DadoStub(0));
+        dadosDefensor.add(new DadoStub(6));
 
         Pais ganador = batalla.obtenerVictoriosoDeGuerra(dadosAtacante, dadosDefensor, paisAtacanteMock, paisDefensorMock, 1);
 
@@ -121,13 +119,13 @@ public class BatallaTest {
         when(paisDefensorMock.getEjercitoActual()).thenReturn(2);
 
         List<GeneradorRandom> dadosAtacante = new ArrayList<>();
-        dadosAtacante.add(new DadoCero());
-        dadosAtacante.add(new DadoSeis());
-        dadosAtacante.add(new DadoCero());
+        dadosAtacante.add(new DadoStub(0));
+        dadosAtacante.add(new DadoStub(6));
+        dadosAtacante.add(new DadoStub(0));
         List<GeneradorRandom> dadosDefensor = new ArrayList<>();
-        dadosDefensor.add(new DadoSeis());
-        dadosDefensor.add(new DadoSeis());
-        dadosDefensor.add(new DadoSeis());
+        dadosDefensor.add(new DadoStub(6));
+        dadosDefensor.add(new DadoStub(6));
+        dadosDefensor.add(new DadoStub(6));
 
         Pais ganador = batalla.obtenerVictoriosoDeGuerra(dadosAtacante, dadosDefensor, paisAtacanteMock, paisDefensorMock, 1);
 
@@ -145,10 +143,10 @@ public class BatallaTest {
         when(paisDefensorMock.getEjercitoActual()).thenReturn(1);
 
         List<GeneradorRandom> dadosAtacante = new ArrayList<>();
-        dadosAtacante.add(new DadoSeis());
+        dadosAtacante.add(new DadoStub(6));
         List<GeneradorRandom> dadosDefensor = new ArrayList<>();
-        dadosDefensor.add(new DadoCero());
-        dadosDefensor.add(new DadoCero());
+        dadosDefensor.add(new DadoStub(0));
+        dadosDefensor.add(new DadoStub(0));
 
         Pais ganador = batalla.obtenerVictoriosoDeGuerra(dadosAtacante,dadosDefensor,paisAtacanteMock,paisDefensorMock, 1);
 
@@ -166,13 +164,13 @@ public class BatallaTest {
         when(paisDefensorMock.getEjercitoActual()).thenReturn(2);
 
         List<GeneradorRandom> dadosAtacante = new ArrayList<>();
-        dadosAtacante.add(new DadoCero());
-        dadosAtacante.add(new DadoSeis());
-        dadosAtacante.add(new DadoSeis());
+        dadosAtacante.add(new DadoStub(0));
+        dadosAtacante.add(new DadoStub(6));
+        dadosAtacante.add(new DadoStub(6));
         List<GeneradorRandom> dadosDefensor = new ArrayList<>();
-        dadosDefensor.add(new DadoSeis());
-        dadosDefensor.add(new DadoCero());
-        dadosDefensor.add(new DadoCero());
+        dadosDefensor.add(new DadoStub(6));
+        dadosDefensor.add(new DadoStub(0));
+        dadosDefensor.add(new DadoStub(0));
 
         Pais ganador = batalla.obtenerVictoriosoDeGuerra(dadosAtacante, dadosDefensor, paisAtacanteMock, paisDefensorMock, 1);
 
@@ -188,13 +186,14 @@ public class BatallaTest {
         when(paisDefensorMock.getEjercitoActual()).thenReturn(2);
 
         List<GeneradorRandom> dadosAtacante = new ArrayList<>();
-        dadosAtacante.add(new DadoSeis());
-        dadosAtacante.add(new DadoSeis());
-        dadosAtacante.add(new DadoSeis());
+        dadosAtacante.add(new DadoStub(6));
+        dadosAtacante.add(new DadoStub(6));
+        dadosAtacante.add(new DadoStub(6));
         List<GeneradorRandom> dadosDefensor = new ArrayList<>();
-        dadosDefensor.add(new DadoCero());
-        dadosDefensor.add(new DadoSeis());
-        dadosDefensor.add(new DadoCero());
+        dadosDefensor.add(new DadoStub(0));
+        dadosDefensor.add(new DadoStub(6));
+        dadosDefensor.add(new DadoStub(0));
+
 
         Pais ganador = batalla.obtenerVictoriosoDeGuerra(dadosAtacante, dadosDefensor, paisAtacanteMock, paisDefensorMock, 1);
 

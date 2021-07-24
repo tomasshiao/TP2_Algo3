@@ -1,6 +1,6 @@
 package algoteg.datosJuego;
 
-import algoteg.*;
+import algoteg.modelo.*;
 
 import java.io.BufferedReader;
 import java.io.FileReader;

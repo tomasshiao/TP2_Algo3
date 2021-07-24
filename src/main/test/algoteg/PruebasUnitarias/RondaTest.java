@@ -1,7 +1,8 @@
 package algoteg.PruebasUnitarias;
 
-import algoteg.*;
-
+import algoteg.modelo.Jugador;
+import algoteg.modelo.Ronda;
+import algoteg.modelo.Tablero;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 

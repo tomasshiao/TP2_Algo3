@@ -1,7 +1,10 @@
 package algoteg.PruebasUnitarias;
 
-import algoteg.*;
 import algoteg.Exceptions.MoverEjercitoException;
+import algoteg.modelo.Jugador;
+import algoteg.modelo.Pais;
+import algoteg.modelo.Partida;
+import algoteg.modelo.Tarjeta;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;

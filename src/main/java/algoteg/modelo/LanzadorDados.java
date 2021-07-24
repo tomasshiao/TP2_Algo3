@@ -1,4 +1,4 @@
-package algoteg;
+package algoteg.modelo;
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -50,5 +50,9 @@ public class LanzadorDados {
 
     public int getDadosParaTirarDefensor() {
         return dadosParaTirarDefensor;
+    }
+
+    public GeneradorRandom obtenerDadoInicial() {
+        return (new Dado());
     }
 }

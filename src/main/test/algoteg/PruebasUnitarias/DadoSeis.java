@@ -1,6 +1,6 @@
 package algoteg.PruebasUnitarias;
 
-import algoteg.GeneradorRandom;
+import algoteg.modelo.GeneradorRandom;
 
 public class DadoSeis implements GeneradorRandom {
 

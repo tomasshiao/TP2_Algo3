@@ -1,13 +1,9 @@
 package algoteg.PruebasUnitarias;
 
-import algoteg.Batalla;
-import algoteg.Jugador;
-import algoteg.Pais;
+import algoteg.modelo.Batalla;
+import algoteg.modelo.Jugador;
+import algoteg.modelo.Pais;
 import org.junit.jupiter.api.Test;
-
-import static org.mockito.Mockito.*;
-import java.util.ArrayList;
-import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 

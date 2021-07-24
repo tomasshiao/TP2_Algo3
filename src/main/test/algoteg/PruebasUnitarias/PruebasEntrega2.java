@@ -1,10 +1,8 @@
 package algoteg.PruebasUnitarias;
 
-import algoteg.*;
-import algoteg.datosJuego.InitializePaisesYContinentes;
+import algoteg.modelo.*;
 import org.junit.jupiter.api.Test;
 
-import java.lang.reflect.Array;
 import java.util.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;

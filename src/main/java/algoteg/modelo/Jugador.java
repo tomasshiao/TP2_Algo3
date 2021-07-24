@@ -1,6 +1,5 @@
-package algoteg;
+package algoteg.modelo;
 
-import algoteg.Exceptions.AtaqueInvalidoException;
 import algoteg.Exceptions.MoverEjercitoException;
 
 import java.util.*;
