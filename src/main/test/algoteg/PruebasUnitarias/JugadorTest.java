@@ -19,7 +19,6 @@ import static org.mockito.Mockito.when;
 public class JugadorTest {
     Jugador jugador1 = new Jugador(1, "azul");
     Pais paisMock = mock(Pais.class);
-    Pais paisMock2 = mock(Pais.class);
     Tarjeta tarjetaMock = mock(Tarjeta.class);
 
     Tarjeta tarjetaArg = new Tarjeta(paisMock, "Barco");
