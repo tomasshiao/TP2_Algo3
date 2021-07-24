@@ -1,4 +1,4 @@
 module juego {
     requires javafx.controls;
-    exports algoteg;
+    exports algoteg.modelo;
 }

@@ -1,6 +1,8 @@
 package algoteg.datosJuego;
 
-import algoteg.*;
+import algoteg.modelo.Pais;
+import algoteg.modelo.Tarjeta;
+
 import java.util.*;
 
 public class InitializeTarjetas {

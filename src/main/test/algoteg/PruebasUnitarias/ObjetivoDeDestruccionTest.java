@@ -1,17 +1,14 @@
 package algoteg.PruebasUnitarias;
 
-import algoteg.Jugador;
-import algoteg.Objetivo;
-import algoteg.ObjetivoDeDestruccion;
-import algoteg.Pais;
+import algoteg.modelo.Jugador;
+import algoteg.modelo.Objetivo;
+import algoteg.modelo.ObjetivoDeDestruccion;
+import algoteg.modelo.Pais;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 public class ObjetivoDeDestruccionTest {
     Jugador jugador1 = new Jugador(1, "azul");

@@ -1,4 +1,4 @@
-package algoteg;
+package algoteg.modelo;
 
 import java.util.*;
 
@@ -38,7 +38,7 @@ public class Ronda {
     }
 
     public boolean iniciarRonda() {
-        int i = 0;
+        /*int i = 0;
         boolean hayGanador = false;
         // Ronda de ataque
         while (!hayGanador & i < this.getCantidadJugadores()) {
@@ -49,9 +49,26 @@ public class Ronda {
         }
 
         // Colocación de ejércitos
+        i=0;
         while (!hayGanador & i < this.getCantidadJugadores()) {
             Jugador jugadorActual = this.getJugadores().get(i);
             jugadorActual.realizarColocacionDeEjercitos();
+            i++;
+        }*/
+
+        boolean hayGanador = false;
+        int i = 0;
+        while (!hayGanador & i < this.getCantidadJugadores()) {
+            Jugador jugadorActual = this.getJugadores().get(i);
+            RondaAtaque rondaAtaque = new RondaAtaque(this.tablero, jugadorActual);
+            hayGanador = jugadorActual.esGanador();
+            i++;
+        }
+
+        i = 0;
+        while (!hayGanador & i < this.getCantidadJugadores()){
+            Jugador jugadorActual = this.getJugadores().get(i);
+            RondaColocacion rondaColocacion = new RondaColocacion(this.tablero, jugadorActual);
             i++;
         }
         return hayGanador;

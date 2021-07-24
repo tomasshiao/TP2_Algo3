@@ -1,4 +1,4 @@
-package algoteg;
+package algoteg.modelo;
 
 import java.util.*;
 
@@ -6,13 +6,15 @@ public class RondaColocacion {
     private final Tablero tablero;
     private List<Jugador> jugadores;
     private int cantidadJugadores;
+    private Jugador jugadorActual;
 
     /****************
      * Inicializa una ronda.
      * @param tablero Tablero
      * ***************/
-    public RondaColocacion(Tablero tablero) {
+    public RondaColocacion(Tablero tablero, Jugador jugadorActual) {
         this.tablero = tablero;
+        this.jugadorActual = jugadorActual;
     }
 
     public Tablero getTablero() {
@@ -38,10 +40,10 @@ public class RondaColocacion {
         for(Continente continente : continentes){
             ejercitosDisponibles += continente.getBonusTropas();
         }
-        jugador.setEjercitoParaIncorporar(ejercitosDisponibles);
+        jugador.addEjercito(ejercitosDisponibles);
     }
 
-    private void activarTarjeta(Tarjeta tarjeta, Jugador jugador) {
-        jugador.activarTarjeta(tarjeta);
+    private void activarTarjeta(Tarjeta tarjeta) {
+        this.jugadorActual.activarTarjeta(tarjeta);
     }
 }

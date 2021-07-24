@@ -1,25 +1,25 @@
-package algoteg;
+package algoteg.modelo;
+
+import algoteg.Exceptions.MoverEjercitoException;
 
 import java.util.*;
-
-import algoteg.Exceptions.*;
 
 public class Jugador {
     private String color;
     private int id;
     private List<Tarjeta> tarjetas = new ArrayList<>();
     private List<Pais> paisesConquistados = new ArrayList<>();
-    private List<Objetivo> objetivos = new ArrayList<>();
+    private Objetivo objetivo;
     private int ejercitoParaIncorporar;
     private int canjesRealizados;
-    private boolean vivo;
+    private boolean estaVivo;
 
     public Jugador(int id, String color) {
         this.id = id;
         this.color = color;
         this.ejercitoParaIncorporar = 0;
         this.canjesRealizados = 0;
-        this.vivo = true;
+        this.estaVivo = true;
     }
 
     public String getColor(){
@@ -33,8 +33,6 @@ public class Jugador {
     public void addTarjeta(Tarjeta tarjeta){
         tarjetas.add(tarjeta);
     }
-
-    public boolean esGanador(){return false;} // se fija si cumple objetivos
 
     private void removeTarjeta(Tarjeta tarjeta){
         int index = 0;
@@ -51,7 +49,7 @@ public class Jugador {
         return tarjetas.size();
     }
 
-    private void addEjercito(int ejercitoParaIncorporar){
+    public void addEjercito(int ejercitoParaIncorporar){
         this.ejercitoParaIncorporar += ejercitoParaIncorporar;
     }
 
@@ -123,19 +121,6 @@ public class Jugador {
         return ejercitoAIncorporar;
     }
 
-
-    public void realizarAtaques(){
-        if(vivo) {
-            //acciones
-        }
-    }
-
-    public void realizarColocacionDeEjercitos() {
-        if(vivo) {
-            //acciones
-        }
-    }
-
     public int getCantidadPaisesConquistados() {
         return (paisesConquistados.size());
     }
@@ -152,7 +137,58 @@ public class Jugador {
         this.tarjetas = tarjetas;
     }
 
-    public void setEjercitoParaIncorporar(int ejercitoParaIncorporar) {
+/*    public void setEjercitoParaIncorporar(int ejercitoParaIncorporar) {
         this.ejercitoParaIncorporar += ejercitoParaIncorporar;
+    } METODO DUPLICADO */
+
+    public boolean estaVivo(){
+        return this.estaVivo = this.getCantidadPaisesConquistados() > 0;
     }
+
+    public void moverEjercito(Pais paisOrigen, Pais paisDestino, int cantidadTropas) throws MoverEjercitoException {
+        if(!paisOrigen.getPaisesLimitrofes().contains(paisDestino)) {
+            String exceptionType = "NoLimitrofe";
+            throw new MoverEjercitoException(exceptionType);
+        }
+        if(paisOrigen.getEjercitoActual() < cantidadTropas){
+            String exceptionType = "TropasInsuficientes";
+            throw new MoverEjercitoException(exceptionType);
+        }
+        if(!this.getPaisesConquistados().contains(paisOrigen) || !this.getPaisesConquistados().contains(paisDestino)) {
+            String exceptionType = "PaisNoMePertenece";
+            throw new MoverEjercitoException(exceptionType);
+        }
+        if(paisOrigen.getEjercitoActual() <= cantidadTropas){
+            String exceptionType = "TropasInsuficientes";
+            throw new MoverEjercitoException(exceptionType);
+        }
+
+        if(paisOrigen.getEjercitoActual() > cantidadTropas) {
+            paisOrigen.reducirEjercito(cantidadTropas);
+            paisDestino.agregarEjercito(cantidadTropas);
+        }
+    }
+
+    public void realizarAtaques(){
+        if(this.estaVivo()) {
+            //acciones
+        }
+    }
+
+    public void realizarColocacionDeEjercitos() {
+        if(this.estaVivo()) {
+            //acciones
+        }
+    }
+
+    public void setObjetivo(Objetivo objetivo) {
+        this.objetivo = objetivo;
+    }
+
+    public Objetivo getObjetivo(){
+        return this.objetivo;
+    }
+
+    public boolean esGanador(){return this.objetivo.cumplido();} // se fija si cumple objetivos
+
 }

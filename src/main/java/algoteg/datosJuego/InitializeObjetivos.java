@@ -1,6 +1,6 @@
 package algoteg.datosJuego;
 
-import algoteg.*;
+import algoteg.modelo.*;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -31,7 +31,6 @@ public class InitializeObjetivos {
                 agregarObjetivoDeDestruccion(obj);
             else if(obj[0].equals("Conquista"))
                 agregarObjetivoDeConquista(obj);
-            //implementar error objetivo no valido
     }
 
     private void agregarObjetivoDeConquista(String[] obj){

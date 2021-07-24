@@ -1,17 +1,13 @@
 package algoteg.PruebasUnitarias;
 
-import algoteg.Jugador;
-import algoteg.Partida;
+import algoteg.modelo.Jugador;
+import algoteg.modelo.Partida;
 import org.junit.jupiter.api.Test;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
 
 public class PartidaTest {
     Partida unaPartida = new Partida(6);

@@ -1,10 +1,8 @@
 package algoteg.PruebasUnitarias;
 
-import algoteg.*;
-import algoteg.datosJuego.InitializePaisesYContinentes;
+import algoteg.modelo.*;
 import org.junit.jupiter.api.Test;
 
-import java.lang.reflect.Array;
 import java.util.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -39,7 +37,7 @@ public class PruebasEntrega2 {
 
 
 
-        RondaColocacion rondaColocacion = new RondaColocacion(tablero);
+        RondaColocacion rondaColocacion = new RondaColocacion(tablero, null);
 
         rondaColocacion.setEjercitosDisponiblesParaColocar(j1);
         rondaColocacion.setEjercitosDisponiblesParaColocar(j2);
@@ -111,7 +109,7 @@ public class PruebasEntrega2 {
 
         Tablero tablero = new Tablero(continentes, todosLosPaises);
 
-        RondaColocacion rondaColocacion = new RondaColocacion(tablero);
+        RondaColocacion rondaColocacion = new RondaColocacion(tablero, null);
 
         rondaColocacion.setEjercitosDisponiblesParaColocar(j1);
         rondaColocacion.setEjercitosDisponiblesParaColocar(j2);
@@ -142,11 +140,9 @@ public class PruebasEntrega2 {
 
 
     public Pais atacarTableroMockTest03(Jugador j1, Pais paisAtacante, Pais paisDefensor, int numeroTropas) {
-        Dado dadoAtacanteMock = mock(Dado.class);
-        when(dadoAtacanteMock.getValor()).thenReturn(6);
+        GeneradorRandom dadoAtacanteMock = new DadoStub(6);
 
-        Dado dadoDefensorMock = mock(Dado.class);
-        when(dadoDefensorMock.getValor()).thenReturn(1);
+        GeneradorRandom dadoDefensorMock = new DadoStub(1);
 
         List<GeneradorRandom> dadosAtacante = Collections.singletonList(dadoAtacanteMock);
         List<GeneradorRandom> dadosDefensor = Collections.singletonList(dadoDefensorMock);
@@ -182,7 +178,7 @@ public class PruebasEntrega2 {
             return;
         }
 
-        RondaAtaque rondaAtaque = new RondaAtaque(tableroMock);
+        RondaAtaque rondaAtaque = new RondaAtaque(tableroMock, null);
 
         //Map<String, String> outMap = new HashMap<>();
 

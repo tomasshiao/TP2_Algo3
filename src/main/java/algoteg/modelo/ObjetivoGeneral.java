@@ -1,4 +1,4 @@
-package algoteg;
+package algoteg.modelo;
 
 
 public class ObjetivoGeneral implements Objetivo{

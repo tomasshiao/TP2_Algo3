@@ -1,6 +1,6 @@
 package algoteg.PruebasUnitarias;
 
-import algoteg.*;
+import algoteg.modelo.*;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;

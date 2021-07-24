@@ -1,8 +1,8 @@
 package algoteg.datosJuego;
 
-import algoteg.Continente;
-import algoteg.Jugador;
-import algoteg.Pais;
+import algoteg.modelo.Continente;
+import algoteg.modelo.Jugador;
+import algoteg.modelo.Pais;
 
 import java.util.*;
 
