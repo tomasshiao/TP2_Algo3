@@ -283,7 +283,7 @@ public class JugadorTest {
         assertFalse(jugador1.estaVivo());
     }
 
-    @Test
+    /*@Test
     public void unJugadorMueve2TropasEntrePaisesLimitrofes() throws MoverEjercitoException {
        Pais pais = new Pais("Argentina", null);
         List<Pais> limitrofes = new ArrayList<>();

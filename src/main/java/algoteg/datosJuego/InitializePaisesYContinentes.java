@@ -9,14 +9,14 @@ import java.util.*;
 
 
 public class InitializePaisesYContinentes {
-    private Map<String, Pais> mapaPaises = new HashMap<>();
-    private Map<String, List<Pais>> paisesPorContinentes;
-    private Map<String, List<String>> paisesLimitrofes;
+    private final Map<String, Pais> mapaPaises = new HashMap<>();
+    private final Map<String, List<Pais>> paisesPorContinentes;
+    private final Map<String, List<String>> paisesLimitrofes;
 
-    private Jugador jugadorInvalido = new Jugador(-1, "INVALID");
+    private final Jugador jugadorInvalido = new Jugador(-1, "INVALID");
 
-    private List<Pais> todosLosPaises = new ArrayList<>();
-    private List<Continente> todosLosContinentes = new ArrayList<>();
+    private final List<Pais> todosLosPaises = new ArrayList<>();
+    private final List<Continente> todosLosContinentes = new ArrayList<>();
 
     private final List<String> paisesDeAfrica = new ArrayList<>(Arrays.asList("Egipto", "Etiopia", "Madagascar", "Sahara", "Sudafrica", "Zaire"));
     private final List<String> paisesDeAmericaDelSur = new ArrayList<>(Arrays.asList("Argentina", "Brasil", "Chile", "Colombia", "Peru", "Uruguay"));
@@ -163,7 +163,6 @@ public class InitializePaisesYContinentes {
                 paisesLimitrofes.add(paisLimitrofe);
             }
             p.setPaisesLimitrofes(paisesLimitrofes);
-
         }
         
     }

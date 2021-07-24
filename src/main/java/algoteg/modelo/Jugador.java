@@ -5,8 +5,8 @@ import algoteg.Exceptions.MoverEjercitoException;
 import java.util.*;
 
 public class Jugador {
-    private String color;
-    private int id;
+    private final String color;
+    private final int id;
     private List<Tarjeta> tarjetas = new ArrayList<>();
     private List<Pais> paisesConquistados = new ArrayList<>();
     private Objetivo objetivo;
@@ -114,7 +114,7 @@ public class Jugador {
 
     public boolean compararJugadores(Jugador jugador2) { return (this.getColor().equals(jugador2.getColor())); }
 
-    public void activarTarjeta (Tarjeta tarjeta){
+    public void activarTarjeta(Tarjeta tarjeta){
         Pais paisDeTarjeta = tarjeta.getPaisDeTarjeta();
         int ejercitoAIncorporar = 0;
 
