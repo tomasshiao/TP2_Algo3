@@ -42,7 +42,7 @@ public class RondaColocacion {
 
     }
 
-    private void activarTarjeta(Tarjeta tarjeta) {
+    public void activarTarjeta(Tarjeta tarjeta) {
         this.jugadorActual.activarTarjeta(tarjeta);
     }
 }
