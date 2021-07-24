@@ -60,6 +60,39 @@ public class Jugador {
         this.ejercitoDisponibleGlobal += ejercitoParaIncorporar;
     }
 
+    public void addEjercitoEnPais(Pais pais, int ejercito) {
+        if(!this.tienePais(pais)) {return;}
+        int ejercitoPorColocar = ejercito;
+        for (Map.Entry<Continente, Integer> entry : ejercitoDisponiblePorContinente.entrySet()) {
+            Continente continente = entry.getKey();
+            Integer ejercitoDisponible = entry.getValue();
+            if (continente.tienePais(pais)) {
+                if (ejercitoDisponible <= ejercitoPorColocar) {
+                    pais.agregarEjercito(ejercitoDisponible);
+                    ejercitoPorColocar -= ejercitoDisponible;
+                    ejercitoDisponiblePorContinente.put(continente, 0);
+                } else {
+                    pais.agregarEjercito(ejercitoPorColocar);
+                    ejercitoDisponiblePorContinente.put(continente, ejercitoDisponible - ejercitoPorColocar);
+                    ejercitoPorColocar = 0;
+                }
+            }
+        }
+        if(ejercitoDisponibleGlobal <= ejercitoPorColocar) {
+            pais.agregarEjercito(ejercitoDisponibleGlobal);
+            ejercitoDisponibleGlobal = 0;
+        }
+        else {
+            pais.agregarEjercito(ejercitoPorColocar);
+            ejercitoDisponibleGlobal -= ejercitoPorColocar;
+        }
+
+
+    }
+
+
+
+
 
 
     public int getEjercitoParaIncorporar(){
