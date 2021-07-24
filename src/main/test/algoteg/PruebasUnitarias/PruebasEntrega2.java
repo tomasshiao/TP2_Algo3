@@ -9,8 +9,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.*;
 
 public class PruebasEntrega2 {
-
-
+    private LanzadorDados lanzadorDados = new LanzadorDados();
 
     @Test
     public void test01RondaDeDosJugadoresQueColocanEjercitos() {
@@ -33,7 +32,7 @@ public class PruebasEntrega2 {
 
         List<Pais> paises = List.of(p1,p2,p3,p4);
         continente.setPaises(paises);
-        Tablero tablero = new Tablero(Collections.singletonList(continente), paises);
+        Tablero tablero = new Tablero(Collections.singletonList(continente), paises, lanzadorDados);
 
 
 
@@ -109,7 +108,7 @@ public class PruebasEntrega2 {
 
         List<Continente> continentes = Arrays.asList(asia, america);
 
-        Tablero tablero = new Tablero(continentes, todosLosPaises);
+        Tablero tablero = new Tablero(continentes, todosLosPaises, lanzadorDados);
 
         RondaColocacion rondaColocacion = new RondaColocacion(tablero, j1);
         RondaColocacion rondaColocacion2 = new RondaColocacion(tablero, j2);

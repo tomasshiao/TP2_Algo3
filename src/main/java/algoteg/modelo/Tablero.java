@@ -8,10 +8,12 @@ public class Tablero {
 
     private List<Continente> continentes;
     private List<Pais> paises;
+    private LanzadorDados lanzadorDados;
 
-    public Tablero(List<Continente> continentes, List<Pais>paises){
+    public Tablero(List<Continente> continentes, List<Pais>paises, LanzadorDados lanzadorDados){
         this.continentes = continentes;
         this.paises = paises;
+        this.lanzadorDados = lanzadorDados;
     }
     public void setContinentes(List<Continente> continentes){
         this.continentes = continentes;
@@ -45,7 +47,7 @@ public class Tablero {
             String exceptionType = "ConquistarPaisPropio";
             throw new AtaqueInvalidoException(exceptionType);
         }
-        LanzadorDados lanzadorDados = new LanzadorDados();
+        //LanzadorDados lanzadorDados = new LanzadorDados();
         List<GeneradorRandom> dadosAtacante = lanzadorDados.obtenerDadosAtacante(paisAtacante, numeroTropas);
         List<GeneradorRandom> dadosDefensor = lanzadorDados.obtenerDadosDefensor(paisDefensor);
         Batalla batalla = new Batalla();
@@ -56,14 +58,25 @@ public class Tablero {
         return paises;
     }
 
-    public Continente getContinente(String nombreContinente) {
-        for(Continente c: this.continentes){
-            String nombre = c.getNombre().toLowerCase();
-            if(nombre.equals(nombreContinente))
-                return c;
-        }
-        return null;//implementar continente no encontrado error
+    public List<Continente> getContinentes(){
+        return this.continentes;
     }
+
+    public Continente getContinente(String nombreContinente) throws ContinenteInexistenteException{
+        Continente continente = null;
+        for(Continente c : this.continentes){
+            String nombre = c.getNombre();
+            if(nombre.equalsIgnoreCase(nombreContinente)){
+                continente = c;
+            }
+        } 
+        if(continente == null){
+            throw new ContinenteInexistenteException();
+        } else{
+            return continente;
+        }
+    }
+
     public List<Continente> getContinentesGobernadosPor(Jugador jugador){
         List<Continente> continentesGobernados = new ArrayList<>();
             continentes.forEach(continente -> {
