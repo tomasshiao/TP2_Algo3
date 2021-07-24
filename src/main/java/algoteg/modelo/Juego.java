@@ -1,5 +1,7 @@
 package algoteg.modelo;
 
+import algoteg.Exceptions.AtaqueInvalidoException;
+
 import java.util.*;
 
 public class Juego {
@@ -15,9 +17,17 @@ public class Juego {
         //primero inicializo jugadores
         Collections.shuffle(colores);
         for(int i = 0; i<cantidadJugadores; i++){
-            jugadores.add(new Jugador(i, colores.get(i)));
+            partida.agregarJugador(new Jugador(i, colores.get(i)));
         }
 
+    }
+
+    public void atacar(Pais paisAtacante, Pais paisDefensor, int cantidadTropas) throws AtaqueInvalidoException {
+        partida.atacar(paisAtacante, paisDefensor, cantidadTropas);
+    }
+
+    public void mover(Pais paisOrigen, Pais paisLlegada, int cantidadTropas){
+        partida.mover(paisOrigen, paisLlegada, cantidadTropas);
     }
 
 

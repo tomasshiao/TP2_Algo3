@@ -37,13 +37,15 @@ public class PruebasEntrega2 {
 
 
 
-        RondaColocacion rondaColocacion = new RondaColocacion(tablero, null);
+        RondaColocacion rondaColocacion = new RondaColocacion(tablero, j1);
+        RondaColocacion rondaColocacion2 = new RondaColocacion(tablero, j2);
 
-        rondaColocacion.setEjercitosDisponiblesParaColocar(j1);
-        rondaColocacion.setEjercitosDisponiblesParaColocar(j2);
+        rondaColocacion.setEjercitosDisponiblesParaColocar();
 
-        rondaColocacion.colocarEjercitos(1,p1,j1);
-        rondaColocacion.colocarEjercitos(1,p2,j2);
+        rondaColocacion2.setEjercitosDisponiblesParaColocar();
+
+        rondaColocacion.colocarEjercitos(1,p1);
+        rondaColocacion2.colocarEjercitos(1,p2);
 
         assertEquals(2, j1.getCantidadPaisesConquistados());
         assertEquals(2, j2.getCantidadPaisesConquistados());
@@ -109,15 +111,17 @@ public class PruebasEntrega2 {
 
         Tablero tablero = new Tablero(continentes, todosLosPaises);
 
-        RondaColocacion rondaColocacion = new RondaColocacion(tablero, null);
+        RondaColocacion rondaColocacion = new RondaColocacion(tablero, j1);
+        RondaColocacion rondaColocacion2 = new RondaColocacion(tablero, j2);
+        RondaColocacion rondaColocacion3 = new RondaColocacion(tablero, j3);
 
-        rondaColocacion.setEjercitosDisponiblesParaColocar(j1);
-        rondaColocacion.setEjercitosDisponiblesParaColocar(j2);
-        rondaColocacion.setEjercitosDisponiblesParaColocar(j3);
+        rondaColocacion.setEjercitosDisponiblesParaColocar();
+        rondaColocacion2.setEjercitosDisponiblesParaColocar();
+        rondaColocacion3.setEjercitosDisponiblesParaColocar();
 
-        rondaColocacion.colocarEjercitos(1,p1,j1);
-        rondaColocacion.colocarEjercitos(1,p3,j2);
-        rondaColocacion.colocarEjercitos(1,p5,j3);
+        rondaColocacion.colocarEjercitos(1,p1);
+        rondaColocacion2.colocarEjercitos(1,p3);
+        rondaColocacion3.colocarEjercitos(1,p5);
 
 
 
@@ -178,12 +182,12 @@ public class PruebasEntrega2 {
             return;
         }
 
-        RondaAtaque rondaAtaque = new RondaAtaque(tableroMock, null);
+        RondaAtaque rondaAtaque = new RondaAtaque(tableroMock, atacante);
 
         //Map<String, String> outMap = new HashMap<>();
 
-        rondaAtaque.atacar(atacante,paisAtacante,paisASerConquistadoPrimero,1);
-        rondaAtaque.atacar(atacante,paisAtacante,paisASerConquistadoDespues,1);
+        rondaAtaque.atacar(paisAtacante,paisASerConquistadoPrimero,1);
+        rondaAtaque.atacar(paisAtacante,paisASerConquistadoDespues,1);
         assertTrue(atacante.getPaisesConquistados().contains(paisASerConquistadoPrimero));
         assertTrue(atacante.getPaisesConquistados().contains(paisASerConquistadoDespues));
 

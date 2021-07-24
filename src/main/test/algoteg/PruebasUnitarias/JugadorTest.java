@@ -161,15 +161,16 @@ public class JugadorTest {
     }
 
     @Test
-    public void unJugadorTieneDosTropasParaIncorporarEIntentaAgregarTresAUnPaisQueConquistoYSeInvalidaLaAccion(){
-        when(paisMock.getNombre()).thenReturn("Argentina");
-        jugador1.addPaisConquistado(paisMock);
+    public void unJugadorTieneDosTropasParaIncorporarEIntentaAgregarTresAUnPaisQueConquisto(){
+        Pais pais = new Pais("Argentina", jugador1);
+        Tarjeta tarjetaArg = new Tarjeta(pais,"barco");
+        jugador1.addPaisConquistado(pais);
         jugador1.addTarjeta(tarjetaArg);
         jugador1.activarTarjeta(tarjetaArg);
 
-        jugador1.addEjercitoEnPais(paisMock, 3);
-
         assertEquals(2, jugador1.getEjercitoParaIncorporar());
+        jugador1.addEjercitoEnPais(pais, 3);
+        assertEquals(2, pais.getEjercitoActual());
     }
 
     @Test
@@ -285,7 +286,7 @@ public class JugadorTest {
 
     @Test
     public void unJugadorMueve2TropasEntrePaisesLimitrofes() throws MoverEjercitoException {
-        Pais pais = new Pais("Argentina", null);
+       Pais pais = new Pais("Argentina", null);
         List<Pais> limitrofes = new ArrayList<>();
         when(paisMock.getPaisesLimitrofes()).thenReturn(limitrofes);
         when(paisMock.getEjercitoActual()).thenReturn(5);
@@ -295,9 +296,9 @@ public class JugadorTest {
 
         limitrofes.add(pais);
 
-        jugador1.moverEjercito(paisMock, pais, 2);
+        jugador1.move(paisMock, pais, 2);
 
         assertEquals(2, pais.getEjercitoActual());
-    }
+    }*/
 
 }
