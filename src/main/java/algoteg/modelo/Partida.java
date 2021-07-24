@@ -10,7 +10,7 @@ public class Partida {
     private ArrayList<Jugador> jugadores = new ArrayList<>();
     private Tablero tablero;
     private List<Objetivo> objetivos = new ArrayList<>();
-    //private int ronda;
+    private LanzadorDados lanzadorDados = new LanzadorDados();
     private List<Ronda> rondas = new ArrayList<>();
 
     public Partida(int cantidadTotalJugadores) {
@@ -45,7 +45,7 @@ public class Partida {
 
     private List<Pais> iniciarPaisesYContinentes() {
         InitializePaisesYContinentes init = new InitializePaisesYContinentes();
-        this.tablero = new Tablero(init.getTodosLosContinentes(), init.getTodosLosPaises()); //inicializa tablero
+        this.tablero = new Tablero(init.getTodosLosContinentes(), init.getTodosLosPaises(), lanzadorDados); //inicializa tablero
         repartirPaises(init.getTodosLosPaises());
         return init.getTodosLosPaises();
     }
@@ -57,7 +57,7 @@ public class Partida {
 //        this.repartirTarjetas(tarjetas);
     }
 
-    private void repartirTarjetas(List<Tarjeta> tarjetas) { //no se usa
+   /* private void repartirTarjetas(List<Tarjeta> tarjetas) { //no se usa
         int i = 0;
         for (Jugador jugador : jugadores) {
 
@@ -65,7 +65,7 @@ public class Partida {
             i++;
 
         }
-    }
+    }*/
 
     private void repartirPaises(List<Pais> paises) {
         Collections.shuffle(paises);  //mezcla paises

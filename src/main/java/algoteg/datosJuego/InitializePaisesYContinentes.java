@@ -12,6 +12,7 @@ public class InitializePaisesYContinentes {
     private Map<String, Pais> mapaPaises = new HashMap<>();
     private Map<String, List<Pais>> paisesPorContinentes;
     private Map<String, List<String>> paisesLimitrofes;
+    private Map<String, List<Pais>> mapaPaisesLimitrofes;
 
     private Jugador jugadorInvalido = new Jugador(-1, "INVALID");
 
@@ -152,26 +153,27 @@ public class InitializePaisesYContinentes {
         return paisesLimitrofes;
     }
 
-    private void setLimitrofes(List<Pais> todosLosPaises, Map<String, List<String>> mapaLimitrofes, Map<String, Pais> mapPaises){
-        
+    private Map<String, List<Pais>> setLimitrofes(List<Pais> todosLosPaises, Map<String, List<String>> mapaLimitrofes, Map<String, Pais> mapaPaises){
+        Map<String, List<Pais>> mapaPaisesLimitrofes = new HashMap<>();
         for(Pais p: todosLosPaises) {
             List<Pais> paisesLimitrofes = new ArrayList<>();
             String nombrePais = p.getNombre();
             List<String> nombrePaisesLimitrofes = mapaLimitrofes.get(nombrePais);
             for (String nombrePaisLimitrofe: nombrePaisesLimitrofes) {
-                Pais paisLimitrofe = mapPaises.get(nombrePaisLimitrofe);
+                Pais paisLimitrofe = mapaPaises.get(nombrePaisLimitrofe);
                 paisesLimitrofes.add(paisLimitrofe);
             }
             p.setPaisesLimitrofes(paisesLimitrofes);
-
+            mapaPaisesLimitrofes.put(p.getNombre(), paisesLimitrofes);
         }
-        
+        return mapaPaisesLimitrofes;
     }
 
     public InitializePaisesYContinentes(){
         this.paisesPorContinentes = this.setPaises();
         this.paisesLimitrofes = this.setPaisesLimitrofes();
         this.setTodosLosContinentes(paisesPorContinentes);
+        this.mapaPaisesLimitrofes = this.setLimitrofes(this.todosLosPaises, this.paisesLimitrofes, this.mapaPaises);
     }
 
     public List<Continente> getTodosLosContinentes(){
@@ -184,5 +186,9 @@ public class InitializePaisesYContinentes {
 
     public Map<String, List<Pais>> getPaisesPorContinentes() {
         return paisesPorContinentes;
+    }
+
+    public Map<String, List<Pais>> getMapaPaisesLimitrofes(){
+        return this.mapaPaisesLimitrofes;
     }
 }

@@ -40,7 +40,12 @@ public class InitializeObjetivos {
 
         for(int i=1; i<(obj.length-2);i+=2){
             if(!obj[i].equals("limitrofes")) {
-                Continente continente = tablero.getContinente(obj[i]);
+                Continente continente = null;
+                try{ 
+                    continente = tablero.getContinente(obj[i]);
+                } catch(Exception e){
+                    continente = null;
+                }
                 int cantidadAConquistar = Integer.parseInt(String.valueOf(obj[i + 1]));
                 paisesAConquistar.put(continente,cantidadAConquistar);
             }
