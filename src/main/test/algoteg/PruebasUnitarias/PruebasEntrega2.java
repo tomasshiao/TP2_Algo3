@@ -140,11 +140,9 @@ public class PruebasEntrega2 {
 
 
     public Pais atacarTableroMockTest03(Jugador j1, Pais paisAtacante, Pais paisDefensor, int numeroTropas) {
-        Dado dadoAtacanteMock = mock(Dado.class);
-        when(dadoAtacanteMock.getValor()).thenReturn(6);
+        GeneradorRandom dadoAtacanteMock = new DadoStub(6);
 
-        Dado dadoDefensorMock = mock(Dado.class);
-        when(dadoDefensorMock.getValor()).thenReturn(1);
+        GeneradorRandom dadoDefensorMock = new DadoStub(1);
 
         List<GeneradorRandom> dadosAtacante = Collections.singletonList(dadoAtacanteMock);
         List<GeneradorRandom> dadosDefensor = Collections.singletonList(dadoDefensorMock);
