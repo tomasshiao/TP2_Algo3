@@ -9,7 +9,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.*;
 
 public class InitializePaisesYContinentesTest {
@@ -24,18 +23,12 @@ public class InitializePaisesYContinentesTest {
     @Test
     public void alInicializarHayUnTotalDeSeisContientes(){
         this.todosLosContinentes = init.getTodosLosContinentes();
-        int cantidadContinentes = 0;
-        for(Continente c: todosLosContinentes)
-            cantidadContinentes++;
-        assertEquals(6, cantidadContinentes);
+        assertEquals(6, this.todosLosContinentes.size());
     }
 
     @Test
     public void alInicializarHay50Paises(){
         this.todosLosPaises = init.getTodosLosPaises();
-        int cantidadPaises = 0;
-        for(Pais p: todosLosPaises)
-            cantidadPaises++;
-        assertEquals(50, cantidadPaises);
+        assertEquals(50, this.todosLosPaises.size());
     }
 }
