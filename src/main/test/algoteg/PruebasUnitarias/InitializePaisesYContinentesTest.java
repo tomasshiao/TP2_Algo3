@@ -1,7 +1,6 @@
 package algoteg.PruebasUnitarias;
 
-import algoteg.modelo.Continente;
-import algoteg.modelo.Pais;
+import algoteg.modelo.*;
 import algoteg.datosJuego.InitializePaisesYContinentes;
 import org.junit.jupiter.api.Test;
 

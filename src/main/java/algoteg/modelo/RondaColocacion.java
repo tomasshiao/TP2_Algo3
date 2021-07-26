@@ -35,7 +35,7 @@ public class RondaColocacion {
     }
 
     public void setEjercitosDisponiblesParaColocar(){
-        int ejercitosDisponibles = this.jugadorActual.getCantidadPaisesConquistados()/2;
+        //int ejercitosDisponibles = this.jugadorActual.getCantidadPaisesConquistados()/2;
         List<Continente> continentes = tablero.getContinentesGobernadosPor(this.jugadorActual);
 
         this.jugadorActual.setEjercitoDisponibles(continentes);
