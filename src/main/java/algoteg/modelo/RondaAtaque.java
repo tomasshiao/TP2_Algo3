@@ -1,11 +1,11 @@
 package algoteg.modelo;
 
-import java.util.List;
+//import java.util.List;
 
 public class RondaAtaque {
     private final Tablero tablero;
-    private List<Jugador> jugadores;
-    private int cantidadJugadores;
+    //private List<Jugador> jugadores;
+    //private int cantidadJugadores;
     private Jugador jugadorActual;
 
     /****************
@@ -21,12 +21,16 @@ public class RondaAtaque {
         return this.tablero;
     }
 
-    public List<Jugador> getJugadores() {
+    /*public List<Jugador> getJugadores() {
         return this.jugadores;
     }
 
     public int getCantidadJugadores() {
         return this.cantidadJugadores;
+    }*/
+
+    public Jugador getJugadorActual(){
+        return this.jugadorActual;
     }
 
     public String atacar(Pais paisAtacante, Pais paisDefensor, int cantidadTropas) {

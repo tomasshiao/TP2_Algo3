@@ -15,7 +15,7 @@ public class MoverEjercitoException extends Exception{
                 message = "No puede mover tropas a un país que no le pertenece.";
                 break;
             default:
-                message = "";
+                message = "Movimiento no permitido.";
                 break;
         }
 

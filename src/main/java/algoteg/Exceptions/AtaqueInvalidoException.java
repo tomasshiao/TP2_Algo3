@@ -18,7 +18,7 @@ public class AtaqueInvalidoException extends Exception{
                 message = "No puede conquistar un país que ya le pertenece.";
                 break;
             default:
-                message = "";
+                message = "Ataque inválido";
                 break;
         }
 
