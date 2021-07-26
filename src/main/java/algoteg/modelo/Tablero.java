@@ -91,7 +91,7 @@ public class Tablero {
             String exceptionType = "NoLimitrofe";
             throw new MoverEjercitoException(exceptionType);
         }
-        if(paisOrigen.getEjercitoActual() < cantidadTropas){
+        if(paisOrigen.getEjercitoActual() <= cantidadTropas){
             String exceptionType = "TropasInsuficientes";
             throw new MoverEjercitoException(exceptionType);
         }
@@ -99,10 +99,10 @@ public class Tablero {
             String exceptionType = "PaisNoMePertenece";
             throw new MoverEjercitoException(exceptionType);
         }
-        if(paisOrigen.getEjercitoActual() <= cantidadTropas){
+        /*if(paisOrigen.getEjercitoActual() <= cantidadTropas){
             String exceptionType = "TropasInsuficientes";
             throw new MoverEjercitoException(exceptionType);
-        }
+        }*/
 
         if(paisOrigen.getEjercitoActual() > cantidadTropas) {
             paisOrigen.reducirEjercito(cantidadTropas);
