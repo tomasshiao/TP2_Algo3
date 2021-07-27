@@ -20,6 +20,7 @@ public class Main extends Application {
         // AnchorPane anchorPane = loader.<AnchorPane>load();
 
         Scene scene = new Scene(root);
+        scene.getStylesheets().add(getClass().getResource("/style.css").toExternalForm());
 
         stage.setScene(scene);
         stage.setTitle("AlgoTEG Grupo18");
