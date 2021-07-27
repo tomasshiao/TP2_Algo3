@@ -13,12 +13,13 @@ import java.net.URL;
 public class Main extends Application {
     @Override
     public void start(Stage stage) throws Exception{
+       // FXMLLoader loader = new FXMLLoader();
+        //loader.setLocation(new URL("file:///D:\\DOCUMENTOS\\FACULTAD\\ALGO3\\TP2_Algo3_TEG\\src\\main\\java\\algoteg\\vista\\main.fxml"));
         FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(new URL("file:///D:\\DOCUMENTOS\\FACULTAD\\ALGO3\\TP2_Algo3_TEG\\src\\main\\java\\algoteg\\vista\\main.fxml"));
+        Parent root = loader.load(getClass().getResource("/main.fxml"));
+        // AnchorPane anchorPane = loader.<AnchorPane>load();
 
-        AnchorPane anchorPane = loader.<AnchorPane>load();
-
-        Scene scene = new Scene(anchorPane);
+        Scene scene = new Scene(root);
 
         stage.setScene(scene);
         stage.setTitle("AlgoTEG Grupo18");
