@@ -22,7 +22,7 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Button fx:id="algoteg" mnemonicParsing="false" prefHeight="147.0" prefWidth="448.0" style="-fx-background-color: #8d4a01;" text="AlgoTEG" textFill="#bcb6b6" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.vgrow="ALWAYS">
+            <Button fx:id="algoteg" mnemonicParsing="false" onAction="#salirPantallaPrincipal" prefHeight="147.0" prefWidth="448.0" style="-fx-background-color: #8d4a01;" text="AlgoTEG" textFill="#bcb6b6" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.vgrow="ALWAYS">
                <font>
                   <Font name="Arial Black" size="69.0" />
                </font>

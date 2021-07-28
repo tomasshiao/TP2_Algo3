@@ -18,6 +18,9 @@ public class Main extends Application {
         Scene scene = new Scene(root, 500,500);
         scene.setFill(Color.TRANSPARENT);
         stage.setTitle("AlgoTEG G18");
+
+        stage.setMinWidth(1080);
+        stage.setMinHeight(720);
         stage.setScene(scene);
         stage.show();
     }

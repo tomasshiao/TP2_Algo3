@@ -19,9 +19,10 @@
     -fx-background-color: #8d4a01;
     -fx-text-fill: #c3bfbf;
     -fx-font-weight: bold;
+    transition-duration: 0.4s;
 }
 
-.button:hover{
+.button:hover {
     -fx-text-fill: black;
     -fx-background-color: #663300;
 }
