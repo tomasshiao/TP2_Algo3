@@ -27,7 +27,7 @@ public class VentanaInicial {
             Window window = sceneActual.getWindow();
             Stage stage = (Stage) window;
 
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/main.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/creacionJugadores.fxml"));
             Parent root = loader.load();
             Scene scene = new Scene(root, 1080,720);
             scene.setFill(Color.TRANSPARENT);
