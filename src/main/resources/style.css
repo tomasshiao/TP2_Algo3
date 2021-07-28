@@ -1,0 +1,19 @@
+.button{
+    -fx-background-color: #8d4a01;
+    -fx-font-size: 15px;
+    -fx-border-radius: 5px;
+    -fx-font-weight: bold;
+
+    -fx-pref-width: 100px;
+    -fx-text-fill: #c3bfbf;
+    -fx-border-color: black;
+    -fx-border-width: 2px;
+}
+
+.button:hover{
+    -fx-background-color: #663300;
+}
+
+#menu{
+    -fx-pref-width: 150px;
+}
