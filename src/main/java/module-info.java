@@ -4,6 +4,7 @@ module algoteg {
     exports algoteg.modelo;
     exports algoteg.vista;
     exports algoteg.Exceptions;
+    exports algoteg.controlador;
 
 
 }

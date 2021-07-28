@@ -1,4 +1,4 @@
-.button{
+#atacar #colocar #reagrupar{
     -fx-background-color: #8d4a01;
     -fx-font-size: 15px;
     -fx-border-radius: 5px;
@@ -10,10 +10,28 @@
     -fx-border-width: 2px;
 }
 
+#algoteg{
+    -fx-font-family: "Bell MT";
+    -fx-font-size: 84;
+    -fx-padding: 5px;
+}
+.button{
+    -fx-background-color: #8d4a01;
+    -fx-text-fill: #c3bfbf;
+    -fx-font-weight: bold;
+}
+
 .button:hover{
+    -fx-text-fill: black;
     -fx-background-color: #663300;
 }
 
 #menu{
     -fx-pref-width: 150px;
+}
+
+#titulo{
+    -fx-font-size: 50px;
+    -fx-font-weight: bold;
+    -fx-text-fill: black;
 }
