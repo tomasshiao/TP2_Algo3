@@ -31,6 +31,7 @@ public class IniciadorJugadores {
              }
 
              if(jugadores>=2 & jugadores<=6) {
+
                  this.cambiarScena(event);
 
              }

@@ -19,15 +19,15 @@
             <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
          </rowConstraints>
          <children>
-            <HBox alignment="CENTER" prefHeight="400.0" prefWidth="371.0">
+            <HBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="400.0" prefWidth="371.0">
                <children>
-                  <HBox prefHeight="225.0" prefWidth="174.0" />
-                  <ImageView fitHeight="400.0" fitWidth="423.0" pickOnBounds="true" preserveRatio="true">
+                  <HBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="720.0" prefWidth="1080.0" />
+                  <ImageView fitHeight="720.0" fitWidth="1080.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@tableroTEG.png" />
                      </image>
                      <HBox.margin>
-                        <Insets left="5.0" />
+                        <Insets left="5.0" right="5.0" />
                      </HBox.margin>
                   </ImageView>
                </children>
