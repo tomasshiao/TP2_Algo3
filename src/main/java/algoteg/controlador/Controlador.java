@@ -16,9 +16,10 @@ import java.io.IOException;
 
 public class Controlador {
 
+
     @FXML
-    public void salirPantallaPrincipal(Event event){
-        try{
+    public void salirPantallaPrincipal(ActionEvent event) {
+        try {
             Object eventSource = event.getSource();
             Node sourceAsNode = (Node) eventSource;
             Scene sceneActual = sourceAsNode.getScene();
@@ -37,6 +38,8 @@ public class Controlador {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
     }
+
 }
+
+
