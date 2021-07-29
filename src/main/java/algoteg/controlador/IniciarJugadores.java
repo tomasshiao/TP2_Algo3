@@ -21,12 +21,21 @@ public class IniciarJugadores {
     @FXML public TextField cantJugadores;
 
      @FXML public void handleEvent(ActionEvent event){   //lee el textfield y lo imprime por consola
+         int jugadores = 0;
          if(event.getSource().equals(aceptar) & !cantJugadores.getText().isEmpty()) {
-          System.out.println(cantJugadores.getText());
+             try{
+                 jugadores = Integer.parseInt(cantJugadores.getText());
+             }
+             catch (NumberFormatException e){
+                 e.printStackTrace();
+             }
+
+             if(jugadores>=2 & jugadores<=6) {
+                 System.out.println(jugadores);
+             }
          }
 
     }
-
 
 
 
