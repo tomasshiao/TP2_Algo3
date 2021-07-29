@@ -13,7 +13,7 @@ public class Main extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/VentanaInicial.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/main.fxml"));
         Parent root = loader.load();
         Scene scene = new Scene(root, 500,500);
         scene.setFill(Color.TRANSPARENT);
@@ -21,6 +21,7 @@ public class Main extends Application {
 
         stage.setMinWidth(1080);
         stage.setMinHeight(720);
+        stage.setMaximized(true);
         stage.setScene(scene);
         stage.show();
     }
