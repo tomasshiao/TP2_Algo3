@@ -1,0 +1,11 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+
+Juego -> RondaColocacion: activarTarjeta(tarjeta)
+RondaColocacion -> Jugador: activarTarjeta(tarjeta)
+Jugador -> Tarjeta: activarTarjeta()
+Tarjeta --> Jugador: ejercitoAIncorporar
+Jugador <- Jugador: addEjercito(ejercitoAIncorporar)
+@enduml
