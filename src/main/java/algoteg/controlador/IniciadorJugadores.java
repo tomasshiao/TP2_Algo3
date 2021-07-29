@@ -15,7 +15,7 @@ import javafx.stage.Window;
 
 import java.io.IOException;
 
-public class IniciarJugadores {
+public class IniciadorJugadores {
 
     @FXML public Button aceptar;
     @FXML public TextField cantJugadores;
@@ -31,9 +31,32 @@ public class IniciarJugadores {
              }
 
              if(jugadores>=2 & jugadores<=6) {
-                 System.out.println(jugadores);
+                 this.cambiarScena(event);
+
              }
          }
+
+    }
+    public void cambiarScena(ActionEvent event){
+        try {
+            Object eventSource = event.getSource();
+            Node sourceAsNode = (Node) eventSource;
+            Scene sceneActual = sourceAsNode.getScene();
+            Window window = sceneActual.getWindow();
+            Stage stage = (Stage) window;
+
+
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/juego.fxml"));
+            Parent root = loader.load();
+            sceneActual.setRoot(root);
+            stage.setScene(sceneActual);
+            stage.setMaximized(true);
+
+            stage.show();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
     }
 
