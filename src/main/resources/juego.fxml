@@ -52,7 +52,7 @@
                   </VBox>
                   <HBox prefHeight="90.0" prefWidth="136.0">
                      <children>
-                        <TextField prefHeight="25.0" prefWidth="79.0" text="Cant tropas" />
+                        <TextField prefHeight="25.0" prefWidth="79.0" promptText="Cant Tropas" />
                         <Button mnemonicParsing="false" text="Aceptar">
                            <HBox.margin>
                               <Insets left="5.0" />

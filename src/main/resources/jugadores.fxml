@@ -21,7 +21,7 @@
                           </Label>
                           <HBox>
                               <children>
-                                  <TextField fx:id="cantJugadores" maxWidth="250.0" minWidth="25.0" prefHeight="62.0" prefWidth="158.0" promptText="Máx 6" />
+                                  <TextField fx:id="cantJugadores" maxWidth="250.0" minWidth="25.0" prefHeight="62.0" prefWidth="158.0" promptText="Máx 6 Min. 2" />
                                   <Button fx:id="aceptar" mnemonicParsing="false" onAction="#handleEvent" text="Aceptar">
                                       <HBox.margin>
                                           <Insets left="5.0" />
