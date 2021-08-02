@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #663300;" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="algoteg.controlador.Controlador">
+   <stylesheets> <URL value="@css/style.css" />
+   </stylesheets>
+    <children>
+      <HBox alignment="CENTER" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Button fx:id="inicio" alignment="CENTER" mnemonicParsing="false" onAction="#salirPantallaPrincipal" text="AlgoTEG" />
+         </children>
+      </HBox>
+   </children>
+</AnchorPane>
