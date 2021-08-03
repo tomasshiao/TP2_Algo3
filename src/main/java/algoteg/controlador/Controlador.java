@@ -1,5 +1,6 @@
 package algoteg.controlador;
 
+import algoteg.modelo.Juego;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.fxml.FXML;
@@ -15,7 +16,14 @@ import javafx.stage.Window;
 import java.io.IOException;
 
 public class Controlador {
+    private Juego juego;
+    private FXML vista;
 
+
+    public void controlador(Juego juego){
+        this.juego = juego;
+        this.vista = vista;
+    }
 
     @FXML
     public void salirPantallaPrincipal(ActionEvent event) {
@@ -34,6 +42,8 @@ public class Controlador {
             stage.setMaximized(true);
 
             stage.show();
+            IniciadorJugadores iniciadorJugadores = loader.getController();
+            iniciadorJugadores.iniciador(this.juego);
 
         } catch (IOException e) {
             e.printStackTrace();

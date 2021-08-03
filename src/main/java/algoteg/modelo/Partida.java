@@ -2,6 +2,9 @@ package algoteg.modelo;
 
 import algoteg.Exceptions.AtaqueInvalidoException;
 import algoteg.datosJuego.*;
+import javafx.beans.InvalidationListener;
+import javafx.beans.Observable;
+
 import java.util.*;
 
 public class Partida {
@@ -145,4 +148,7 @@ public class Partida {
         RondaAtaque ronda = new RondaAtaque(tablero, this.getJugadorActual());
         ronda.moverEjercito(paisOrigen,paisDestino,numeroTropas);
     }
+
+
+
 }

@@ -7,20 +7,25 @@ import java.util.*;
 public class Juego {
     Partida partida;
     List<String> colores = List.of("azul", "rojo", "rosa", "naranja","verde","negro");
+    Integer cantJugadores= 0;
 
 
-    public void juego(Integer cantidadJugadores) {
+
+    public void iniciarJuegoConJugadores(Integer cantidadJugadores) {
 
         List<Jugador> jugadores = new ArrayList<>();
         Partida partida = new Partida(cantidadJugadores);
+        this.cantJugadores = cantidadJugadores;
 
         //primero inicializo jugadores
-        Collections.shuffle(colores);
-        for(int i = 0; i<cantidadJugadores; i++){
+
+        for (int i = 0; i < cantidadJugadores; i++) {
             partida.agregarJugador(new Jugador(i, colores.get(i)));
         }
+        partida.iniciarPartida();
 
     }
+
 
     public void atacar(Pais paisAtacante, Pais paisDefensor, int cantidadTropas) throws AtaqueInvalidoException {
         partida.atacar(paisAtacante, paisDefensor, cantidadTropas);
@@ -30,6 +35,8 @@ public class Juego {
         partida.mover(paisOrigen, paisLlegada, cantidadTropas);
     }
 
-
+    public int getCantidadJugadores(){
+        return (this.cantJugadores);
+    }
 
 }

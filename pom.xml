@@ -11,7 +11,7 @@
         <junit.jupiter.version>5.4.0</junit.jupiter.version>
         <mockito-mockito-core-version>3.3.0</mockito-mockito-core-version>
         <maven-surefire-version>3.0.0-M3</maven-surefire-version>
-        <main-class>algoteg.vista.Main</main-class>
+        <main-class>algoteg.modelo.Main</main-class>
 
     </properties>
     <dependencies>

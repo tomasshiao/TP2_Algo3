@@ -10,9 +10,17 @@ import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 import javafx.stage.Window;
 
+import algoteg.modelo.*;
+
 import java.io.IOException;
 
 public class IniciadorJugadores {
+    Juego juego;
+
+    public void iniciador(Juego juego){
+        this.juego = juego;
+    }
+
     @FXML
     public void initialize(){
         toggleGroup = new ToggleGroup();
@@ -43,6 +51,8 @@ public class IniciadorJugadores {
         if(event.getSource().equals(aceptar) & !cantJugadores.getText().isEmpty()) {
             try{
                 jugadores = Integer.parseInt(cantJugadores.getText());
+                this.juego.iniciarJuegoConJugadores(jugadores);
+
             }
             catch (NumberFormatException e){
                 e.printStackTrace();
@@ -65,6 +75,9 @@ public class IniciadorJugadores {
 
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/juego.fxml"));
             Parent root = loader.load();
+
+            PantallaJuego pantalla = loader.getController();
+            pantalla.pantalla(this.juego);
             sceneActual.setRoot(root);
             stage.setScene(sceneActual);
             stage.setMaximized(true);
