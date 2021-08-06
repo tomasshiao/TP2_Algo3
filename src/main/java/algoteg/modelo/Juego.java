@@ -9,7 +9,7 @@ public class Juego {
     List<String> colores = List.of("azul", "rojo", "rosa", "naranja","verde","negro");
 
 
-    public void juego(Integer cantidadJugadores) {
+    public  Juego(Integer cantidadJugadores) {
 
         List<Jugador> jugadores = new ArrayList<>();
         Partida partida = new Partida(cantidadJugadores);

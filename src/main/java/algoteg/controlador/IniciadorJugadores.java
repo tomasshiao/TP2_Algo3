@@ -1,5 +1,6 @@
 package algoteg.controlador;
 
+import algoteg.modelo.Juego;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.fxml.FXML;
@@ -22,7 +23,7 @@ public class IniciadorJugadores {
 
      @FXML public void handleEvent(ActionEvent event){   //lee el textfield y lo imprime por consola
          int jugadores = 0;
-         if(event.getSource().equals(aceptar) & !cantJugadores.getText().isEmpty()) {
+         if(event.getSource().equals(aceptar) & !cantJugadores.getText().isEmpty() ) {
              try{
                  jugadores = Integer.parseInt(cantJugadores.getText());
              }
@@ -32,7 +33,9 @@ public class IniciadorJugadores {
 
              if(jugadores>=2 & jugadores<=6) {
 
+
                  this.cambiarScena(event);
+
 
              }
          }
