@@ -157,4 +157,13 @@ public class Partida {
         }
         return ordenJugadores;
     }
+
+    public List<Objetivo> getObjetivosDeJugadores() {
+        List<Objetivo> objetivos = new ArrayList<>();
+        for (Jugador jugador: jugadores
+             ) {
+            objetivos.add(jugador.getObjetivo());
+        }
+        return objetivos;
+    }
 }

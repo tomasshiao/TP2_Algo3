@@ -85,7 +85,7 @@ public class OrdenJugadores {
             Stage stage = (Stage) window;
 
 
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/juego.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/objetivos.fxml"));
             Parent root = loader.load();
 
             PantallaJuego pantalla = loader.getController();

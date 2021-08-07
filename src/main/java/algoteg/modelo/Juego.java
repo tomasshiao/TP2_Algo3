@@ -43,4 +43,8 @@ public class Juego {
     public List<String> obtenerOrdenJugadores() {
         return partida.getOrdenJugadores();
     }
+
+    public List<Objetivo> obtenerObjetivos() {
+        return partida.getObjetivosDeJugadores();
+    }
 }
