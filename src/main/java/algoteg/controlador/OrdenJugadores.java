@@ -8,9 +8,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
-import javafx.scene.media.AudioClip;
 import javafx.scene.paint.Color;
-import javafx.scene.paint.Paint;
 import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
 import javafx.stage.Window;
@@ -18,8 +16,6 @@ import javafx.stage.Window;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
-import algoteg.modelo.*;
 
 public class OrdenJugadores {
     private Juego juego;
@@ -88,7 +84,7 @@ public class OrdenJugadores {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/objetivos.fxml"));
             Parent root = loader.load();
 
-            PantallaJuego pantalla = loader.getController();
+            ControladorObjetivos pantalla = loader.getController();
             pantalla.pantalla(this.juego);
             sceneActual.setRoot(root);
             stage.setScene(sceneActual);

@@ -166,4 +166,8 @@ public class Partida {
         }
         return objetivos;
     }
+
+    public ArrayList<Jugador> getListaJugadores() {
+        return this.jugadores;
+    }
 }

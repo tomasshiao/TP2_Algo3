@@ -9,18 +9,18 @@ import javafx.scene.control.Label;
 
 import java.util.List;
 
-public class controladorObjetivos {
+public class ControladorObjetivos {
     @FXML
     public Button obtenerObjetivo;
     @FXML
     public Label objetivo;
     Juego juego;
-    List<Objetivo> objetivos;
-    int objetivoActual = 0;
+    ArrayList<Jugador> jugadores;
+    int jugadorActual = 0;
 
-    public void iniciarObjetivos(Juego juego){
+    public void pantalla(Juego juego){
         this.juego = juego;
-        objetivos  = juego.obtenerObjetivos();
+        this.jugadores = juego.getListaJugadores();
     }
 
     @FXML
