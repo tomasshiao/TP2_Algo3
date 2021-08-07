@@ -7,6 +7,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.media.AudioClip;
 import javafx.stage.Stage;
 import javafx.stage.Window;
 
@@ -20,6 +21,7 @@ public class IniciadorJugadores {
     public void iniciador(Juego juego){
         this.juego = juego;
     }
+    AudioClip buzzer = new AudioClip(getClass().getResource("/sounds/click.mp3").toExternalForm());
 
     @FXML
     public void initialize(){
@@ -52,6 +54,7 @@ public class IniciadorJugadores {
             try{
                 jugadores = Integer.parseInt(cantJugadores.getText());
                 this.juego.iniciarJuegoConJugadores(jugadores);
+                buzzer.play();
 
             }
             catch (NumberFormatException e){

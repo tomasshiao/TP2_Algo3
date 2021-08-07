@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.net.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
@@ -8,8 +7,6 @@
 <?import javafx.scene.text.*?>
 
 <AnchorPane prefHeight="720.0" prefWidth="1080.0" style="-fx-background-color: #663300;" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="algoteg.controlador.PantallaJuego">
-    <stylesheets> <URL value="@css/style.css" />
-    </stylesheets>
     <children>
         <GridPane prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <columnConstraints>
@@ -148,7 +145,8 @@
                                         <Button fx:id="terranova" maxHeight="10.0" maxWidth="10.0" minHeight="10.0" minWidth="10.0" mnemonicParsing="false" onAction="#mostrarTropasDisponibles" prefHeight="10.0" prefWidth="10.0" style="-fx-background-color: orange; -fx-border-color: black;"  GridPane.columnIndex="25" GridPane.rowIndex="8" />
                                         <Button fx:id="groenlandia" maxHeight="10.0" maxWidth="10.0" minHeight="10.0" minWidth="10.0" mnemonicParsing="false" onAction="#mostrarTropasDisponibles" prefHeight="10.0" prefWidth="10.0" style="-fx-background-color: orange; -fx-border-color: black;"  GridPane.columnIndex="31" GridPane.rowIndex="4" />
                                         <Button fx:id="alaska" maxHeight="10.0" maxWidth="10.0" minHeight="10.0" minWidth="10.0" mnemonicParsing="false" onAction="#mostrarTropasDisponibles" prefHeight="10.0" prefWidth="10.0" style="-fx-background-color: orange; -fx-border-color: black;"  GridPane.columnIndex="3" GridPane.rowIndex="8" />
-                                        <Button fx:id="labrador" maxHeight="10.0" maxWidth="10.0" minHeight="10.0" minWidth="10.0" mnemonicParsing="false" onAction="#mostrarTropasDisponibles" prefHeight="10.0" prefWidth="10.0" style="-fx-background-color: orange; -fx-border-color: black;"  GridPane.columnIndex="23" GridPane.rowIndex="6" /><Button fx:id="mexico" maxHeight="10.0" maxWidth="10.0" minHeight="10.0" minWidth="10.0" mnemonicParsing="false" onAction="#mostrarTropasDisponibles" prefHeight="10.0" prefWidth="10.0" style="-fx-background-color: orange; -fx-border-color: black;" stylesheets="@../../../../TP2_Algo3_TEG/TP2_Algo3_TEG/src/main/resources/css/norte.css" GridPane.columnIndex="21" GridPane.rowIndex="12" />
+                                        <Button fx:id="labrador" maxHeight="10.0" maxWidth="10.0" minHeight="10.0" minWidth="10.0" mnemonicParsing="false" onAction="#mostrarTropasDisponibles" prefHeight="10.0" prefWidth="10.0" style="-fx-background-color: orange; -fx-border-color: black;"  GridPane.columnIndex="23" GridPane.rowIndex="6" />
+                                        <Button fx:id="mexico" maxHeight="10.0" maxWidth="10.0" minHeight="10.0" minWidth="10.0" mnemonicParsing="false" onAction="#mostrarTropasDisponibles" prefHeight="10.0" prefWidth="10.0" style="-fx-background-color: orange; -fx-border-color: black;" GridPane.columnIndex="21" GridPane.rowIndex="12" />
                                         <Button fx:id="california" maxHeight="10.0" maxWidth="10.0" minHeight="10.0" minWidth="10.0" mnemonicParsing="false" onAction="#mostrarTropasDisponibles" prefHeight="10.0" prefWidth="10.0" style="-fx-background-color: orange; -fx-border-color: black;"  GridPane.columnIndex="13" GridPane.rowIndex="11" />
                                         <Button fx:id="oregon" maxHeight="10.0" maxWidth="10.0" minHeight="10.0" minWidth="10.0" mnemonicParsing="false" onAction="#mostrarTropasDisponibles" prefHeight="10.0" prefWidth="10.0" style="-fx-background-color: orange; -fx-border-color: black;"  GridPane.columnIndex="7" GridPane.rowIndex="9" />
                                         <Button fx:id="colombia" maxHeight="10.0" maxWidth="10.0" minHeight="10.0" minWidth="10.0" mnemonicParsing="false" onAction="#mostrarTropasDisponibles" prefHeight="10.0" prefWidth="10.0" style="-fx-background-color: #0dcd93; -fx-border-color: black;" textFill="#0dcd93" GridPane.columnIndex="26" GridPane.rowIndex="13" />

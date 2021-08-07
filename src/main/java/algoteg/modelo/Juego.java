@@ -6,7 +6,7 @@ import java.util.*;
 
 public class Juego {
     Partida partida;
-    List<String> colores = List.of("azul", "rojo", "rosa", "naranja","verde","negro");
+    List<String> colores = new ArrayList<>(List.of("077bb", "cc3311", "ee7733", "009988","ee3377","000000"));
     Integer cantJugadores= 0;
 
 
@@ -15,6 +15,7 @@ public class Juego {
 
         List<Jugador> jugadores = new ArrayList<>();
         Partida partida = new Partida(cantidadJugadores);
+        Collections.shuffle(colores);
         this.cantJugadores = cantidadJugadores;
 
         //primero inicializo jugadores
