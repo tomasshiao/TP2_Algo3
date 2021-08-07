@@ -18,10 +18,10 @@ import java.io.IOException;
 public class IniciadorJugadores {
     Juego juego;
 
+    AudioClip buzzer = new AudioClip(getClass().getResource("/sounds/click.mp3").toExternalForm());
     public void iniciador(Juego juego){
         this.juego = juego;
     }
-    AudioClip buzzer = new AudioClip(getClass().getResource("/sounds/click.mp3").toExternalForm());
 
     @FXML
     public void initialize(){
@@ -49,7 +49,7 @@ public class IniciadorJugadores {
         //lee el textfield y lo imprime por consola
 
 
-        int jugadores = 0;
+        int jugadores;
         if(event.getSource().equals(aceptar) & !cantJugadores.getText().isEmpty()) {
             try{
                 jugadores = Integer.parseInt(cantJugadores.getText());
@@ -60,12 +60,7 @@ public class IniciadorJugadores {
             catch (NumberFormatException e){
                 e.printStackTrace();
             }
-            try{
-                Thread.sleep(6000);
-            }
-            catch (InterruptedException e){
-                e.printStackTrace();
-            }
+
             this.cambiarScena(event);
 
         }

@@ -57,13 +57,22 @@ public class OrdenJugadores {
     public void controlador(Juego juego){
         this.juego = juego;
         this.vista = vista;
-        int jugador = 0;
+
         colores = new ArrayList<>(List.of(jugador1,jugador2,jugador3,jugador4,jugador5,jugador6));
         labelsJugadores = new ArrayList<>(List.of(labelJugador1,labelJugador2,labelJugador3,labelJugador4,labelJugador5,labelJugador6));
-        List<String> jugadores = juego.obtenerOrdenJugadores();
+        List<String> orden = juego.obtenerOrdenJugadores();
+
+        for (int i = 0; i< juego.getCantidadJugadores(); i++){
+            labelsJugadores.get(i).setVisible(true);
+            colores.get(i).setFill(Color.web(orden.get(i)));
+
+        }
 
 
     }
+
+
+
 
 
 
