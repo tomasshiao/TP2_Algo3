@@ -47,4 +47,8 @@ public class Juego {
     public List<Objetivo> obtenerObjetivos() {
         return partida.getObjetivosDeJugadores();
     }
+
+    public ArrayList<Jugador> getListaJugadores(){
+        return this.partida.getListaJugadores();
+    }
 }

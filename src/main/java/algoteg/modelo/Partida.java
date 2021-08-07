@@ -160,8 +160,7 @@ public class Partida {
 
     public List<Objetivo> getObjetivosDeJugadores() {
         List<Objetivo> objetivos = new ArrayList<>();
-        for (Jugador jugador: jugadores
-             ) {
+        for (Jugador jugador: jugadores) {
             objetivos.add(jugador.getObjetivo());
         }
         return objetivos;
