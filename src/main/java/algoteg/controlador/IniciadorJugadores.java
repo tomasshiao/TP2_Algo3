@@ -60,9 +60,13 @@ public class IniciadorJugadores {
             catch (NumberFormatException e){
                 e.printStackTrace();
             }
-
+            try{
+                Thread.sleep(6000);
+            }
+            catch (InterruptedException e){
+                e.printStackTrace();
+            }
             this.cambiarScena(event);
-
 
         }
 
@@ -76,11 +80,11 @@ public class IniciadorJugadores {
             Stage stage = (Stage) window;
 
 
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/juego.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/ordenJugadores.fxml"));
             Parent root = loader.load();
 
-            PantallaJuego pantalla = loader.getController();
-            pantalla.pantalla(this.juego);
+            OrdenJugadores pantalla = loader.getController();
+            pantalla.controlador(juego);
             sceneActual.setRoot(root);
             stage.setScene(sceneActual);
             stage.setMaximized(true);

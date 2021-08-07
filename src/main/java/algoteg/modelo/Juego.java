@@ -6,7 +6,7 @@ import java.util.*;
 
 public class Juego {
     Partida partida;
-    List<String> colores = new ArrayList<>(List.of("077bb", "cc3311", "ee7733", "009988","ee3377","000000"));
+    List<String> colores = new ArrayList<>(List.of("#077bb", "#cc3311", "#ee7733", "#009988","#ee3377","#000000"));
     Integer cantJugadores= 0;
 
 
@@ -40,4 +40,7 @@ public class Juego {
         return (this.cantJugadores);
     }
 
+    public List<String> obtenerOrdenJugadores() {
+        return partida.getOrdenJugadores();
+    }
 }

@@ -150,5 +150,11 @@ public class Partida {
     }
 
 
-
+    public List<String> getOrdenJugadores() {
+        List<String> ordenJugadores = new ArrayList<>();
+        for (Jugador jugador: this.jugadores) {
+            ordenJugadores.add(jugador.getColor());
+        }
+        return ordenJugadores;
+    }
 }

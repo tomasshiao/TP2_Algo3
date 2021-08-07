@@ -27,6 +27,7 @@ public class Jugador {
         for(Continente continente: continentes) {
             ejercitoDisponiblePorContinente.put(continente, continente.getBonusTropas());
         }
+        ejercitoDisponibleGlobal = getCantidadPaisesConquistados()/2;
     }
 
     public String getColor(){
@@ -91,12 +92,12 @@ public class Jugador {
     }
 
 
-
-
-
-
     public int getEjercitoParaIncorporar(){
-        return ejercitoDisponibleGlobal;
+        int ejercitoDisponible = ejercitoDisponibleGlobal;
+        for (Map.Entry<Continente, Integer> entry : ejercitoDisponiblePorContinente.entrySet()) {
+            ejercitoDisponible += entry.getValue().intValue();
+        }
+        return ejercitoDisponible;
     }
 
     public boolean canjearTarjetas(Tarjeta tarjeta1, Tarjeta tarjeta2, Tarjeta tarjeta3){
