@@ -314,7 +314,7 @@
                      <children>
                         <VBox>
                            <children>
-                              <Label fx:id="jugadorActual" prefHeight="17.0" prefWidth="181.0" text="Jugador Actual" textFill="#c3bfbf">
+                              <Label prefHeight="17.0" prefWidth="181.0" text="Jugador Actual" textFill="#c3bfbf">
                                  <graphic>
                                     <Circle fx:id="jugadorActual" fill="WHITE" radius="6.0" stroke="BLACK" strokeType="INSIDE" />
                                  </graphic>

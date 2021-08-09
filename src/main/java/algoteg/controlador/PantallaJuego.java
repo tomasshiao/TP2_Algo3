@@ -218,9 +218,9 @@ public class PantallaJuego {
         
     }
 
-    public void escribirJugadorActual() {
-        jugadorActual.setText("Jugador " + juego.getIndiceJugadorActual());
-    }
+//    public void escribirJugadorActual() {
+//        jugadorActual.setText("Jugador " + juego.getIndiceJugadorActual());
+//    }
 
 
     public void mostrarTropasDisponibles() {
@@ -282,7 +282,7 @@ public class PantallaJuego {
         if(this.juego.esTurnoDeAtaque()){
             mostrarBotonesRondaAtaque();
         }
-        jugadorActual.setFill(Color.web(this.juego.getJugadorActual().getColor()));
+        jugadorActual.setFill(Color.web((this.juego.getJugadorActual().getColor())));
 
     }
 
