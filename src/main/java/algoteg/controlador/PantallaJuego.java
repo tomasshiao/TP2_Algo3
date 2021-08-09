@@ -14,8 +14,10 @@ import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.CornerRadii;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
+import javafx.scene.shape.Circle;
 import javafx.scene.text.Text;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -139,15 +141,11 @@ public class PantallaJuego {
     @FXML
     public Button atacar;
     @FXML
-    public Button finalizarAtaque;
+    public Button terminar;
     @FXML
     public Label tropasPais;
     @FXML
     public Label nombrePais;
-    @FXML
-    public Label jugadorActual;
-    @FXML
-    public Button finalizarColocacion;
 
     @FXML
     public Label advertencia;
@@ -166,6 +164,9 @@ public class PantallaJuego {
     public Label tropasDisponiblesOceania;
     @FXML
     public Label tropasDisponiblesAsia;
+
+    @FXML
+    public Circle jugadorActual;
 
 
 
@@ -264,19 +265,15 @@ public class PantallaJuego {
 
     @FXML
     public void terminar() {
-        if (this.juego.esTurnoDeColocacion() && this.juego.getJugadorActual().getEjercitoParaIncorporar() != 0) {
-            advertencia.setText("Todavia tenes tropas para colocar.");
+        this.juego.pasarAJugadorSiguiente();
+        if(this.juego.esTurnoDeColocacion()){
+            mostrarBotonesRondaColocacion();
+        }
+        if(this.juego.esTurnoDeAtaque()){
+            mostrarBotonesRondaAtaque();
+        }
+        jugadorActual.setFill(Color.web(this.juego.getJugadorActual().getColor()));
 
-        }
-        else {
-            this.juego.pasarAJugadorSiguiente();
-            if (this.juego.esTurnoDeAtaque()) {
-                mostrarBotonesRondaAtaque();
-            } else {
-                mostrarBotonesRondaColocacion();
-                escribirTropasDisponiblesColocacion();
-            }
-        }
     }
 
     private void inicializarColoresDePaises(){
