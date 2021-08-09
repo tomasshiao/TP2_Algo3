@@ -275,6 +275,7 @@ public class PantallaJuego {
     }
 
     public void mostrarBotonesRondaColocacion() {
+        System.out.println("Me metí a mostrar botones ronda colocación");
         this.colocar.setVisible(true);
 
         this.reagrupar.setDisable(true);
@@ -339,6 +340,7 @@ public class PantallaJuego {
     @FXML
     public void terminar() {
         this.juego.pasarAJugadorSiguiente();
+        System.out.println(this.juego.getIndiceJugadorActual());
         if(this.juego.esTurnoDeColocacion()){
             this.iniciarTurnoColocacion();
         }
@@ -502,6 +504,7 @@ public class PantallaJuego {
             }
         }
 
+        System.out.println("Ejército para incorporar >>>>> " + this.juego.getJugadorActual().getEjercitoParaIncorporar());
         if(this.juego.getJugadorActual().getEjercitoParaIncorporar() == 0) {
             terminar.setVisible(true);
             terminar.setDisable(false);

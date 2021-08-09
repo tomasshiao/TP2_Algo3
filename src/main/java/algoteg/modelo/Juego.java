@@ -60,8 +60,6 @@ public class Juego {
    }
    public void colocar(int cantTropas, String pais){
         partida.colocar(cantTropas,  pais);
-
-
    }
 
    public void pasarAJugadorSiguiente(){
