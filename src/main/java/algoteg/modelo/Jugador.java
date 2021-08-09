@@ -22,6 +22,14 @@ public class Jugador {
         this.canjesRealizados = 0;
         this.ejercitoDisponibleGlobal = 0;
         this.estaVivo = true;
+
+    }
+
+    public void setContinentes(List<Continente> continentes){
+        for(Continente continente: continentes) {
+            ejercitoDisponiblePorContinente.put(continente, 0);
+        }
+
     }
 
     public void setEjercitoDisponibles(List<Continente> continentes){

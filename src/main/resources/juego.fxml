@@ -4,9 +4,10 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="720.0" prefWidth="1080.0" style="-fx-background-color: #663300;" stylesheets="@css/style.css" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="algoteg.controlador.PantallaJuego">
+<AnchorPane prefHeight="2000.0" prefWidth="2000.0" style="-fx-background-color: #663300;" stylesheets="@css/style.css" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="algoteg.controlador.PantallaJuego">
    <children>
       <HBox layoutX="63.0" layoutY="68.0" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -198,7 +199,79 @@
             </VBox>
             <VBox prefHeight="720.0" prefWidth="381.0">
                <children>
-                  <VBox alignment="BOTTOM_CENTER" prefHeight="341.0" prefWidth="212.0">
+            <HBox alignment="CENTER" prefHeight="152.0" prefWidth="418.0">
+                     <children>
+                        <VBox alignment="TOP_CENTER" prefHeight="260.0" prefWidth="136.0">
+                           <children>
+                              <Label text="Atacar" textFill="#c3bfbf">
+                                 <padding>
+                                    <Insets bottom="20.0" />
+                                 </padding>
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                                 <opaqueInsets>
+                                    <Insets />
+                                 </opaqueInsets>
+                                 <VBox.margin>
+                                    <Insets top="50.0" />
+                                 </VBox.margin>
+                              </Label>
+                              <ChoiceBox fx:id="paisAtacante" prefWidth="150.0" />
+                              <ChoiceBox fx:id="paisDefensor" prefWidth="150.0" />
+                           </children>
+                        </VBox>
+                        <VBox alignment="TOP_CENTER" prefHeight="260.0" prefWidth="127.0">
+                           <children>
+                              <Label text="Reagrupar" textFill="#c3bfbf">
+                                 <padding>
+                                    <Insets bottom="20.0" />
+                                 </padding>
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                                 <opaqueInsets>
+                                    <Insets />
+                                 </opaqueInsets>
+                                 <VBox.margin>
+                                    <Insets top="50.0" />
+                                 </VBox.margin>
+                              </Label>
+                              <ChoiceBox fx:id="paisSalida" prefWidth="150.0" />
+                              <ChoiceBox fx:id="paisLlegada" prefWidth="150.0" />
+                           </children>
+                        </VBox>
+                        <VBox alignment="TOP_CENTER" prefHeight="260.0" prefWidth="125.0">
+                           <children>
+                              <Label text="Colocar" textFill="#c3bfbf">
+                                 <padding>
+                                    <Insets bottom="20.0" />
+                                 </padding>
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                                 <opaqueInsets>
+                                    <Insets />
+                                 </opaqueInsets>
+                                 <VBox.margin>
+                                    <Insets top="50.0" />
+                                 </VBox.margin>
+                              </Label>
+                              <ChoiceBox fx:id="paisAColocarTropas" prefWidth="150.0" />
+                           </children>
+                        </VBox>
+                     </children>
+            </HBox>
+            <VBox prefHeight="122.0" prefWidth="393.0">
+               <children>
+                        <HBox alignment="CENTER" prefHeight="117.0" prefWidth="261.0">
+                         <children>
+                           <TextField fx:id="tropasAColocar" prefHeight="25.0" prefWidth="79.0" promptText="Cant Tropas" />
+                        </children>
+                        </HBox>
+               </children>
+            </VBox>
+                  <VBox alignment="TOP_CENTER" prefHeight="121.0" prefWidth="381.0">
                   <children>
                      <Button fx:id="atacar" disable="true" mnemonicParsing="false" prefHeight="25.0" prefWidth="77.0" text="Atacar">
                         <VBox.margin>
@@ -214,44 +287,84 @@
                         </VBox.margin></Button>
                   </children>
                   </VBox>
-                  <HBox alignment="CENTER" prefHeight="117.0" prefWidth="261.0">
-                   <children>
-                     <TextField fx:id="tropasAColocar" prefHeight="25.0" prefWidth="79.0" promptText="Cant Tropas" />
-                     <Button mnemonicParsing="false" text="Aceptar">
-                        <HBox.margin>
-                           <Insets left="5.0" />
-                        </HBox.margin></Button>
-                  </children>
-                  <VBox.margin>
-                     <Insets top="20.0" />
-                  </VBox.margin>
-                  </HBox>
-            <VBox prefHeight="200.0" prefWidth="100.0">
-               <children>
-                  <HBox>
+                  <VBox alignment="TOP_CENTER">
                      <children>
-                        <Label text="Tropas Disponibles: " textFill="#c6bcbc">
-                           <font>
-                              <Font size="20.0" />
-                           </font>
-                        </Label>
-                        <Label fx:id="cantTropas" textFill="#c6bcbc">
-                           <padding>
-                              <Insets left="10.0" />
-                           </padding>
-                           <font>
-                              <Font size="20.0" />
-                           </font>
-                        </Label>
+                        <Label text="Informacion" textFill="#c3bfbf" />
+                        <HBox alignment="CENTER" prefHeight="65.0" prefWidth="381.0">
+                           <children>
+                              <VBox alignment="TOP_CENTER" prefHeight="85.0" prefWidth="161.0">
+                                 <children>
+                                    <HBox prefHeight="38.0" prefWidth="100.0">
+                                       <children>
+                                          <Label prefHeight="17.0" prefWidth="53.0" text="Pais" textFill="#c3bfbf" />
+                                          <Label fx:id="nombrePais" prefHeight="17.0" prefWidth="47.0" textFill="#c3bfbf" />
+                                       </children></HBox>
+                                    <HBox layoutX="10.0" layoutY="10.0" prefHeight="45.0" prefWidth="100.0">
+                                       <children>
+                                          <Label text="Cant Tropas" textFill="#c3bfbf" />
+                                          <Label fx:id="tropasPais" textFill="#c3bfbf" />
+                                       </children></HBox>
+                                 </children>
+                              </VBox>
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+                  <HBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <VBox>
+                           <children>
+                              <Label fx:id="jugadorActual" prefHeight="17.0" prefWidth="181.0" text="Jugador Actual" textFill="#c3bfbf">
+                                 <graphic>
+                                    <Circle fill="WHITE" radius="6.0" stroke="BLACK" strokeType="INSIDE" />
+                                 </graphic>
+                              </Label>
+                              <HBox>
+                                 <children>
+                                    <Label prefHeight="17.0" prefWidth="122.0" text="Tropas Globales" textFill="#c3bfbf" />
+                                    <Label fx:id="tropasDisponiblesGlobal" text="0" textFill="#c3bfbf" />
+                                 </children>
+                              </HBox>
+                              <HBox layoutX="10.0" layoutY="27.0">
+                                 <children>
+                                    <Label prefHeight="17.0" prefWidth="123.0" text="Asia" textFill="#c3bfbf" />
+                                    <Label fx:id="tropasDisponiblesAsia" prefHeight="17.0" prefWidth="77.0" text="0" textFill="#c3bfbf" />
+                                 </children>
+                              </HBox>
+                              <HBox layoutX="10.0" layoutY="44.0">
+                                 <children>
+                                    <Label prefHeight="17.0" prefWidth="123.0" text="America del Sur" textFill="#c3bfbf" />
+                                    <Label fx:id="tropasDisponiblesAmericaDelSur" text="0" textFill="#c3bfbf" />
+                                 </children>
+                              </HBox>
+                              <HBox layoutX="10.0" layoutY="61.0">
+                                 <children>
+                                    <Label prefHeight="17.0" prefWidth="122.0" text="America del Norte" textFill="#c3bfbf" />
+                                    <Label fx:id="tropasDisponiblesAmericaDelNorte" text="0" textFill="#c3bfbf" />
+                                 </children>
+                              </HBox>
+                              <HBox layoutX="10.0" layoutY="78.0">
+                                 <children>
+                                    <Label prefHeight="17.0" prefWidth="122.0" text="Oceania" textFill="#c3bfbf" />
+                                    <Label fx:id="tropasDisponiblesOceania" prefHeight="17.0" prefWidth="57.0" text="0" textFill="#c3bfbf" />
+                                 </children>
+                              </HBox>
+                              <HBox layoutX="10.0" layoutY="78.0">
+                                 <children>
+                                    <Label prefHeight="17.0" prefWidth="122.0" text="Europa" textFill="#c3bfbf" />
+                                    <Label fx:id="tropasDisponiblesEuropa" text="0" textFill="#c3bfbf" />
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
                      </children>
                   </HBox>
-                  <HBox prefHeight="200.0" prefWidth="100.0">
-                     <Button fx:id="prueba" layoutX="875.0" layoutY="150.0" maxWidth="10.0" minHeight="10.0" minWidth="10.0" mnemonicParsing="false" onAction="#mostrarCantJugadores" prefHeight="10.0" prefWidth="10.0" style="-fx-background-color: #60f03c; -fx-border-color: black;" text="Button" textFill="#60f03c" />
-                     <Label fx:id="cantJugadores" textFill="#c6bcbc" />
-
-                  </HBox>
-               </children>
-            </VBox>
+                  <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0">
+                     <children>
+                        <Button fx:id="terminar" mnemonicParsing="false" text="TerminarTurno" />
+                        <Label fx:id="advertencia" prefHeight="167.0" prefWidth="373.0" textFill="#a4a2a2" />
+                     </children>
+                  </VBox>
          </children>
 
             </VBox>

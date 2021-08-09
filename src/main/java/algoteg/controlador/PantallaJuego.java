@@ -1,11 +1,13 @@
 package algoteg.controlador;
 
+import algoteg.modelo.Continente;
 import algoteg.modelo.Juego;
 import algoteg.modelo.Jugador;
 import algoteg.modelo.Pais;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
+import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
@@ -138,6 +140,36 @@ public class PantallaJuego {
     public Button atacar;
     @FXML
     public Button finalizarAtaque;
+    @FXML
+    public Label tropasPais;
+    @FXML
+    public Label nombrePais;
+    @FXML
+    public Label jugadorActual;
+    @FXML
+    public Button finalizarColocacion;
+
+    @FXML
+    public Label advertencia;
+
+    @FXML
+    public Label tropasDisponiblesGlobal;
+    @FXML
+    public Label tropasDisponiblesAmericaDelSur;
+    @FXML
+    public Label tropasDisponiblesAmericaDelNorte;
+    @FXML
+    public Label tropasDisponiblesAfrica;
+    @FXML
+    public Label tropasDisponiblesEuropa;
+    @FXML
+    public Label tropasDisponiblesOceania;
+    @FXML
+    public Label tropasDisponiblesAsia;
+
+
+
+
 
     Map<String, ToggleButton>  botones =  new HashMap<>();
     Map<ToggleButton, String>  botonesPaises =  new HashMap<>();
@@ -150,7 +182,44 @@ public class PantallaJuego {
 
 
 
+    @FXML
+    public void escribirLabels(ActionEvent event) {
+        Object evento = event.getSource();
+        Node nodo = (Node) evento;
+        String id = nodo.getId();
+        String pais = null;
+        for (Map.Entry<ToggleButton, String> entry : botonesPaises.entrySet()) {
+            if((entry.getKey()).getId().equals(id)){
+                pais = entry.getValue();
+            }
+        }
 
+        if(pais != null) {
+
+            Pais paisActual = this.juego.getPaisPorNombre(pais);
+            tropasPais.setText(Integer.toString(paisActual.getEjercitoActual()));
+            nombrePais.setText(paisActual.getNombre());
+        }
+
+
+
+    }
+
+    public void escribirTropasDisponiblesColocacion() {
+        tropasDisponiblesGlobal.setText(Integer.toString(this.juego.getTropasGlobales()));
+        tropasDisponiblesAmericaDelSur.setText(this.juego.getTropasPorContinente("AmericaDelSur"));
+        tropasDisponiblesAmericaDelNorte.setText(this.juego.getTropasPorContinente("AmericaDelNorte"));
+        tropasDisponiblesEuropa.setText(this.juego.getTropasPorContinente("Europa"));
+        tropasDisponiblesAsia.setText(this.juego.getTropasPorContinente("Asia"));
+        tropasDisponiblesAfrica.setText(this.juego.getTropasPorContinente("Africa"));
+        tropasDisponiblesOceania.setText(this.juego.getTropasPorContinente("Oceania"));
+
+        
+    }
+
+    public void escribirJugadorActual() {
+        jugadorActual.setText("Jugador " + juego.getIndiceJugadorActual());
+    }
 
 
     public void mostrarTropasDisponibles() {
@@ -171,6 +240,8 @@ public class PantallaJuego {
         this.jugadores = juego.getListaJugadores();
         this.inicializarColoresDePaises();
         this.mostrarBotonesRondaColocacion();
+        this.inicializarBotoesPais();
+
 
     }
 
@@ -179,6 +250,7 @@ public class PantallaJuego {
         this.reagrupar.setVisible(false);
         this.atacar.setVisible(false);
         //this.finalizarAtaque.setVisible(false);
+        //this.finalizarColocacion.setVisible(true);
     }
 
     public void mostrarBotonesRondaAtaque() {
@@ -186,13 +258,24 @@ public class PantallaJuego {
         this.reagrupar.setVisible(false);
         this.atacar.setVisible(false);
         //this.finalizarAtaque.setVisible(true);
+        //this.finalizarColocacion.setVisible(false);
     }
 
+
     @FXML
-    public void finalizarTurnoAtaque(){
-        this.juego.pasarAJugadorSiguiente();
-        if (this.juego.esTurnoDeColocacion()) {
-            mostrarBotonesRondaColocacion();
+    public void terminar() {
+        if (this.juego.esTurnoDeColocacion() && this.juego.getJugadorActual().getEjercitoParaIncorporar() != 0) {
+            advertencia.setText("Todavia tenes tropas para colocar.");
+
+        }
+        else {
+            this.juego.pasarAJugadorSiguiente();
+            if (this.juego.esTurnoDeAtaque()) {
+                mostrarBotonesRondaAtaque();
+            } else {
+                mostrarBotonesRondaColocacion();
+                escribirTropasDisponiblesColocacion();
+            }
         }
     }
 
@@ -267,7 +350,7 @@ public class PantallaJuego {
         botones.put("Java", java);
     }
 
-    private void inicializarPaises2(){
+    private void inicializarBotoesPais(){
         for(String s : botones.keySet()){
             botonesPaises.put(botones.get(s), s);
         }
@@ -278,22 +361,7 @@ public class PantallaJuego {
 
     @FXML
     public void paisSeleccionado(ActionEvent event){
-        if(botonesPaises.containsValue(event.getSource())) {
-            if (primerPaisSeleccionado != botonesPaises.get(event.getSource())) {
-                if(segundoPaisSeleccionado != botonesPaises.get(event.getSource())){
-                    primerPaisSeleccionado = botonesPaises.get(event.getSource());
-                    ToggleButton boton = (botonesPaises.get(event.getSource()));
-                    boton
-                }
-                else{
-                    segundoPaisSeleccionado = null;
-                }
 
-            }
-            else{
-                primerPaisSeleccionado = null;
-            }
-        }
     }
 
     @FXML
@@ -310,12 +378,11 @@ public class PantallaJuego {
             }
         }
 
+        escribirTropasDisponiblesColocacion();
 
 
-        if (this.juego.esTurnoDeAtaque()) {
-            mostrarBotonesRondaAtaque();
-        }
     }
+
 
 
 

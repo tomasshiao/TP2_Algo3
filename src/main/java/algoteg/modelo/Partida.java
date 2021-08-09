@@ -77,6 +77,9 @@ public class Partida {
         List<Pais> paises = this.iniciarPaisesYContinentes();
         this.iniciarTarjetas(paises);
         inicializarObjetivos();
+        for (Jugador jugador: jugadores){
+            jugador.setContinentes(this.tablero.getContinentes());
+        }
     }
 
     private List<Pais> iniciarPaisesYContinentes() {
