@@ -37,6 +37,15 @@ public class TurnoInicial implements Turno{
         jugadorActual.addEjercitoEnPais(pais, cantTropas);
 
     }
+    @Override
+    public void iniciarTurno(Jugador jugador) {
+        this.setJugador(jugador);
+        this.setEjercitosDisponiblesParaColocar();
+    }
+
+    public void setEjercitosDisponiblesParaColocar() {
+        jugadorActual.setEjercitoDisponibleGlobal(cantidadAIncorporar);
+    }
 
     @Override
     public boolean terminado(){return (cantidadAIncorporar ==(0));}

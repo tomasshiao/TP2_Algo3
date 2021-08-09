@@ -19,6 +19,10 @@ public class TurnoAtaque implements Turno{
 
     }
 
+    public void iniciarTurno(Jugador jugador) {
+        this.setJugador(jugador);
+    }
+
     public void setJugador(Jugador jugador){
         this.jugadorActual = jugadorActual;
     }

@@ -286,6 +286,26 @@ public class PantallaJuego {
         this.terminar.setDisable(true);
         this.terminar.setVisible(false);
 
+        this.paisAColocarTropas.setVisible(true);
+        this.paisAColocarTropas.setDisable(false);
+
+        this.paisLlegada.setVisible(false);
+        this.paisLlegada.setDisable(true);
+
+        this.paisSalida.setVisible(false);
+        this.paisSalida.setDisable(true);
+
+        this.paisAtacante.setVisible(false);
+        this.paisAtacante.setDisable(true);
+
+        this.paisDefensor.setVisible(false);
+        this.paisDefensor.setDisable(true);
+
+        escribirTropasDisponiblesColocacion();
+
+
+
+
 
     }
 
@@ -293,11 +313,26 @@ public class PantallaJuego {
         this.colocar.setDisable(true);
         this.colocar.setVisible(false);
 
-        this.reagrupar.setDisable(true);
-        this.reagrupar.setVisible(false);
+        this.reagrupar.setDisable(false);
+        this.reagrupar.setVisible(true);
 
-        this.atacar.setDisable(true);
-        this.atacar.setVisible(false);
+        this.atacar.setDisable(false);
+        this.atacar.setVisible(true);
+
+        this.paisAColocarTropas.setVisible(false);
+        this.paisAColocarTropas.setDisable(true);
+
+        this.paisLlegada.setVisible(true);
+        this.paisLlegada.setDisable(false);
+
+        this.paisSalida.setVisible(true);
+        this.paisSalida.setDisable(false);
+
+        this.paisAtacante.setVisible(true);
+        this.paisAtacante.setDisable(false);
+
+        this.paisDefensor.setVisible(true);
+        this.paisDefensor.setDisable(false);
     }
 
 
@@ -474,6 +509,20 @@ public class PantallaJuego {
 
         escribirTropasDisponiblesColocacion();
 
+
+    }
+
+    @FXML
+    public void atacar(ActionEvent event) {
+        if(event.getSource().equals(atacar) && !tropasAColocar.getText().isEmpty()  && this.paisAtacante.getValue() != null && this.paisDefensor.getValue() != null ) {
+            try{
+                juego.atacar(this.paisAtacante.getValue().toString(), this.paisDefensor.getValue().toString(), Integer.parseInt(tropasAColocar.getText()));
+
+            }
+            catch (Exception e){
+                e.printStackTrace();
+            }
+        }
 
     }
 

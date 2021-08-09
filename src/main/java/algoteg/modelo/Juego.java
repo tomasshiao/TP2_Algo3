@@ -27,8 +27,11 @@ public class Juego {
 
     }
 
+    public void iniciarTurnoActual(Jugador jugador){
+        this.partida.iniciarTurnoActual(jugador);
+    }
 
-    public void atacar(Pais paisAtacante, Pais paisDefensor, int cantidadTropas) throws AtaqueInvalidoException {
+    public void atacar(String paisAtacante, String paisDefensor, int cantidadTropas) throws AtaqueInvalidoException {
         partida.atacar(paisAtacante, paisDefensor, cantidadTropas);
     }
 
@@ -73,6 +76,8 @@ public class Juego {
     public boolean esTurnoDeAtaque(){
         return this.partida.esTurnoDeAtaque();
     }
+
+    public boolean esTurnoInicial() { return this.partida.esTurnoInicial();}
 
 
     public int obtenerTropasEnPais(String pais) {

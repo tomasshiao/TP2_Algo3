@@ -32,8 +32,8 @@ public class Jugador {
 
     }
 
-    public void setEjercitoDisponibles(List<Continente> continentes){
-        for(Continente continente: continentes) {
+    public void setEjercitoDisponibles(){
+        for(Continente continente: ejercitoDisponiblePorContinente.keySet()) {
             if (continente.esGobernante(this)) {
                 ejercitoDisponiblePorContinente.put(continente, continente.getBonusTropas());
             }
@@ -76,7 +76,9 @@ public class Jugador {
     }
 
     public void addEjercitoEnPais(Pais pais, int ejercito) {
+        System.out.println("jugador");
         if(!this.tienePais(pais)) {return;}
+        System.out.println("tiene el pais");
         int ejercitoPorColocar = ejercito;
         for (Map.Entry<Continente, Integer> entry : ejercitoDisponiblePorContinente.entrySet()) {
             Continente continente = entry.getKey();
@@ -241,5 +243,9 @@ public class Jugador {
             }
         }
         return tropas;
+    }
+
+    public void setEjercitoDisponibleGlobal(int tropas) {
+        this.ejercitoDisponibleGlobal = tropas;
     }
 }

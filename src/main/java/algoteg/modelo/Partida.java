@@ -42,6 +42,9 @@ public class Partida {
         }
     }
 
+    public void iniciarTurnoActual(Jugador jugador) {
+        this.turnos.get(turnoActual).iniciarTurno(jugador);
+    }
 
     public void pasarAJugadorSiguiente(){
         if(this.indiceJugadorActual == (cantidadJugadoresActuales-1)){
@@ -51,6 +54,7 @@ public class Partida {
         else {
             this.indiceJugadorActual++;
         }
+        this.turnos.get(turnoActual).iniciarTurno(jugadores.get(indiceJugadorActual));
     }
     public Jugador getJugadorActual(){
         return jugadores.get(this.indiceJugadorActual);
@@ -100,6 +104,8 @@ public class Partida {
     public void colocar( int cantTropas, String pais){
 
         this.getTurnoActual().setJugador(this.getJugadorActual());
+        System.out.println("colocar partida");
+        System.out.println(Integer.toString(indiceJugadorActual));
         this.getTurnoActual().colocar(cantTropas, this.getPaisPorNombre(pais));
 
 
@@ -162,9 +168,9 @@ public class Partida {
         return dto;
     }
 
-    public void atacar(Pais paisAtacante, Pais paisDefensor, int numeroTropas) throws AtaqueInvalidoException {
+    public void atacar(String paisAtacante, String paisDefensor, int numeroTropas) throws AtaqueInvalidoException {
 
-        turnos.get(turnoActual).atacar(paisAtacante,paisDefensor,numeroTropas);
+        turnos.get(turnoActual).atacar(this.getPaisPorNombre(paisAtacante),this.getPaisPorNombre(paisDefensor),numeroTropas);
 
     }
 
@@ -199,16 +205,20 @@ public class Partida {
         for (Pais pais: listaPaises) {
             if (pais.getNombre().equals(nombrePais)) { return pais; }
         }
+
+
         return null;
     }
 
     public boolean esTurnoDeColocacion() {
-        return this.turnoActual == 2;
+        return turnoActual == 2;
     }
 
     public boolean esTurnoDeAtaque() {
         return this.turnoActual == 3;
     }
+
+    public boolean esTurnoInicial() { return this.turnoActual < 2;}
 
 
     public int obtenerTropasEnPais(String pais) {

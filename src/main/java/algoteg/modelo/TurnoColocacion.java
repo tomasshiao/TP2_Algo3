@@ -21,6 +21,7 @@ public class TurnoColocacion implements Turno{
     }
     @Override
     public void colocar(int canTropas, Pais pais){
+        System.out.println("colocar turno");
         this.jugadorActual.addEjercitoEnPais(pais, canTropas);
     }
     @Override
@@ -48,6 +49,12 @@ public class TurnoColocacion implements Turno{
     public void setEjercitosDisponiblesParaColocar(){
         this.jugadorActual.setEjercitoDisponibles();
 
+    }
+
+    @Override
+    public void iniciarTurno(Jugador jugador) {
+        this.setJugador(jugador);
+        this.setEjercitosDisponiblesParaColocar();
     }
 
     public void activarTarjeta(Tarjeta tarjeta) {
