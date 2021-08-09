@@ -46,7 +46,7 @@ public class TurnoColocacion implements Turno{
     }
 
     public void setEjercitosDisponiblesParaColocar(){
-        this.jugadorActual.setEjercitoDisponibles(tablero.getContinentes());
+        this.jugadorActual.setEjercitoDisponibles();
 
     }
 

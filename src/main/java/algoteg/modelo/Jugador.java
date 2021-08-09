@@ -214,6 +214,7 @@ public class Jugador {
     }
 
     public int getTropasGlobales() {
+
         return this.ejercitoDisponibleGlobal;
     }
 
@@ -232,6 +233,7 @@ public class Jugador {
     }*/
 
     public int getTropasContinente(String nombreContinente){
+
         int tropas = 0;
         for(Continente continente : ejercitoDisponiblePorContinente.keySet()){
             if(continente.getNombre().equalsIgnoreCase(nombreContinente)){

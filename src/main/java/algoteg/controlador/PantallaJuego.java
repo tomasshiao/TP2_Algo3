@@ -167,9 +167,21 @@ public class PantallaJuego {
 
     @FXML
     public Circle jugadorActual;
+    @FXML
+    public ChoiceBox paisDefensor;
+    @FXML
+    public ChoiceBox paisLlegada;
+    @FXML
+    public ChoiceBox paisSalida;
+    @FXML
+    public ChoiceBox paisAColocarTropas;
+    @FXML
+    public ChoiceBox paisAtacante;
 
-
-
+    @FXML
+    public Button obtenerPaisesDefensores;
+    @FXML
+    public Button obtenerPaisesLlegada;
 
 
     Map<String, ToggleButton>  botones =  new HashMap<>();
@@ -202,6 +214,21 @@ public class PantallaJuego {
             nombrePais.setText(paisActual.getNombre());
         }
 
+
+
+    }
+    public void iniciarTurnoColocacion(){
+
+        jugadorActual.setFill(Color.web(this.juego.getJugadorActual().getColor()));
+        mostrarBotonesRondaColocacion();
+        this.paisAColocarTropas.getItems().clear();
+        List<Pais> paises = this.juego.getJugadorActual().getPaisesConquistados();
+
+        for(Pais pais: paises){
+            this.paisAColocarTropas.getItems().add(pais.getNombre());
+        }
+        this.juego.iniciarTurnoActual(this.juego.getJugadorActual());
+        escribirTropasDisponiblesColocacion();
 
 
     }
@@ -242,6 +269,7 @@ public class PantallaJuego {
         this.inicializarColoresDePaises();
         this.mostrarBotonesRondaColocacion();
         this.inicializarBotoesPais();
+        this.iniciarTurnoColocacion();
 
 
     }
@@ -277,12 +305,16 @@ public class PantallaJuego {
     public void terminar() {
         this.juego.pasarAJugadorSiguiente();
         if(this.juego.esTurnoDeColocacion()){
-            mostrarBotonesRondaColocacion();
+            this.iniciarTurnoColocacion();
         }
         if(this.juego.esTurnoDeAtaque()){
-            mostrarBotonesRondaAtaque();
+            iniciarTurnoAtaque();
         }
-        jugadorActual.setFill(Color.web((this.juego.getJugadorActual().getColor())));
+        if (this.juego.esTurnoInicial()){
+            this.iniciarTurnoColocacion();
+        }
+
+
 
     }
 
@@ -364,20 +396,70 @@ public class PantallaJuego {
     }
 
 
+    public void iniciarTurnoAtaque(){
 
+        jugadorActual.setFill(Color.web(this.juego.getJugadorActual().getColor()));
+        mostrarBotonesRondaAtaque();
+        this.paisAtacante.getItems().clear();
+        this.paisSalida.getItems().clear();
+        this.paisLlegada.getItems().clear();
+        this.paisDefensor.getItems().clear();
+        List<Pais> paises = this.juego.getJugadorActual().getPaisesConquistados();
 
-    @FXML
-    public void paisSeleccionado(ActionEvent event){
+        for(Pais pais: paises){
+            this.paisAtacante.getItems().add(pais.getNombre());
+            this.paisSalida.getItems().add(pais.getNombre());
 
+        }
+        this.juego.iniciarTurnoActual(this.juego.getJugadorActual());
+        escribirTropasDisponiblesColocacion();
     }
 
     @FXML
+    public void setObtenerPaisesDefensores(ActionEvent event) {
+        Object evento = event.getSource();
+        Node eventoSource = (Node) evento;
+        String id = eventoSource.getId();
+        if(evento.equals(obtenerPaisesDefensores) && paisAtacante.getValue() != null){
+            Pais paisAtaca = this.juego.getPaisPorNombre(paisAtacante.getValue().toString());
+            List<Pais> limitrofes = paisAtaca.getPaisesLimitrofes();
+            paisDefensor.getItems().clear();
+            for(Pais pais: limitrofes){
+                if(!pais.esGobernadoPor(this.juego.getJugadorActual())){
+                    paisDefensor.getItems().add(pais.getNombre());
+                }
+            }
+
+
+        }
+    }
+
+    @FXML
+    public void setObtenerPaisesLlegada(ActionEvent event) {
+        Object evento = event.getSource();
+        Node eventoSource = (Node) evento;
+        String id = eventoSource.getId();
+        if(evento.equals(obtenerPaisesLlegada) && paisSalida.getValue() != null){
+            Pais paisSale = this.juego.getPaisPorNombre(paisSalida.getValue().toString());
+            List<Pais> limitrofes = paisSale.getPaisesLimitrofes();
+            paisLlegada.getItems().clear();
+            for (Pais pais : limitrofes) {
+                if (pais.esGobernadoPor(this.juego.getJugadorActual())) {
+                    paisLlegada.getItems().add(pais.getNombre());
+                }
+            }
+        }
+    }
+
+
+
+    @FXML
     public void colocar(ActionEvent  event ){
-        if(event.getSource().equals(colocar) && !tropasAColocar.getText().isEmpty() && primerPaisSeleccionado != null){
+        if(event.getSource().equals(colocar) && !tropasAColocar.getText().isEmpty() && this.paisAColocarTropas.getValue() != null ){
             try{
-                Integer tropas = Integer.parseInt(cantJugadores.getText());
-                juego.colocar(tropas.intValue(), primerPaisSeleccionado);
-                cantJugadores.setText(Integer.toString(juego.obtenerTropasEnPais(primerPaisSeleccionado)));
+                int tropas = Integer.parseInt(tropasAColocar.getText());
+                juego.colocar(tropas, this.paisAColocarTropas.getValue().toString());
+                System.out.println(this.paisAColocarTropas.getValue().toString());
 
             }
             catch (NumberFormatException e){
@@ -397,5 +479,11 @@ public class PantallaJuego {
 
 
 
+    @FXML
+    public void reagrupar(ActionEvent event){
+        if(event.getSource().equals(reagrupar) && !tropasAColocar.getText().isEmpty() && this.paisLlegada.getValue() != null && this.paisSalida.getValue() != null){
 
+            this.juego.reagrupar(this.paisSalida.getValue().toString(), this.paisLlegada.getValue().toString(), Integer.parseInt(tropasAColocar.getText()));
+        }
+    }
 }

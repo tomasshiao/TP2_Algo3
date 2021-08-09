@@ -88,6 +88,11 @@ public class Juego {
         return String.valueOf(this.getJugadorActual().getTropasContinente(nombreContinente));
     }
 
+    public void reagrupar(String paisSalida, String paisLlegada, int cantTropas){
+
+        this.partida.mover(this.getPaisPorNombre(paisSalida), this.getPaisPorNombre(paisLlegada), cantTropas);
+    }
+
     /*public int getTropasAsia(){
         return (this.getJugadorActual().getTropasContinente("Asia"));
     }

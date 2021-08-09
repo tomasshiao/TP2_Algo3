@@ -31,6 +31,7 @@ public class Partida {
         turnos.add(new TurnoAtaque(tablero));
 
 
+
     }
     public void pasarTurno(){
         if(turnoActual ==3){
@@ -100,20 +101,12 @@ public class Partida {
 
         this.getTurnoActual().setJugador(this.getJugadorActual());
         this.getTurnoActual().colocar(cantTropas, this.getPaisPorNombre(pais));
-        if(this.getTurnoActual().terminado()){
-            this.pasarAJugadorSiguiente();
-        }
+
+
+
+
     }
 
-   /* private void repartirTarjetas(List<Tarjeta> tarjetas) { //no se usa
-        int i = 0;
-        for (Jugador jugador : jugadores) {
-
-            jugador.setTarjetas(tarjetas.subList(i, i + 3));
-            i++;
-
-        }
-    }*/
 
     private void repartirPaises(List<Pais> paises) {
         Collections.shuffle(paises);  //mezcla paises

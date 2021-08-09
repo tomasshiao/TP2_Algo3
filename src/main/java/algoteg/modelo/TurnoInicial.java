@@ -17,6 +17,7 @@ public class TurnoInicial implements Turno{
      * ***************/
     public TurnoInicial(Tablero tablero, int cantidadAIncorporar) {
         this.tablero = tablero;
+        this.cantidadAIncorporar = cantidadAIncorporar;
 
     }
     @Override
@@ -32,10 +33,9 @@ public class TurnoInicial implements Turno{
 
     public void colocar( int cantTropas, Pais pais) {
 
-        if (cantTropas <= cantidadAIncorporar && this.jugadorActual.tienePais(pais)) {
-            this.cantidadAIncorporar -= cantTropas;
-            pais.agregarEjercito(cantTropas);
-        }
+
+        jugadorActual.addEjercitoEnPais(pais, cantTropas);
+
     }
 
     @Override
