@@ -2,8 +2,6 @@ package algoteg.modelo;
 
 import algoteg.Exceptions.AtaqueInvalidoException;
 import algoteg.datosJuego.*;
-import javafx.beans.InvalidationListener;
-import javafx.beans.Observable;
 
 import java.util.*;
 
@@ -15,18 +13,39 @@ public class Partida {
     private Tablero tablero;
     private List<Objetivo> objetivos = new ArrayList<>();
     private LanzadorDados lanzadorDados = new LanzadorDados();
-    private List<Ronda> rondas = new ArrayList<>();
+    private List<Turno> turnos = new ArrayList<>();
     private Integer indiceJugadorActual;
+    private int turnoActual = 0;
+
+
+
 
     public Partida(int cantidadTotalJugadores) {
         cantidadJugadoresActuales = 0;
         this.cantidadTotalJugadores = Math.min(cantidadTotalJugadores, 6);
         this.indiceJugadorActual = 0;
+
+        turnos.add(new TurnoInicial(tablero, 5));
+        turnos.add(new TurnoInicial(tablero, 3));
+        turnos.add(new TurnoColocacion(tablero));
+        turnos.add(new TurnoAtaque(tablero));
+
+
     }
+    public void pasarTurno(){
+        if(turnoActual ==3){
+            turnoActual = 2;
+        }
+        else{
+            turnoActual++;
+        }
+    }
+
 
     public void pasarAJugadorSiguiente(){
         if(this.indiceJugadorActual == (cantidadJugadoresActuales-1)){
             this.indiceJugadorActual = 0;
+            this.pasarTurno();
         }
         else {
             this.indiceJugadorActual++;
@@ -47,7 +66,7 @@ public class Partida {
     }
 
     public int getCantidadDeRondasJugadas(){
-        return this.rondas.size();
+        return this.turnos.size();
     }
 
     public void inicializarJugadores(Integer cantdiadJugadores){
@@ -72,6 +91,15 @@ public class Partida {
         List<Tarjeta> tarjetas = init.getTodasLasTarjetas();
         Collections.shuffle(tarjetas);
 //        this.repartirTarjetas(tarjetas);
+    }
+    public Turno getTurnoActual(){return turnos.get(turnoActual);}
+    public void colocar( int cantTropas, String pais){
+
+        this.getTurnoActual().setJugador(this.getJugadorActual());
+        this.getTurnoActual().colocar(cantTropas, this.getPaisPorNombre(pais));
+        if(this.getTurnoActual().terminado()){
+            this.pasarAJugadorSiguiente();
+        }
     }
 
    /* private void repartirTarjetas(List<Tarjeta> tarjetas) { //no se usa
@@ -139,14 +167,14 @@ public class Partida {
     }
 
     public void atacar(Pais paisAtacante, Pais paisDefensor, int numeroTropas) throws AtaqueInvalidoException {
-        RondaAtaque ronda = new RondaAtaque(tablero, this.getJugadorActual());
-        ronda.atacar(paisAtacante,paisDefensor,numeroTropas);
+
+        turnos.get(turnoActual).atacar(paisAtacante,paisDefensor,numeroTropas);
 
     }
 
     public void mover(Pais paisOrigen, Pais paisDestino, int numeroTropas) {
-        RondaAtaque ronda = new RondaAtaque(tablero, this.getJugadorActual());
-        ronda.moverEjercito(paisOrigen,paisDestino,numeroTropas);
+
+        turnos.get(turnoActual).moverEjercito(paisOrigen,paisDestino,numeroTropas);
     }
 
 

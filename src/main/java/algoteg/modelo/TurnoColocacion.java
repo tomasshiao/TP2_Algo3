@@ -2,7 +2,7 @@ package algoteg.modelo;
 
 import java.util.*;
 
-public class RondaColocacion {
+public class TurnoColocacion implements Turno{
     private final Tablero tablero;
     private List<Jugador> jugadores;
     private int cantidadJugadores;
@@ -12,10 +12,21 @@ public class RondaColocacion {
      * Inicializa una ronda.
      * @param tablero Tablero
      * ***************/
-    public RondaColocacion(Tablero tablero, Jugador jugadorActual) {
+    public TurnoColocacion(Tablero tablero) {
         this.tablero = tablero;
+    }
+    @Override
+    public void setJugador(Jugador jugadorActual){
         this.jugadorActual = jugadorActual;
     }
+    @Override
+    public void colocar(int canTropas, Pais pais){
+        this.jugadorActual.addEjercitoEnPais(pais, canTropas);
+    }
+    @Override
+    public String atacar(Pais paisAtacante, Pais paisDefensor, int cantidadTropas){return null;}
+    @Override
+    public String moverEjercito(Pais paisOrigen, Pais paisDestino, int cantidadTropas){return null;}
 
     public Tablero getTablero() {
         return this.tablero;

@@ -15,6 +15,7 @@ public class Jugador {
     private int canjesRealizados;
     private boolean estaVivo;
 
+
     public Jugador(int id, String color) {
         this.id = id;
         this.color = color;

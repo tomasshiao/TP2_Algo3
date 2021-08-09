@@ -2,7 +2,7 @@ package algoteg.modelo;
 
 //import java.util.List;
 
-public class RondaAtaque {
+public class TurnoAtaque implements Turno{
     private final Tablero tablero;
     //private List<Jugador> jugadores;
     //private int cantidadJugadores;
@@ -12,8 +12,13 @@ public class RondaAtaque {
      * Inicializa una ronda.
      * @param tablero Tablero
      * ***************/
-    public RondaAtaque(Tablero tablero, Jugador jugadorActual) {
+    public TurnoAtaque(Tablero tablero) {
         this.tablero = tablero;
+        this.terminado = false;
+
+    }
+
+    public void setJugador(Jugador jugador){
         this.jugadorActual = jugadorActual;
     }
 
@@ -52,5 +57,13 @@ public class RondaAtaque {
         }
         return null;
     }
+    @Override
+    public void colocar(int cantTropas, Pais pais){};
+
+    public void setTerminado() { this.terminado = true;}
+
+     @Override
+    public boolean terminado() { return this.terminado;}
+
 
 }

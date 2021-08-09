@@ -2,16 +2,16 @@
 
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
 <?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane fx:id="contenedor"  prefHeight="720.0" prefWidth="1080.0" style="-fx-background-color: #663300;" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="algoteg.controlador.ControladorObjetivos">
+<AnchorPane fx:id="contenedor" prefHeight="720.0" prefWidth="1080.0" style="-fx-background-color: #663300;" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="algoteg.controlador.ControladorObjetivos">
    <children>
       <VBox alignment="CENTER" prefHeight="720.0" prefWidth="1080.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <HBox alignment="TOP_CENTER">
                <children>
-                  <VBox fx:id="contenedorVBox" alignment="CENTER" prefHeight="216.0" prefWidth="343.0" style="-fx-background-color: #8d4a01; -fx-background-radius: 5;">
+                  <VBox fx:id="contenedorVBox" alignment="CENTER" prefHeight="216.0" prefWidth="843.0" style="-fx-background-color: #8d4a01; -fx-background-radius: 5;">
                      <children>
                         <Label fx:id="labelJugador" textFill="#c6bcbc" visible="false">
                            <font>
@@ -21,8 +21,8 @@
                               <Circle fx:id="colorJugador" radius="19.0" stroke="BLACK" strokeType="INSIDE" />
                            </graphic>
                         </Label>
-                        <Label fx:id="objetivo" prefHeight="170.0" prefWidth="328.0" />
-                        <Button fx:id="obtenerObjetivo" mnemonicParsing="false" onAction="#obtenerObjetivo" text="Determinar Objetivo"/>
+                        <Label fx:id="objetivo" prefHeight="153.0" prefWidth="856.0" />
+                        <Button fx:id="obtenerObjetivo" mnemonicParsing="false" onAction="#obtenerObjetivo" text="Determinar Objetivo" />
                      </children>
                   </VBox>
                </children>

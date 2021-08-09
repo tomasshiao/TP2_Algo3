@@ -30,6 +30,7 @@ public class Tablero {
      * @param numeroTropas int número de tropas con la que se ataca.
      * @return Pais país ganador.
      * *********/
+
     public Pais atacar(Jugador jugadorAtacante, Pais paisAtacante, Pais paisDefensor, int numeroTropas) throws AtaqueInvalidoException {
         if(!paisAtacante.getPaisesLimitrofes().contains(paisDefensor)) {
             String exceptionType = "NoLimitrofe";

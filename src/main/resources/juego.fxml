@@ -200,15 +200,15 @@
                <children>
                   <VBox alignment="BOTTOM_CENTER" prefHeight="341.0" prefWidth="212.0">
                   <children>
-                     <Button fx:id="atacar" mnemonicParsing="false" prefHeight="25.0" prefWidth="77.0" text="Atacar">
+                     <Button fx:id="atacar" disable="true" mnemonicParsing="false" prefHeight="25.0" prefWidth="77.0" text="Atacar">
                         <VBox.margin>
                            <Insets top="5.0" />
                         </VBox.margin></Button>
-                     <Button fx:id="reagrupar" mnemonicParsing="false" prefHeight="25.0" prefWidth="77.0" text="Reagrupar">
+                     <Button fx:id="reagrupar" disable="true" mnemonicParsing="false" prefHeight="25.0" prefWidth="77.0" text="Reagrupar">
                         <VBox.margin>
                            <Insets top="5.0" />
                         </VBox.margin></Button>
-                     <Button fx:id="colocar" mnemonicParsing="false" prefHeight="25.0" prefWidth="76.0" text="Colocar">
+                     <Button fx:id="colocar" mnemonicParsing="false" onAction="#colocar" prefHeight="25.0" prefWidth="76.0" text="Colocar">
                         <VBox.margin>
                            <Insets top="5.0" />
                         </VBox.margin></Button>
@@ -216,7 +216,7 @@
                   </VBox>
                   <HBox alignment="CENTER" prefHeight="117.0" prefWidth="261.0">
                    <children>
-                     <TextField prefHeight="25.0" prefWidth="79.0" promptText="Cant Tropas" />
+                     <TextField fx:id="tropasAColocar" prefHeight="25.0" prefWidth="79.0" promptText="Cant Tropas" />
                      <Button mnemonicParsing="false" text="Aceptar">
                         <HBox.margin>
                            <Insets left="5.0" />

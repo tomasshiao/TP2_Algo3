@@ -2,7 +2,7 @@ package algoteg.modelo;
 
 import java.util.*;
 
-public class RondaInicial {
+public class TurnoInicial implements Turno{
     private final Tablero tablero;
 
     private int cantidadJugadores;
@@ -14,7 +14,7 @@ public class RondaInicial {
      * Inicializa una ronda.
      * @param tablero Tablero
      * ***************/
-    public RondaInicial(Tablero tablero, Jugador jugadorActual) {
+    public TurnoInicial(Tablero tablero, int cantidadAIncorporar) {
         this.tablero = tablero;
         this.jugadorActual = jugadorActual;
     }
@@ -22,6 +22,9 @@ public class RondaInicial {
     public Tablero getTablero() {
         return this.tablero;
     }
+
+
+    @Override
 
     public void colocarEjercito(Pais pais, int cantTropas) {
         if (cantTropas <= tropasDisponiblesPrimeraColocacion) {
