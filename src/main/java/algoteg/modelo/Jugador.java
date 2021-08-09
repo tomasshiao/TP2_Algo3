@@ -34,7 +34,12 @@ public class Jugador {
 
     public void setEjercitoDisponibles(List<Continente> continentes){
         for(Continente continente: continentes) {
-            ejercitoDisponiblePorContinente.put(continente, continente.getBonusTropas());
+            if (continente.esGobernante(this)) {
+                ejercitoDisponiblePorContinente.put(continente, continente.getBonusTropas());
+            }
+            else {
+                ejercitoDisponiblePorContinente.put(continente, 0);
+            }
         }
         ejercitoDisponibleGlobal = getCantidadPaisesConquistados()/2;
     }
@@ -208,4 +213,31 @@ public class Jugador {
 
     }
 
+    public int getTropasGlobales() {
+        return this.ejercitoDisponibleGlobal;
+    }
+
+    public Map<Continente, Integer> getTropasPorContinente() {
+        return this.ejercitoDisponiblePorContinente;
+    }
+
+    /*public int getTropasAsia(){
+        int tropas = 0;
+        for (Map.Entry<Continente, Integer> entry : ejercitoDisponiblePorContinente.entrySet()) {
+            if(entry.getKey().getNombre() == "Asia"){
+                tropas = entry.getValue();
+            }
+        }
+        return tropas;
+    }*/
+
+    public int getTropasContinente(String nombreContinente){
+        int tropas = 0;
+        for(Continente continente : ejercitoDisponiblePorContinente.keySet()){
+            if(continente.getNombre().equalsIgnoreCase(nombreContinente)){
+                tropas = ejercitoDisponiblePorContinente.get(continente);
+            }
+        }
+        return tropas;
+    }
 }

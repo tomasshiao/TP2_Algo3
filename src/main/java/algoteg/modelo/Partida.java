@@ -222,4 +222,8 @@ public class Partida {
         return this.getPaisPorNombre(pais).getEjercitoActual();
 
     }
+
+    public int getIndiceJugadorActual() {return this.indiceJugadorActual;}
+
+
 }

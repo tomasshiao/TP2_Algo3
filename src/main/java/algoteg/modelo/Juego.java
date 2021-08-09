@@ -78,4 +78,38 @@ public class Juego {
     public int obtenerTropasEnPais(String pais) {
         return partida.obtenerTropasEnPais(pais);
     }
+
+    public int getIndiceJugadorActual() {return partida.getIndiceJugadorActual();}
+
+    public Jugador getJugadorActual() {return partida.getJugadorActual();}
+
+
+    public String getTropasPorContinente(String nombreContinente){
+        return String.valueOf(this.getJugadorActual().getTropasContinente(nombreContinente));
+    }
+
+    /*public int getTropasAsia(){
+        return (this.getJugadorActual().getTropasContinente("Asia"));
+    }
+
+    public int getTropasAmericaDelSur(){
+        return this.getJugadorActual().getTropasContinente("AmericaDelSur");
+    }
+    public int getTropasAmericaDelNorte(){
+        return this.getJugadorActual().getTropasContinente("AmericaDelNorte");
+    }
+    public int getTropasAfrica(){
+        return this.getJugadorActual().getTropasContinente("Africa");
+    }
+    public int getTropasEuropa(){
+        return this.getJugadorActual().getTropasContinente("Europa");
+    }
+    public int getTropasOceania(){
+        return this.getJugadorActual().getTropasContinente("Oceania");
+    }*/
+    public int getTropasGlobales(){
+        return this.getJugadorActual().getTropasGlobales();
+    }
+
+
 }
