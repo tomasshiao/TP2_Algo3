@@ -33,47 +33,47 @@ public class PantallaJuego {
     @FXML
     public Button prueba;
     @FXML
-    public Button canada;
+    public ToggleButton canada;
     @FXML
     public ToggleButton yukon;
     @FXML
-    public Button terranova;
+    public ToggleButton terranova;
     @FXML
-    public Button groenlandia;
+    public ToggleButton groenlandia;
     @FXML
-    public Button alaska;
+    public ToggleButton alaska;
     @FXML
-    public Button labrador;
+    public ToggleButton labrador;
     @FXML
-    public Button mexico;
+    public ToggleButton mexico;
     @FXML
-    public Button california;
+    public ToggleButton california;
     @FXML
-    public Button oregon;
+    public ToggleButton oregon;
     @FXML
-    public Button colombia;
+    public ToggleButton colombia;
     @FXML
-    public Button chile;
+    public ToggleButton chile;
     @FXML
-    public Button uruguay;
+    public ToggleButton uruguay;
     @FXML
-    public Button peru;
+    public ToggleButton peru;
     @FXML
-    public Button argentina;
+    public ToggleButton argentina;
     @FXML
-    public Button brasil;
+    public ToggleButton brasil;
     @FXML
-    public Button nueva_york;
+    public ToggleButton nueva_york;
     @FXML
-    public Button islandia;
+    public ToggleButton islandia;
     @FXML
-    public Button alemania;
+    public ToggleButton alemania;
     @FXML
-    public Button francia;
+    public ToggleButton francia;
     @FXML
-    public Button españa;
+    public ToggleButton españa;
     @FXML
-    public Button polonia;
+    public ToggleButton polonia;
     @FXML
     public ToggleButton suecia;
     @FXML
