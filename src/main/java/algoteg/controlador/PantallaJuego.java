@@ -248,18 +248,28 @@ public class PantallaJuego {
 
     public void mostrarBotonesRondaColocacion() {
         this.colocar.setVisible(true);
+
+        this.reagrupar.setDisable(true);
         this.reagrupar.setVisible(false);
+
+        this.atacar.setDisable(true);
         this.atacar.setVisible(false);
-        //this.finalizarAtaque.setVisible(false);
-        //this.finalizarColocacion.setVisible(true);
+
+        this.terminar.setDisable(true);
+        this.terminar.setVisible(false);
+
+
     }
 
     public void mostrarBotonesRondaAtaque() {
+        this.colocar.setDisable(true);
         this.colocar.setVisible(false);
+
+        this.reagrupar.setDisable(true);
         this.reagrupar.setVisible(false);
+
+        this.atacar.setDisable(true);
         this.atacar.setVisible(false);
-        //this.finalizarAtaque.setVisible(true);
-        //this.finalizarColocacion.setVisible(false);
     }
 
 
@@ -373,6 +383,11 @@ public class PantallaJuego {
             catch (NumberFormatException e){
                 e.printStackTrace();
             }
+        }
+
+        if(this.juego.getJugadorActual().getEjercitoParaIncorporar() == 0) {
+            terminar.setVisible(true);
+            terminar.setDisable(false);
         }
 
         escribirTropasDisponiblesColocacion();
