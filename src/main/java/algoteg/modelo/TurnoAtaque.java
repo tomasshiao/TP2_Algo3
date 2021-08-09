@@ -7,6 +7,7 @@ public class TurnoAtaque implements Turno{
     //private List<Jugador> jugadores;
     //private int cantidadJugadores;
     private Jugador jugadorActual;
+    private boolean terminado;
 
     /****************
      * Inicializa una ronda.

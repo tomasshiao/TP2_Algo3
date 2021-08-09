@@ -7,8 +7,9 @@ public class TurnoInicial implements Turno{
 
     private int cantidadJugadores;
     private Jugador jugadorActual;
-    int tropasDisponiblesPrimeraColocacion = 5;
-    int tropasDisponiblesSegundaColocacion = 3;
+    //int tropasDisponiblesPrimeraColocacion = 5;
+    //int tropasDisponiblesSegundaColocacion = 3;
+    private int cantidadAIncorporar;
 
     /****************
      * Inicializa una ronda.
@@ -16,9 +17,12 @@ public class TurnoInicial implements Turno{
      * ***************/
     public TurnoInicial(Tablero tablero, int cantidadAIncorporar) {
         this.tablero = tablero;
+
+    }
+    @Override
+    public void setJugador(Jugador jugadorActual){
         this.jugadorActual = jugadorActual;
     }
-
     public Tablero getTablero() {
         return this.tablero;
     }
@@ -26,13 +30,19 @@ public class TurnoInicial implements Turno{
 
     @Override
 
-    public void colocarEjercito(Pais pais, int cantTropas) {
-        if (cantTropas <= tropasDisponiblesPrimeraColocacion) {
-            this.tropasDisponiblesPrimeraColocacion -= cantTropas;
-            pais.agregarEjercito(cantTropas);
-        } else if (cantTropas <= tropasDisponiblesSegundaColocacion) {
-            this.tropasDisponiblesSegundaColocacion -= cantTropas;
+    public void colocar( int cantTropas, Pais pais) {
+
+        if (cantTropas <= cantidadAIncorporar && this.jugadorActual.tienePais(pais)) {
+            this.cantidadAIncorporar -= cantTropas;
             pais.agregarEjercito(cantTropas);
         }
     }
+
+    @Override
+    public boolean terminado(){return (cantidadAIncorporar ==(0));}
+    @Override
+    public String atacar(Pais paisAtacante, Pais paisDefensor, int cantidadTropas){return null;}
+    @Override
+    public String moverEjercito(Pais paisOrigen, Pais paisDestino, int cantidadTropas){return null;}
+
 }

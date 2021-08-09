@@ -51,4 +51,31 @@ public class Juego {
     public ArrayList<Jugador> getListaJugadores(){
         return this.partida.getListaJugadores();
     }
+
+    public Pais getPaisPorNombre(String nombrePais) {
+        return this.partida.getPaisPorNombre(nombrePais);
+   }
+   public void colocar(int cantTropas, String pais){
+        partida.colocar(cantTropas,  pais);
+
+
+   }
+
+   public void pasarAJugadorSiguiente(){
+        partida.pasarAJugadorSiguiente();
+   }
+
+
+   public boolean esTurnoDeColocacion(){
+        return this.partida.esTurnoDeColocacion();
+   }
+
+    public boolean esTurnoDeAtaque(){
+        return this.partida.esTurnoDeAtaque();
+    }
+
+
+    public int obtenerTropasEnPais(String pais) {
+        return partida.obtenerTropasEnPais(pais);
+    }
 }

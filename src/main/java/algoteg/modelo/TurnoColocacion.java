@@ -56,4 +56,7 @@ public class TurnoColocacion implements Turno{
     public void activarTarjeta(Tarjeta tarjeta) {
         this.jugadorActual.activarTarjeta(tarjeta);
     }
+
+    @Override
+    public boolean terminado() {return this.jugadorActual.getEjercitoParaIncorporar() == 0;}
 }

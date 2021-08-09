@@ -35,7 +35,7 @@ public class PantallaJuego {
     @FXML
     public Button canada;
     @FXML
-    public Button yukon;
+    public ToggleButton yukon;
     @FXML
     public Button terranova;
     @FXML
@@ -75,59 +75,59 @@ public class PantallaJuego {
     @FXML
     public Button polonia;
     @FXML
-    public Button suecia;
+    public ToggleButton suecia;
     @FXML
-    public Button rusia;
+    public ToggleButton rusia;
     @FXML
-    public Button italia;
+    public ToggleButton italia;
     @FXML
-    public Button israel;
+    public ToggleButton israel;
     @FXML
-    public Button turquia;
+    public ToggleButton turquia;
     @FXML
-    public Button sudafrica;
+    public ToggleButton sudafrica;
     @FXML
-    public Button madagascar;
+    public ToggleButton madagascar;
     @FXML
-    public Button egipto;
+    public ToggleButton egipto;
     @FXML
-    public Button etiopia;
+    public ToggleButton etiopia;
     @FXML
-    public Button zaire;
+    public ToggleButton zaire;
     @FXML
-    public Button sahara;
+    public ToggleButton sahara;
     @FXML
-    public Button gobi;
+    public ToggleButton gobi;
     @FXML
-    public Button iran;
+    public ToggleButton iran;
     @FXML
-    public Button mongolia;
+    public ToggleButton mongolia;
     @FXML
-    public Button china;
+    public ToggleButton china;
     @FXML
-    public Button taymir;
+    public ToggleButton taymir;
     @FXML
-    public Button siberia;
+    public ToggleButton siberia;
     @FXML
-    public Button aral;
+    public ToggleButton aral;
     @FXML
-    public Button malasia;
+    public ToggleButton malasia;
     @FXML
-    public Button india;
+    public ToggleButton india;
     @FXML
-    public Button kamchatka;
+    public ToggleButton kamchatka;
     @FXML
-    public Button arabia;
+    public ToggleButton arabia;
     @FXML
-    public Button australia;
+    public ToggleButton australia;
     @FXML
-    public Button borneo;
+    public ToggleButton borneo;
     @FXML
-    public Button sumatra;
+    public ToggleButton sumatra;
     @FXML
-    public Button japon;
+    public ToggleButton japon;
     @FXML
-    public Button tartaria;
+    public ToggleButton tartaria;
     @FXML
     public ToggleButton java;
     @FXML

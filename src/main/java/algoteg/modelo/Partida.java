@@ -197,4 +197,26 @@ public class Partida {
     public ArrayList<Jugador> getListaJugadores() {
         return this.jugadores;
     }
+
+    public Pais getPaisPorNombre(String nombrePais) {
+        List<Pais> listaPaises = this.tablero.getPaises();
+        for (Pais pais: listaPaises) {
+            if (pais.getNombre().equals(nombrePais)) { return pais; }
+        }
+        return null;
+    }
+
+    public boolean esTurnoDeColocacion() {
+        return this.turnoActual == 2;
+    }
+
+    public boolean esTurnoDeAtaque() {
+        return this.turnoActual == 3;
+    }
+
+
+    public int obtenerTropasEnPais(String pais) {
+        return this.getPaisPorNombre(pais).getEjercitoActual();
+
+    }
 }
