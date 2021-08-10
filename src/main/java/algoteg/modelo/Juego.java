@@ -119,5 +119,10 @@ public class Juego {
         return this.getJugadorActual().getTropasGlobales();
     }
 
+    public void activarTarjeta(String nombrePais) {this.partida.activarTarjeta(nombrePais);}
+    public void canjearTarjetas(String nombre1, String nombre2, String nombre3) {this.partida.canjearTarjetas(nombre1, nombre2, nombre3);}
+
+    public boolean esPartidaGanada() {return this.partida.esPartidaGanada();}
+
 
 }

@@ -5,9 +5,13 @@ import algoteg.modelo.Juego;
 import algoteg.modelo.Jugador;
 import algoteg.modelo.Pais;
 import javafx.event.ActionEvent;
+import algoteg.modelo.Tarjeta;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
@@ -17,12 +21,16 @@ import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.Circle;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
+import javafx.stage.Window;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import java.io.IOException;
 
 public class PantallaJuego {
     Juego juego;
@@ -184,6 +192,19 @@ public class PantallaJuego {
     @FXML
     public Button obtenerPaisesLlegada;
 
+    @FXML
+    public ChoiceBox tarjeta1;
+    @FXML
+    public ChoiceBox tarjeta2;
+    @FXML
+    public ChoiceBox tarjeta3;
+
+    @FXML
+    public Button activarTarjeta;
+    @FXML
+    public Button canjearTarjetas;
+    AudioClip buzzer = new AudioClip(getClass().getResource("/sounds/click.mp3").toExternalForm());
+
 
     Map<String, ToggleButton>  botones =  new HashMap<>();
     Map<ToggleButton, String>  botonesPaises =  new HashMap<>();
@@ -228,7 +249,9 @@ public class PantallaJuego {
         for(Pais pais: paises){
             this.paisAColocarTropas.getItems().add(pais.getNombre());
         }
+        this.paisAColocarTropas.getItems().sort(Comparator.naturalOrder());
         this.juego.iniciarTurnoActual(this.juego.getJugadorActual());
+        this.completarChoicesTarjetas();
         escribirTropasDisponiblesColocacion();
 
 
@@ -276,8 +299,8 @@ public class PantallaJuego {
     }
 
     public void mostrarBotonesRondaColocacion() {
-        System.out.println("Me metí a mostrar botones ronda colocación");
         this.colocar.setVisible(true);
+        this.colocar.setDisable(false);
 
         this.reagrupar.setDisable(true);
         this.reagrupar.setVisible(false);
@@ -302,6 +325,29 @@ public class PantallaJuego {
 
         this.paisDefensor.setVisible(false);
         this.paisDefensor.setDisable(true);
+
+        this.obtenerPaisesDefensores.setVisible(false);
+        this.obtenerPaisesDefensores.setDisable(true);
+
+        this.obtenerPaisesLlegada.setVisible(false);
+        this.obtenerPaisesLlegada.setDisable(true);
+
+        this.tarjeta1.setVisible(true);
+        this.tarjeta1.setDisable(false);
+
+        this.tarjeta2.setVisible(true);
+        this.tarjeta2.setDisable(false);
+
+        this.tarjeta3.setVisible(true);
+        this.tarjeta3.setDisable(false);
+
+        this.activarTarjeta.setVisible(true);
+        this.activarTarjeta.setDisable(false);
+
+        this.canjearTarjetas.setDisable(false);
+        this.canjearTarjetas.setVisible(true);
+
+
 
         escribirTropasDisponiblesColocacion();
 
@@ -335,6 +381,26 @@ public class PantallaJuego {
 
         this.paisDefensor.setVisible(true);
         this.paisDefensor.setDisable(false);
+
+        this.obtenerPaisesDefensores.setVisible(true);
+        this.obtenerPaisesDefensores.setDisable(false);
+
+        this.obtenerPaisesLlegada.setVisible(true);
+        this.obtenerPaisesLlegada.setDisable(false);
+
+        this.tarjeta1.setVisible(false);
+        this.tarjeta1.setDisable(true);
+
+        this.tarjeta2.setVisible(false);
+        this.tarjeta2.setDisable(true);
+
+        this.tarjeta3.setVisible(false);
+        this.tarjeta3.setDisable(true);
+
+        this.canjearTarjetas.setVisible(false);
+        this.canjearTarjetas.setDisable(true);
+        this.activarTarjeta.setVisible(false);
+        this.activarTarjeta.setDisable(true);
     }
 
 
@@ -471,6 +537,7 @@ public class PantallaJuego {
                     paisDefensor.getItems().add(pais.getNombre());
                 }
             }
+            paisDefensor.getItems().sort(Comparator.naturalOrder());
 
 
         }
@@ -492,6 +559,8 @@ public class PantallaJuego {
                         paisLlegada.getItems().add(pais.getNombre());
                 }
             }
+                paisLlegada.getItems().sort(Comparator.naturalOrder());
+
         }
     }
 
@@ -550,6 +619,10 @@ public class PantallaJuego {
 
             }
             catch (Exception e){
+                advertencia.setText("Ataque invalido.");
+                try{Thread.sleep(3000);}
+                catch (InterruptedException excp){excp.printStackTrace();}
+                advertencia.setText("");
                 e.printStackTrace();
             }
         }
@@ -566,4 +639,65 @@ public class PantallaJuego {
             this.juego.reagrupar(this.paisSalida.getValue().toString(), this.paisLlegada.getValue().toString(), Integer.parseInt(tropasAColocar.getText()));
         }
     }
+
+    @FXML
+    public void activarTarjeta(ActionEvent event) {
+        if (event.getSource().equals(activarTarjeta) && tarjeta1.getValue() != null && tarjeta2.getValue() == null && tarjeta3.getValue() == null){
+            this.juego.activarTarjeta(tarjeta1.getValue().toString());
+            escribirTropasDisponiblesColocacion();
+        }
+    }
+
+    @FXML
+    public void canjearTarjetas(ActionEvent event) {
+        if (event.getSource().equals(activarTarjeta) && tarjeta1.getValue() != null && tarjeta2.getValue() != null && tarjeta3.getValue() != null){
+            this.juego.canjearTarjetas(tarjeta1.getValue().toString(), tarjeta2.getValue().toString(), tarjeta3.getValue().toString());
+            escribirTropasDisponiblesColocacion();
+        }
+    }
+
+    @FXML
+    public void completarChoicesTarjetas() {
+        tarjeta1.getItems().clear();
+        tarjeta2.getItems().clear();
+        tarjeta3.getItems().clear();
+
+        Jugador jugadorActual = this.juego.getJugadorActual();
+        List<Tarjeta> listaTarjetasJugador = jugadorActual.getTarjetas();
+        for(Tarjeta tarjeta: listaTarjetasJugador) {
+            tarjeta1.getItems().add(tarjeta.getNombrePais()+" " +tarjeta.getDibujo());
+            tarjeta2.getItems().add(tarjeta.getNombrePais()+" " +tarjeta.getDibujo());
+            tarjeta3.getItems().add(tarjeta.getNombrePais() +" " + tarjeta.getDibujo());
+        }
+
+
+
+    }
+
+    public void cambiarScena(ActionEvent event, String color) {
+        try {
+            Object eventSource = event.getSource();
+            Node sourceAsNode = (Node) eventSource;
+            Scene sceneActual = sourceAsNode.getScene();
+            Window window = sceneActual.getWindow();
+            Stage stage = (Stage) window;
+
+
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/ganador.fxml"));
+            Parent root = loader.load();
+
+            Ganador pantalla = loader.getController();
+            pantalla.controlador(color);
+            sceneActual.setRoot(root);
+            stage.setScene(sceneActual);
+            stage.setMaximized(true);
+
+            stage.show();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+
 }

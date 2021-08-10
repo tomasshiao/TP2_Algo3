@@ -21,7 +21,6 @@ public class TurnoColocacion implements Turno{
     }
     @Override
     public void colocar(int canTropas, Pais pais){
-        System.out.println("colocar turno");
         this.jugadorActual.addEjercitoEnPais(pais, canTropas);
     }
     @Override

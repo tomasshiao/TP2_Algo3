@@ -250,4 +250,7 @@ public class Jugador {
     public void setEjercitoDisponibleGlobal(int tropas) {
         this.ejercitoDisponibleGlobal = tropas;
     }
+    public List<Tarjeta> getTarjetas() {return this.tarjetas;}
+
+
 }

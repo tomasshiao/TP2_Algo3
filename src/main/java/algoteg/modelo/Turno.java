@@ -10,6 +10,8 @@ public interface Turno{
     String moverEjercito(Pais paisOrigen, Pais paisDestino, int cantidadTropas);
     boolean terminado();
     void iniciarTurno(Jugador jugador);
+    void activarTarjeta(Tarjeta tarjeta);
+    boolean canjearTarjetas(Tarjeta tarjeta1, Tarjeta tarjeta2, Tarjeta tarjeta3);
 
 
 }

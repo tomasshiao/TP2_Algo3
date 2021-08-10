@@ -10,12 +10,14 @@ public class Partida {
     private int cantidadTotalJugadores;
     private int cantidadJugadoresActuales;
     private ArrayList<Jugador> jugadores = new ArrayList<>();
-    private Tablero tablero;
+    public Tablero tablero;
     private List<Objetivo> objetivos = new ArrayList<>();
     private LanzadorDados lanzadorDados = new LanzadorDados();
     private List<Turno> turnos = new ArrayList<>();
     private Integer indiceJugadorActual;
     private int turnoActual = 0;
+    private List<Tarjeta> listaTarjetas;
+    private Objetivo objetivoGeneral;
 
 
 
@@ -79,6 +81,7 @@ public class Partida {
     public void iniciarPartida() {
         List<Pais> paises = this.iniciarPaisesYContinentes();
         this.iniciarTarjetas(paises);
+
         inicializarObjetivos();
         for (Jugador jugador: jugadores){
             jugador.setContinentes(this.tablero.getContinentes());
@@ -101,14 +104,13 @@ public class Partida {
         InitializeTarjetas init = new InitializeTarjetas(paises);
         List<Tarjeta> tarjetas = init.getTodasLasTarjetas();
         Collections.shuffle(tarjetas);
-//        this.repartirTarjetas(tarjetas);
+        this.listaTarjetas = tarjetas;
+
     }
     public Turno getTurnoActual(){return turnos.get(turnoActual);}
     public void colocar( int cantTropas, String pais){
 
         this.getTurnoActual().setJugador(this.getJugadorActual());
-        System.out.println("colocar partida");
-        System.out.println(Integer.toString(indiceJugadorActual));
         this.getTurnoActual().colocar(cantTropas, this.getPaisPorNombre(pais));
 
 
@@ -149,6 +151,7 @@ public class Partida {
         InitializeObjetivos initObjetivos = new InitializeObjetivos(this.jugadores, this.tablero);
         this.objetivos = initObjetivos.getObjetivos();
         repartirObjetivos();
+        this.objetivoGeneral = new ObjetivoGeneral(this.getJugadorActual());
     }
 
     private void repartirObjetivos(){
@@ -156,6 +159,7 @@ public class Partida {
         int i = 0;
         for(Jugador jugador: jugadores){
             jugador.setObjetivo(this.objetivos.get(i));
+            this.objetivos.get(i).setJugador(jugador);
             i++;
         }
     }
@@ -193,6 +197,7 @@ public class Partida {
     public void mover(Pais paisOrigen, Pais paisDestino, int numeroTropas) {
 
         turnos.get(turnoActual).moverEjercito(paisOrigen,paisDestino,numeroTropas);
+
     }
 
 
@@ -227,11 +232,11 @@ public class Partida {
     }
 
     public boolean esTurnoDeColocacion() {
-        return turnoActual == 2;
+        return turnoActual == 3;
     }
 
     public boolean esTurnoDeAtaque() {
-        return this.turnoActual == 3;
+        return this.turnoActual == 2;
     }
 
     public boolean esTurnoInicial() { return this.turnoActual < 2;}
@@ -243,6 +248,44 @@ public class Partida {
     }
 
     public int getIndiceJugadorActual() {return this.indiceJugadorActual;}
+
+    public void activarTarjeta(String nombrePais) {
+        Tarjeta tarjeta = this.getTarjetaPorNombre(nombrePais);
+        this.getTurnoActual().activarTarjeta(tarjeta);
+    }
+
+    public void canjearTarjetas(String pais1, String pais2, String pais3){
+        Tarjeta tarjeta1 = this.getTarjetaPorNombre(pais1);
+        Tarjeta tarjeta2 = this.getTarjetaPorNombre(pais2);
+        Tarjeta tarjeta3 = this.getTarjetaPorNombre(pais3);
+        if(this.getTurnoActual().canjearTarjetas(tarjeta1, tarjeta2, tarjeta3)){
+
+            tarjeta1.meterAlMazo();
+            tarjeta2.meterAlMazo();
+            tarjeta3.meterAlMazo();
+        }
+    }
+    public List<Tarjeta> getListaTarjetas(){return this.listaTarjetas;
+    }
+
+    public Tarjeta getTarjetaPorNombre(String nombre) {
+        String[] stringTarjeta = nombre.split(" ");
+
+        String nombrePais = stringTarjeta[0];
+        List<Tarjeta> listaTarjetas = this.getListaTarjetas();
+        for (Tarjeta tarjeta: listaTarjetas) {
+            if (tarjeta.getNombrePais().equals(nombrePais)) { return tarjeta; }
+        }
+
+
+        return null;
+    }
+
+    public boolean esPartidaGanada() {
+        this.objetivoGeneral.setJugador(this.getJugadorActual());
+        return this.objetivoGeneral.cumplido() || this.getJugadorActual().getObjetivo().cumplido();
+
+    }
 
 
 }

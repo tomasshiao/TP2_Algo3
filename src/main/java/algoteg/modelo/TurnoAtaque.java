@@ -32,7 +32,7 @@ public class TurnoAtaque implements Turno{
     }
 
     public void setJugador(Jugador jugador){
-        this.jugadorActual = jugadorActual;
+        this.jugadorActual = jugador;
     }
 
     public Tablero getTablero() {
