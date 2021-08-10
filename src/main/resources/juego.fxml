@@ -1,258 +1,424 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.net.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="720.0" prefWidth="1080.0" style="-fx-background-color: #663300;" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="algoteg.controlador.PantallaJuego">
-   <stylesheets> <URL value="@../../../../TP2_Algo3_TEG/TP2_Algo3_TEG/src/main/resources/css/style.css" />
-   </stylesheets>
+<AnchorPane prefHeight="2000.0" prefWidth="2000.0" style="-fx-background-color: #663300;" stylesheets="@css/style.css" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="algoteg.controlador.PantallaJuego">
    <children>
-      <GridPane prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-         <columnConstraints>
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-         </columnConstraints>
-         <rowConstraints>
-            <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
-         </rowConstraints>
+      <HBox layoutX="63.0" layoutY="68.0" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="0.0">
          <children>
-            <HBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="400.0" prefWidth="371.0">
+            <VBox prefHeight="720.0" prefWidth="1037.0">
+            <children>
+               <HBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="1080.0" minWidth="1408.0" prefHeight="1080.0" prefWidth="1408.0">
                <children>
-                  <StackPane>
-                     <HBox.margin>
-                        <Insets left="5.0" right="5.0" />
-                     </HBox.margin>
-                     <children>
-                        <ImageView fitHeight="720.0" fitWidth="1080.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="/tableroTEG.png" />
-                           </image>
-                        </ImageView>
-                        <GridPane alignment="CENTER" maxHeight="720.0" maxWidth="1080.0" minHeight="669.0" minWidth="988.0" prefHeight="697.0" prefWidth="988.0">
-                          <columnConstraints>
-                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="112.0" minWidth="10.0" prefWidth="73.0" />
-                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="112.0" minWidth="0.0" prefWidth="7.0" />
-                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="112.0" minWidth="0.0" prefWidth="7.0" />
-                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="112.0" minWidth="2.0" prefWidth="28.0" />
-                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="112.0" minWidth="10.0" prefWidth="40.0" />
-                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="112.0" minWidth="0.0" prefWidth="14.0" />
-                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="112.0" minWidth="10.0" prefWidth="32.0" />
-                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="112.0" minWidth="10.0" prefWidth="32.0" />
-                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="112.0" minWidth="0.0" prefWidth="0.0" />
-                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="112.0" minWidth="10.0" prefWidth="45.0" />
-                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="112.0" minWidth="0.0" prefWidth="0.0" />
-                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="112.0" minWidth="0.0" prefWidth="0.0" />
-                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="112.0" minWidth="5.0" prefWidth="17.0" />
-                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="112.0" minWidth="10.0" prefWidth="39.0" />
-                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="112.0" minWidth="10.0" prefWidth="39.0" />
-                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="112.0" minWidth="0.0" prefWidth="0.0" />
-                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="112.0" minWidth="10.0" prefWidth="18.0" />
-                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="112.0" minWidth="5.0" prefWidth="12.0" />
-                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="112.0" minWidth="5.0" prefWidth="12.0" />
-                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="112.0" minWidth="5.0" prefWidth="12.0" />
-                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="112.0" minWidth="10.0" prefWidth="33.0" />
-                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="112.0" minWidth="10.0" prefWidth="33.0" />
-                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="112.0" minWidth="10.0" prefWidth="19.0" />
-                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="112.0" minWidth="10.0" prefWidth="19.0" />
-                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="112.0" minWidth="0.0" prefWidth="31.0" />
-                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="112.0" minWidth="10.0" prefWidth="27.0" />
-                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="112.0" minWidth="10.0" prefWidth="19.0" />
-                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="112.0" minWidth="10.0" prefWidth="25.0" />
-                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="112.0" minWidth="10.0" prefWidth="25.0" />
-                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="112.0" minWidth="10.0" prefWidth="25.0" />
-                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="112.0" minWidth="10.0" prefWidth="36.0" />
-                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="112.0" minWidth="10.0" prefWidth="36.0" />
-                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="112.0" minWidth="10.0" prefWidth="36.0" />
-                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="112.0" minWidth="10.0" prefWidth="36.0" />
-                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="112.0" minWidth="10.0" prefWidth="36.0" />
-                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="112.0" minWidth="10.0" prefWidth="36.0" />
-                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="112.0" minWidth="10.0" prefWidth="36.0" />
-                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="112.0" minWidth="10.0" prefWidth="36.0" />
-                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="112.0" minWidth="10.0" prefWidth="33.0" />
-                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="112.0" minWidth="10.0" prefWidth="36.0" />
-                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="112.0" minWidth="0.0" prefWidth="0.0" />
-                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="112.0" minWidth="0.0" prefWidth="0.0" />
-                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="112.0" minWidth="10.0" prefWidth="10.0" />
-                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="112.0" minWidth="10.0" prefWidth="28.0" />
-                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="112.0" minWidth="0.0" prefWidth="0.0" />
-                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="112.0" minWidth="0.0" prefWidth="0.0" />
-                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="112.0" minWidth="0.0" prefWidth="0.0" />
-                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="112.0" minWidth="0.0" prefWidth="0.0" />
-                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="112.0" minWidth="10.0" prefWidth="10.0" />
-                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="112.0" minWidth="10.0" prefWidth="26.0" />
-                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="112.0" minWidth="10.0" prefWidth="26.0" />
-                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="112.0" minWidth="10.0" prefWidth="10.0" />
-                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="112.0" minWidth="0.0" prefWidth="11.0" />
-                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="112.0" minWidth="0.0" prefWidth="0.0" />
-                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="112.0" minWidth="0.0" prefWidth="43.0" />
-                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="112.0" minWidth="0.0" prefWidth="43.0" />
-                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="112.0" minWidth="0.0" prefWidth="16.0" />
-                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="112.0" minWidth="10.0" prefWidth="34.0" />
-                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="112.0" minWidth="10.0" prefWidth="26.0" />
-                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="112.0" minWidth="10.0" prefWidth="38.0" />
-                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="51.0" minWidth="0.0" prefWidth="0.0" />
-                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="40.0" minWidth="0.0" prefWidth="0.0" />
-                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="64.0" minWidth="10.0" prefWidth="49.0" />
-                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="39.0" minWidth="0.0" prefWidth="0.0" />
-                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="63.0" minWidth="10.0" prefWidth="51.0" />
-                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="99.0" minWidth="10.0" prefWidth="17.0" />
-                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="75.0" minWidth="10.0" prefWidth="67.0" />
-                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="75.0" minWidth="10.0" prefWidth="17.0" />
-                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="75.0" minWidth="10.0" prefWidth="17.0" />
-                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="41.0" minWidth="3.0" prefWidth="39.0" />
-                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="67.0" minWidth="0.0" prefWidth="0.0" />
-                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="73.0" minWidth="10.0" prefWidth="45.0" />
-                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="46.0" minWidth="10.0" prefWidth="29.0" />
-                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="70.0" minWidth="0.0" prefWidth="0.0" />
-                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="50.0" minWidth="10.0" prefWidth="33.0" />
-                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="50.0" minWidth="10.0" prefWidth="33.0" />
-                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="64.0" minWidth="0.0" prefWidth="22.0" />
-                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="64.0" minWidth="10.0" prefWidth="25.0" />
-                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="72.0" minWidth="0.0" prefWidth="0.0" />
-                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="86.0" minWidth="0.0" prefWidth="71.0" />
-                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="136.0" minWidth="10.0" prefWidth="47.0" />
-                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="86.0" minWidth="0.0" prefWidth="0.0" />
-                          </columnConstraints>
-                          <rowConstraints>
-                              <RowConstraints maxHeight="36.0" minHeight="10.0" prefHeight="36.0" vgrow="SOMETIMES" />
-                              <RowConstraints maxHeight="29.0" minHeight="10.0" prefHeight="28.0" vgrow="SOMETIMES" />
-                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                          </rowConstraints>
+                        <VBox alignment="CENTER" prefHeight="1080.0" prefWidth="197.0">
                            <children>
-                              <Button fx:id="canada" maxHeight="10.0" maxWidth="10.0" minHeight="10.0" minWidth="10.0" mnemonicParsing="false" onAction="#mostrarTropasDisponibles" prefHeight="10.0" prefWidth="10.0" style="-fx-background-color: orange; -fx-border-color: black;" stylesheets="@../../../../TP2_Algo3_TEG/TP2_Algo3_TEG/src/main/resources/css/norte.css" textAlignment="CENTER" GridPane.columnIndex="14" GridPane.rowIndex="4" />
-                              <Button fx:id="yukon" maxHeight="10.0" maxWidth="10.0" minHeight="10.0" minWidth="10.0" mnemonicParsing="false" onAction="#mostrarTropasDisponibles" prefHeight="10.0" prefWidth="10.0" style="-fx-background-color: orange; -fx-border-color: black;" GridPane.columnIndex="7" GridPane.rowIndex="5" />
-                              <Button fx:id="terranova" maxHeight="10.0" maxWidth="10.0" minHeight="10.0" minWidth="10.0" mnemonicParsing="false" onAction="#mostrarTropasDisponibles" prefHeight="10.0" prefWidth="10.0" style="-fx-background-color: orange; -fx-border-color: black;" stylesheets="@../../../../TP2_Algo3_TEG/TP2_Algo3_TEG/src/main/resources/css/norte.css" GridPane.columnIndex="25" GridPane.rowIndex="8" />
-                              <Button fx:id="groenlandia" maxHeight="10.0" maxWidth="10.0" minHeight="10.0" minWidth="10.0" mnemonicParsing="false" onAction="#mostrarTropasDisponibles" prefHeight="10.0" prefWidth="10.0" style="-fx-background-color: orange; -fx-border-color: black;" stylesheets="@../../../../TP2_Algo3_TEG/TP2_Algo3_TEG/src/main/resources/css/norte.css" GridPane.columnIndex="31" GridPane.rowIndex="4" />
-                              <Button fx:id="alaska" maxHeight="10.0" maxWidth="10.0" minHeight="10.0" minWidth="10.0" mnemonicParsing="false" onAction="#mostrarTropasDisponibles" prefHeight="10.0" prefWidth="10.0" style="-fx-background-color: orange; -fx-border-color: black;" stylesheets="@../../../../TP2_Algo3_TEG/TP2_Algo3_TEG/src/main/resources/css/norte.css" GridPane.columnIndex="3" GridPane.rowIndex="8" />
-                              <Button fx:id="labrador" maxHeight="10.0" maxWidth="10.0" minHeight="10.0" minWidth="10.0" mnemonicParsing="false" onAction="#mostrarTropasDisponibles" prefHeight="10.0" prefWidth="10.0" style="-fx-background-color: orange; -fx-border-color: black;" stylesheets="@../../../../TP2_Algo3_TEG/TP2_Algo3_TEG/src/main/resources/css/norte.css" GridPane.columnIndex="23" GridPane.rowIndex="6" /><Button fx:id="mexico" maxHeight="10.0" maxWidth="10.0" minHeight="10.0" minWidth="10.0" mnemonicParsing="false" onAction="#mostrarTropasDisponibles" prefHeight="10.0" prefWidth="10.0" style="-fx-background-color: orange; -fx-border-color: black;" stylesheets="@../../../../TP2_Algo3_TEG/TP2_Algo3_TEG/src/main/resources/css/norte.css" GridPane.columnIndex="21" GridPane.rowIndex="12" />
-                               <Button fx:id="california" maxHeight="10.0" maxWidth="10.0" minHeight="10.0" minWidth="10.0" mnemonicParsing="false" onAction="#mostrarTropasDisponibles" prefHeight="10.0" prefWidth="10.0" style="-fx-background-color: orange; -fx-border-color: black;" stylesheets="@../../../../TP2_Algo3_TEG/TP2_Algo3_TEG/src/main/resources/css/norte.css" GridPane.columnIndex="13" GridPane.rowIndex="11" />
-                               <Button fx:id="oregon" maxHeight="10.0" maxWidth="10.0" minHeight="10.0" minWidth="10.0" mnemonicParsing="false" onAction="#mostrarTropasDisponibles" prefHeight="10.0" prefWidth="10.0" style="-fx-background-color: orange; -fx-border-color: black;" stylesheets="@../../../../TP2_Algo3_TEG/TP2_Algo3_TEG/src/main/resources/css/norte.css" GridPane.columnIndex="7" GridPane.rowIndex="9" />
-                              <Button fx:id="colombia" maxHeight="10.0" maxWidth="10.0" minHeight="10.0" minWidth="10.0" mnemonicParsing="false" onAction="#mostrarTropasDisponibles" prefHeight="10.0" prefWidth="10.0" style="-fx-background-color: #0dcd93; -fx-border-color: black;" textFill="#0dcd93" GridPane.columnIndex="26" GridPane.rowIndex="13" />
-                              <Button fx:id="chile" layoutX="330.0" layoutY="419.0" maxHeight="10.0" maxWidth="10.0" minHeight="10.0" minWidth="10.0" mnemonicParsing="false" onAction="#mostrarTropasDisponibles" prefHeight="10.0" prefWidth="10.0" style="-fx-background-color: #0dcd93; -fx-border-color: black;" textFill="#0dcd93" GridPane.columnIndex="28" GridPane.rowIndex="17" />
-                              <Button fx:id="uruguay" layoutX="10.0" layoutY="23.0" maxHeight="10.0" maxWidth="10.0" minHeight="10.0" minWidth="10.0" mnemonicParsing="false" onAction="#mostrarTropasDisponibles" prefHeight="10.0" prefWidth="10.0" style="-fx-background-color: #0dcd93; -fx-border-color: black;" textFill="#0dcd93" GridPane.columnIndex="35" GridPane.rowIndex="16" />
-                              <Button fx:id="peru" layoutX="10.0" layoutY="23.0" maxHeight="10.0" maxWidth="10.0" minHeight="10.0" minWidth="10.0" mnemonicParsing="false" onAction="#mostrarTropasDisponibles" prefHeight="10.0" prefWidth="10.0" style="-fx-background-color: #0dcd93; -fx-border-color: black;" textFill="#0dcd93" GridPane.columnIndex="28" GridPane.rowIndex="15" />
-                              <Button fx:id="brasil" layoutX="10.0" layoutY="23.0" maxHeight="10.0" maxWidth="10.0" minHeight="10.0" minWidth="10.0" mnemonicParsing="false" onAction="#mostrarTropasDisponibles" prefHeight="10.0" prefWidth="10.0" style="-fx-background-color: #0dcd93; -fx-border-color: black;" textFill="#0dcd93" GridPane.columnIndex="36" GridPane.rowIndex="14" />
-                              <Button fx:id="argentina" layoutX="350.0" layoutY="431.0" maxHeight="10.0" maxWidth="10.0" minHeight="10.0" minWidth="10.0" mnemonicParsing="false" onAction="#mostrarTropasDisponibles" prefHeight="10.0" prefWidth="10.0" style="-fx-background-color: #0dcd93; -fx-border-color: black;" textFill="#0dcd93" GridPane.columnIndex="31" GridPane.rowIndex="17" />
-                              <Button fx:id="nueva_york" maxHeight="10.0" maxWidth="10.0" minHeight="10.0" minWidth="10.0" mnemonicParsing="false" onAction="#mostrarTropasDisponibles" prefHeight="10.0" prefWidth="10.0" style="-fx-background-color: orange; -fx-border-color: black;" stylesheets="@../../../../TP2_Algo3_TEG/TP2_Algo3_TEG/src/main/resources/css/norte.css" GridPane.columnIndex="23" GridPane.rowIndex="9" />
-                              <Button fx:id="islandia" maxHeight="10.0" maxWidth="10.0" minHeight="10.0" minWidth="10.0" mnemonicParsing="false" onAction="#mostrarTropasDisponibles" prefHeight="10.0" prefWidth="10.0" style="-fx-background-color: #c769e1; -fx-border-color: black;" textFill="#c769e1" GridPane.columnIndex="37" GridPane.rowIndex="8" />
-                              <Button fx:id="gran_bretaña" layoutX="442.0" layoutY="276.0" maxHeight="10.0" maxWidth="10.0" minHeight="10.0" minWidth="10.0" mnemonicParsing="false" onAction="#mostrarTropasDisponibles" prefHeight="10.0" prefWidth="10.0" style="-fx-background-color: #c769e1; -fx-border-color: black;" textFill="#c769e1" GridPane.columnIndex="51" GridPane.rowIndex="8" />
-                              <Button fx:id="alemania" layoutX="555.0" layoutY="276.0" maxHeight="10.0" maxWidth="10.0" minHeight="10.0" minWidth="10.0" mnemonicParsing="false" onAction="#mostrarTropasDisponibles" prefHeight="10.0" prefWidth="10.0" style="-fx-background-color: #c769e1; -fx-border-color: black;" textFill="#c769e1" GridPane.columnIndex="59" GridPane.rowIndex="10" />
-                              <Button fx:id="francia" layoutX="555.0" layoutY="276.0" maxHeight="10.0" maxWidth="10.0" minHeight="10.0" minWidth="10.0" mnemonicParsing="false" onAction="#mostrarTropasDisponibles" prefHeight="10.0" prefWidth="10.0" style="-fx-background-color: #c769e1; -fx-border-color: black;" textFill="#c769e1" GridPane.columnIndex="54" GridPane.rowIndex="12" />
-                              <Button fx:id="españa" layoutX="10.0" layoutY="21.0" maxHeight="10.0" maxWidth="10.0" minHeight="10.0" minWidth="10.0" mnemonicParsing="false" onAction="#mostrarTropasDisponibles" prefHeight="10.0" prefWidth="10.0" style="-fx-background-color: #c769e1; -fx-border-color: black;" textFill="#c769e1" GridPane.columnIndex="49" GridPane.rowIndex="12" />
-                              <Button fx:id="polonia" layoutX="592.0" layoutY="369.0" maxHeight="10.0" maxWidth="10.0" minHeight="10.0" minWidth="10.0" mnemonicParsing="false" onAction="#mostrarTropasDisponibles" prefHeight="10.0" prefWidth="10.0" style="-fx-background-color: #c769e1; -fx-border-color: black;" textFill="#c769e1" GridPane.columnIndex="62" GridPane.rowIndex="9" />
-                              <Button fx:id="suecia" layoutX="531.0" layoutY="400.0" maxHeight="10.0" maxWidth="10.0" minHeight="10.0" minWidth="10.0" mnemonicParsing="false" onAction="#mostrarTropasDisponibles" prefHeight="10.0" prefWidth="10.0" style="-fx-background-color: #c769e1; -fx-border-color: black;" textFill="#c769e1" GridPane.columnIndex="55" GridPane.rowIndex="6" />
-                              <Button fx:id="rusia" layoutX="10.0" layoutY="21.0" maxHeight="10.0" maxWidth="10.0" minHeight="10.0" minWidth="10.0" mnemonicParsing="false" onAction="#mostrarTropasDisponibles" prefHeight="10.0" prefWidth="10.0" style="-fx-background-color: #c769e1; -fx-border-color: black;" textFill="#c769e1" GridPane.columnIndex="62" GridPane.rowIndex="7" />
-                              <Button fx:id="italia" layoutX="531.0" layoutY="400.0" maxHeight="10.0" maxWidth="10.0" minHeight="10.0" minWidth="10.0" mnemonicParsing="false" onAction="#mostrarTropasDisponibles" prefHeight="10.0" prefWidth="10.0" style="-fx-background-color: #c769e1; -fx-border-color: black;" textFill="#c769e1" GridPane.columnIndex="59" GridPane.rowIndex="12" />
-                              <Button fx:id="israel" maxWidth="10.0" minHeight="10.0" minWidth="10.0" mnemonicParsing="false" onAction="#mostrarTropasDisponibles" prefHeight="10.0" prefWidth="10.0" style="-fx-background-color: #60f03c; -fx-border-color: black;" text="Button" textFill="#60f03c" GridPane.columnIndex="66" GridPane.rowIndex="13" />
-                              <Button fx:id="turquia" layoutX="10.0" layoutY="21.0" maxWidth="10.0" minHeight="10.0" minWidth="10.0" mnemonicParsing="false" onAction="#mostrarTropasDisponibles" prefHeight="10.0" prefWidth="10.0" style="-fx-background-color: #60f03c; -fx-border-color: black;" text="Button" textFill="#60f03c" GridPane.columnIndex="67" GridPane.rowIndex="11" />
-                              <Button fx:id="sudafrica" layoutX="10.0" layoutY="21.0" maxWidth="10.0" minHeight="10.0" minWidth="10.0" mnemonicParsing="false" onAction="#mostrarTropasDisponibles" prefHeight="10.0" prefWidth="10.0" style="-fx-background-color: #f0c33c; -fx-border-color: black;" text="Button" textFill="#f0c33c" GridPane.columnIndex="65" GridPane.rowIndex="18" />
-                              <Button fx:id="madagascar" layoutX="10.0" layoutY="21.0" maxWidth="10.0" minHeight="10.0" minWidth="10.0" mnemonicParsing="false" onAction="#mostrarTropasDisponibles" prefHeight="10.0" prefWidth="10.0" style="-fx-background-color: #f0c33c; -fx-border-color: black;" text="Button" textFill="#f0c33c" GridPane.columnIndex="68" GridPane.rowIndex="17" />
-                              <Button fx:id="egipto" layoutX="10.0" layoutY="21.0" maxWidth="10.0" minHeight="10.0" minWidth="10.0" mnemonicParsing="false" onAction="#mostrarTropasDisponibles" prefHeight="10.0" prefWidth="10.0" style="-fx-background-color: #f0c33c; -fx-border-color: black;" text="Button" textFill="#f0c33c" GridPane.columnIndex="66" GridPane.rowIndex="15" />
-                              <Button fx:id="etiopia" layoutX="10.0" layoutY="21.0" maxWidth="10.0" minHeight="10.0" minWidth="10.0" mnemonicParsing="false" onAction="#mostrarTropasDisponibles" prefHeight="10.0" prefWidth="10.0" style="-fx-background-color: #f0c33c; -fx-border-color: black;" text="Button" textFill="#f0c33c" GridPane.columnIndex="65" GridPane.rowIndex="16" />
-                              <Button fx:id="zaire" layoutX="10.0" layoutY="21.0" maxWidth="10.0" minHeight="10.0" minWidth="10.0" mnemonicParsing="false" onAction="#mostrarTropasDisponibles" prefHeight="10.0" prefWidth="10.0" style="-fx-background-color: #f0c33c; -fx-border-color: black;" text="Button" textFill="#f0c33c" GridPane.columnIndex="58" GridPane.rowIndex="17" />
-                              <Button fx:id="sahara" layoutX="10.0" layoutY="21.0" maxWidth="10.0" minHeight="10.0" minWidth="10.0" mnemonicParsing="false" onAction="#mostrarTropasDisponibles" prefHeight="10.0" prefWidth="10.0" style="-fx-background-color: #f0c33c; -fx-border-color: black;" text="Button" textFill="#f0c33c" GridPane.columnIndex="59" GridPane.rowIndex="15" />
-                              <Button fx:id="gobi" layoutX="10.0" layoutY="21.0" maxWidth="10.0" minHeight="10.0" minWidth="10.0" mnemonicParsing="false" onAction="#mostrarTropasDisponibles" prefHeight="10.0" prefWidth="10.0" style="-fx-background-color: #60f03c; -fx-border-color: black;" text="Button" textFill="#60f03c" GridPane.columnIndex="71" GridPane.rowIndex="8" />
-                              <Button fx:id="iran" layoutX="10.0" layoutY="21.0" maxWidth="10.0" minHeight="10.0" minWidth="10.0" mnemonicParsing="false" onAction="#mostrarTropasDisponibles" prefHeight="10.0" prefWidth="10.0" style="-fx-background-color: #60f03c; -fx-border-color: black;" text="Button" textFill="#60f03c" GridPane.columnIndex="67" GridPane.rowIndex="10" />
-                              <Button fx:id="mongolia" layoutX="10.0" layoutY="21.0" maxWidth="10.0" minHeight="10.0" minWidth="10.0" mnemonicParsing="false" onAction="#mostrarTropasDisponibles" prefHeight="10.0" prefWidth="10.0" style="-fx-background-color: #60f03c; -fx-border-color: black;" text="Button" textFill="#60f03c" GridPane.columnIndex="67" GridPane.rowIndex="7" />
-                              <Button fx:id="china" layoutX="10.0" layoutY="21.0" maxWidth="10.0" minHeight="10.0" minWidth="10.0" mnemonicParsing="false" onAction="#mostrarTropasDisponibles" prefHeight="10.0" prefWidth="10.0" style="-fx-background-color: #60f03c; -fx-border-color: black;" text="Button" textFill="#60f03c" GridPane.columnIndex="74" GridPane.rowIndex="7" />
-                              <Button fx:id="taymir" layoutX="10.0" layoutY="21.0" maxWidth="10.0" minHeight="10.0" minWidth="10.0" mnemonicParsing="false" onAction="#mostrarTropasDisponibles" prefHeight="10.0" prefWidth="10.0" style="-fx-background-color: #60f03c; -fx-border-color: black;" text="Button" textFill="#60f03c" GridPane.columnIndex="68" GridPane.rowIndex="4" />
-                              <Button fx:id="siberia" layoutX="10.0" layoutY="21.0" maxWidth="10.0" minHeight="10.0" minWidth="10.0" mnemonicParsing="false" onAction="#mostrarTropasDisponibles" prefHeight="10.0" prefWidth="10.0" style="-fx-background-color: #60f03c; -fx-border-color: black;" text="Button" textFill="#60f03c" GridPane.columnIndex="69" GridPane.rowIndex="5" />
-                              <Button fx:id="aral" layoutX="10.0" layoutY="21.0" maxWidth="10.0" minHeight="10.0" minWidth="10.0" mnemonicParsing="false" onAction="#mostrarTropasDisponibles" prefHeight="10.0" prefWidth="10.0" style="-fx-background-color: #60f03c; -fx-border-color: black;" text="Button" textFill="#60f03c" GridPane.columnIndex="65" GridPane.rowIndex="5" />
-                              <Button fx:id="malasia" layoutX="745.0" layoutY="182.0" maxWidth="10.0" minHeight="10.0" minWidth="10.0" mnemonicParsing="false" onAction="#mostrarTropasDisponibles" prefHeight="10.0" prefWidth="10.0" style="-fx-background-color: #60f03c; -fx-border-color: black;" text="Button" textFill="#60f03c" GridPane.columnIndex="79" GridPane.rowIndex="11" />
-                              <Button fx:id="india" layoutX="10.0" layoutY="23.0" maxWidth="10.0" minHeight="10.0" minWidth="10.0" mnemonicParsing="false" onAction="#mostrarTropasDisponibles" prefHeight="10.0" prefWidth="10.0" style="-fx-background-color: #60f03c; -fx-border-color: black;" text="Button" textFill="#60f03c" GridPane.columnIndex="74" GridPane.rowIndex="11" />
-                              <Button fx:id="kamchatka" layoutX="10.0" layoutY="23.0" maxWidth="10.0" minHeight="10.0" minWidth="10.0" mnemonicParsing="false" onAction="#mostrarTropasDisponibles" prefHeight="10.0" prefWidth="10.0" style="-fx-background-color: #60f03c; -fx-border-color: black;" text="Button" textFill="#60f03c" GridPane.columnIndex="72" GridPane.rowIndex="4" />
-                              <Button fx:id="arabia" layoutX="875.0" layoutY="150.0" maxWidth="10.0" minHeight="10.0" minWidth="10.0" mnemonicParsing="false" onAction="#mostrarTropasDisponibles" prefHeight="10.0" prefWidth="10.0" style="-fx-background-color: #60f03c; -fx-border-color: black;" text="Button" textFill="#60f03c" GridPane.columnIndex="68" GridPane.rowIndex="13" />
-                              <Button fx:id="australia" layoutX="934.0" layoutY="524.0" maxWidth="10.0" minHeight="10.0" minWidth="10.0" mnemonicParsing="false" onAction="#mostrarTropasDisponibles" prefHeight="10.0" prefWidth="10.0" style="-fx-background-color: #3cacf0; -fx-border-color: black;" text="Button" textFill="#3cacf0" GridPane.columnIndex="79" GridPane.rowIndex="16" />
-                              <Button fx:id="borneo" layoutX="934.0" layoutY="524.0" maxWidth="10.0" minHeight="10.0" minWidth="10.0" mnemonicParsing="false" onAction="#mostrarTropasDisponibles" prefHeight="10.0" prefWidth="10.0" style="-fx-background-color: #3cacf0; -fx-border-color: black;" text="Button" textFill="#3cacf0" GridPane.columnIndex="79" GridPane.rowIndex="13" />
-                              <Button fx:id="sumatra" layoutX="10.0" layoutY="23.0" maxWidth="10.0" minHeight="10.0" minWidth="10.0" mnemonicParsing="false" onAction="#mostrarTropasDisponibles" prefHeight="10.0" prefWidth="10.0" style="-fx-background-color: #3cacf0; -fx-border-color: black;" text="Button" textFill="#3cacf0" GridPane.columnIndex="72" GridPane.rowIndex="15" />
-                              <Button fx:id="australia111" layoutX="10.0" layoutY="23.0" maxWidth="10.0" minHeight="10.0" minWidth="10.0" mnemonicParsing="false" onAction="#mostrarTropasDisponibles" prefHeight="10.0" prefWidth="10.0" style="-fx-background-color: #3cacf0; -fx-border-color: black;" text="Button" textFill="#3cacf0" GridPane.columnIndex="80" GridPane.rowIndex="13" />
-                              <Button fx:id="japon" layoutX="875.0" layoutY="150.0" maxWidth="10.0" minHeight="10.0" minWidth="10.0" mnemonicParsing="false" onAction="#mostrarTropasDisponibles" prefHeight="10.0" prefWidth="10.0" style="-fx-background-color: #60f03c; -fx-border-color: black;" text="Button" textFill="#60f03c" GridPane.columnIndex="79" GridPane.rowIndex="5" />
-
-
+                              <ChoiceBox fx:id="tarjeta1" prefWidth="150.0">
+                                 <VBox.margin>
+                                    <Insets bottom="5.0" />
+                                 </VBox.margin>
+                              </ChoiceBox>
+                              <ChoiceBox fx:id="tarjeta2" prefWidth="150.0">
+                                 <VBox.margin>
+                                    <Insets bottom="5.0" />
+                                 </VBox.margin>
+                              </ChoiceBox>
+                              <ChoiceBox fx:id="tarjeta3" prefWidth="150.0">
+                                 <VBox.margin>
+                                    <Insets bottom="5.0" />
+                                 </VBox.margin>
+                              </ChoiceBox>
+                              <Button fx:id="activarTarjeta" mnemonicParsing="false" onAction="#activarTarjeta" text="Activar">
+                                 <VBox.margin>
+                                    <Insets bottom="5.0" />
+                                 </VBox.margin>
+                              </Button>
+                              <Button fx:id="canjearTarjetas" mnemonicParsing="false" onAction="#canjearTarjetas" text="Canjear">
+                                 <VBox.margin>
+                                    <Insets bottom="5.0" />
+                                 </VBox.margin>
+                              </Button>
                            </children>
-                        </GridPane>
-                     </children>
-                  </StackPane>
-               </children>
-            </HBox>
-            <VBox alignment="CENTER" prefHeight="400.0" prefWidth="593.0" GridPane.columnIndex="1">
-               <children>
-                  <VBox alignment="CENTER_LEFT">
-                     <children>
-                        <Button fx:id="atacar" mnemonicParsing="false" prefHeight="25.0" prefWidth="75.0" text="Atacar">
-                           <VBox.margin>
-                              <Insets top="5.0" />
-                           </VBox.margin></Button>
-                        <Button fx:id="reagrupar" mnemonicParsing="false" text="Reagrupar">
-                           <VBox.margin>
-                              <Insets top="5.0" />
-                           </VBox.margin></Button>
-                        <Button fx:id="colocar" mnemonicParsing="false" prefHeight="25.0" prefWidth="76.0" text="Colocar">
-                           <VBox.margin>
-                              <Insets top="5.0" />
-                           </VBox.margin></Button>
-                     </children>
-                  </VBox>
-                  <HBox prefHeight="90.0" prefWidth="136.0">
-                     <children>
-                        <TextField prefHeight="25.0" prefWidth="79.0" promptText="Cant Tropas" />
-                        <Button mnemonicParsing="false" text="Aceptar">
-                           <HBox.margin>
-                              <Insets left="5.0" />
-                           </HBox.margin></Button>
-                     </children>
-                     <VBox.margin>
-                        <Insets top="20.0" />
-                     </VBox.margin>
-                  </HBox>
-                  <VBox prefHeight="200.0" prefWidth="100.0">
-                     <children>
+                        </VBox>
                         <HBox>
+                           <HBox.margin>
+                              <Insets left="5.0" right="5.0" />
+                           </HBox.margin>
                            <children>
-                              <Label text="Tropas Disponibles: " textFill="#c6bcbc">
-                                 <font>
-                                    <Font size="20.0" />
-                                 </font>
-                              </Label>
-                              <Label fx:id="cantTropas" textFill="#c6bcbc">
+                        <StackPane>
+                           <children>
+                              <ImageView fitHeight="720.0" fitWidth="1080.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@tableroTEG.png" />
+                                 </image>
+                              </ImageView>
+                              <GridPane alignment="CENTER" maxHeight="720.0" maxWidth="1080.0" minHeight="669.0" minWidth="988.0" prefHeight="697.0" prefWidth="988.0">
+                                 <columnConstraints>
+                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="112.0" minWidth="10.0" prefWidth="73.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="112.0" minWidth="0.0" prefWidth="7.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="112.0" minWidth="0.0" prefWidth="7.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="112.0" minWidth="2.0" prefWidth="28.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="112.0" minWidth="10.0" prefWidth="40.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="112.0" minWidth="0.0" prefWidth="14.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="112.0" minWidth="10.0" prefWidth="32.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="112.0" minWidth="10.0" prefWidth="32.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="112.0" minWidth="0.0" prefWidth="0.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="112.0" minWidth="10.0" prefWidth="45.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="112.0" minWidth="0.0" prefWidth="0.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="112.0" minWidth="0.0" prefWidth="0.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="112.0" minWidth="5.0" prefWidth="17.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="112.0" minWidth="10.0" prefWidth="39.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="112.0" minWidth="10.0" prefWidth="39.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="112.0" minWidth="0.0" prefWidth="0.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="112.0" minWidth="10.0" prefWidth="18.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="112.0" minWidth="5.0" prefWidth="12.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="112.0" minWidth="5.0" prefWidth="12.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="112.0" minWidth="5.0" prefWidth="12.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="112.0" minWidth="10.0" prefWidth="33.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="112.0" minWidth="10.0" prefWidth="33.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="112.0" minWidth="10.0" prefWidth="19.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="112.0" minWidth="10.0" prefWidth="19.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="112.0" minWidth="0.0" prefWidth="31.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="112.0" minWidth="10.0" prefWidth="27.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="112.0" minWidth="10.0" prefWidth="19.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="112.0" minWidth="10.0" prefWidth="25.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="112.0" minWidth="10.0" prefWidth="25.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="112.0" minWidth="10.0" prefWidth="25.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="112.0" minWidth="10.0" prefWidth="36.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="112.0" minWidth="10.0" prefWidth="36.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="112.0" minWidth="10.0" prefWidth="36.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="112.0" minWidth="10.0" prefWidth="36.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="112.0" minWidth="10.0" prefWidth="36.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="112.0" minWidth="10.0" prefWidth="36.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="112.0" minWidth="10.0" prefWidth="36.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="112.0" minWidth="10.0" prefWidth="36.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="112.0" minWidth="10.0" prefWidth="33.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="112.0" minWidth="10.0" prefWidth="36.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="112.0" minWidth="0.0" prefWidth="0.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="112.0" minWidth="0.0" prefWidth="0.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="112.0" minWidth="10.0" prefWidth="10.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="112.0" minWidth="10.0" prefWidth="28.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="112.0" minWidth="0.0" prefWidth="0.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="112.0" minWidth="0.0" prefWidth="0.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="112.0" minWidth="0.0" prefWidth="0.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="112.0" minWidth="0.0" prefWidth="0.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="112.0" minWidth="10.0" prefWidth="10.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="112.0" minWidth="10.0" prefWidth="26.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="112.0" minWidth="10.0" prefWidth="26.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="112.0" minWidth="10.0" prefWidth="10.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="112.0" minWidth="0.0" prefWidth="11.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="112.0" minWidth="0.0" prefWidth="0.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="112.0" minWidth="0.0" prefWidth="43.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="112.0" minWidth="0.0" prefWidth="43.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="112.0" minWidth="0.0" prefWidth="16.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="112.0" minWidth="10.0" prefWidth="34.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="112.0" minWidth="10.0" prefWidth="26.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="112.0" minWidth="10.0" prefWidth="38.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="51.0" minWidth="0.0" prefWidth="0.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="40.0" minWidth="0.0" prefWidth="0.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="64.0" minWidth="10.0" prefWidth="49.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="39.0" minWidth="0.0" prefWidth="0.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="63.0" minWidth="10.0" prefWidth="51.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="99.0" minWidth="10.0" prefWidth="17.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="75.0" minWidth="10.0" prefWidth="67.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="75.0" minWidth="10.0" prefWidth="17.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="75.0" minWidth="10.0" prefWidth="17.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="41.0" minWidth="3.0" prefWidth="39.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="67.0" minWidth="0.0" prefWidth="0.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="73.0" minWidth="10.0" prefWidth="45.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="46.0" minWidth="10.0" prefWidth="29.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="70.0" minWidth="0.0" prefWidth="0.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="50.0" minWidth="10.0" prefWidth="33.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="50.0" minWidth="10.0" prefWidth="33.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="64.0" minWidth="0.0" prefWidth="22.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="64.0" minWidth="10.0" prefWidth="25.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="72.0" minWidth="0.0" prefWidth="0.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="86.0" minWidth="0.0" prefWidth="71.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="136.0" minWidth="10.0" prefWidth="47.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="86.0" minWidth="0.0" prefWidth="0.0" />
+                                 </columnConstraints>
+                                 <rowConstraints>
+                                    <RowConstraints maxHeight="36.0" minHeight="10.0" prefHeight="36.0" vgrow="SOMETIMES" />
+                                    <RowConstraints maxHeight="29.0" minHeight="10.0" prefHeight="28.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                 </rowConstraints>
+                                 <children>
+                                    <ToggleButton fx:id="canada" maxHeight="10.0" maxWidth="10.0" minHeight="10.0" minWidth="10.0" mnemonicParsing="false" onAction="#escribirLabels" prefHeight="10.0" prefWidth="10.0" style="-fx-background-color: orange; -fx-border-color: black;" textAlignment="CENTER" GridPane.columnIndex="14" GridPane.rowIndex="4" />
+                                    <ToggleButton fx:id="yukon" maxHeight="10.0" maxWidth="10.0" minHeight="10.0" minWidth="10.0" mnemonicParsing="false" onAction="#escribirLabels" prefHeight="10.0" prefWidth="10.0" style="-fx-background-color: orange; -fx-border-color: black;" GridPane.columnIndex="7" GridPane.rowIndex="5" />
+                                    <ToggleButton fx:id="terranova" maxHeight="10.0" maxWidth="10.0" minHeight="10.0" minWidth="10.0" mnemonicParsing="false" onAction="#escribirLabels" prefHeight="10.0" prefWidth="10.0" style="-fx-background-color: orange; -fx-border-color: black;" GridPane.columnIndex="25" GridPane.rowIndex="8" />
+                                    <ToggleButton fx:id="groenlandia" maxHeight="10.0" maxWidth="10.0" minHeight="10.0" minWidth="10.0" mnemonicParsing="false" onAction="#escribirLabels" prefHeight="10.0" prefWidth="10.0" style="-fx-background-color: orange; -fx-border-color: black;" GridPane.columnIndex="31" GridPane.rowIndex="4" />
+                                    <ToggleButton fx:id="alaska" maxHeight="10.0" maxWidth="10.0" minHeight="10.0" minWidth="10.0" mnemonicParsing="false" onAction="#escribirLabels" prefHeight="10.0" prefWidth="10.0" style="-fx-background-color: orange; -fx-border-color: black;" GridPane.columnIndex="3" GridPane.rowIndex="8" />
+                                    <ToggleButton fx:id="labrador" maxHeight="10.0" maxWidth="10.0" minHeight="10.0" minWidth="10.0" mnemonicParsing="false" onAction="#escribirLabels" prefHeight="10.0" prefWidth="10.0" style="-fx-background-color: orange; -fx-border-color: black;" GridPane.columnIndex="23" GridPane.rowIndex="6" />
+                                    <ToggleButton fx:id="mexico" maxHeight="10.0" maxWidth="10.0" minHeight="10.0" minWidth="10.0" mnemonicParsing="false" onAction="#escribirLabels" prefHeight="10.0" prefWidth="10.0" style="-fx-background-color: orange; -fx-border-color: black;" GridPane.columnIndex="21" GridPane.rowIndex="12" />
+                                    <ToggleButton fx:id="california" maxHeight="10.0" maxWidth="10.0" minHeight="10.0" minWidth="10.0" mnemonicParsing="false" onAction="#escribirLabels" prefHeight="10.0" prefWidth="10.0" style="-fx-background-color: orange; -fx-border-color: black;" GridPane.columnIndex="13" GridPane.rowIndex="11" />
+                                    <ToggleButton fx:id="oregon" maxHeight="10.0" maxWidth="10.0" minHeight="10.0" minWidth="10.0" mnemonicParsing="false" onAction="#escribirLabels" prefHeight="10.0" prefWidth="10.0" style="-fx-background-color: orange; -fx-border-color: black;" GridPane.columnIndex="7" GridPane.rowIndex="9" />
+                                    <ToggleButton fx:id="colombia" maxHeight="10.0" maxWidth="10.0" minHeight="10.0" minWidth="10.0" mnemonicParsing="false" onAction="#escribirLabels" prefHeight="10.0" prefWidth="10.0" style="-fx-background-color: #0dcd93; -fx-border-color: black;" textFill="#0dcd93" GridPane.columnIndex="26" GridPane.rowIndex="13" />
+                                    <ToggleButton fx:id="chile" layoutX="330.0" layoutY="419.0" maxHeight="10.0" maxWidth="10.0" minHeight="10.0" minWidth="10.0" mnemonicParsing="false" onAction="#escribirLabels" prefHeight="10.0" prefWidth="10.0" style="-fx-background-color: #0dcd93; -fx-border-color: black;" textFill="#0dcd93" GridPane.columnIndex="28" GridPane.rowIndex="17" />
+                                    <ToggleButton fx:id="uruguay" layoutX="10.0" layoutY="23.0" maxHeight="10.0" maxWidth="10.0" minHeight="10.0" minWidth="10.0" mnemonicParsing="false" onAction="#escribirLabels" prefHeight="10.0" prefWidth="10.0" style="-fx-background-color: #0dcd93; -fx-border-color: black;" textFill="#0dcd93" GridPane.columnIndex="35" GridPane.rowIndex="16" />
+                                    <ToggleButton fx:id="peru" layoutX="10.0" layoutY="23.0" maxHeight="10.0" maxWidth="10.0" minHeight="10.0" minWidth="10.0" mnemonicParsing="false" onAction="#escribirLabels" prefHeight="10.0" prefWidth="10.0" style="-fx-background-color: #0dcd93; -fx-border-color: black;" textFill="#0dcd93" GridPane.columnIndex="28" GridPane.rowIndex="15" />
+                                    <ToggleButton fx:id="brasil" layoutX="10.0" layoutY="23.0" maxHeight="10.0" maxWidth="10.0" minHeight="10.0" minWidth="10.0" mnemonicParsing="false" onAction="#escribirLabels" prefHeight="10.0" prefWidth="10.0" style="-fx-background-color: #0dcd93; -fx-border-color: black;" textFill="#0dcd93" GridPane.columnIndex="36" GridPane.rowIndex="14" />
+                                    <ToggleButton fx:id="argentina" layoutX="350.0" layoutY="431.0" maxHeight="10.0" maxWidth="10.0" minHeight="10.0" minWidth="10.0" mnemonicParsing="false" onAction="#escribirLabels" prefHeight="10.0" prefWidth="10.0" style="-fx-background-color: #0dcd93; -fx-border-color: black;" textFill="#0dcd93" GridPane.columnIndex="31" GridPane.rowIndex="17" />
+                                    <ToggleButton fx:id="nueva_york" maxHeight="10.0" maxWidth="10.0" minHeight="10.0" minWidth="10.0" mnemonicParsing="false" onAction="#escribirLabels" prefHeight="10.0" prefWidth="10.0" style="-fx-background-color: orange; -fx-border-color: black;" GridPane.columnIndex="23" GridPane.rowIndex="9" />
+                                    <ToggleButton fx:id="islandia" maxHeight="10.0" maxWidth="10.0" minHeight="10.0" minWidth="10.0" mnemonicParsing="false" onAction="#escribirLabels" prefHeight="10.0" prefWidth="10.0" style="-fx-background-color: #c769e1; -fx-border-color: black;" textFill="#c769e1" GridPane.columnIndex="37" GridPane.rowIndex="8" />
+                                    <ToggleButton fx:id="gran_bretaña" layoutX="442.0" layoutY="276.0" maxHeight="10.0" maxWidth="10.0" minHeight="10.0" minWidth="10.0" mnemonicParsing="false" onAction="#escribirLabels" prefHeight="10.0" prefWidth="10.0" style="-fx-background-color: #c769e1; -fx-border-color: black;" textFill="#c769e1" GridPane.columnIndex="51" GridPane.rowIndex="8" />
+                                    <ToggleButton fx:id="alemania" layoutX="555.0" layoutY="276.0" maxHeight="10.0" maxWidth="10.0" minHeight="10.0" minWidth="10.0" mnemonicParsing="false" onAction="#escribirLabels" prefHeight="10.0" prefWidth="10.0" style="-fx-background-color: #c769e1; -fx-border-color: black;" textFill="#c769e1" GridPane.columnIndex="59" GridPane.rowIndex="10" />
+                                    <ToggleButton fx:id="francia" layoutX="555.0" layoutY="276.0" maxHeight="10.0" maxWidth="10.0" minHeight="10.0" minWidth="10.0" mnemonicParsing="false" onAction="#escribirLabels" prefHeight="10.0" prefWidth="10.0" style="-fx-background-color: #c769e1; -fx-border-color: black;" textFill="#c769e1" GridPane.columnIndex="54" GridPane.rowIndex="12" />
+                                    <ToggleButton fx:id="españa" layoutX="10.0" layoutY="21.0" maxHeight="10.0" maxWidth="10.0" minHeight="10.0" minWidth="10.0" mnemonicParsing="false" onAction="#escribirLabels" prefHeight="10.0" prefWidth="10.0" style="-fx-background-color: #c769e1; -fx-border-color: black;" textFill="#c769e1" GridPane.columnIndex="49" GridPane.rowIndex="12" />
+                                    <ToggleButton fx:id="polonia" layoutX="592.0" layoutY="369.0" maxHeight="10.0" maxWidth="10.0" minHeight="10.0" minWidth="10.0" mnemonicParsing="false" onAction="#escribirLabels" prefHeight="10.0" prefWidth="10.0" style="-fx-background-color: #c769e1; -fx-border-color: black;" textFill="#c769e1" GridPane.columnIndex="62" GridPane.rowIndex="9" />
+                                    <ToggleButton fx:id="suecia" layoutX="531.0" layoutY="400.0" maxHeight="10.0" maxWidth="10.0" minHeight="10.0" minWidth="10.0" mnemonicParsing="false" onAction="#escribirLabels" prefHeight="10.0" prefWidth="10.0" style="-fx-background-color: #c769e1; -fx-border-color: black;" textFill="#c769e1" GridPane.columnIndex="55" GridPane.rowIndex="6" />
+                                    <ToggleButton fx:id="rusia" layoutX="10.0" layoutY="21.0" maxHeight="10.0" maxWidth="10.0" minHeight="10.0" minWidth="10.0" mnemonicParsing="false" onAction="#escribirLabels" prefHeight="10.0" prefWidth="10.0" style="-fx-background-color: #c769e1; -fx-border-color: black;" textFill="#c769e1" GridPane.columnIndex="62" GridPane.rowIndex="7" />
+                                    <ToggleButton fx:id="italia" layoutX="531.0" layoutY="400.0" maxHeight="10.0" maxWidth="10.0" minHeight="10.0" minWidth="10.0" mnemonicParsing="false" onAction="#escribirLabels" prefHeight="10.0" prefWidth="10.0" style="-fx-background-color: #c769e1; -fx-border-color: black;" textFill="#c769e1" GridPane.columnIndex="59" GridPane.rowIndex="12" />
+                                    <ToggleButton fx:id="israel" maxWidth="10.0" minHeight="10.0" minWidth="10.0" mnemonicParsing="false" onAction="#escribirLabels" prefHeight="10.0" prefWidth="10.0" style="-fx-background-color: #60f03c; -fx-border-color: black;" text="Button" textFill="#60f03c" GridPane.columnIndex="66" GridPane.rowIndex="13" />
+                                    <ToggleButton fx:id="turquia" layoutX="10.0" layoutY="21.0" maxWidth="10.0" minHeight="10.0" minWidth="10.0" mnemonicParsing="false" onAction="#escribirLabels" prefHeight="10.0" prefWidth="10.0" style="-fx-background-color: #60f03c; -fx-border-color: black;" text="Button" textFill="#60f03c" GridPane.columnIndex="67" GridPane.rowIndex="11" />
+                                    <ToggleButton fx:id="sudafrica" layoutX="10.0" layoutY="21.0" maxWidth="10.0" minHeight="10.0" minWidth="10.0" mnemonicParsing="false" onAction="#escribirLabels" prefHeight="10.0" prefWidth="10.0" style="-fx-background-color: #f0c33c; -fx-border-color: black;" text="Button" textFill="#f0c33c" GridPane.columnIndex="65" GridPane.rowIndex="18" />
+                                    <ToggleButton fx:id="madagascar" layoutX="10.0" layoutY="21.0" maxWidth="10.0" minHeight="10.0" minWidth="10.0" mnemonicParsing="false" onAction="#escribirLabels" prefHeight="10.0" prefWidth="10.0" style="-fx-background-color: #f0c33c; -fx-border-color: black;" text="Button" textFill="#f0c33c" GridPane.columnIndex="68" GridPane.rowIndex="17" />
+                                    <ToggleButton fx:id="egipto" layoutX="10.0" layoutY="21.0" maxWidth="10.0" minHeight="10.0" minWidth="10.0" mnemonicParsing="false" onAction="#escribirLabels" prefHeight="10.0" prefWidth="10.0" style="-fx-background-color: #f0c33c; -fx-border-color: black;" text="Button" textFill="#f0c33c" GridPane.columnIndex="66" GridPane.rowIndex="15" />
+                                    <ToggleButton fx:id="etiopia" layoutX="10.0" layoutY="21.0" maxWidth="10.0" minHeight="10.0" minWidth="10.0" mnemonicParsing="false" onAction="#escribirLabels" prefHeight="10.0" prefWidth="10.0" style="-fx-background-color: #f0c33c; -fx-border-color: black;" text="Button" textFill="#f0c33c" GridPane.columnIndex="65" GridPane.rowIndex="16" />
+                                    <ToggleButton fx:id="zaire" layoutX="10.0" layoutY="21.0" maxWidth="10.0" minHeight="10.0" minWidth="10.0" mnemonicParsing="false" onAction="#escribirLabels" prefHeight="10.0" prefWidth="10.0" style="-fx-background-color: #f0c33c; -fx-border-color: black;" text="Button" textFill="#f0c33c" GridPane.columnIndex="58" GridPane.rowIndex="17" />
+                                    <ToggleButton fx:id="sahara" layoutX="10.0" layoutY="21.0" maxWidth="10.0" minHeight="10.0" minWidth="10.0" mnemonicParsing="false" onAction="#escribirLabels" prefHeight="10.0" prefWidth="10.0" style="-fx-background-color: #f0c33c; -fx-border-color: black;" text="Button" textFill="#f0c33c" GridPane.columnIndex="59" GridPane.rowIndex="15" />
+                                    <ToggleButton fx:id="gobi" layoutX="10.0" layoutY="21.0" maxWidth="10.0" minHeight="10.0" minWidth="10.0" mnemonicParsing="false" onAction="#escribirLabels" prefHeight="10.0" prefWidth="10.0" style="-fx-background-color: #60f03c; -fx-border-color: black;" text="Button" textFill="#60f03c" GridPane.columnIndex="71" GridPane.rowIndex="8" />
+                                    <ToggleButton fx:id="iran" layoutX="10.0" layoutY="21.0" maxWidth="10.0" minHeight="10.0" minWidth="10.0" mnemonicParsing="false" onAction="#escribirLabels" prefHeight="10.0" prefWidth="10.0" style="-fx-background-color: #60f03c; -fx-border-color: black;" text="Button" textFill="#60f03c" GridPane.columnIndex="67" GridPane.rowIndex="10" />
+                                    <ToggleButton fx:id="mongolia" layoutX="10.0" layoutY="21.0" maxWidth="10.0" minHeight="10.0" minWidth="10.0" mnemonicParsing="false" onAction="#escribirLabels" prefHeight="10.0" prefWidth="10.0" style="-fx-background-color: #60f03c; -fx-border-color: black;" text="Button" textFill="#60f03c" GridPane.columnIndex="67" GridPane.rowIndex="7" />
+                                    <ToggleButton fx:id="china" layoutX="10.0" layoutY="21.0" maxWidth="10.0" minHeight="10.0" minWidth="10.0" mnemonicParsing="false" onAction="#escribirLabels" prefHeight="10.0" prefWidth="10.0" style="-fx-background-color: #60f03c; -fx-border-color: black;" text="Button" textFill="#60f03c" GridPane.columnIndex="74" GridPane.rowIndex="7" />
+                                    <ToggleButton fx:id="taymir" layoutX="10.0" layoutY="21.0" maxWidth="10.0" minHeight="10.0" minWidth="10.0" mnemonicParsing="false" onAction="#escribirLabels" prefHeight="10.0" prefWidth="10.0" style="-fx-background-color: #60f03c; -fx-border-color: black;" text="Button" textFill="#60f03c" GridPane.columnIndex="68" GridPane.rowIndex="4" />
+                                    <ToggleButton fx:id="siberia" layoutX="10.0" layoutY="21.0" maxWidth="10.0" minHeight="10.0" minWidth="10.0" mnemonicParsing="false" onAction="#escribirLabels" prefHeight="10.0" prefWidth="10.0" style="-fx-background-color: #60f03c; -fx-border-color: black;" text="Button" textFill="#60f03c" GridPane.columnIndex="69" GridPane.rowIndex="5" />
+                                    <ToggleButton fx:id="aral" layoutX="10.0" layoutY="21.0" maxWidth="10.0" minHeight="10.0" minWidth="10.0" mnemonicParsing="false" onAction="#escribirLabels" prefHeight="10.0" prefWidth="10.0" style="-fx-background-color: #60f03c; -fx-border-color: black;" text="Button" textFill="#60f03c" GridPane.columnIndex="65" GridPane.rowIndex="5" />
+                                    <ToggleButton fx:id="malasia" layoutX="745.0" layoutY="182.0" maxWidth="10.0" minHeight="10.0" minWidth="10.0" mnemonicParsing="false" onAction="#escribirLabels" prefHeight="10.0" prefWidth="10.0" style="-fx-background-color: #60f03c; -fx-border-color: black;" text="Button" textFill="#60f03c" GridPane.columnIndex="79" GridPane.rowIndex="11" />
+                                    <ToggleButton fx:id="india" layoutX="10.0" layoutY="23.0" maxWidth="10.0" minHeight="10.0" minWidth="10.0" mnemonicParsing="false" onAction="#escribirLabels" prefHeight="10.0" prefWidth="10.0" style="-fx-background-color: #60f03c; -fx-border-color: black;" text="Button" textFill="#60f03c" GridPane.columnIndex="74" GridPane.rowIndex="11" />
+                                    <ToggleButton fx:id="kamchatka" layoutX="10.0" layoutY="23.0" maxWidth="10.0" minHeight="10.0" minWidth="10.0" mnemonicParsing="false" onAction="#escribirLabels" prefHeight="10.0" prefWidth="10.0" style="-fx-background-color: #60f03c; -fx-border-color: black;" text="Button" textFill="#60f03c" GridPane.columnIndex="72" GridPane.rowIndex="4" />
+                                    <ToggleButton fx:id="arabia" layoutX="875.0" layoutY="150.0" maxWidth="10.0" minHeight="10.0" minWidth="10.0" mnemonicParsing="false" onAction="#escribirLabels" prefHeight="10.0" prefWidth="10.0" style="-fx-background-color: #60f03c; -fx-border-color: black;" text="Button" textFill="#60f03c" GridPane.columnIndex="68" GridPane.rowIndex="13" />
+                                    <ToggleButton fx:id="australia" layoutX="934.0" layoutY="524.0" maxWidth="10.0" minHeight="10.0" minWidth="10.0" mnemonicParsing="false" onAction="#escribirLabels" prefHeight="10.0" prefWidth="10.0" style="-fx-background-color: #3cacf0; -fx-border-color: black;" text="Button" textFill="#3cacf0" GridPane.columnIndex="79" GridPane.rowIndex="16" />
+                                    <ToggleButton fx:id="borneo" layoutX="934.0" layoutY="524.0" maxWidth="10.0" minHeight="10.0" minWidth="10.0" mnemonicParsing="false" onAction="#escribirLabels" prefHeight="10.0" prefWidth="10.0" style="-fx-background-color: #3cacf0; -fx-border-color: black;" text="Button" textFill="#3cacf0" GridPane.columnIndex="79" GridPane.rowIndex="13" />
+                                    <ToggleButton fx:id="sumatra" layoutX="10.0" layoutY="23.0" maxWidth="10.0" minHeight="10.0" minWidth="10.0" mnemonicParsing="false" onAction="#escribirLabels" prefHeight="10.0" prefWidth="10.0" style="-fx-background-color: #3cacf0; -fx-border-color: black;" text="Button" textFill="#3cacf0" GridPane.columnIndex="72" GridPane.rowIndex="15" />
+                                    <ToggleButton fx:id="java" layoutX="10.0" layoutY="23.0" maxWidth="10.0" minHeight="10.0" minWidth="10.0" mnemonicParsing="false" onAction="#escribirLabels" prefHeight="10.0" prefWidth="10.0" style="-fx-background-color: #3cacf0; -fx-border-color: black;" text="Button" textFill="#3cacf0" GridPane.columnIndex="80" GridPane.rowIndex="13" />
+                                    <ToggleButton fx:id="japon" layoutX="875.0" layoutY="150.0" maxWidth="10.0" minHeight="10.0" minWidth="10.0" mnemonicParsing="false" onAction="#escribirLabels" prefHeight="10.0" prefWidth="10.0" style="-fx-background-color: #60f03c; -fx-border-color: black;" text="Button" textFill="#60f03c" GridPane.columnIndex="79" GridPane.rowIndex="5" />
+                                    <ToggleButton fx:id="tartaria" layoutX="745.0" layoutY="182.0" maxWidth="10.0" minHeight="10.0" minWidth="10.0" mnemonicParsing="false" onAction="#escribirLabels" prefHeight="10.0" prefWidth="10.0" style="-fx-background-color: #60f03c; -fx-border-color: black;" text="Button" textFill="#60f03c" GridPane.columnIndex="66" GridPane.rowIndex="4" />
+                                 </children>
+                              </GridPane>
+                           </children>
+                        </StackPane>
+                           </children>
+                        </HBox>
+               </children>
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+               </HBox>
+                  <VBox prefHeight="208.0" prefWidth="1159.0" />
+            </children>
+               <HBox.margin>
+                  <Insets bottom="20.0" left="200.0" right="20.0" top="20.0" />
+               </HBox.margin>
+            </VBox>
+            <VBox prefHeight="720.0" prefWidth="381.0">
+               <children>
+            <HBox alignment="CENTER" prefHeight="152.0" prefWidth="418.0">
+                     <children>
+                        <VBox alignment="TOP_CENTER" prefHeight="260.0" prefWidth="136.0">
+                           <children>
+                              <Label text="Atacar" textFill="#c3bfbf">
                                  <padding>
-                                    <Insets left="10.0" />
+                                    <Insets bottom="20.0" />
                                  </padding>
                                  <font>
-                                    <Font size="20.0" />
+                                    <Font size="18.0" />
                                  </font>
+                                 <opaqueInsets>
+                                    <Insets />
+                                 </opaqueInsets>
+                                 <VBox.margin>
+                                    <Insets top="50.0" />
+                                 </VBox.margin>
                               </Label>
+                              <ChoiceBox fx:id="paisAtacante" prefWidth="150.0" />
+                              <ChoiceBox fx:id="paisDefensor" prefWidth="150.0" />
+                              <Button fx:id="obtenerPaisesDefensores" mnemonicParsing="false" onAction="#setObtenerPaisesDefensores" text="Mostrar Defensores">
+                                 <VBox.margin>
+                                    <Insets bottom="5.0" top="5.0" />
+                                 </VBox.margin></Button>
+                           </children>
+                        </VBox>
+                        <VBox alignment="TOP_CENTER" prefHeight="190.0" prefWidth="125.0">
+                           <children>
+                              <Label text="Reagrupar" textFill="#c3bfbf">
+                                 <padding>
+                                    <Insets bottom="20.0" />
+                                 </padding>
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                                 <opaqueInsets>
+                                    <Insets />
+                                 </opaqueInsets>
+                                 <VBox.margin>
+                                    <Insets top="50.0" />
+                                 </VBox.margin>
+                              </Label>
+                              <ChoiceBox fx:id="paisSalida" prefWidth="150.0" />
+                              <ChoiceBox fx:id="paisLlegada" prefWidth="150.0" />
+                              <Button fx:id="obtenerPaisesLlegada" mnemonicParsing="false" onAction="#setObtenerPaisesLlegada" text="Mostrar Destinos">
+                                 <VBox.margin>
+                                    <Insets bottom="5.0" top="5.0" />
+                                 </VBox.margin></Button>
+                           </children>
+                        </VBox>
+                        <VBox alignment="TOP_CENTER" prefHeight="260.0" prefWidth="125.0">
+                           <children>
+                              <Label text="Colocar" textFill="#c3bfbf">
+                                 <padding>
+                                    <Insets bottom="20.0" />
+                                 </padding>
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                                 <opaqueInsets>
+                                    <Insets />
+                                 </opaqueInsets>
+                                 <VBox.margin>
+                                    <Insets top="50.0" />
+                                 </VBox.margin>
+                              </Label>
+                              <ChoiceBox fx:id="paisAColocarTropas" prefWidth="150.0" />
+                           </children>
+                        </VBox>
+                     </children>
+            </HBox>
+            <VBox prefHeight="122.0" prefWidth="393.0">
+               <children>
+                        <HBox alignment="CENTER" prefHeight="117.0" prefWidth="261.0">
+                         <children>
+                           <TextField fx:id="tropasAColocar" prefHeight="25.0" prefWidth="79.0" promptText="Cant Tropas" />
+                        </children>
+                        </HBox>
+               </children>
+            </VBox>
+                  <VBox alignment="TOP_CENTER" prefHeight="121.0" prefWidth="381.0">
+                  <children>
+                     <Button fx:id="atacar" disable="true" mnemonicParsing="false" onAction="#atacar" prefHeight="25.0" prefWidth="77.0" text="Atacar">
+                        <VBox.margin>
+                           <Insets top="5.0" />
+                        </VBox.margin></Button>
+                     <Button fx:id="reagrupar" disable="true" mnemonicParsing="false" onAction="#reagrupar" prefHeight="25.0" prefWidth="77.0" text="Reagrupar">
+                        <VBox.margin>
+                           <Insets top="5.0" />
+                        </VBox.margin></Button>
+                     <Button fx:id="colocar" mnemonicParsing="false" onAction="#colocar" prefHeight="25.0" prefWidth="76.0" text="Colocar">
+                        <VBox.margin>
+                           <Insets top="5.0" />
+                        </VBox.margin></Button>
+                  </children>
+                  </VBox>
+                  <VBox alignment="TOP_CENTER">
+                     <children>
+                        <Label text="Informacion" textFill="#c3bfbf" />
+                        <HBox alignment="CENTER" prefHeight="65.0" prefWidth="381.0">
+                           <children>
+                              <VBox alignment="TOP_CENTER" prefHeight="85.0" prefWidth="161.0">
+                                 <children>
+                                    <HBox prefHeight="38.0" prefWidth="100.0">
+                                       <children>
+                                          <Label prefHeight="17.0" prefWidth="35.0" text="Pais" textFill="#c3bfbf" />
+                                          <Label fx:id="nombrePais" prefHeight="17.0" prefWidth="134.0" textFill="#c3bfbf" />
+                                       </children></HBox>
+                                    <HBox layoutX="10.0" layoutY="10.0" prefHeight="45.0" prefWidth="100.0">
+                                       <children>
+                                          <Label text="Cant Tropas" textFill="#c3bfbf" />
+                                          <Label fx:id="tropasPais" textFill="#c3bfbf" />
+                                       </children></HBox>
+                                 </children>
+                              </VBox>
                            </children>
                         </HBox>
                      </children>
                   </VBox>
-               </children>
-            </VBox>
+                  <HBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <VBox>
+                           <children>
+                              <Label prefHeight="17.0" prefWidth="181.0" text="Jugador Actual" textFill="#c3bfbf">
+                                 <graphic>
+                                    <Circle fx:id="jugadorActual" fill="WHITE" radius="6.0" stroke="BLACK" strokeType="INSIDE" />
+                                 </graphic>
+                              </Label>
+                              <HBox>
+                                 <children>
+                                    <Label prefHeight="17.0" prefWidth="122.0" text="Tropas Globales" textFill="#c3bfbf" />
+                                    <Label fx:id="tropasDisponiblesGlobal" text="0" textFill="#c3bfbf" />
+                                 </children>
+                              </HBox>
+                              <HBox layoutX="10.0" layoutY="27.0">
+                                 <children>
+                                    <Label prefHeight="17.0" prefWidth="123.0" text="Asia" textFill="#c3bfbf" />
+                                    <Label fx:id="tropasDisponiblesAsia" prefHeight="17.0" prefWidth="77.0" text="0" textFill="#c3bfbf" />
+                                 </children>
+                              </HBox>
+                              <HBox layoutX="10.0" layoutY="44.0">
+                                 <children>
+                                    <Label prefHeight="17.0" prefWidth="123.0" text="America del Sur" textFill="#c3bfbf" />
+                                    <Label fx:id="tropasDisponiblesAmericaDelSur" text="0" textFill="#c3bfbf" />
+                                 </children>
+                              </HBox>
+                              <HBox layoutX="10.0" layoutY="61.0">
+                                 <children>
+                                    <Label prefHeight="17.0" prefWidth="122.0" text="America del Norte" textFill="#c3bfbf" />
+                                    <Label fx:id="tropasDisponiblesAmericaDelNorte" text="0" textFill="#c3bfbf" />
+                                 </children>
+                              </HBox>
+                              <HBox layoutX="10.0" layoutY="78.0">
+                                 <children>
+                                    <Label prefHeight="17.0" prefWidth="122.0" text="Oceania" textFill="#c3bfbf" />
+                                    <Label fx:id="tropasDisponiblesOceania" prefHeight="17.0" prefWidth="57.0" text="0" textFill="#c3bfbf" />
+                                 </children>
+                              </HBox>
+                              <HBox layoutX="10.0" layoutY="78.0">
+                                 <children>
+                                    <Label prefHeight="17.0" prefWidth="122.0" text="Europa" textFill="#c3bfbf" />
+                                    <Label fx:id="tropasDisponiblesEuropa" text="0" textFill="#c3bfbf" />
+                                 </children>
+                              </HBox>
+                              <HBox layoutX="10.0" layoutY="112.0">
+                                 <children>
+                                    <Label prefHeight="17.0" prefWidth="122.0" text="Africa" textFill="#c3bfbf" />
+                                    <Label fx:id="tropasDisponiblesAfrica" text="0" textFill="#c3bfbf" />
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
+                     </children>
+                  </HBox>
+                  <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0">
+                     <children>
+                        <Button fx:id="terminar" mnemonicParsing="false" onAction="#terminar" text="TerminarTurno" />
+                        <Label fx:id="advertencia" prefHeight="167.0" prefWidth="373.0" textFill="#a4a2a2" />
+                     </children>
+                  </VBox>
          </children>
-      </GridPane>
+
+            </VBox>
+         </children></HBox>
    </children>
 </AnchorPane>

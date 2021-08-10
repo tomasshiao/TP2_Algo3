@@ -30,27 +30,42 @@ public class Tablero {
      * @param numeroTropas int número de tropas con la que se ataca.
      * @return Pais país ganador.
      * *********/
+
     public Pais atacar(Jugador jugadorAtacante, Pais paisAtacante, Pais paisDefensor, int numeroTropas) throws AtaqueInvalidoException {
+
+
         if(!paisAtacante.getPaisesLimitrofes().contains(paisDefensor)) {
             String exceptionType = "NoLimitrofe";
+            System.out.println(exceptionType);
            throw new AtaqueInvalidoException(exceptionType);
+
         }
         if(paisAtacante.getEjercitoActual() < numeroTropas){
             String exceptionType = "TropasInsuficientes";
+            System.out.println(exceptionType);
             throw new AtaqueInvalidoException(exceptionType);
         }
         if(!jugadorAtacante.getPaisesConquistados().contains(paisAtacante)){
             String exceptionType = "PaisNoMePertenece";
+            System.out.println(exceptionType);
             throw new AtaqueInvalidoException(exceptionType);
         }
         if(jugadorAtacante.getPaisesConquistados().contains(paisDefensor)){
             String exceptionType = "ConquistarPaisPropio";
+            System.out.println(exceptionType);
             throw new AtaqueInvalidoException(exceptionType);
         }
-        //LanzadorDados lanzadorDados = new LanzadorDados();
+        //LanzadorDados lanzadorDados = new LanzadorDados()
+
         List<GeneradorRandom> dadosAtacante = lanzadorDados.obtenerDadosAtacante(paisAtacante, numeroTropas);
+
+
         List<GeneradorRandom> dadosDefensor = lanzadorDados.obtenerDadosDefensor(paisDefensor);
+
+
+
         Batalla batalla = new Batalla();
+
         return batalla.obtenerVictoriosoDeGuerra(dadosAtacante, dadosDefensor, paisAtacante, paisDefensor, numeroTropas);
     }
 

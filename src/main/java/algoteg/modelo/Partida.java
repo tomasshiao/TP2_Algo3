@@ -2,6 +2,7 @@ package algoteg.modelo;
 
 import algoteg.Exceptions.AtaqueInvalidoException;
 import algoteg.datosJuego.*;
+
 import java.util.*;
 
 public class Partida {
@@ -9,25 +10,51 @@ public class Partida {
     private int cantidadTotalJugadores;
     private int cantidadJugadoresActuales;
     private ArrayList<Jugador> jugadores = new ArrayList<>();
-    private Tablero tablero;
+    public Tablero tablero;
     private List<Objetivo> objetivos = new ArrayList<>();
     private LanzadorDados lanzadorDados = new LanzadorDados();
-    private List<Ronda> rondas = new ArrayList<>();
+    private List<Turno> turnos = new ArrayList<>();
     private Integer indiceJugadorActual;
+    private int turnoActual = 0;
+    private List<Tarjeta> listaTarjetas;
+    private Objetivo objetivoGeneral;
+
+
+
 
     public Partida(int cantidadTotalJugadores) {
         cantidadJugadoresActuales = 0;
         this.cantidadTotalJugadores = Math.min(cantidadTotalJugadores, 6);
         this.indiceJugadorActual = 0;
+
+
+
+
+
+    }
+    public void pasarTurno(){
+        if(turnoActual ==3){
+            turnoActual = 2;
+        }
+        else{
+            turnoActual++;
+        }
+    }
+
+    public void iniciarTurnoActual(Jugador jugador) {
+        this.turnos.get(turnoActual).iniciarTurno(jugador);
     }
 
     public void pasarAJugadorSiguiente(){
+
         if(this.indiceJugadorActual == (cantidadJugadoresActuales-1)){
             this.indiceJugadorActual = 0;
+            this.pasarTurno();
         }
         else {
             this.indiceJugadorActual++;
         }
+        this.turnos.get(turnoActual).iniciarTurno(jugadores.get(indiceJugadorActual));
     }
     public Jugador getJugadorActual(){
         return jugadores.get(this.indiceJugadorActual);
@@ -44,7 +71,7 @@ public class Partida {
     }
 
     public int getCantidadDeRondasJugadas(){
-        return this.rondas.size();
+        return this.turnos.size();
     }
 
     public void inicializarJugadores(Integer cantdiadJugadores){
@@ -54,7 +81,16 @@ public class Partida {
     public void iniciarPartida() {
         List<Pais> paises = this.iniciarPaisesYContinentes();
         this.iniciarTarjetas(paises);
+
         inicializarObjetivos();
+        for (Jugador jugador: jugadores){
+            jugador.setContinentes(this.tablero.getContinentes());
+        }
+        turnos.add(new TurnoInicial(tablero, 5));
+        turnos.add(new TurnoInicial(tablero, 3));
+        turnos.add(new TurnoAtaque(tablero));
+        turnos.add(new TurnoColocacion(tablero));
+
     }
 
     private List<Pais> iniciarPaisesYContinentes() {
@@ -68,18 +104,20 @@ public class Partida {
         InitializeTarjetas init = new InitializeTarjetas(paises);
         List<Tarjeta> tarjetas = init.getTodasLasTarjetas();
         Collections.shuffle(tarjetas);
-//        this.repartirTarjetas(tarjetas);
+        this.listaTarjetas = tarjetas;
+
+    }
+    public Turno getTurnoActual(){return turnos.get(turnoActual);}
+    public void colocar( int cantTropas, String pais){
+
+        this.getTurnoActual().setJugador(this.getJugadorActual());
+        this.getTurnoActual().colocar(cantTropas, this.getPaisPorNombre(pais));
+
+
+
+
     }
 
-   /* private void repartirTarjetas(List<Tarjeta> tarjetas) { //no se usa
-        int i = 0;
-        for (Jugador jugador : jugadores) {
-
-            jugador.setTarjetas(tarjetas.subList(i, i + 3));
-            i++;
-
-        }
-    }*/
 
     private void repartirPaises(List<Pais> paises) {
         Collections.shuffle(paises);  //mezcla paises
@@ -113,6 +151,7 @@ public class Partida {
         InitializeObjetivos initObjetivos = new InitializeObjetivos(this.jugadores, this.tablero);
         this.objetivos = initObjetivos.getObjetivos();
         repartirObjetivos();
+        this.objetivoGeneral = new ObjetivoGeneral(this.getJugadorActual());
     }
 
     private void repartirObjetivos(){
@@ -120,6 +159,7 @@ public class Partida {
         int i = 0;
         for(Jugador jugador: jugadores){
             jugador.setObjetivo(this.objetivos.get(i));
+            this.objetivos.get(i).setJugador(jugador);
             i++;
         }
     }
@@ -135,14 +175,117 @@ public class Partida {
         return dto;
     }
 
-    public void atacar(Pais paisAtacante, Pais paisDefensor, int numeroTropas) throws AtaqueInvalidoException {
-        RondaAtaque ronda = new RondaAtaque(tablero, this.getJugadorActual());
-        ronda.atacar(paisAtacante,paisDefensor,numeroTropas);
+    public void atacar(String paisAtacante, String paisDefensor, int numeroTropas) throws AtaqueInvalidoException {
 
+        Pais ataca = this.getPaisPorNombre(paisAtacante);
+        Pais defiende = this.getPaisPorNombre(paisDefensor);
+
+        Pais paisGanador = turnos.get(turnoActual).atacar(ataca,defiende,numeroTropas);
+        if (paisGanador == ataca) {
+            this.getJugadorActual().addTarjeta(this.sacarTarjetaDelMazo());
+        }
+
+    }
+    public Tarjeta sacarTarjetaDelMazo(){
+        Tarjeta tarjeta = listaTarjetas.get(0);
+        tarjeta.desactivar();
+        listaTarjetas.remove(0);
+        listaTarjetas.add(tarjeta);
+        return tarjeta;
     }
 
     public void mover(Pais paisOrigen, Pais paisDestino, int numeroTropas) {
-        RondaAtaque ronda = new RondaAtaque(tablero, this.getJugadorActual());
-        ronda.moverEjercito(paisOrigen,paisDestino,numeroTropas);
+
+        turnos.get(turnoActual).moverEjercito(paisOrigen,paisDestino,numeroTropas);
+
     }
+
+
+    public List<String> getOrdenJugadores() {
+        List<String> ordenJugadores = new ArrayList<>();
+        for (Jugador jugador: this.jugadores) {
+            ordenJugadores.add(jugador.getColor());
+        }
+        return ordenJugadores;
+    }
+
+    public List<Objetivo> getObjetivosDeJugadores() {
+        List<Objetivo> objetivos = new ArrayList<>();
+        for (Jugador jugador: jugadores) {
+            objetivos.add(jugador.getObjetivo());
+        }
+        return objetivos;
+    }
+
+    public ArrayList<Jugador> getListaJugadores() {
+        return this.jugadores;
+    }
+
+    public Pais getPaisPorNombre(String nombrePais) {
+        List<Pais> listaPaises = this.tablero.getPaises();
+        for (Pais pais: listaPaises) {
+            if (pais.getNombre().equals(nombrePais)) { return pais; }
+        }
+
+
+        return null;
+    }
+
+    public boolean esTurnoDeColocacion() {
+        return turnoActual == 3;
+    }
+
+    public boolean esTurnoDeAtaque() {
+        return this.turnoActual == 2;
+    }
+
+    public boolean esTurnoInicial() { return this.turnoActual < 2;}
+
+
+    public int obtenerTropasEnPais(String pais) {
+        return this.getPaisPorNombre(pais).getEjercitoActual();
+
+    }
+
+    public int getIndiceJugadorActual() {return this.indiceJugadorActual;}
+
+    public void activarTarjeta(String nombrePais) {
+        Tarjeta tarjeta = this.getTarjetaPorNombre(nombrePais);
+        this.getTurnoActual().activarTarjeta(tarjeta);
+    }
+
+    public void canjearTarjetas(String pais1, String pais2, String pais3){
+        Tarjeta tarjeta1 = this.getTarjetaPorNombre(pais1);
+        Tarjeta tarjeta2 = this.getTarjetaPorNombre(pais2);
+        Tarjeta tarjeta3 = this.getTarjetaPorNombre(pais3);
+        if(this.getTurnoActual().canjearTarjetas(tarjeta1, tarjeta2, tarjeta3)){
+
+            tarjeta1.meterAlMazo();
+            tarjeta2.meterAlMazo();
+            tarjeta3.meterAlMazo();
+        }
+    }
+    public List<Tarjeta> getListaTarjetas(){return this.listaTarjetas;
+    }
+
+    public Tarjeta getTarjetaPorNombre(String nombre) {
+        String[] stringTarjeta = nombre.split(" ");
+
+        String nombrePais = stringTarjeta[0];
+        List<Tarjeta> listaTarjetas = this.getListaTarjetas();
+        for (Tarjeta tarjeta: listaTarjetas) {
+            if (tarjeta.getNombrePais().equals(nombrePais)) { return tarjeta; }
+        }
+
+
+        return null;
+    }
+
+    public boolean esPartidaGanada() {
+        this.objetivoGeneral.setJugador(this.getJugadorActual());
+        return this.objetivoGeneral.cumplido() || this.getJugadorActual().getObjetivo().cumplido();
+
+    }
+
+
 }

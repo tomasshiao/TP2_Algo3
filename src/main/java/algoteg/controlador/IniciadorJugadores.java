@@ -7,12 +7,22 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.media.AudioClip;
 import javafx.stage.Stage;
 import javafx.stage.Window;
+
+import algoteg.modelo.*;
 
 import java.io.IOException;
 
 public class IniciadorJugadores {
+    Juego juego;
+
+    AudioClip buzzer = new AudioClip(getClass().getResource("/sounds/click.mp3").toExternalForm());
+    public void iniciador(Juego juego){
+        this.juego = juego;
+    }
+
     @FXML
     public void initialize(){
         toggleGroup = new ToggleGroup();
@@ -39,17 +49,19 @@ public class IniciadorJugadores {
         //lee el textfield y lo imprime por consola
 
 
-        int jugadores = 0;
+        int jugadores;
         if(event.getSource().equals(aceptar) & !cantJugadores.getText().isEmpty()) {
             try{
                 jugadores = Integer.parseInt(cantJugadores.getText());
+                this.juego.iniciarJuegoConJugadores(jugadores);
+                buzzer.play();
+
             }
             catch (NumberFormatException e){
                 e.printStackTrace();
             }
 
             this.cambiarScena(event);
-
 
         }
 
@@ -63,8 +75,11 @@ public class IniciadorJugadores {
             Stage stage = (Stage) window;
 
 
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/juego.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/ordenJugadores.fxml"));
             Parent root = loader.load();
+
+            OrdenJugadores pantalla = loader.getController();
+            pantalla.controlador(juego);
             sceneActual.setRoot(root);
             stage.setScene(sceneActual);
             stage.setMaximized(true);

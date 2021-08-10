@@ -15,18 +15,36 @@ public class Jugador {
     private int canjesRealizados;
     private boolean estaVivo;
 
+
+
+
     public Jugador(int id, String color) {
         this.id = id;
         this.color = color;
         this.canjesRealizados = 0;
         this.ejercitoDisponibleGlobal = 0;
         this.estaVivo = true;
+
+
     }
 
-    public void setEjercitoDisponibles(List<Continente> continentes){
+    public void setContinentes(List<Continente> continentes){
         for(Continente continente: continentes) {
-            ejercitoDisponiblePorContinente.put(continente, continente.getBonusTropas());
+            ejercitoDisponiblePorContinente.put(continente, 0);
         }
+
+    }
+
+    public void setEjercitoDisponibles(){
+        for(Continente continente: ejercitoDisponiblePorContinente.keySet()) {
+            if (continente.esGobernante(this)) {
+                ejercitoDisponiblePorContinente.put(continente, continente.getBonusTropas());
+            }
+            else {
+                ejercitoDisponiblePorContinente.put(continente, 0);
+            }
+        }
+        ejercitoDisponibleGlobal = getCantidadPaisesConquistados()/2;
     }
 
     public String getColor(){
@@ -78,7 +96,7 @@ public class Jugador {
                 }
             }
         }
-        if(ejercitoDisponibleGlobal <= ejercitoPorColocar) {
+        if(ejercitoDisponibleGlobal < ejercitoPorColocar) {
             pais.agregarEjercito(ejercitoDisponibleGlobal);
             ejercitoDisponibleGlobal = 0;
         }
@@ -86,31 +104,19 @@ public class Jugador {
             pais.agregarEjercito(ejercitoPorColocar);
             ejercitoDisponibleGlobal -= ejercitoPorColocar;
         }
-
-
     }
-
-
-
-
 
 
     public int getEjercitoParaIncorporar(){
-        return ejercitoDisponibleGlobal;
+        int ejercitoDisponible = ejercitoDisponibleGlobal;
+        for (Map.Entry<Continente, Integer> entry : ejercitoDisponiblePorContinente.entrySet()) {
+            ejercitoDisponible += entry.getValue();
+        }
+        return ejercitoDisponible;
     }
 
-    public boolean canjearTarjetas(Tarjeta tarjeta1, Tarjeta tarjeta2, Tarjeta tarjeta3){
-        if (tarjeta1.compararTarjetas(tarjeta2, tarjeta3)) {
-            this.canjesRealizados++;
-            int ejercitoAIncorporar = this.calcluarEjercitoSegunCanjes();
-            this.addEjercito(ejercitoAIncorporar);
-            this.removeTarjeta(tarjeta1);
-            this.removeTarjeta(tarjeta2);
-            this.removeTarjeta(tarjeta3);
-            return true;
-        }
-        return false;
-    }
+
+
 
     public boolean compararJugadores(Jugador jugador2) { return (this.getColor().equals(jugador2.getColor())); }
 
@@ -121,6 +127,25 @@ public class Jugador {
         if(this.paisesConquistados.contains(paisDeTarjeta) && this.tarjetas.contains(tarjeta))
             ejercitoAIncorporar = tarjeta.activarTarjeta();
         this.addEjercito(ejercitoAIncorporar);
+    }
+    public boolean canjearTarjetas(Tarjeta tarjeta1, Tarjeta tarjeta2, Tarjeta tarjeta3){
+        boolean canjeada = false;
+        if(tarjeta1.compararTarjetas( tarjeta2, tarjeta3)){
+            this.canjesRealizados++;
+            int ejercitoAIncorporar = this.calcluarEjercitoSegunCanjes();
+            this.ejercitoDisponibleGlobal+= ejercitoAIncorporar;
+            tarjeta1.desactivar();
+            tarjeta2.desactivar();
+            tarjeta3.desactivar();
+
+            tarjetas.remove(tarjeta1);
+            tarjetas.remove(tarjeta2);
+            tarjetas.remove(tarjeta3);
+            canjeada = true;
+
+        }
+        return canjeada;
+
     }
 
     public void addPaisConquistado(Pais pais){
@@ -194,8 +219,33 @@ public class Jugador {
 
     public boolean tienePais(Pais pais){
         return (paisesConquistados.contains(pais));
-
-
     }
+
+    public int getTropasGlobales() {
+
+        return this.ejercitoDisponibleGlobal;
+    }
+
+    public Map<Continente, Integer> getTropasPorContinente() {
+        return this.ejercitoDisponiblePorContinente;
+    }
+
+
+    public int getTropasContinente(String nombreContinente){
+
+        int tropas = 0;
+        for(Continente continente : ejercitoDisponiblePorContinente.keySet()){
+            if(continente.getNombre().equalsIgnoreCase(nombreContinente)){
+                tropas = ejercitoDisponiblePorContinente.get(continente);
+            }
+        }
+        return tropas;
+    }
+
+    public void setEjercitoDisponibleGlobal(int tropas) {
+        this.ejercitoDisponibleGlobal = tropas;
+    }
+    public List<Tarjeta> getTarjetas() {return this.tarjetas;}
+
 
 }
