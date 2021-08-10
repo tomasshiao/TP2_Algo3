@@ -43,6 +43,16 @@ public class TurnoInicial implements Turno{
         this.setEjercitosDisponiblesParaColocar();
     }
 
+    @Override
+    public void activarTarjeta(Tarjeta tarjeta) {
+
+    }
+
+    @Override
+    public boolean canjearTarjetas(Tarjeta tarjeta1, Tarjeta tarjeta2, Tarjeta tarjeta3) {
+        return false;
+    }
+
     public void setEjercitosDisponiblesParaColocar() {
         jugadorActual.setEjercitoDisponibleGlobal(cantidadAIncorporar);
     }
@@ -50,7 +60,7 @@ public class TurnoInicial implements Turno{
     @Override
     public boolean terminado(){return (cantidadAIncorporar ==(0));}
     @Override
-    public String atacar(Pais paisAtacante, Pais paisDefensor, int cantidadTropas){return null;}
+    public Pais atacar(Pais paisAtacante, Pais paisDefensor, int cantidadTropas){return null;}
     @Override
     public String moverEjercito(Pais paisOrigen, Pais paisDestino, int cantidadTropas){return null;}
 

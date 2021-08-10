@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #663300;" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="algoteg.controlador.Ganador">
+   <children>
+      <VBox alignment="CENTER" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Label text="JUGADOR" textFill="#c3bfbf">
+               <font>
+                  <Font size="55.0" />
+               </font>
+               <graphic>
+                  <Circle fx:id="jugador" fill="WHITE" radius="18.0" stroke="BLACK" strokeType="INSIDE" />
+               </graphic>
+            </Label>
+            <Label layoutX="164.0" layoutY="178.0" text="GANASTE!" textFill="#c3bfbf">
+               <font>
+                  <Font size="55.0" />
+               </font>
+            </Label>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

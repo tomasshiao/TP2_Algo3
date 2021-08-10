@@ -25,10 +25,7 @@ public class Partida {
         this.cantidadTotalJugadores = Math.min(cantidadTotalJugadores, 6);
         this.indiceJugadorActual = 0;
 
-        turnos.add(new TurnoInicial(tablero, 5));
-        turnos.add(new TurnoInicial(tablero, 3));
-        turnos.add(new TurnoColocacion(tablero));
-        turnos.add(new TurnoAtaque(tablero));
+
 
 
 
@@ -47,6 +44,7 @@ public class Partida {
     }
 
     public void pasarAJugadorSiguiente(){
+
         if(this.indiceJugadorActual == (cantidadJugadoresActuales-1)){
             this.indiceJugadorActual = 0;
             this.pasarTurno();
@@ -85,6 +83,11 @@ public class Partida {
         for (Jugador jugador: jugadores){
             jugador.setContinentes(this.tablero.getContinentes());
         }
+        turnos.add(new TurnoInicial(tablero, 5));
+        turnos.add(new TurnoInicial(tablero, 3));
+        turnos.add(new TurnoAtaque(tablero));
+        turnos.add(new TurnoColocacion(tablero));
+
     }
 
     private List<Pais> iniciarPaisesYContinentes() {
@@ -170,8 +173,21 @@ public class Partida {
 
     public void atacar(String paisAtacante, String paisDefensor, int numeroTropas) throws AtaqueInvalidoException {
 
-        turnos.get(turnoActual).atacar(this.getPaisPorNombre(paisAtacante),this.getPaisPorNombre(paisDefensor),numeroTropas);
+        Pais ataca = this.getPaisPorNombre(paisAtacante);
+        Pais defiende = this.getPaisPorNombre(paisDefensor);
 
+        Pais paisGanador = turnos.get(turnoActual).atacar(ataca,defiende,numeroTropas);
+        if (paisGanador == ataca) {
+            this.getJugadorActual().addTarjeta(this.sacarTarjetaDelMazo());
+        }
+
+    }
+    public Tarjeta sacarTarjetaDelMazo(){
+        Tarjeta tarjeta = listaTarjetas.get(0);
+        tarjeta.desactivar();
+        listaTarjetas.remove(0);
+        listaTarjetas.add(tarjeta);
+        return tarjeta;
     }
 
     public void mover(Pais paisOrigen, Pais paisDestino, int numeroTropas) {

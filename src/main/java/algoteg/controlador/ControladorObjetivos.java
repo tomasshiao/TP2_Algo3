@@ -11,6 +11,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.media.AudioClip;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
@@ -34,6 +35,7 @@ public class ControladorObjetivos {
     public AnchorPane contenedor;
     @FXML
     public VBox contenedorVBox;
+    AudioClip buzzer = new AudioClip(getClass().getResource("/sounds/click.mp3").toExternalForm());
 
     Juego juego;
     ArrayList<Jugador> jugadores;
@@ -104,6 +106,7 @@ public class ControladorObjetivos {
 
     @FXML
     public void obtenerObjetivo(ActionEvent event){
+        buzzer.play();
         if(jugadorActual == juego.getCantidadJugadores()) {
             this.cambiarScena(event);
         }

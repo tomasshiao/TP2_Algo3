@@ -1,16 +1,18 @@
 package algoteg.modelo;
 
 public class Tarjeta {
-    private String nombrePais;
+
     private String dibujo;
     private boolean activada;
     private Pais pais;
+    private boolean enElMazo;
 
     public Tarjeta(Pais pais, String dibujo){
 
         this.dibujo = dibujo;
         this.activada = false;
         this.pais = pais;
+
     }
 
 
@@ -60,8 +62,20 @@ public class Tarjeta {
         return activada;
     }
 
-    public String getNombrePais(){
-        return this.nombrePais;
+
+    public void meterAlMazo(){
+        this.enElMazo = true;
+
     }
+    public void sacarDelMazo(){
+        this.enElMazo = false;
+    }
+
+    public boolean estaEnElMazo(){ return enElMazo;}
+
+    public void desactivar(){
+        activada = false;
+    }
+
 
 }

@@ -25,7 +25,7 @@ public class TurnoColocacion implements Turno{
         this.jugadorActual.addEjercitoEnPais(pais, canTropas);
     }
     @Override
-    public String atacar(Pais paisAtacante, Pais paisDefensor, int cantidadTropas){return null;}
+    public Pais atacar(Pais paisAtacante, Pais paisDefensor, int cantidadTropas){return null;}
     @Override
     public String moverEjercito(Pais paisOrigen, Pais paisDestino, int cantidadTropas){return null;}
 
@@ -61,6 +61,12 @@ public class TurnoColocacion implements Turno{
         this.jugadorActual.activarTarjeta(tarjeta);
     }
 
+    public boolean canjearTarjetas(Tarjeta tarjeta1, Tarjeta tarjeta2, Tarjeta tarjeta3){
+        return this.jugadorActual.canjearTarjetas(tarjeta1, tarjeta2, tarjeta3);
+    }
+
     @Override
     public boolean terminado() {return this.jugadorActual.getEjercitoParaIncorporar() == 0;}
+
+
 }

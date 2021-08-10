@@ -32,9 +32,11 @@ public class ObjetivoDeConquista implements Objetivo{
             for (int i = 0; i < territorioAConquistar.size(); i++) {
                 int cantidadDePaisesDelJugadorEnContinente = 0;
                 List<Pais> paisesDelContinente = continentes.get(i).getPaises();
-                for (Pais p : paisesDelContinente)
+                for (Pais p : paisesDelContinente){
+                    System.out.println(p);
+                    System.out.println(jugador.getPaisesConquistados());
                     if (jugador.getPaisesConquistados().contains(p))
-                        cantidadDePaisesDelJugadorEnContinente++;
+                        cantidadDePaisesDelJugadorEnContinente++;}
                 if (cantidadDePaisesDelJugadorEnContinente < valores.get(i))
                     return false;
             }

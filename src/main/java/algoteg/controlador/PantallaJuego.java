@@ -12,6 +12,7 @@ import javafx.scene.control.*;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.CornerRadii;
+import javafx.scene.media.AudioClip;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.Circle;
@@ -339,6 +340,7 @@ public class PantallaJuego {
 
     @FXML
     public void terminar() {
+        buzzer.play();
         this.juego.pasarAJugadorSiguiente();
         System.out.println(this.juego.getIndiceJugadorActual());
         if(this.juego.esTurnoDeColocacion()){
@@ -450,14 +452,17 @@ public class PantallaJuego {
         }
         this.juego.iniciarTurnoActual(this.juego.getJugadorActual());
         escribirTropasDisponiblesColocacion();
+
     }
 
     @FXML
     public void setObtenerPaisesDefensores(ActionEvent event) {
+
         Object evento = event.getSource();
         Node eventoSource = (Node) evento;
         String id = eventoSource.getId();
         if(evento.equals(obtenerPaisesDefensores) && paisAtacante.getValue() != null){
+            buzzer.play();
             Pais paisAtaca = this.juego.getPaisPorNombre(paisAtacante.getValue().toString());
             List<Pais> limitrofes = paisAtaca.getPaisesLimitrofes();
             paisDefensor.getItems().clear();
@@ -471,18 +476,20 @@ public class PantallaJuego {
         }
     }
 
+
     @FXML
     public void setObtenerPaisesLlegada(ActionEvent event) {
         Object evento = event.getSource();
         Node eventoSource = (Node) evento;
         String id = eventoSource.getId();
-        if(evento.equals(obtenerPaisesLlegada) && paisSalida.getValue() != null){
-            Pais paisSale = this.juego.getPaisPorNombre(paisSalida.getValue().toString());
-            List<Pais> limitrofes = paisSale.getPaisesLimitrofes();
-            paisLlegada.getItems().clear();
-            for (Pais pais : limitrofes) {
-                if (pais.esGobernadoPor(this.juego.getJugadorActual())) {
-                    paisLlegada.getItems().add(pais.getNombre());
+        if(evento.equals(obtenerPaisesLlegada) )
+            if(paisSalida.getValue() != null){
+                Pais paisSale = this.juego.getPaisPorNombre(paisSalida.getValue().toString());
+                List<Pais> limitrofes = paisSale.getPaisesLimitrofes();
+                paisLlegada.getItems().clear();
+                for (Pais pais : limitrofes) {
+                    if (pais.esGobernadoPor(this.juego.getJugadorActual())) {
+                        paisLlegada.getItems().add(pais.getNombre());
                 }
             }
         }
@@ -504,7 +511,6 @@ public class PantallaJuego {
             }
         }
 
-        System.out.println("Ejército para incorporar >>>>> " + this.juego.getJugadorActual().getEjercitoParaIncorporar());
         if(this.juego.getJugadorActual().getEjercitoParaIncorporar() == 0) {
             terminar.setVisible(true);
             terminar.setDisable(false);
@@ -518,14 +524,36 @@ public class PantallaJuego {
     @FXML
     public void atacar(ActionEvent event) {
         if(event.getSource().equals(atacar) && !tropasAColocar.getText().isEmpty()  && this.paisAtacante.getValue() != null && this.paisDefensor.getValue() != null ) {
+            int tropas = Integer.parseInt(tropasAColocar.getText());
             try{
-                juego.atacar(this.paisAtacante.getValue().toString(), this.paisDefensor.getValue().toString(), Integer.parseInt(tropasAColocar.getText()));
+                juego.atacar(this.paisAtacante.getValue().toString(), this.paisDefensor.getValue().toString(), tropas);
+                if(this.juego.getPaisPorNombre(paisDefensor.getValue().toString()).esGobernadoPor(this.juego.getJugadorActual())){
+                    botones.get(paisDefensor.getValue().toString()).setStyle("-fx-background-color: "+this.juego.getJugadorActual().getColor() + ";");
+                    this.completarChoicesTarjetas();
+                    paisSalida.getItems().clear();
+                    paisAtacante.getItems().clear();
+                    List<Pais> paises = this.juego.getJugadorActual().getPaisesConquistados();
+
+                    for(Pais pais: paises){
+                        this.paisAtacante.getItems().add(pais.getNombre());
+                        this.paisSalida.getItems().add(pais.getNombre());
+
+                    }
+                    paisAtacante.getItems().sort(Comparator.naturalOrder());
+                    paisSalida.getItems().sort(Comparator.naturalOrder());
+                }
+
+                if(this.juego.esPartidaGanada()){
+                    this.cambiarScena(event, this.juego.getJugadorActual().getColor());
+                }
+
 
             }
             catch (Exception e){
                 e.printStackTrace();
             }
         }
+
 
     }
 

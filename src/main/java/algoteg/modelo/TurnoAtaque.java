@@ -3,9 +3,7 @@ package algoteg.modelo;
 //import java.util.List;
 
 public class TurnoAtaque implements Turno{
-    private final Tablero tablero;
-    //private List<Jugador> jugadores;
-    //private int cantidadJugadores;
+    private Tablero tablero;
     private Jugador jugadorActual;
     private boolean terminado;
 
@@ -23,6 +21,16 @@ public class TurnoAtaque implements Turno{
         this.setJugador(jugador);
     }
 
+    @Override
+    public void activarTarjeta(Tarjeta tarjeta) {
+
+    }
+
+    @Override
+    public boolean canjearTarjetas(Tarjeta tarjeta1, Tarjeta tarjeta2, Tarjeta tarjeta3) {
+        return false;
+    }
+
     public void setJugador(Jugador jugador){
         this.jugadorActual = jugadorActual;
     }
@@ -31,26 +39,23 @@ public class TurnoAtaque implements Turno{
         return this.tablero;
     }
 
-    /*public List<Jugador> getJugadores() {
-        return this.jugadores;
-    }
-
-    public int getCantidadJugadores() {
-        return this.cantidadJugadores;
-    }*/
 
     public Jugador getJugadorActual(){
         return this.jugadorActual;
     }
 
-    public String atacar(Pais paisAtacante, Pais paisDefensor, int cantidadTropas) {
+    @Override
+    public Pais atacar(Pais paisAtacante, Pais paisDefensor, int cantidadTropas) {
+        Pais pais = null;
         try {
-            tablero.atacar(jugadorActual, paisAtacante, paisDefensor, cantidadTropas);
+            pais =  tablero.atacar(jugadorActual, paisAtacante, paisDefensor, cantidadTropas);
+
         } catch (Exception e) {
             System.out.println(e.getMessage());
-            return e.getMessage();
+
         }
-        return null;
+
+        return  pais;
     }
 
     public String moverEjercito(Pais paisOrigen, Pais paisDestino, int cantidadTropas){
