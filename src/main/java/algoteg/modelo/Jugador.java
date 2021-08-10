@@ -79,9 +79,7 @@ public class Jugador {
     }
 
     public void addEjercitoEnPais(Pais pais, int ejercito) {
-        System.out.println("jugador");
         if(!this.tienePais(pais)) {return;}
-        System.out.println("tiene el pais");
         int ejercitoPorColocar = ejercito;
         for (Map.Entry<Continente, Integer> entry : ejercitoDisponiblePorContinente.entrySet()) {
             Continente continente = entry.getKey();
@@ -106,7 +104,6 @@ public class Jugador {
             pais.agregarEjercito(ejercitoPorColocar);
             ejercitoDisponibleGlobal -= ejercitoPorColocar;
         }
-        System.out.println("Ejército disponible global >>>>> " + ejercitoDisponibleGlobal);
     }
 
 
@@ -221,8 +218,6 @@ public class Jugador {
     public boolean esGanador(){return this.objetivo.cumplido();} // se fija si cumple objetivos
 
     public boolean tienePais(Pais pais){
-        System.out.println("Busco a >>>> " + pais.getNombre() + " (" + String.valueOf(pais) + ")");
-        System.out.println("Lo busco en >>>>> " + String.valueOf(paisesConquistados));
         return (paisesConquistados.contains(pais));
     }
 
